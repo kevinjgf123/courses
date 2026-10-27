@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      链接即层级：把关系做成一等公民
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      集团与子公司、产品与 SKU、员工与经理——这些不是 JOIN 的副产品，是主数据的骨架
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 216, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>链接类型的官方定义与三条关键设计</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 11 }}>
+        <Box style={{ flex: 1.1, background: 'rgba(250,79,36,0.18)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FA4F24' }}>定义</Text>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', marginTop: 6, lineHeight: 1.55, flex: 1 }}>
+            链接类型是两个对象类型之间关系的 schema 定义；链接是两个对象之间某一次具体的关系实例。比如 Flight 与 Aircraft 之间的「已指派」关系。
+          </Text>
+          <Box style={{ marginTop: 9, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '8px 10px' }}>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', lineHeight: 1.45 }}>
+              类比：链接类型 ≈ 数据集之间的 JOIN，链接 ≈ JOIN 后的一行。
+            </Text>
+          </Box>
+        </Box>
+        {[
+          { t: '天然双向', d: '一个链接类型永远有两侧，每侧独立遍历、独立显示名与 API 名。建一个 Flight ↔ Aircraft 就够了，不需要再反向建一个。' },
+          { t: '同类型之间也可以连', d: '比如员工与经理的「直接汇报」关系，定义在 Employee 类型与它自己之间。' },
+          { t: '跨本体不支持', d: '跨 Ontology 的对象之间不能建链接。跨域需求要么合并本体，要么走接口——这是架构决策，不是技术限制。' },
+        ].map((x, i) => (
+          <Box key={x.t} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '11px 13px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 6, lineHeight: 1.55, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>基数决定存储方式（建模时必须先定）</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 7 }}>
+          {[
+            { k: '多对多', v: `需要给<tspan style={{ fontWeight: 'bold' }}>链接类型自己的 datasource</tspan>，关系单独落库。典型：客户与产品。` },
+            { k: '一对一 / 一对多', v: `关系存在对象的一个<tspan style={{ fontWeight: 'bold' }}>外键属性</tspan>上，不需要单独数据源。典型：部门与员工。` },
+          ].map((x) => (
+            <Box key={x.k} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '9px 11px' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.v}</Text>
+            </Box>
+          ))}
+          <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+            <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>
+              两个对象类型之间可以有<tspan style={{ fontWeight: 'bold' }}>多个不同的链接类型</tspan>——比如 Flight ↔ Aircraft 既可以是「已指派」，也可以是「排定维修」，但每侧都要有唯一 API 名让应用能区分。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.9, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>为什么层级必须是主数据的一部分</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          集团型企业的最大失败模式之一，就是子公司层级不完整——供应商风险算不出来、合并报表口径对不上、关联交易识别不了。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          公网上有句很实在的话：主数据跨部门，没有明确 owner 时，黄金记录会变成<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>政治产物而不是运营资产</tspan>。层级尤其是这样——它跨部门最厉害。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>14 / 30</Text>
+  </Box>
+</Slide>

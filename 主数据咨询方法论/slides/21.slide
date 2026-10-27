@@ -1,0 +1,84 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      主数据 <span style={{ color: '#FA4F24' }}>×</span> 知识库：切片必须带实体身份
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      客户主数据错了，检索层救不回来——检索只会把错误答案找得更齐
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 292, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>为什么实体身份在检索里是生死线</Text>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', marginTop: 7, lineHeight: 1.5, flex: 1 }}>
+          公网上有个说法很准确：主数据的消费方不再只是报表，而是 RAG 管线与模型。<tspan style={{ color: '#FBA15C' }}>向量索引里出现重复客户，就会产生重复且相互矛盾的上下文</tspan>——这正是 AI 答错的机制。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '9px 12px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5 }}>
+            同样的客户在三份合同里出现三次，没带实体 ID 的切片就会被检索成三条互不相干的证据，模型据此得出「三方客户关系」这种错误结论。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>知识库侧要做的四件事</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 7 }}>
+          {[
+            { n: '一', t: '切片继承实体身份', d: '每片段带规范主键 ID，不只带文件名。' },
+            { n: '二', t: '切片继承密级', d: '照第九册知识库规则做，同一套机制。' },
+            { n: '三', t: '建实体索引', d: '另建「实体→切片」映射，支持按实体聚合。' },
+            { n: '四', t: '实体变更触发重建', d: '合并或拆分后定位并重算，靠主数据血缘。' },
+          ].map((x) => (
+            <Box key={x.n} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 11px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.n} · {x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 2, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.9, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>Agent 侧的额外风险</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          智能体做数据管治类任务时（识别重复、自动归并、异常检测），<tspan style={{ fontWeight: 'bold' }}>它的判断依据就是实体身份本身</tspan>。
+        </Text>
+        <Box style={{ marginTop: 10, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.5 }}>
+            实体身份不可靠时，这些自动化任务不是「效率低」，而是<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>在批量制造错误</tspan>。所以主数据没到位之前，治理类 Agent 应该只给建议、不给动作。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一条完整的链路：实体变更如何流到知识库</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 11, alignItems: 'stretch' }}>
+        {[
+          { n: '①', t: '管道重解析', d: '源数据变了触发重跑' },
+          { n: '②', t: '合并审批', d: '按置信度分流，复核才生效' },
+          { n: '③', t: '血缘定位', d: '凭血缘找出相关切片' },
+          { n: '④', t: '切片重算', d: '重建切片，重打 ID 与标记' },
+          { n: '⑤', t: '缓存失效', d: '缓存键含 ID，一变即失效' },
+        ].map((x, i) => (
+          <Box key={x.n} style={{ flex: 1, background: i === 1 ? '#FFF3EE' : '#F7F7F8', borderRadius: 3, borderTop: '3px solid ' + (i === 1 ? '#C43A17' : '#FA4F24'), padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: i === 1 ? '#C43A17' : '#FA4F24' }}>{x.n}</Text>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>{x.t}</Text>
+            <Text style={{ fontSize: 10.5, color: '#3A4050', marginTop: 5, lineHeight: 1.45, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 8, lineHeight: 1.4 }}>
+        第③步能成立，靠的是主数据的主动血缘。没有血缘，这条链就断了。
+      </Text>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>21 / 30</Text>
+  </Box>
+</Slide>

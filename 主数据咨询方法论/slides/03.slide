@@ -1,0 +1,87 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      序论：AI 时代的主数据为什么突然变重了
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      不是因为主数据变复杂了，是因为它下游的消费者从「月度报表」换成了「每秒读上千次的模型」
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 258, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.25, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>一个最小的例子</Text>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 9, lineHeight: 1.6 }}>
+          模型看到 <tspan style={{ color: '#FBA15C' }}>J. Smith</tspan>、<tspan style={{ color: '#FBA15C' }}>SMITH JOHN</tspan>、<tspan style={{ color: '#FBA15C' }}>john.smith@email.com</tspan> 这三条记录，会当成三个不同的客户。
+        </Text>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 9, lineHeight: 1.6 }}>
+          然后它会：推荐错产品、预测错流失、分层错客户——<tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>而且每一处都很自信</tspan>。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 11, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '9px 12px' }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.55 }}>
+            过去人可能一眼就看出这是同一个人；现在没人看了，模型每秒钟看一遍。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>AI 把三件事放大了</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 8 }}>
+          {[
+            { t: '陈旧度被放大', d: '消费方从月度报表变成实时模型，月级刷新等于失效。' },
+            { t: '错误被批量放大', d: '一个重复客户不再是例外，而是成千上万次决策的输入。' },
+            { t: '必须可解释', d: '监管问「为什么这么判」，答案必须能回溯到一个有血缘的实体。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '9px 11px' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>主数据的角色也变了</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.65 }}>
+          过去的关键词是<tspan style={{ fontWeight: 'bold' }}>「单一可信版本」</tspan>——把散落的记录合成一条干净的记录。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.65 }}>
+          现在的关键词是<tspan style={{ fontWeight: 'bold' }}>「实体上下文」</tspan>——实体连着家庭、账户、合同、产品、工单、同意记录、位置，机器能推理。
+        </Text>
+        <Box style={{ marginTop: 11, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            上一轮竞争的是谁的数据最好，这一轮比的是谁的上下文最厚。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>这一册要回答的六个问题</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 11 }}>
+        {[
+          { n: 'Q1', t: '为什么找不到 MDM', d: 'Palantir 文档里没有 MDM 模块，为什么这不是缺陷？' },
+          { n: 'Q2', t: '三层是哪三层', d: '记录、可信档案、情境系统各解决什么？' },
+          { n: 'Q3', t: '匹配怎么做', d: '实体解析为什么是整个主数据项目最被低估的一环？' },
+          { n: 'Q4', t: '合并能撤吗', d: 'unresolve 这个能力为什么比合并本身更重要？' },
+          { n: 'Q5', t: '怎么落到 4A', d: '主数据作为业务应用，它的 BA/DA/AA/TA 分别长什么样？' },
+          { n: 'Q6', t: '和五方什么关系', d: '治理、管道、知识库、Agent、本体，主数据在每个方向上做什么？' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '10px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>{x.t}</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 6, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>03 / 30</Text>
+  </Box>
+</Slide>

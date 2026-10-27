@@ -1,0 +1,89 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      主数据的三个层次：记录 → 可信档案 → 情境系统
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      黄金记录解决「这是不是同一个人」，情境系统解决「这个人现在该被怎么对待」
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 210, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column', borderTop: '4px solid #8A8F99' }}>
+        <Text style={{ fontSize: 11, color: '#8A8F99', fontWeight: 'bold', letterSpacing: 1 }}>LEVEL 1</Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>黄金记录</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.55, flex: 1 }}>
+          把散落的记录合成一条干净的记录。解决的是身份问题：这个客户是谁、账号是哪个、地址是哪。
+        </Text>
+        <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>
+            <tspan style={{ fontWeight: 'bold', color: '#8A8F99' }}>够了：</tspan>报表一致、监管可查。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '13px 16px', flexDirection: 'column', borderTop: '4px solid #F87D2F' }}>
+        <Text style={{ fontSize: 11, color: '#C43A17', fontWeight: 'bold', letterSpacing: 1 }}>LEVEL 2</Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>可信档案</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.55, flex: 1 }}>
+          在黄金记录上补齐属性、交互、行为、关系与治理信息。解决的是完整度问题：这个客户持有什么、有哪些工单、同意状态如何。
+        </Text>
+        <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>
+            <tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>还不够：</tspan>个性化与流失预测开始用它了，但推理链条仍要现拼。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 11, color: '#FBA15C', fontWeight: 'bold', letterSpacing: 1 }}>LEVEL 3</Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FFFFFF', marginTop: 5 }}>情境系统</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', marginTop: 8, lineHeight: 1.55, flex: 1 }}>
+          把实体之间的连接做成机器可解释。业务现实不是扁平的表，是网络：客户连着家庭、账户、交易、产品、服务历史、同意记录、位置、员工。
+        </Text>
+        <Box style={{ background: 'rgba(250,79,36,0.2)', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.92)', lineHeight: 1.45 }}>
+            <tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>这一层：</tspan>Agent 才敢回答「未来 15 年内退休的客户该配什么方案」这种跨域问题。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>两个查询的差别，就是这三层的差别</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 9 }}>
+          <Box style={{ background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid #8A8F99', padding: '9px 12px' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>「有多少客户超过 50 岁？」</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 4, lineHeight: 1.45 }}>
+              这是一个数据问题——过滤一个出生日期字段就够了。黄金记录就能答。
+            </Text>
+          </Box>
+          <Box style={{ background: '#FFF3EE', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '9px 12px' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>「未来 15 年内会退休的客户有多少，各自该配什么退休方案？」</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 4, lineHeight: 1.45 }}>
+              这是一个推理问题——要同时理解年龄、地域、家庭结构、就业状态、税法、退休政策、风险偏好、账户历史与产品资格。<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>数据都在，但没有上下文，AI 无法可靠推理。</tspan>
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+      <Box style={{ flex: 0.85, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>对咨询的含义</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          很多企业卡在一级半：做了去重和统一，但没建关系与层级，于是 AI 项目只能用自然语言硬拼上下文，效果不稳定。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          建设顺序建议：一级做到干净，二级补齐属性，<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>三级优先做「有业务痛点的那个关系」</tspan>，不要一上来做全域图谱。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+  </Box>
+</Slide>

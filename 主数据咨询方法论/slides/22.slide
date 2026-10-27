@@ -1,0 +1,99 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      主数据 <span style={{ color: '#FA4F24' }}>×</span> Agent：要上下文，不要记录
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      黄金记录只能告诉 Agent「这个客户存在、住哪、账号是多少」——这不够做判断
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 305, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>Agent 拿到黄金记录之后还要问什么</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 6 }}>
+          {[
+            '这个客户属于哪个家庭？',
+            '他持有哪些产品？',
+            '哪些合同在约束这层关系？',
+            '有没有未结的服务工单？',
+            '适用哪些同意（consent）权限？',
+            '他够不够资格做忠诚度升级？',
+            '有没有监管限制要挡住下一步动作？',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5 }}>
+            <tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>数据都在</tspan>——但没有连接与上下文，AI 无法可靠推理。这就是「记录」与「上下文」的分界。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>所以主数据要补的是「关系网」</Text>
+        <Box style={{ flex: 1, marginTop: 10, background: '#F7F7F8', borderRadius: 3, padding: '11px 13px' }}>
+          <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.8 }}>
+            客户<span style={{ color: '#FA4F24' }}> ─拥有→ </span>产品<br />
+            客户<span style={{ color: '#FA4F24' }}> ─就职于→ </span>公司<br />
+            客户<span style={{ color: '#FA4F24' }}> ─位于→ </span>地址<br />
+            客户<span style={{ color: '#FA4F24' }}> ─关联→ </span>供应商<br />
+            客户<span style={{ color: '#FA4F24' }}> ─受约束于→ </span>合同与同意记录
+          </Text>
+        </Box>
+        <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 10, lineHeight: 1.5 }}>
+          这些关系在页面上就是链接类型；它们必须在主数据阶段就建好，<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>不能等 Agent 上线时再补</tspan>——那时没人说得清该补哪几条。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 0.9, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>给 Agent 用主数据的三个条件</Text>
+        <Box style={{ flexDirection: 'column', gap: 8, marginTop: 9 }}>
+          {[
+            { t: '能按自然语言问', d: 'Agent 要用自然语言调工具，实体查询必须能按业务语言表达，而不是只能拼 ID。' },
+            { t: '带置信度与时效', d: '返回结果要带「这个值来自哪、什么时候的、有多可信」，否则 Agent 无法判断该不该采信。' },
+            { t: '可作为动作入参', d: 'Agent 的动作类型要能直接引用实体对象，否则它只能把主数据当只读字典。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 2, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一个对比：Agent 拿到「记录」和「上下文」时的差别</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 10 }}>
+        <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #8A8F99', padding: '10px 12px' }}>
+          <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>只有黄金记录</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 5, lineHeight: 1.5 }}>
+            Agent 能回答「这个客户叫什么、住哪、账号是多少」——这是数据问题。
+          </Text>
+          <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 6, lineHeight: 1.45 }}>
+            遇到「他能不能升级」这类跨域问题，只能靠猜，或者退回人工。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px' }}>
+          <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>黄金记录 + 关系与层级</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 5, lineHeight: 1.5 }}>
+            Agent 能沿链接遍历到家庭、产品、合同、工单、同意记录与监管限制，逐条检查后给出<tspan style={{ fontWeight: 'bold' }}>有依据的建议</tspan>。
+          </Text>
+          <Text style={{ fontSize: 11, color: '#C43A17', marginTop: 6, lineHeight: 1.45 }}>
+            这才从「查数据的机器人」变成「能推理的助手」。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>22 / 30</Text>
+  </Box>
+</Slide>

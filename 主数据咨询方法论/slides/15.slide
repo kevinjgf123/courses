@@ -1,0 +1,81 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      动作类型：主数据是被<span style={{ color: '#FA4F24' }}>动作</span>写出来的
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      不是被脚本改出来的——差别在于：动作自带校验、自带权限、自带副作用、自带留痕
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 200, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>动作类型的能力清单（官方规则类型）</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9, marginTop: 11 }}>
+        {[
+          { g: '对象增删改', items: ['创建对象（仅当用户未提供主键时）', '创建或修改对象', '删除对象'] },
+          { g: '关系维护', items: ['创建链接', '删除链接', '一对多用改外键属性'] },
+          { g: '逻辑与外部', items: ['运行函数（唯一不可与其他规则组合）', 'Webhook 调外部系统', 'Webhook 在任何编辑前先调'] },
+          { g: '通知与调度', items: ['通知相关人', '触发构建', '合并场景编辑'] },
+          { g: '接口规则', items: ['对实现了接口的任意对象类型生效', '这是抽象层能落地的原因'] },
+        ].map((x) => (
+          <Box key={x.g} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid #FBA15C', padding: '10px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.g}</Text>
+            <Box style={{ flex: 1, marginTop: 8, flexDirection: 'column', gap: 5 }}>
+              {x.items.map((it) => (
+                <Text key={it} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', lineHeight: 1.4 }}>· {it}</Text>
+              ))}
+            </Box>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+        官方提醒：规则按声明式映射写，但规则不够用时要挂一个函数——比如要改所选对象关联的每一个对象，或要跨多个对象算一个值。
+      </Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>一个动作长什么样：给员工换角色</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 6 }}>
+          {[
+            '参数定义：让用户用标准表单输入新角色，而不是直接改字段',
+            '自动建关系：把该员工与新经理对象之间创建一条链接',
+            '副作用：通知原经理与新经理这次变更',
+            '权限校验：只有人力资源部门的授权员工可以执行',
+            '提交条件：校验输入是否合法，比如三位机场码的正则 ^[A-Z]{3}$，并配上错误提示',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>
+            同一个动作逻辑可以跨所有前端应用复用，保证所有应用对主数据的编辑口径一致。
+          </Text>
+        </Box>
+      </Box>
+      <Box style={{ flex: 0.85, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>对主数据的三个改变</Text>
+        <Box style={{ flexDirection: 'column', gap: 8, marginTop: 9 }}>
+          {[
+            { t: '维护动作可被授权', d: '粒度到「谁能改客户地址」而不是「谁能进 CRM」。' },
+            { t: '维护动作可被审计', d: '谁、在什么时候、依据什么规则、把哪个实体的哪个属性改成了什么。' },
+            { t: '维护动作可被复用', d: '组织架构调整一次定义，所有应用里都是同一套口径。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>15 / 30</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      主数据 <span style={{ color: '#FA4F24' }}>×</span> Ontology：主数据是本体的原生组成
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      这一页解释了为什么在官方文档里找不到 MDM 模块——不是没有主数据，是它长成了对象类型
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 252, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.2, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>对应关系表</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 7 }}>
+          {[
+            { a: '主数据域', b: '一组对象类型 + 一组链接类型' },
+            { a: '实体定义', b: '对象类型的属性与主键策略' },
+            { a: '黄金记录', b: '解析后的对象实例集合，带唯一规范主键' },
+            { a: '层级关系', b: '链接类型（多对多需自带数据源）' },
+            { a: '合并 / 拆分', b: '动作类型 + 解析元数据（可 unresolve）' },
+            { a: '维护权限', b: '提交条件 + 粒度授权' },
+          ].map((x, i) => (
+            <Box key={x.a} style={{ flexDirection: 'row', gap: 9, alignItems: 'center' }}>
+              <Box style={{ width: 108, background: i === 4 ? 'rgba(250,79,36,0.24)' : 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '6px 9px', borderLeft: '3px solid ' + (i === 4 ? '#FA4F24' : '#FBA15C') }}>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.a}</Text>
+              </Box>
+              <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', flex: 1, lineHeight: 1.4 }}>{x.b}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>接口层解决了什么</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55, flex: 1 }}>
+          接口描述一个对象类型的<tspan style={{ fontWeight: 'bold' }}>形状与能力</tspan>，提供多态。可以定义一个「设备」接口，泵、风机、压缩机都是它的实现，共享通用属性。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            <tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>主数据天然需要抽象层。</tspan>设备、资产、合同、客户——总有几个对象类型共享同一组属性与同一批可用动作。没有接口，就只能靠类型名硬判断。
+          </Text>
+        </Box>
+        <Box style={{ marginTop: 9, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            官方还有一条动作规则叫<tspan style={{ fontWeight: 'bold' }}>接口规则</tspan>：可以对实现了同一接口的任意对象类型生效——这是主数据规则能跨类型复用的关键。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.85, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一条现实的边界</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          官方明确：<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>不同本体之间的对象类型之间不支持链接</tspan>。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          这不是技术缺陷，是设计取向——跨域需求要么合并本体，要么走接口。<tspan style={{ fontWeight: 'bold' }}>主数据域切得越碎，跨域实体关系就越建不起来</tspan>，这是一个必须提前做的架构决策。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>因此在本体里，主数据域要交付的五样东西</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 10 }}>
+        {[
+          { n: '01', t: '对象类型定义', d: '属性、主键策略、必填与校验规则' },
+          { n: '02', t: '链接类型定义', d: '层级与业务关系，含基数决策' },
+          { n: '03', t: '接口抽象', d: '共享形状的对象类型用接口统一' },
+          { n: '04', t: '动作类型', d: '创建、改属性、合并、拆分，含提交条件' },
+          { n: '05', t: '回写与权限', d: 'writeback 数据集 + 源数据的权限分离' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>{x.t}</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 6, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 8, lineHeight: 1.4 }}>
+        顺序建议：先 01 与 02（类型与关系），再 05（权限与回写），最后 03 与 04（抽象与动作）。反过来做，动作会散落在各应用里。
+      </Text>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>23 / 30</Text>
+  </Box>
+</Slide>

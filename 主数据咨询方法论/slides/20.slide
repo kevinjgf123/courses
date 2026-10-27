@@ -1,0 +1,96 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      主数据 <span style={{ color: '#FA4F24' }}>×</span> 管道：合并放在哪、上游变脏了怎么办
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      解析通常发生在对象映射之前——那意味着管道里跑的是脏数据，主数据必须能扛住上游反复变
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 281, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一个真实的三表合一场景</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.5 }}>
+          同一批车辆分散在三张表里，主键各不相同：
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 6 }}>
+          {[
+            { s: 'ERP 表', f: 'VIN、购入日期、成本', c: '#FA4F24' },
+            { s: 'IoT 表', f: '传感器 ID、当前温度、经纬度', c: '#F87D2F' },
+            { s: '维保表', f: '车牌号、上次维修时间', c: '#C43A17' },
+          ].map((x) => (
+            <Box key={x.s} style={{ flexDirection: 'row', gap: 8, alignItems: 'center', background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid ' + x.c, padding: '7px 10px' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', width: 62 }}>{x.s}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050' }}>{x.f}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: '#0F1423', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45 }}>
+            挑战是两重的：<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>主键不同</tspan>（VIN / 传感器 ID / 车牌号）+ <tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>属性互补或部分重叠</tspan>。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.2, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>两条路的分工（官方口径）</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 9 }}>
+          <Box style={{ background: 'rgba(250,79,36,0.18)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24' }}>算法实体解析（前置）</Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', marginTop: 4, lineHeight: 1.5 }}>
+              管道里跑：配置匹配规则（VIN 模糊匹配、车牌与 VIN 规则关联）→ 跑分布式作业算相似度 → 把属于同一现实实体的记录聚成类 → 生成全局唯一规范 ID → 产出含该 ID 的黄金记录数据集。这是脏数据去重与链接的<tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>首选也是几乎唯一</tspan>的路径。
+            </Text>
+          </Box>
+          <Box style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '10px 12px' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>映射层（后置）</Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', marginTop: 4, lineHeight: 1.5 }}>
+              解析完成后才把黄金记录映射成对象类型、生成对象实例。注意官方那句关键限制：<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>深层嵌套的多源属性拼接，只能靠映射层手工建模</tspan>，没有自动办法。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.9, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>上游变脏了怎么办</Text>
+        <Box style={{ flexDirection: 'column', gap: 7, marginTop: 8 }}>
+          {[
+            { t: '不能靠下游救', d: '对象类型一旦建好，下游引用的是规范 ID，不是源记录。上游新来一条脏数据，只能在管道里重新解析。' },
+            { t: '要有重解析入口', d: '定期或按需重跑解析，并把「新增合并」走一遍同样的审批。' },
+            { t: '两速要能并存', d: '夜间批量对账 + 事件驱动增量，两条路都要有，且不能产生分析视图与运营视图的新分歧。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 2, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Box style={{ width: 128 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>管道上的四个卡点</Text>
+      </Box>
+      {[
+        { t: '类型强约束', d: '把「N/A」塞进 Double 字段应该直接报错，而不是隐式转换——脏数据要在管道层拦住。' },
+        { t: '合并幂等', d: '同一批数据重跑不能产生第二组合并，否则解析元数据会越滚越乱。' },
+        { t: '解析可回溯', d: '每次重解析要留下批次号，黄金记录上的每个 ID 都能查出来自哪一批。' },
+        { t: '断流要报警', d: '源表不更新是最隐蔽的失败——黄金记录看起来正常，实际已经过期。' },
+      ].map((x) => (
+        <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '9px 11px' }}>
+          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>20 / 30</Text>
+  </Box>
+</Slide>

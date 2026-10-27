@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      对象类型即主数据模型：类型、主键、对象集
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      官方给的三层类比，让「建模」这件事不再抽象
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 200, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>官方定义与官方类比</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 11 }}>
+        {[
+          { k: '对象类型 object type', d: '现实世界实体或事件的 schema 定义。比如 Employee 类型定义「所有员工」的特征。' },
+          { k: '对象 object', d: '对象类型的一个实例。比如某个具名员工。同理 Flight 类型的一个实例是某天的某趟航班。' },
+          { k: '对象集 object set', d: '多个对象的集合，代表一组现实实体。比如「所有十年以上工龄的员工」就是一个对象集。' },
+        ].map((x, i) => (
+          <Box key={x.k} style={{ flex: 1, background: i === 1 ? 'rgba(250,79,36,0.2)' : 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + (i === 1 ? '#FA4F24' : '#FBA15C'), padding: '11px 13px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: i === 1 ? '#FA4F24' : '#FBA15C' }}>{x.k}</Text>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', marginTop: 7, lineHeight: 1.55, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Box style={{ marginTop: 10, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '9px 12px' }}>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.5 }}>
+          类比关系：<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>对象类型 ≈ 数据集，对象 ≈ 数据集里的一行，对象集 ≈ 过滤后的一组行</tspan>。理解了这一层，主数据建模就不再是抽象概念。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>落到主数据建模上</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 7 }}>
+          {[
+            { t: '先定对象类型', d: '客户、供应商、产品、位置、组织——每一个都要问：这个实体在现实里的边界是什么。' },
+            { t: '再定主键', d: '主键选错，后面所有匹配都白做。业务键、自然键、内部 ID，各有各的适用面。' },
+            { t: '最后建对象集', d: '对象集是权限与分发的基本单位，也是运营视图的基础——谁能看哪个对象集，要在这一步就想清楚。' },
+          ].map((x, i) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid ' + (i === 1 ? '#C43A17' : '#FA4F24'), padding: '9px 11px' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{i + 1}. {x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{ flex: 0.85, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>主键选择的现实困难</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          B2B 与 B2C 的双重身份很难用一个主键覆盖：一个客户既是法人实体又是一组联系人；一个产品既是 SKU 又是套装。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          强行用一套扁平模型，结果就是<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>「哪条都不合适的黄金记录」</tspan>。建模必须容纳层级与上下文，而不是假装每个实体都是一行。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>12 / 30</Text>
+  </Box>
+</Slide>

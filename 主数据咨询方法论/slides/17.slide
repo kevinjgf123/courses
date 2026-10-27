@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      黄金记录上线之后：五个阶段被 AI 逐段改造
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      传统 MDM 的管道是「接入—标准化—匹配—合并—发布」，今天每一段都能被模型接管一部分
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 220, flexDirection: 'row', gap: 9 }}>
+      {[
+        { n: '01', t: '标准化', old: '查表 + 正则', now: '模式识别：Ltd./Limited/LTD 是同一法人形式；国家码暗示地址格式；自由文本字段里藏着实体名', k: '少一批错匹配进入匹配阶段' },
+        { n: '02', t: '匹配', old: '精确匹配规则', now: '概率打分 + 学到的相似度，所有特征交给模型综合判断', k: '长尾变体不再靠补规则' },
+        { n: '03', t: '合并与仲裁', old: '固定「来源永远赢」', now: '规则按结果排序、持续调整，逐属性选最优值，不盲信某系统', k: '仲裁逻辑本身可学习' },
+        { n: '04', t: '发布', old: '批量文件', now: 'API + 事件流，消费方按需取当前值', k: '两速问题的技术解' },
+        { n: '05', t: '监控', old: '抽样人工复核', now: '异常检测：盯新增重复、漂移、断流', k: '黄金记录上线后还能保持诚实' },
+      ].map((x, i) => (
+        <Box key={x.n} style={{ flex: 1, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', border: i % 2 === 0 ? 'none' : '1px solid #E8E8E8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '11px 12px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>{x.t}</Text>
+          <Box style={{ marginTop: 9, background: '#FFFFFF', borderRadius: 3, padding: '6px 8px' }}>
+            <Text style={{ fontSize: 10.5, color: '#8A8F99', lineHeight: 1.4 }}>原来：{x.old}</Text>
+          </Box>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 8, lineHeight: 1.5, flex: 1 }}>{x.now}</Text>
+          <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '6px 8px' }}>
+            <Text style={{ fontSize: 10.5, color: '#C43A17', lineHeight: 1.4 }}>{x.k}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>上线只是开始：三个必须持续盯的事</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 7 }}>
+          {[
+            { t: '黄金记录要持续核对', d: '异常检测要在新增重复、漂移、断流上持续报警，否则上线半年后它自己就不诚实了。' },
+            { t: '源系统漂移，模型会继承', d: '黄金记录稳定但源系统持续发散 → 模型慢慢脱离运营现实。持续管治不是管道细节，是模型可信度的前提。' },
+            { t: '监管已经把数据准确性变成硬要求', d: '欧盟 AI 法案高风险义务自 2026 年 8 月起适用，而实体层正是这些要求真正被执行或被打破的地方。' },
+          ].map((x, i) => (
+            <Box key={x.t} style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + (i === 2 ? '#C43A17' : '#FA4F24'), padding: '9px 11px' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', marginTop: 3, lineHeight: 1.5 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.85, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>AI 化之后人的位置</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          变的是分工：机器做标准化与概率打分，人只处理真正需要判断的例外；并且这些例外要能反向训练模型。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          不变的是纪律：<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>接受评审的例外队列</tspan>必须有人守着，否则模型会在没人看的地方自己漂走。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>17 / 30</Text>
+  </Box>
+</Slide>

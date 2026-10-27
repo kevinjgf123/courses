@@ -1,0 +1,84 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      DA 层：主数据元数据模型与<span style={{ color: '#FA4F24' }}>十二项必建模</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      建模顺序有硬依赖：先有主键策略，才谈得上匹配；先有解析元数据，才谈得上撤销
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 214, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>十二项必建模（按四组分）</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 11 }}>
+        {[
+          { g: '定义组', items: ['对象类型与属性定义', '主键策略与备选键', '链接类型与基数决策', '接口抽象与实现清单'] },
+          { g: '解析组', items: ['匹配规则与阈值配置', '解析元数据三件套', '黄金记录版本'] },
+          { g: '仲裁组', items: ['仲裁规则表（版本化）', '生存规则与字段例外', '多源值留存策略'] },
+          { g: '运营组', items: ['合并与拆分事件记录', '质量与匹配率指标', '消费方订阅契约'] },
+        ].map((x) => (
+          <Box key={x.g} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>{x.g}</Text>
+            <Box style={{ flex: 1, marginTop: 8, flexDirection: 'column', gap: 6 }}>
+              {x.items.map((it) => (
+                <Text key={it} style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>· {it}</Text>
+              ))}
+            </Box>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+        反过来说也成立：<tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>缺了解析元数据，合并就是单向的</tspan>；缺了仲裁规则表，多源冲突就只能靠人临时拍板。
+      </Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>三条建模硬约束</Text>
+        <Box style={{ flexDirection: 'column', gap: 7, marginTop: 9 }}>
+          {[
+            '解析元数据必须可逆——canonical / winner / other 三件套齐全，否则拆分无从下手。',
+            '仲裁规则必须版本化——上周那个结论是按哪版规则算的，要能回答。',
+            '原始层与本体层并存——投影可重算，底片不能删；删了规则一变就得重采。',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>{t}</Text>
+          ))}
+        </Box>
+        <Box style={{ flex: 1, marginTop: 10, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            还有一条容易漏的：<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>实体→切片的反向索引</tspan>不在主数据标准清单里，但没有它，实体一变就无法通知知识库重建。
+          </Text>
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>主键策略的三种选择</Text>
+        <Box style={{ flexDirection: 'column', gap: 7, marginTop: 9 }}>
+          {[
+            { t: '内部 ID', v: '最稳，但源系统拿不到，所有关联都要靠映射表维护。' },
+            { t: '业务键', v: '如 VIN、统一社会信用代码。跨系统可比，但源系统改了它就崩。' },
+            { t: '业务键 + 内部 ID 双主', v: '折中做法：内部 ID 为主，业务键做备选与匹配用。多数企业最终选这个。' },
+          ].map((x, i) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid ' + (i === 2 ? '#C43A17' : '#FA4F24'), padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 2, lineHeight: 1.45 }}>{x.v}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{ flex: 0.85, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>最容易被漏掉的四项</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.65 }}>
+          一、<tspan style={{ fontWeight: 'bold' }}>仲裁规则版本</tspan>：规则变了，历史结论无法解释；二、<tspan style={{ fontWeight: 'bold' }}>拆分事件</tspan>：只记合并不记拆分，等于只记进攻不记撤退；三、<tspan style={{ fontWeight: 'bold' }}>例外队列</tspan>：低置信合并人工看过的痕迹要留；四、<tspan style={{ fontWeight: 'bold' }}>订阅契约</tspan>：消费方拿到的是「当前形态」，不是源表。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+  </Box>
+</Slide>

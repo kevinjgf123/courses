@@ -1,0 +1,128 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      主数据的 4A 映射总览：把它当成一个业务应用
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      同样有业务对象、有归属组织、有支撑应用、有技术底座，只是它有一个别人都没有的问题：谁拥有这个实体
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>BA 业务架构</Text>
+        <Text style={{ fontSize: 11, color: '#FA4F24', marginTop: 3 }}>谁拥有这个实体</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '数据所有者：定义实体边界与字段口径',
+            '实体管理员：执行合并、拆分、维护层级',
+            '领域 steward：处理例外队列',
+            '仲裁人：影响重大的合并判定',
+            '消费方：按对象集订阅，不直连源表',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: '#FFFFFF', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4 }}>
+            特殊之处：<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>实体定义权</tspan>是主数据独有的治理对象。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>DA 数据架构</Text>
+        <Text style={{ fontSize: 11, color: '#FA4F24', marginTop: 3 }}>十二项主数据元数据</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '对象类型与属性定义',
+            '主键策略与备选键',
+            '链接类型与基数决策',
+            '接口抽象与实现',
+            '解析元数据三件套',
+            '仲裁规则表（版本化）',
+            '匹配规则与阈值',
+            '合并与拆分事件',
+            '消费方订阅契约',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.35 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: '#FFFFFF', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10, color: '#3A4050', lineHeight: 1.35 }}>
+            特殊之处：解析元数据要<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>可逆</tspan>，否则合并变单向。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>AA 应用架构</Text>
+        <Text style={{ fontSize: 11, color: '#FA4F24', marginTop: 3 }}>实体查询与运营应用</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '实体查询与对象浏览器',
+            '合并复核工作台',
+            '拆分审批与影响面评估',
+            '例外队列（低置信合并）',
+            '主数据订阅与分发 API',
+            '层级维护界面',
+            '质量与匹配率看板',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: '#FFFFFF', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4 }}>
+            特殊之处：这是<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>运营型</tspan>应用，不是报表型。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FBA15C' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>TA 技术架构</Text>
+        <Text style={{ fontSize: 11, color: '#FBA15C', marginTop: 3 }}>解析引擎与两速同步</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '实体解析服务（分块+打分+聚类）',
+            '图存储（层级与关系遍历）',
+            'writeback 数据集与版本',
+            '事件流与 API 网关',
+            '批量对账引擎（两速之一）',
+            '主键生成与唯一性校验',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.9)', lineHeight: 1.35 }}>
+            特殊之处：解析<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>必须幂等</tspan>，重跑不能产生第二组合并。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 112, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>主数据的四个「特有之处」</Text>
+      <Box style={{ width: 1, height: 62, background: '#FBA15C' }} />
+      {[
+        { t: '定义权是治理对象', d: '别的 4A 管数据与功能，主数据要先问「谁有权定义这个实体」' },
+        { t: '合并不是覆盖，是聚合', d: '带血缘的合并，且必须能撤销' },
+        { t: '真相运行时算出来', d: '多源值全留，仲裁规则版本化' },
+        { t: '错误被下游放大', d: '实体层做错，AI 在批量放大错误' },
+      ].map((x) => (
+        <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+  </Box>
+</Slide>

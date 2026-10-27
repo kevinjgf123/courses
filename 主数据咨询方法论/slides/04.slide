@@ -1,0 +1,77 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      Approach：八个阶段，每一步的产出物是什么
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>先做什么、后做什么、按什么顺序推进——每一步都必须有可交付物，否则就是空转</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+      {[
+        { n: '1', t: '实体域盘点与优先级排序', o: '实体域清单 · 优先级矩阵', d: '客户/供应商/产品/位置/员工，按痛点排序，不要一上来铺全域' },
+        { n: '2', t: '实体定义与主键策略设计', o: '实体定义书 · 主键策略', d: '先定主键再谈匹配，主键错了后面全错' },
+        { n: '3', t: '匹配规则与解析阈值设计', o: '匹配规则集 · 阈值实验报告', d: '用样本跑准召曲线，不靠拍脑袋定阈值' },
+        { n: '4', t: '仲裁与生存规则设计', o: '仲裁规则表 · 版本化策略', d: '逐属性定可信来源，规则本身要版本化' },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 13px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Box style={{ width: 24, height: 24, borderRadius: 12, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+            </Box>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+          </Box>
+          <Box style={{ marginTop: 10, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '7px 9px' }}>
+            <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>产出：{x.o}</Text>
+          </Box>
+          <Text style={{ fontSize: 11, color: '#5A6070', marginTop: 9, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+      {[
+        { n: '5', t: '层级与关系模型设计', o: '层级结构图 · 链接类型清单', d: '集团-子公司、产品-SKU这类层级是一等公民，不是 JOIN 的副产品' },
+        { n: '6', t: '数据质量与匹配监控设计', o: '质量规则集 · 匹配率看板', d: '上线才是开始：新增重复、漂移、断流要持续盯' },
+        { n: '7', t: '变更与审批流程设计', o: '提案规范 · 审批流程图', d: '合并必须有提案与复核，且必须有人工判定出口' },
+        { n: '8', t: '分发与消费治理', o: '分发清单 · 消费方契约', d: '黄金记录要按API与事件流对外，消费方也要被约束' },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #F87D2F', padding: '12px 13px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Box style={{ width: 24, height: 24, borderRadius: 12, background: '#F87D2F', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+            </Box>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+          </Box>
+          <Box style={{ marginTop: 10, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '7px 9px' }}>
+            <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>产出：{x.o}</Text>
+          </Box>
+          <Text style={{ fontSize: 11, color: '#5A6070', marginTop: 9, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ height: 92, background: '#0F1423', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>三条硬规则：顺序错了代价很大</Text>
+      <Box style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
+        {[
+          { n: '一', t: '先定主键，再谈匹配', d: '主键策略没定就调匹配规则，等于在错误的空间里做优化' },
+          { n: '二', t: '先只读投影，再开放写入', d: '先让业务看清合并结果，再让人改；反序就是历史数据被污染' },
+          { n: '三', t: '先有撤销能力，再谈规模化合并', d: '没有 unresolve 的合并系统，规模化就是规模化制造错误' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '9px 12px' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n} · {x.t}</Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.78)', marginTop: 4, lineHeight: 1.4 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>04 / 30</Text>
+  </Box>
+</Slide>

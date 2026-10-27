@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      一个对象，两套权限：多数据源对象与列级治理
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      主数据的属性天然来自不同源、敏感度不同——「一个人身上既有 PHI 也有非 PHI」是常态
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 240, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>MDO 的官方定义</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', marginTop: 8, lineHeight: 1.55, flex: 1 }}>
+          多数据源对象类型：把<tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>多个输入数据源映射到同一个对象类型的不同属性上</tspan>，从而对同一个对象类型施加多套访问控制。
+        </Text>
+        <Box style={{ flexDirection: 'column', gap: 6, marginTop: 9 }}>
+          {[
+            '仅在 Object Storage v2 可用',
+            '输入源可以是数据集或受限视图的任意组合',
+            '两套权限会分别作用在同一个对象实例上',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', lineHeight: 1.4 }}>· {t}</Text>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.3, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>官方举例：一个就诊事件对象，两个数据源</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.5 }}>
+          主键是患者 ID，数据源一个是<tspan style={{ fontWeight: 'bold' }}> patient_info</tspan>，另一个是 <tspan style={{ fontWeight: 'bold' }}>care_event_info</tspan>。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'row', gap: 9 }}>
+          <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '9px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17' }}>patient_info</Text>
+            <Text style={{ fontSize: 10.5, color: '#3A4050', marginTop: 4, lineHeight: 1.4 }}>姓名、地址、电话、年龄</Text>
+            <Box style={{ flex: 1, marginTop: 7, background: '#FFFFFF', borderRadius: 3, padding: '6px 8px' }}>
+              <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4 }}>带 PHI 标记 → 无该标记者看不到这些属性值</Text>
+            </Box>
+          </Box>
+          <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid #8A8F99', padding: '9px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>care_event_info</Text>
+            <Text style={{ fontSize: 10.5, color: '#3A4050', marginTop: 4, lineHeight: 1.4 }}>医生 ID、就诊中心</Text>
+            <Box style={{ flex: 1, marginTop: 7, background: '#FFFFFF', borderRadius: 3, padding: '6px 8px' }}>
+              <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4 }}>无标记 → 不需要任何标记即可访问</Text>
+            </Box>
+          </Box>
+        </Box>
+        <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 9, lineHeight: 1.45 }}>
+          结果：同一个对象实例上，有的属性能看，有的看不到。<tspan style={{ fontWeight: 'bold', color: '#0F1423' }}>用户没有 PHI 标记时看不到姓名地址电话年龄，但能看到他自己中心的就诊记录。</tspan>
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 0.8, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>受限视图的角色</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          受限视图提供<tspan style={{ fontWeight: 'bold' }}>行级</tspan>访问控制，且只能建在数据集上，不能建在流或其他源类型上。
+        </Text>
+        <Box style={{ marginTop: 9, background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.45 }}>
+            例：政策写成「用户的 care_center 等于数据行的 care_center」，就只能看到自己中心的患者数据——同一张表、同一个对象类型。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Box style={{ width: 118 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>对主数据的含义</Text>
+        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', marginTop: 4 }}>三句话</Text>
+      </Box>
+      {[
+        { t: '主数据必须支持「一个对象多套权限」', d: '客户对象的姓名与信用评级敏感度不同，不能一个标记管到底。' },
+        { t: '权限配在数据源上，不是配在对象上', d: '这意味着主数据的权限模型要跟着源系统设计一起走。' },
+        { t: '行级 + 列级叠加 = 单元格级', d: '这与第九册的数据治理完全咬合，是同一套机制在主数据上的应用。' },
+      ].map((x) => (
+        <Box key={x.t} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px' }}>
+          <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+  </Box>
+</Slide>

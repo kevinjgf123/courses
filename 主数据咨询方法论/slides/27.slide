@@ -1,0 +1,102 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      BA 层：<span style={{ color: '#FA4F24' }}>谁拥有这个实体</span>，比「谁有这张表」难得多
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      主数据的核心争议不是技术，是「这三条记录到底算不算同一家公司，最终由谁说了算」
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.25, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>五类角色的裁决权与产出</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 7 }}>
+          {[
+            { r: '实体所有者', p: '定义这个实体的边界、主键策略与字段口径', o: '实体定义书' },
+            { r: '实体管理员', p: '执行合并、拆分、层级维护，处理例外队列', o: '合并与拆分记录' },
+            { r: '领域 steward', p: '按业务语境判定边界情况，签核中低置信合并', o: '例外处置台账' },
+            { r: '仲裁人', p: '影响重大的合并与主体判定，一锤定音', o: '仲裁裁定记录' },
+            { r: '消费方', p: '按对象集订阅，不直连源表', o: '订阅契约' },
+          ].map((x) => (
+            <Box key={x.r} style={{ flexDirection: 'row', gap: 9, alignItems: 'center' }}>
+              <Box style={{ width: 92, background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '6px 8px' }}>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.r}</Text>
+              </Box>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1.3, lineHeight: 1.4 }}>{x.p}</Text>
+              <Text style={{ fontSize: 10.5, color: '#FA4F24', fontWeight: 'bold' }}>{x.o}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: '#FFF3EE', borderRadius: 3, padding: '8px 11px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>
+            常见失败：把五类压成两类——「数据部门管数据，业务随便用」。结果是业务不认数据部门裁定的边界，数据部门也拿不到业务语境。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>三场最难谈的边界争议</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 8 }}>
+          {[
+            { t: '法人 vs 联系人', d: '一个客户既是法人实体又是一组自然人联系人。硬压成一个模型，结果是两边都不好用。' },
+            { t: 'SKU vs 套装', d: '产品既是单品又是组合件。层级不建模，库存与定价口径必然对不上。' },
+            { t: '集团内交易对手', d: '子公司之间的关联交易，是不是同一个实体？这个判断只有业务能拍，技术给不出答案。' },
+          ].map((x, i) => (
+            <Box key={x.t} style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + (i === 2 ? '#C43A17' : '#FA4F24'), padding: '9px 11px' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', marginTop: 3, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.92)', lineHeight: 1.45 }}>
+            公网上那句判断很值得引用：主数据跨部门，归属不明确时，黄金记录会变成<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>政治产物</tspan>而不是运营资产。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.8, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>BA 层四个必答问题</Text>
+        <Box style={{ flexDirection: 'column', gap: 9, marginTop: 9 }}>
+          {[
+            { q: '这个实体归谁？', a: '要具体到部门和一个名字，不能是「业务部」。' },
+            { q: '边界争议谁裁？', a: '必须有一个唯一的仲裁人，且不在被争议部门内。' },
+            { q: '拆分谁批准？', a: '拆分风险高于合并，审批层级应更高。' },
+            { q: '消费方怎么退出？', a: '要能取消订阅，否则改口径时没人配合。' },
+          ].map((x) => (
+            <Box key={x.q}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.q}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.a}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 92, background: '#F7F7F8', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>BA 层的产出物清单</Text>
+      <Box style={{ flexDirection: 'row', gap: 8, marginTop: 8 }}>
+        {[
+          '主数据域与归属矩阵',
+          '实体定义书（含主键策略）',
+          '边界争议仲裁规则与流程',
+          '合并与拆分审批权限表',
+          '消费方订阅与退出机制',
+        ].map((t) => (
+          <Box key={t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '8px 10px' }}>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45 }}>{t}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+  </Box>
+</Slide>

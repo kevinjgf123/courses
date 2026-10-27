@@ -1,0 +1,86 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      仲裁与生存规则：<span style={{ color: '#FA4F24' }}>真相是运行时算出来的</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      多个源说同一件事不一样时，不要入库时覆盖——保留多源值，查询时按策略算出当前可信值
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 278, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一个真实的冲突场景</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 7 }}>
+          <Box style={{ background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 11px' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>SCADA 系统：当前温度 85</Text>
+          </Box>
+          <Box style={{ background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '8px 11px' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>EAM 系统：当前温度 90</Text>
+          </Box>
+        </Box>
+        <Box style={{ marginTop: 10, background: '#0F1423', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+            做法不是让 EAM 覆盖 SCADA，而是<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>两个都留着，查询时按仲裁策略算出当前可信值</tspan>。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.25, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>四类仲裁策略与适用场景</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 6 }}>
+          {[
+            { k: '来源优先级', v: '有公认主数据系统时用它', e: '财务以 ERP 为准' },
+            { k: '时间戳优先', v: '需要最新状态时', e: '温度取最新上报' },
+            { k: '业务规则', v: '字段语义特殊', e: '合同以审批终态为准' },
+            { k: '人工仲裁', v: '影响重大且自动不可靠', e: '是否同一主体' },
+          ].map((x, i) => (
+            <Box key={x.k} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid ' + (i === 3 ? '#C43A17' : '#FA4F24'), padding: '6px 10px' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+              <Text style={{ fontSize: 10.5, color: '#3A4050', marginTop: 2, lineHeight: 1.4 }}>{x.v}　<tspan style={{ color: '#8A8F99' }}>{x.e}</tspan></Text>
+            </Box>
+          ))}
+          <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4 }}>还可以组合使用：时间窗口内取最高可信来源。</Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.85, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>两条关键原则</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          <tspan style={{ fontWeight: 'bold' }}>一、所有被「覆盖」掉的值不能丢。</tspan>它们依然是历史事实，随时可以被翻出来做审计、纠偏或重新仲裁。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          <tspan style={{ fontWeight: 'bold' }}>二、仲裁逻辑本身要版本化。</tspan>业务规则会变，规则变了之后要能回答「上周那个结论是按哪版规则算的」。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>这一条设计带来的三个收益</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 10 }}>
+        {[
+          { n: '收益一', t: '规则变了不用重采数据', d: '只需要重放投影——原始层不动，这是与「直接覆盖源数据」最本质的区别。' },
+          { n: '收益二', t: '算法团队还能拿到原始粒度', d: '只给清洗后的汇总数据，等于把特征工程的可能性堵死；原始层保留就都还有。' },
+          { n: '收益三', t: '这才是数据谱系', d: '从对象属性一路往回查，能看到它来自哪张源表、经过哪条管道、用了哪版规则。' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid #FBA15C', padding: '8px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 10.5, color: '#FBA15C', fontWeight: 'bold' }}>{x.n}</Text>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF', marginTop: 4 }}>{x.t}</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', marginTop: 4, lineHeight: 1.45, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 9, lineHeight: 1.45 }}>
+        落到实施上：仲裁规则表（阶段四产出物）必须逐属性写明「谁说了算、在什么条件下说了算、谁有权推翻」。
+      </Text>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>10 / 30</Text>
+  </Box>
+</Slide>

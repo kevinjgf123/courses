@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      主数据 <span style={{ color: '#FA4F24' }}>×</span> 数据治理：谁定义实体、谁批准合并
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      主数据是治理的对象，但有些治理动作只有主数据才有——合并与拆分
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 296, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>主数据带来的三个新治理对象</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 7 }}>
+          {[
+            { t: '合并提案', d: '谁提的、依据什么规则、置信度多少、影响哪些下游。' },
+            { t: '拆分提案（unresolve）', d: '拆开一个实体让下游引用瞬间失配，风险更高，审批更严。' },
+            { t: '实体归属', d: '不是数据归属，是「实体定义权归谁」。' },
+          ].map((x, i) => (
+            <Box key={x.t} style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + (i === 1 ? '#C43A17' : '#FA4F24'), padding: '9px 11px' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', marginTop: 3, lineHeight: 1.5 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px' }}>
+          <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.4 }}>
+            对应第九册：治理对象从「数据」扩展到「动作」，合并就是最典型的那个动作。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>合并与拆分的审批不对称</Text>
+        <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 7, lineHeight: 1.5 }}>
+          合并错了，下游拿到错误实体，影响面广但通常可修；<tspan style={{ fontWeight: 'bold' }}>拆分错了，所有引用过这个实体 ID 的报表、口径、历史快照全部要重算</tspan>。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 6 }}>
+          {[
+            { t: '合并', v: '高置信自动、中置信复核、低置信进例外队列。' },
+            { t: '拆分', v: '人工审批 + 影响面清单 + 回滚预案，禁止批量拆分。' },
+            { t: '批量操作', v: '超过阈值数量一律走提案，不许脚本直连。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 2, lineHeight: 1.45 }}>{x.v}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.85, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>治理设计必须先于工具</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          主数据跨部门，归属不明确时，黄金记录会变成<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>政治产物而不是运营资产</tspan>——大家一致同意需要唯一版本，但没人同意用谁的版本。
+        </Text>
+        <Box style={{ marginTop: 10, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.45 }}>
+            后果很直接：治理设计没定就上工具，工具只会<tspan style={{ fontWeight: 'bold' }}>把分歧自动化</tspan>。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>主数据 × 治理要落的四个动作</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 10 }}>
+        {[
+          { n: '01', t: '实体定义权落到人', d: '写清谁能定义该域的字段边界与主键策略。' },
+          { n: '02', t: '合并走置信度分流', d: '三条路都要有，并定期回看阈值准召。' },
+          { n: '03', t: '拆分默认人工审批', d: '强制附影响面清单：谁引用过这个 ID。' },
+          { n: '04', t: '合并记录进审计', d: '全部进第九册说的动作日志。' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>{x.t}</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 6, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>19 / 30</Text>
+  </Box>
+</Slide>

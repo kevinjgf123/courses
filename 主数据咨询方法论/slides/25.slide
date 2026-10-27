@@ -1,0 +1,23 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+  <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+  <Box style={{ position: 'absolute', right: 0, top: 0, width: 560, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.28) 0%, rgba(250,79,36,0) 70%)' }} />
+
+  <Box style={{ position: 'absolute', right: 70, top: 110 }}>
+    <Text style={{ fontSize: 300, fontWeight: 'bold', color: 'rgba(255,255,255,0.08)', lineHeight: 1.0 }}>04</Text>
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 232, width: 760, flexDirection: 'column' }}>
+    <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>PART 04</Text>
+    <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 22 }} />
+    <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#FFFFFF', marginTop: 28, lineHeight: 1.15 }}>回到 4A</Text>
+    <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.62)', letterSpacing: 2, marginTop: 20 }}>BACK TO THE 4A ARCHITECTURE</Text>
+    <Text style={{ fontSize: 19, color: 'rgba(255,255,255,0.85)', marginTop: 26, lineHeight: 1.6 }}>把主数据当成一个业务应用来设计</Text>
+    <Text style={{ fontSize: 14.5, color: 'rgba(255,255,255,0.55)', marginTop: 16, lineHeight: 1.55, width: 720 }}>主数据同样是业务应用：有业务对象、有归属组织、有支撑应用、有技术底座，也有它自己特殊的地方——尤其是「谁拥有这个实体」这个在其他专册里不存在的问题。</Text>
+  </Box>
+
+  <Box style={{ position: 'absolute', right: 88, bottom: 64, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>@@PAGE@@ / 30</Text>
+  </Box>
+</Slide>

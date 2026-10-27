@@ -1,0 +1,87 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      实体解析：整个主数据项目里最被低估的一环
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      匹配质量决定下游一切——去重错了，黄金记录、报表、模型、Agent 全部一起错
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 297, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>官方定义与两步走法</Text>
+      <Box style={{ flex: 1, marginTop: 11, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: 'rgba(250,79,36,0.18)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FA4F24' }}>对象解析（Object Resolution）</Text>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.86)', marginTop: 7, lineHeight: 1.55 }}>
+            官方定义是「把两个或多个对象合并」。典型用途是把来自两个不同源系统、指向同一个真实实体的对象解析到一起，<tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>目的是防止同一实体被重复创建</tspan>。
+          </Text>
+          <Box style={{ flex: 1, marginTop: 10, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '8px 10px' }}>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}>
+              它发生在对象映射之前，是前置处理。合并完成后生成一个全局唯一的规范主键，以及一条包含规范主键的黄金记录数据集。
+            </Text>
+          </Box>
+        </Box>
+        <Box style={{ flex: 1.05, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FFFFFF' }}>五种匹配信号（由弱到强）</Text>
+          <Box style={{ flex: 1, marginTop: 8, flexDirection: 'column', gap: 5 }}>
+            {[
+              { k: '分块 / 配对', v: '先缩小候选对范围：只比姓氏或名称首字母相同的，或用哈希找相似项' },
+              { k: '字符串相似度', v: '模糊匹配、编辑距离，处理拼写错误与名称变体' },
+              { k: '语音相似度', v: '发音相近但拼写不同的名字' },
+              { k: '上下文特征', v: '从报告、邮件等非结构化文本里抽出的关系与活动，作为额外特征' },
+              { k: '概率打分', v: '机器学习模型综合全部特征给出匹配概率，可用平台标注数据持续训练' },
+            ].map((x, i) => (
+              <Box key={x.k} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
+                <Text style={{ fontSize: 11, color: '#FBA15C', fontWeight: 'bold', width: 16 }}>{i + 1}</Text>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', lineHeight: 1.45, flex: 1 }}>
+                  <tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>{x.k}</tspan>：{x.v}
+                </Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+        <Box style={{ flex: 0.9, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>三个实践陷阱</Text>
+          <Box style={{ flex: 1, marginTop: 8, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', lineHeight: 1.5 }}>
+              <tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>阈值不能拍脑袋</tspan>——要用样本跑准召曲线，漏合并和错合并的代价完全不同。
+            </Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', lineHeight: 1.5 }}>
+              <tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>长尾永远补不完</tspan>——规则写法永远只能覆盖已见过的变体，所以要留人工判定出口。
+            </Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', lineHeight: 1.5 }}>
+              <tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>AI 匹配要能被否决</tspan>——用模型推荐、用规则执行、留人做最终裁决。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+        AI 改造后的分工是：模型做标准化与概率打分，人只处理真正需要判断的例外——而不是反过来，人去复核所有机器结果。
+      </Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.2, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>为什么它最被低估</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          因为它不产出看得见的界面，也不产出报表。系统上线那天，所有人看到的是「客户主数据建好了」，而匹配质量这件事藏在准召率里，等到下游发现客户被重复计数时，已经过去半年了。
+        </Text>
+      </Box>
+      <Box style={{ flex: 0.8, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>验收指标要前置</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          匹配率、误合并率、漏合并率三个指标必须在<tspan style={{ fontWeight: 'bold' }}>第三阶段就出报告</tspan>，而不是上线后补。阈值实验报告就是为此存在的产出物。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>08 / 30</Text>
+  </Box>
+</Slide>

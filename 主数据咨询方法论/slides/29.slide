@@ -1,0 +1,107 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      AA + TA：策略即应用，解析引擎与两速同步
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      主数据能不能落地，看两件事：业务有没有在应用里真的用它，以及重跑解析会不会把数据搞乱
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>AA 层：六个主数据应用</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 7 }}>
+          {[
+            { n: 'A1', t: '实体查询与对象浏览器', d: '按业务语言查实体，返回时带来源、时效与置信度' },
+            { n: 'A2', t: '合并复核工作台', d: '中置信合并排队复核，支持一批准就批量提交' },
+            { n: 'A3', t: '拆分审批与影响面评估', d: '强制展示引用清单，不评估完不允许提交' },
+            { n: 'A4', t: '例外队列', d: '低置信合并与异常候选，人工判定并回流训练' },
+            { n: 'A5', t: '主数据订阅与分发', d: '按对象集授权，API 与事件流双通道' },
+            { n: 'A6', t: '质量与匹配率看板', d: '准召、断流、漂移、层级完整度四项常驻指标' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flexDirection: 'row', gap: 9, alignItems: 'flex-start' }}>
+              <Box style={{ width: 26, background: 'rgba(250,79,36,0.24)', borderRadius: 3, padding: '3px 0', alignItems: 'center' }}>
+                <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FBA15C' }}>{x.n}</Text>
+              </Box>
+              <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1, lineHeight: 1.45 }}>
+                <tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</tspan>：{x.d}
+              </Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45 }}>
+            上线顺序：先 A2 与 A3（有流程才有人信），再 A1（让人看见），最后 A4 与 A6（持续管治）。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.15, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>TA 层：两速同步是这个架构的核心难点</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'row', gap: 9 }}>
+          <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>批量对账</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 5, lineHeight: 1.5, flex: 1 }}>
+              夜间全量跑解析与仲裁，产出权威快照，适合结算、报表、合规口径。
+            </Text>
+            <Text style={{ fontSize: 10.5, color: '#FA4F24', marginTop: 6, lineHeight: 1.4 }}>慢但一致</Text>
+          </Box>
+          <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '10px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>事件增量</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 5, lineHeight: 1.5, flex: 1 }}>
+              源表变更即触发，适合运营视图与 Agent 实时读取。
+            </Text>
+            <Text style={{ fontSize: 10.5, color: '#C43A17', marginTop: 6, lineHeight: 1.4 }}>快但要收敛</Text>
+          </Box>
+        </Box>
+        <Box style={{ flex: 1, marginTop: 10, background: '#0F1423', borderRadius: 3, padding: '10px 12px' }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.55 }}>
+            <tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>真正的坑：</tspan>两速并存如果收敛不好，就会<tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>产生分析视图与运营视图的新分歧</tspan>——同一个客户在两个系统里是两个 ID，比只有一个错误更糟。
+          </Text>
+        </Box>
+        <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 10, lineHeight: 1.45 }}>
+          处方：<tspan style={{ fontWeight: 'bold' }}>解析必须幂等</tspan>（同一批重跑不产生第二组合并）+ 每次重解析留批次号 + 黄金记录上的每个 ID 都能查出来自哪一批。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 0.85, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>TA 层三条非功能底线</Text>
+        <Box style={{ flexDirection: 'column', gap: 8, marginTop: 9 }}>
+          {[
+            { t: '解析幂等', d: '重跑不产生新合并，解析元数据不能越滚越乱。' },
+            { t: '类型强约束', d: '把「N/A」塞进 Double 字段直接报错，不要隐式转换。' },
+            { t: '断流必须报警', d: '源表不更新是最隐蔽的失败——黄金记录看着正常，实际已过期。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 2, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 96, background: '#F7F7F8', borderRadius: 4, padding: '11px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>判断主数据有没有真落地：三个可验证的问题</Text>
+      {[
+        { t: '业务用它吗', d: '打开系统，第一个动作是查实体，而不是查表——这说明主数据成了入口。' },
+        { t: '敢改吗', d: '业务愿意通过动作改属性，而不是找管理员直连数据库——这说明治理闭环了。' },
+        { t: '查得到吗', d: '三秒内能回答「这个客户是谁、来自哪、有多可信、合并过几次」——这说明元数据齐了。' },
+      ].map((x) => (
+        <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '9px 11px' }}>
+          <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+  </Box>
+</Slide>

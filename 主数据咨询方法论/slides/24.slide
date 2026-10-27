@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      一套身份、五个落法：主数据的四条硬边界
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      主键只定义一次，但它必须在五个方向上分别有处理，否则任何一个方向都会把身份做坏
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 224, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>同一个规范 ID，五个方向各自的处理</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 12, alignItems: 'stretch' }}>
+        <Box style={{ width: 152, background: 'rgba(250,79,36,0.22)', borderRadius: 3, border: '1px solid #FA4F24', padding: '11px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>规范主键 + 解析元数据</Text>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', marginTop: 6, lineHeight: 1.45 }}>
+            规范主键、胜出主键、其他主键列表
+          </Text>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 7, lineHeight: 1.4 }}>
+            只定义一次，五处复用
+          </Text>
+        </Box>
+        {[
+          { dir: '→ 治理', obj: '合并提案 / 拆分提案', act: '按置信度分流，拆分一律人工审批', risk: '拆分让下游引用全部失配', ctrl: '拆分强制附影响面清单' },
+          { dir: '→ 管道', obj: '源数据集 / 解析作业', act: '解析在映射之前，重解析要幂等', risk: '上游变脏，下游救不回来', ctrl: '脏数据在管道层就拦住' },
+          { dir: '→ 知识库', obj: '切片 / 向量索引', act: '切片继承实体 ID 与密级', risk: '重复实体产生矛盾上下文', ctrl: '建实体到切片的反向索引' },
+          { dir: '→ Agent', obj: '工具入参 / 记忆', act: '动作类型可引用实体对象', risk: '无上下文时靠猜做判断', ctrl: '返回必须带来源与置信度' },
+          { dir: '→ 本体', obj: '对象类型 / 链接类型', act: '主数据即本体的原生组成', risk: '本体切太碎，跨域连不起来', ctrl: '接口抽象 + 慎划本体边界' },
+        ].map((x) => (
+          <Box key={x.dir} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid #FBA15C', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>{x.dir}</Text>
+            <Text style={{ fontSize: 11, color: '#FFFFFF', marginTop: 6, lineHeight: 1.4 }}>{x.obj}</Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.78)', marginTop: 5, lineHeight: 1.4 }}>{x.act}</Text>
+            <Text style={{ fontSize: 10.5, color: '#FBA15C', marginTop: 5, lineHeight: 1.4 }}>风险：{x.risk}</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.72)', marginTop: 3, lineHeight: 1.4 }}>对策：{x.ctrl}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.2, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>主数据的四条硬边界（不可协商）</Text>
+        <Box style={{ flexDirection: 'column', gap: 5, marginTop: 8 }}>
+          {[
+            '一、主键先于匹配：主键策略没定就调匹配规则，等于在错误的空间里做优化。',
+            '二、原始层不删：黄金记录是可重算的投影，底片必须留着，否则规则一变就得重采。',
+            '三、合并可撤销：没有 unresolve 的合并系统，规模化等于规模化制造错误。',
+            '四、归属先于工具：主数据跨部门，定义权不定就上工具，工具只会把分歧自动化。',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>{t}</Text>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>推论：主数据是全部智能的前置条件</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          每个模型、每个 Agent、每个对话回答，都继承它读到的实体记录的质量。<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>实体层做错了，AI 就在批量放大错误；实体层做对了，AI 就在复利放大价值。</tspan>
+        </Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.55 }}>
+          这也是为什么建议从<tspan style={{ fontWeight: 'bold' }}>一个域、一个人可量的痛点</tspan>切入——比如重复账号导致的收入漏损、或层级不全导致的供应商风险。把域切窄不叫保守，叫能落地。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>24 / 30</Text>
+  </Box>
+</Slide>

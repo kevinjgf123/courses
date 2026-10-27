@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      为什么 Palantir 官方文档里找不到 MDM
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      翻遍 Data Integration 与 Ontology 两章，没有一个叫「主数据」的模块——这不是产品缺项，是设计选择
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 196, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>官方原话与它的含义</Text>
+      <Box style={{ flex: 1, marginTop: 11, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1.2, background: 'rgba(250,79,36,0.18)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24' }}>本体是「运营层」</Text>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', marginTop: 6, lineHeight: 1.55 }}>
+            本体坐在数据集、虚拟表、模型之上，把它们连到真实世界的对应物——设备、产品这类物理资产，也包括客户订单、财务交易这类概念。很多场景下它是组织的数字孪生。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>「对象类型」就是主数据的 schema</Text>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 6, lineHeight: 1.55 }}>
+            官方类比：对象类型 ≈ 数据集，对象 ≈ 数据集里的一行，对象集 ≈ 过滤后的一组行。主数据不是一个新概念，它就是对象类型加对象实例。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>对象有两种产生方式</Text>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 6, lineHeight: 1.55 }}>
+            加一个 backing datasource，或者配置一个会创建对象的 action。如果所有对象都靠动作创建，可以直接建没有 datasource 的对象类型。
+          </Text>
+        </Box>
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+        推论：在这一套设计里，「主数据域」天然就是一组对象类型 + 一组链接类型 + 一组动作类型。它不需要单独的模块，因为它就是本体的原生组成。
+      </Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>这对咨询意味着什么</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          传统 MDM 项目的第一句话通常是「我们先上一个 MDM 套件」。这套思路在本体式的架构里是错的——<tspan style={{ fontWeight: 'bold' }}>先建对象类型，再把数据接进来</tspan>，主数据是建模的自然结果。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          差别在于：传统 MDM 是「数据进系统」，本体是「现实映射到类型」。后者更难，但它是让主数据能直接驱动业务动作的前提。
+        </Text>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>也要说清楚另一半</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          不需要独立模块，不等于不需要专门的投入。合并质量、仲裁规则、层级模型、匹配阈值——这四件事仍然是专业活，仍然是最容易被低估、最容易做砸的部分。
+        </Text>
+        <Box style={{ marginTop: 10, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            判断标准：主数据做得好不好，不看有没有模块，看业务问「这个客户到底是谁」，你能不能三秒内给出一个带来源、带置信度、带历史合并记录的答案。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>06 / 30</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>目录</Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>四个部分，从「主数据是什么」一路走到「主数据怎么落到 4A 上」</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 14 }}>
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+      {[
+        { p: 'PART 01', t: '主数据本体论', d: '为什么找不到 MDM / 三个层次 / 实体解析 / 可撤销的合并 / 仲裁规则', pg: 'P06 — P10', c: '#FA4F24' },
+        { p: 'PART 02', t: '主数据的实现机制', d: '对象类型即模型 / 一个对象多套权限 / 链接即层级 / 动作即写入 / 五阶段 AI 化', pg: 'P12 — P17', c: '#F87D2F' },
+      ].map((x) => (
+        <Box key={x.p} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.c, padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 11, color: x.c, fontWeight: 'bold', letterSpacing: 2 }}>{x.p}</Text>
+          <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>{x.t}</Text>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.5 }}>{x.d}</Text>
+          <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 7 }}>{x.pg}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+      {[
+        { p: 'PART 03', t: '主数据 × 五个方向', d: '治理 / 管道 / 知识库 / Agent / Ontology，以及一条主线串五方', pg: 'P19 — P24', c: '#C43A17' },
+        { p: 'PART 04', t: '回到 4A', d: 'BA 谁拥有 / DA 十二项建模 / AA+TA 落地 / 成熟度与评审', pg: 'P26 — P30', c: '#0F1423' },
+      ].map((x) => (
+        <Box key={x.p} style={{ flex: 1, background: x.c === '#0F1423' ? '#0F1423' : '#FFF3EE', borderRadius: 4, borderLeft: '4px solid ' + x.c, padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 11, color: x.c === '#0F1423' ? '#FBA15C' : x.c, fontWeight: 'bold', letterSpacing: 2 }}>{x.p}</Text>
+          <Text style={{ fontSize: 19, fontWeight: 'bold', color: x.c === '#0F1423' ? '#FFFFFF' : '#0F1423', marginTop: 6 }}>{x.t}</Text>
+          <Text style={{ fontSize: 11.5, color: x.c === '#0F1423' ? 'rgba(255,255,255,0.78)' : '#3A4050', marginTop: 7, lineHeight: 1.5 }}>{x.d}</Text>
+          <Text style={{ fontSize: 11, color: x.c === '#0F1423' ? 'rgba(255,255,255,0.5)' : '#8A8F99', marginTop: 7 }}>{x.pg}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ width: 300, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 138, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>本册三个判断</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 8, lineHeight: 1.6 }}>
+          一、主数据不是一个模块，是一种建模方式；二、黄金记录是起点不是终点；三、合并必须可撤销。
+        </Text>
+      </Box>
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>Approach 三条硬规则</Text>
+        <Box style={{ flexDirection: 'column', gap: 8, marginTop: 9 }}>
+          {[
+            '先定主键，再谈匹配',
+            '先只读投影，再开放写入',
+            '先有撤销能力，再谈规模化合并',
+          ].map((t, i) => (
+            <Box key={t} style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45 }}>
+                <tspan style={{ fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}. </tspan>{t}
+              </Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>02 / 30</Text>
+  </Box>
+</Slide>

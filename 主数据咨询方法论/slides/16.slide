@@ -1,0 +1,82 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      写入机制：黄金记录是<span style={{ color: '#FA4F24' }}>投影</span>，原始层必须保留
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      编辑不写回源数据，写进一个单独的 writeback 数据集——原始数据与编辑数据并存
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 225, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>官方机制</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.86)', marginTop: 8, lineHeight: 1.55, flex: 1 }}>
+          用户的编辑写入 <tspan style={{ color: '#FBA15C' }}>writeback 数据集</tspan>，而不是写入对象类型或链接类型背后的源数据集。这样一来，<tspan style={{ fontWeight: 'bold', color: '#FFFFFF' }}>原始数据与编辑后的数据在分析里都能用</tspan>。
+        </Text>
+        <Box style={{ marginTop: 10, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5 }}>
+            对象类型当前状态的最新版本，包含用户的编辑，会体现在 writeback 数据集里。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.3, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>两套权限，两种可见性</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'row', gap: 9 }}>
+          <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderTop: '3px solid #8A8F99', padding: '10px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>只有源数据权限</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 6, lineHeight: 1.5, flex: 1 }}>
+              能看到这个对象，但<tspan style={{ fontWeight: 'bold' }}>看不到任何编辑</tspan>——他看到的是没有应用编辑的原始形态。
+            </Text>
+          </Box>
+          <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '10px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>另有 writeback 权限</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 6, lineHeight: 1.5, flex: 1 }}>
+              同时能<tspan style={{ fontWeight: 'bold' }}>看到编辑和对象当前形态</tspan>——也就是大家共用的那个「现在是什么样」。
+            </Text>
+          </Box>
+        </Box>
+        <Box style={{ marginTop: 10, background: '#F7F7F8', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.5 }}>
+            这是一个很容易被漏掉的权限设计点：<tspan style={{ fontWeight: 'bold' }}>看见 ≠ 看见改动</tspan>。主数据项目里必须提前和业务对齐，否则会出现「我看到的和财务看到的不一样」。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.8, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>一个补充机制</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          如果对象类型已经有源数据集，但你想通过动作填某一个属性，可以用 <tspan style={{ fontWeight: 'bold' }}>edit-only 属性</tspan>。
+        </Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.55 }}>
+          如果全部属性都靠动作填，那就可以直接建<tspan style={{ fontWeight: 'bold' }}>没有源数据集的对象类型</tspan>。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>这一页对照主数据的经典反模式</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 10 }}>
+        {[
+          { t: '反模式：唯一真相源删掉原始数据', d: '很多项目做成「唯一真相源」之后就把原始数据删了，只留清洗结果。后果是仲裁规则一变就得重新采集，算法团队也拿不到原始粒度。', c: '#C43A17' },
+          { t: '正确姿势：原始层与本体层并存', d: '原始层保存全量历史，包括管道日志、原始字段、原始事件；本体层保存整合后的对象视图。视图是可重算的投影，底片不能丢。', c: '#FA4F24' },
+          { t: '架构风险：只接管道不做本体', d: '第一阶段疯狂接数据源，接了几百张表，业务还是不知道看什么。管道建了一堆，主数据一个对象类型没定。', c: '#C43A17' },
+        ].map((x) => (
+          <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid ' + x.c, padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 6, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 主数据咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>16 / 30</Text>
+  </Box>
+</Slide>
