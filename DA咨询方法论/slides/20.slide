@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之模板：<span style={{ color: '#FA4F24' }}>数据标准卡</span>——三视角一卡，规则与责任一次写清
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            管理视角必须「三责分立」：规则制订者、数据维护者、质量监控者往往不是同一个部门
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 标准卡 */}
+        <Box style={{ width: 660, border: '1px solid #E8E8E8', borderRadius: 4, padding: '18px 22px', flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 10 }}>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>数据标准卡</Text>
+                <Text style={{ fontSize: 13, color: '#8A8F99' }}>示例：客户合同 · 合同编号</Text>
+            </Box>
+
+            {/* 业务视角 */}
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', marginTop: 12 }}>业务视角</Text>
+            {[
+                ['业务定义', '企业与客户签约的唯一合同标识'],
+                ['业务规则', '签约时由系统自动生成，人工不得修改'],
+                ['同义词', '合同号 / 协议编号（须统一收敛）'],
+            ].map((r, i) => (
+                <Box key={i} style={{ flexDirection: 'row', gap: 12, background: '#F7F7F8', borderRadius: 3, padding: '7px 12px', marginTop: 6 }}>
+                    <Text style={{ fontSize: 13, color: '#0F1423', width: 78 }}>{r[0]}</Text>
+                    <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.3 }}>{r[1]}</Text>
+                </Box>
+            ))}
+
+            {/* 技术视角 */}
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#F87D2F', marginTop: 12 }}>技术视角</Text>
+            {[
+                ['数据类型 / 长度', 'VARCHAR(32)'],
+                ['允许值 / 取值范围', '大写字母+数字，前缀 CT，不允许特殊字符'],
+            ].map((r, i) => (
+                <Box key={i} style={{ flexDirection: 'row', gap: 12, background: '#F7F7F8', borderRadius: 3, padding: '7px 12px', marginTop: 6 }}>
+                    <Text style={{ fontSize: 13, color: '#0F1423', width: 118 }}>{r[0]}</Text>
+                    <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.3 }}>{r[1]}</Text>
+                </Box>
+            ))}
+
+            {/* 管理视角 */}
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', marginTop: 12 }}>管理视角（三责分立）</Text>
+            <Box style={{ flexDirection: 'row', gap: 10, marginTop: 6, flex: 1 }}>
+                {[
+                    { k: '规则责任主体', v: '财经部（制订合同条款规则）' },
+                    { k: '数据维护主体', v: '销售部（录入系统）' },
+                    { k: '数据监控主体', v: '数据管理部（跟踪质量）' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '10px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12, color: '#8A8F99' }}>{it.k}</Text>
+                        <Text style={{ fontSize: 13, color: '#0F1423', fontWeight: 'bold', marginTop: 5, lineHeight: 1.3 }}>{it.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 右 说明 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>为什么要三责分立</Text>
+                <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    「客户合同」中某些条款的规则制订者可能是<b>财经部门</b>，负责与客户达成约定并录入系统的可能是<b>销售部门</b>，
+                    而跟踪监控数据质量的可能是<b>数据专业部门</b>。必须在标准制订时就约定清楚，不能默认。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>★ 一票否决权</Text>
+                <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 8 }}>
+                    信息架构管理原则规定：所有变革项目须遵从数据管控要求，
+                    对于不遵从的变革项目，数据管控组织<b>拥有一票否决权</b>。这是标准能落地的唯一保障。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>20 / 31</Text>
+    </Box>
+</Slide>

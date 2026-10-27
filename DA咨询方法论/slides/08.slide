@@ -1,0 +1,64 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            传统信息架构向<span style={{ color: '#FA4F24' }}>数字化转型</span>扩展：对象、过程、规则三个数字化
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            传统架构只管「结果数据」，数字化要求把对象全量、过程可视、规则可配 —— 这是能力的三级跃迁
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 26, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 16 }}>
+
+        {/* 上 现实问题 */}
+        <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#C43A17', whiteSpace: 'nowrap' }}>现实痛点</Text>
+            <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>
+                ① 大量业务和作业产生的数据没有被完整管理；② 大量业务过程没有形成可视、可管理的数据；③ 大量业务规则缺乏管理、无法灵活使用。
+            </Text>
+        </Box>
+
+        {/* 下 三扩展 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 16 }}>
+            {[
+                { n: '01', t: '对象数字化', en: 'OBJECT', d: '建立对象本体在数字世界的映射。不是传统意义上基于流程要求的少量数据管理，而是管理某个对象的全量数据 —— 从「流程需要什么就存什么」转向「对象有什么就管什么」。', k: '对象本体映射' },
+                { n: '02', t: '过程数字化', en: 'PROCESS', d: '把业务过程本身变成可视、可管理的数据。过程数据不仅记录「做了什么」，还支撑过程的监控、分析与优化，让过程从黑箱变成可观测对象。', k: '过程可视可管' },
+                { n: '03', t: '规则数字化', en: 'RULE', d: '把业务规则从代码和人的经验里抽取出来，变成可管理、可配置、可灵活使用的资产。规则数字化之后，业务变化不必都改代码，规则可以独立调整。', k: '规则可配置' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, border: '1px solid #E8E8E8', borderTop: '4px solid #FA4F24', borderRadius: 4, padding: '20px 20px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+                        <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+                        <Text style={{ fontSize: 11, color: '#B8BDC7', letterSpacing: 1 }}>{it.en}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423', marginTop: 10 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 12, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '8px 10px' }}>
+                        <Text style={{ fontSize: 14, color: '#C43A17', textAlign: 'center', fontWeight: 'bold' }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底 关系 */}
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Box style={{ width: 4, height: 40, background: '#F87D2F' }} />
+            <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5 }}>
+                三者不是并列关系：<Text style={{ fontWeight: 'bold', color: '#0F1423' }}>对象数字化是基础</Text>（先有对象本体），
+                <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>过程数字化是延展</Text>（对象在过程中的流转），
+                <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>规则数字化是升华</Text>（约束对象与过程的业务逻辑）。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>08 / 31</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>三视角标准制定法</span>，一个属性三面看
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            数据标准是对某个数据的公司级共同理解 —— 一旦确定，全企业共同遵守，除 Owner 外不得自定义
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右三视角 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 32% */}
+        <Box style={{
+            width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 03 · DATA STANDARD</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+                    三视角
+                    <br />
+                    标准法
+                </Text>
+            </Box>
+            <Box>
+                <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+                <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+                    以「合同编号」为例：一旦标准定下位数与规则，<Text style={{ fontWeight: 'bold' }}>全公司所有部门必须共同遵守</Text>，否则数据无法在上下游快速流转。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 68% 三视角 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>每个数据标准须覆盖三方面要求</Text>
+            {[
+                { n: '01', t: '业务视角要求', en: 'BUSINESS', d: '用于统一业务侧语言和理解：明确定义每个属性所遵从的业务定义和用途、业务规则、同义词，并对名称统一定义，避免重复。', k: '统一语言 · 消除歧义' },
+                { n: '02', t: '技术视角要求', en: 'TECHNICAL', d: '对 IT 实施形成必要的指引和约束：包括数据类型、长度；如果存在多个允许值，则应对每个允许值进行明确限定。', k: '约束实施 · 可落地' },
+                { n: '03', t: '管理视角要求', en: 'MANAGEMENT', d: '明确各业务部门在数据标准管理方面应承担的责任：业务规则责任主体、数据维护责任主体、数据监控责任主体。', k: '责任三分 · 事先约定' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', gap: 14, borderLeft: '4px solid #FA4F24' }}>
+                    <Box style={{ width: 58 }}>
+                        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+                        <Text style={{ fontSize: 8, color: '#B8BDC7' }}>{it.en}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', width: 124 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ width: 112, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 4px' }}>
+                        <Text style={{ fontSize: 11, color: '#C43A17', textAlign: 'center', lineHeight: 1.3 }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>18 / 31</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之内容：三层模型交付与<span style={{ color: '#FA4F24' }}>一致性控制</span>，不让架构在落地中走形
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            华为长期存在信息架构与 IT 开发「两张皮」—— 靠一体化模型设计 + 元数据验证发布来根治
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 14 }}>
+
+        {/* 上 三份交付 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 16 }}>
+            {[
+                { n: '交付物一', t: '概念数据模型', d: '以 E-R 图表达企业核心业务实体及业务关系，实体名称采用标准业务术语。', k: '宏观全景' },
+                { n: '交付物二', t: '逻辑数据模型', d: '在概念模型基础上细化，引入关键数据属性与关系约束，固化业务规则。', k: '规则载体' },
+                { n: '交付物三', t: '物理数据模型', d: '逻辑模型向数据库实现的转换产物，含表结构、索引、分区等物理设计。', k: '可建库' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginTop: 10 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '7px 10px' }}>
+                        <Text style={{ fontSize: 13, color: '#C43A17', textAlign: 'center', fontWeight: 'bold' }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 下 一致性控制 */}
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '18px 22px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>一致性控制：两个关键点</Text>
+            <Box style={{ flexDirection: 'row', gap: 16, marginTop: 14, flex: 1 }}>
+                <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', background: '#FFFFFF', borderRadius: 4, padding: '14px 18px' }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>概念 ↔ 逻辑 一致</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, marginTop: 8 }}>
+                        通过<b>逻辑数据实体的设计管理</b>来实现。逻辑模型里的实体必须能逐个追溯回概念模型，不允许凭空多出实体。
+                    </Text>
+                </Box>
+                <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', background: '#FFFFFF', borderRadius: 4, padding: '14px 18px' }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>逻辑 ↔ 物理 一致</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, marginTop: 8 }}>
+                        通过<b>一体化建模管理</b>来实现：构建数据标准池、实体属性只能从标准池选择、产品元数据与数据库自动比对验证。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 底 关键判断 */}
+        <Box style={{ background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '12px 20px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Box style={{ width: 4, height: 34, background: '#F87D2F' }} />
+            <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5 }}>
+                <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>★ 关键判断：</Text>
+                各项目里说的「数据架构设计」通常指主题域模型、概念模型、逻辑模型三层设计；
+                <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>物理模型通常是数据建模的产出物</Text>，不是架构设计的输入。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>23 / 31</Text>
+    </Box>
+</Slide>

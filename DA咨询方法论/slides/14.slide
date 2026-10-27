@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>五层分层法</span>，把企业所有数据资产挂到一棵树上
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            按「业务管理边界」划分而非数据特征边界 —— 目的是强化业务部门的数据管理责任
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右五层 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 24 }}>
+
+        {/* 左 32% */}
+        <Box style={{
+            width: 336, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 28, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 02 · ASSET CATALOG</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+                    资产目录
+                    <br />
+                    分层法
+                </Text>
+            </Box>
+            <Box>
+                <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+                <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+                    目录＝企业的<Text style={{ fontWeight: 'bold' }}>数据地图</Text>。有了它，数据资产才「找得到、看得清、管得住」。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 68% 五层 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>五层分类体系</Text>
+            {[
+                { l: 'L1', t: '主题域分组', d: '最高层级分类，对应公司级数据范畴，如「客户」「产品」「供应链」', k: '公司数据' },
+                { l: 'L2', t: '主题域', d: '按业务管理边界划分的中层分类，如「客户主数据」「合同管理」', k: '领域数据' },
+                { l: 'L3', t: '业务对象', d: '核心层，与上一环节识别的业务对象一一对应，是 IT 集成的接口', k: '核心层' },
+                { l: 'L4', t: '逻辑数据实体', d: '业务对象的组成部分，承载具体业务规则，如「客户基本信息」', k: '数据管家' },
+                { l: 'L5', t: '属性', d: '最小管理单元，如「客户名称」「客户等级」，须有数据标准约束', k: '数据管家' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '10px 18px', gap: 16 }}>
+                    <Box style={{ width: 46, height: 34, background: i < 3 ? '#FA4F24' : '#FDC69A', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: i < 3 ? '#FFFFFF' : '#3A2000' }}>{it.l}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', width: 148 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{it.d}</Text>
+                    <Text style={{ fontSize: 12, color: '#8A8F99', width: 62, textAlign: 'right' }}>{it.k}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>14 / 31</Text>
+    </Box>
+</Slide>

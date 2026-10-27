@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            四组件以<span style={{ color: '#FA4F24' }}>五层目录</span>为骨架，构成企业信息架构的完整闭环
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            资产目录定边界，数据标准定语言，数据模型定结构，数据分布定源头 —— 四者互为输入输出
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 五层骨架 */}
+        <Box style={{ width: 500, flexDirection: 'column', gap: 9 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>五层数据资产目录骨架</Text>
+            {[
+                { l: 'L1', t: '主题域分组', d: '公司数据 · 最高层级分类', w: 500, c: '#FA4F24', tc: '#FFFFFF' },
+                { l: 'L2', t: '主题域',     d: '领域数据 · 业务管理边界', w: 440, c: '#F8622F', tc: '#FFFFFF' },
+                { l: 'L3', t: '业务对象',   d: '核心层 · 与 IT 集成的接口', w: 380, c: '#F87D2F', tc: '#FFFFFF' },
+                { l: 'L4', t: '逻辑数据实体', d: '数据管家 · 业务规则承载', w: 320, c: '#FBA15C', tc: '#3A2000' },
+                { l: 'L5', t: '属性',       d: '数据管家 · 最小管理单元', w: 260, c: '#FDC69A', tc: '#3A2000' },
+            ].map((it, i) => (
+                <Box key={i} style={{ width: it.w, height: 62, background: it.c, borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                    <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.tc }}>{it.l}</Text>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.tc }}>{it.t}</Text>
+                    <Text style={{ fontSize: 13, color: it.tc, opacity: 0.85, marginLeft: 'auto' }}>{it.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 右 说明 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>为什么是五层</Text>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    华为采用「业务管理边界」划分而非「数据自身特征边界」，目的是强化业务部门的数据管理责任。
+                    从 L1 到 L5 逐层细化，越往下越贴近系统实现——这条线就是「业务语言」翻译成「数据语言」的路由。
+                </Text>
+            </Box>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px', borderLeft: '4px solid #F87D2F' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>L3 为什么是核心</Text>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    业务对象位于正中间：往上承接业务（业务架构识别的对象），往下生成模型（逻辑实体与属性）。
+                    它既是信息架构的管理重心，也是数据架构与应用架构的对接面。抓住 L3，就抓住了整条链。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '16px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 全册主线</Text>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    资产目录决定了数据治理的边界和对象，也让数据模型「归位」。
+                    先有目录这张地图，后续的标准、模型、分布才有挂载点。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>06 / 31</Text>
+    </Box>
+</Slide>

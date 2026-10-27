@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之模板：CRUD 矩阵的价值在于<span style={{ color: '#FA4F24' }}>发现多个「C」</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            矩阵不是用来交差的，是用来暴露矛盾的 —— 每个「多个 C」都是下一个要开会的议题
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 15 }}>
+
+        {/* 上 治理判定 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 16 }}>
+            {[
+                { n: '现状', t: '「客户」出现两个 C', d: 'ERP 与 CRM 都能创建客户记录 —— 谁都以为自己是权威源，结果两边数据越差越远。开会时各部门各拿一份数据，谁也不认谁。', tag: '❌ 异常', c: '#FA4F24' },
+                { n: '治理', t: '收敛到唯一创建方', d: '经数据管理组织认证，指定 ERP 为客户主数据唯一权威源，CRM 降为读取方。历史数据一次性清洗对齐。', tag: '✓ 达标', c: '#5A9E4E' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '18px 22px', flexDirection: 'column', borderTop: `4px solid ${it.c}` }}>
+                    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+                        <Box style={{ background: it.tag.startsWith('❌') ? 'rgba(250,79,36,0.12)' : 'rgba(90,158,78,0.12)', borderRadius: 3, padding: '4px 10px' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: it.tag.startsWith('❌') ? '#C43A17' : '#3F7A36' }}>{it.tag}</Text>
+                        </Box>
+                    </Box>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginTop: 10 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 10, flex: 1 }}>{it.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中 判定规则 */}
+        <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px' }}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>矩阵判定规则</Text>
+            <Box style={{ flexDirection: 'row', gap: 16, marginTop: 12 }}>
+                {[
+                    { r: '每行有且仅有 1 个 C', m: '✔ 权威源清晰', ok: true },
+                    { r: '每行出现 ≥2 个 C', m: '✘ 须治理到唯一创建方', ok: false },
+                    { r: '某对象无任何 C', m: '✘ 该对象无权威源，须指定', ok: false },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, background: '#FFFFFF', borderRadius: 3, padding: '11px 14px' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.ok ? '#5A9E4E' : '#FA4F24' }}>{it.r}</Text>
+                        <Text style={{ fontSize: 13, color: '#5A6070', marginLeft: 'auto' }}>{it.m}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 底 关键判断 */}
+        <Box style={{ background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '14px 20px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Box style={{ width: 4, height: 34, background: '#F87D2F' }} />
+            <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5 }}>
+                <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>★ 关键判断：</Text>
+                「客户」与「销售订单」均出现多个创建方，说明数据源不清晰。
+                矩阵是<b>过程性工具</b>，数据源才是<b>结论性设计</b> —— 先用矩阵发现问题，再用治理手段定结论。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>28 / 31</Text>
+    </Box>
+</Slide>

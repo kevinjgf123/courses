@@ -1,0 +1,52 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF' }}>
+    {/* 背景装饰 */}
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 8, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)' }} />
+    <Box style={{ position: 'absolute', right: -120, top: 120, width: 520, height: 520, background: 'rgba(250,79,36,0.06)', borderRadius: 260 }} />
+
+    {/* 主体 */}
+    <Box style={{ position: 'absolute', left: 128, top: 150, width: 1024, flexDirection: 'column', alignItems: 'center' }}>
+        <Text style={{ fontSize: 15, color: '#8A8F99', letterSpacing: 4 }}>结语 · DATA ARCHITECTURE</Text>
+
+        <Text style={{ fontSize: 46, fontWeight: 'bold', color: '#0F1423', marginTop: 34, textAlign: 'center', lineHeight: 1.35 }}>
+            先有「治」，才有「存」——
+            <br />
+            <Text style={{ color: '#FA4F24' }}>数据架构让数据从成本变成资产</Text>
+        </Text>
+
+        <Box style={{ width: 88, height: 5, background: '#FA4F24', marginTop: 38 }} />
+
+        <Text style={{ fontSize: 19, color: '#3A4050', marginTop: 38, textAlign: 'center', lineHeight: 1.8, width: 860 }}>
+            目录、标准、模型、分布，四组件构成的信息架构，
+            <br />
+            决定了一份数据能不能被找到、被理解、被信任、被复用。
+        </Text>
+
+        {/* 四组件回顾 */}
+        <Box style={{ flexDirection: 'row', gap: 14, marginTop: 46 }}>
+            {[
+                { t: '资产目录', s: '找得到' },
+                { t: '数据标准', s: '看得懂' },
+                { t: '数据模型', s: '关联对' },
+                { t: '数据分布', s: '信得过' },
+            ].map((it, i) => (
+                <Box key={i} style={{ background: i === 0 ? '#FA4F24' : '#F7F7F8', borderRadius: 4, padding: '14px 22px', alignItems: 'center', minWidth: 148 }}>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: i === 0 ? '#FFFFFF' : '#0F1423' }}>{it.t}</Text>
+                    <Text style={{ fontSize: 13, color: i === 0 ? 'rgba(255,255,255,0.88)' : '#8A8F99', marginTop: 5 }}>{it.s}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        <Text style={{ fontSize: 15, color: '#8A8F99', marginTop: 50, textAlign: 'center', lineHeight: 1.7 }}>
+            数据架构不是 IT 内部的规范，而是企业把业务语言翻译成数据语言的<span style={{ color: '#C43A17', fontWeight: 'bold' }}>唯一共识</span>
+        </Text>
+    </Box>
+
+    {/* 页脚 */}
+    <Box style={{ position: 'absolute', left: 64, bottom: 56, right: 64, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>31 / 31</Text>
+    </Box>
+</Slide>

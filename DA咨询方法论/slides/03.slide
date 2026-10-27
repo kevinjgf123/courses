@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            数据架构回答「用什么数据支撑业务」——<span style={{ color: '#FA4F24' }}>四组件缺一不可</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            华为信息架构面向「业务交易」而非分析场景：目录管边界、标准管语言、模型管结构、分布管源头
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 26, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 16 }}>
+
+        {/* 上：巨型定位 */}
+        <Box style={{ flexDirection: 'row', gap: 20, height: 168 }}>
+            <Box style={{ width: 300, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '16px 24px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 64, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.0 }}>4</Text>
+                <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.95)', marginTop: 6, fontWeight: 'bold' }}>信息架构组件</Text>
+                <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>INFORMATION ARCHITECTURE</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '20px 24px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>为什么是「业务交易」视角</Text>
+                <Text style={{ fontSize: 16, color: '#3A4050', lineHeight: 1.6, marginTop: 10 }}>
+                    数据架构的使命，是让各类数据在企业各业务单元间高效、准确地传递，
+                    使上下游流程快速执行。它回答的不是「分析出什么」，而是「数据怎么产生、怎么定义、怎么关联、存在哪里」。
+                </Text>
+            </Box>
+            <Box style={{ width: 240, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '20px 24px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 15, color: '#8A8F99' }}>核心锚点</Text>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FA4F24', marginTop: 8, lineHeight: 1.3 }}>业务对象</Text>
+                <Text style={{ fontSize: 14, color: '#3A4050', marginTop: 8, lineHeight: 1.5 }}>四组件全部围绕它展开</Text>
+            </Box>
+        </Box>
+
+        {/* 下：四组件卡 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 16 }}>
+            {[
+                { n: '01', en: 'ASSET CATALOG', t: '数据资产目录', d: '形成企业数据地图，识别管理责任、解决归属争议、避免重复建设', k: '有哪些数据' },
+                { n: '02', en: 'DATA STANDARD', t: '数据标准', d: '定义公司层面共同遵守的属性含义与业务规则，统一语言消除歧义', k: '怎么统一' },
+                { n: '03', en: 'DATA MODEL', t: '数据模型', d: '从数据视角模拟现实世界，反映业务对象之间的关联关系', k: '如何关联' },
+                { n: '04', en: 'DISTRIBUTION', t: '数据分布', d: '定义数据产生的源头及在各流程与系统间的流动，锁定权威源', k: '存在哪里' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, border: '1px solid #E8E8E8', borderTop: '4px solid #FA4F24', borderRadius: 4, padding: '18px 18px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+                        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+                        <Text style={{ fontSize: 11, color: '#B8BDC7', letterSpacing: 1 }}>{it.en}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 10 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '7px 10px' }}>
+                        <Text style={{ fontSize: 14, color: '#C43A17', textAlign: 'center', fontWeight: 'bold' }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>03 / 31</Text>
+    </Box>
+</Slide>

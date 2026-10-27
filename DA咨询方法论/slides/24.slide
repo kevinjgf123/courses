@@ -1,0 +1,89 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之模板：<span style={{ color: '#FA4F24' }}>实体关系图</span>与逻辑实体表，让模型可评审、可追溯
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            概念层用 E-R 图表达关系，逻辑层用实体表固化规则 —— 两张图合起来就是模型的全部依据
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 E-R 图 */}
+        <Box style={{ width: 560, border: '1px solid #E8E8E8', borderRadius: 4, padding: '16px 18px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>概念数据模型 · E-R 图（示例）</Text>
+            <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', gap: 16, marginTop: 12 }}>
+                {/* 法人客户 */}
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <Box style={{ width: 118, background: '#FA4F24', borderRadius: 3, padding: '12px 8px', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>法人客户</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14, color: '#FA4F24' }}>1──N</Text>
+                    <Box style={{ width: 132, background: 'rgba(250,79,36,0.12)', border: '1px solid #FA4F24', borderRadius: 3, padding: '12px 8px', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>客户合同</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14, color: '#FA4F24' }}>N──1</Text>
+                    <Box style={{ width: 118, background: '#F87D2F', borderRadius: 3, padding: '12px 8px', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>产品</Text>
+                    </Box>
+                </Box>
+                {/* 逻辑实体表 */}
+                <Box style={{ background: '#F7F7F8', borderRadius: 3, padding: '12px 14px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>逻辑实体示例：客户合同（LE-CON）</Text>
+                    {[
+                        ['合同编号', 'AT-CON-CODE', 'VARCHAR(32)', 'PK'],
+                        ['签约方', 'AT-CON-PARTY', 'VARCHAR(32)', 'FK'],
+                        ['标的', 'AT-CON-ITEM', 'VARCHAR(64)', ''],
+                        ['金额', 'AT-CON-AMT', 'DECIMAL(18,2)', ''],
+                    ].map((r, i) => (
+                        <Box key={i} style={{ flexDirection: 'row', gap: 10, marginTop: i === 0 ? 8 : 4 }}>
+                            <Text style={{ fontSize: 12, color: '#3A4050', width: 78 }}>{r[0]}</Text>
+                            <Text style={{ fontSize: 12, color: '#8A8F99', width: 108 }}>{r[1]}</Text>
+                            <Text style={{ fontSize: 12, color: '#3A4050', width: 100 }}>{r[2]}</Text>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: r[3] ? '#FA4F24' : '#C8CCD4' }}>{r[3] || '—'}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 右 填写要求 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>E-R 图填写要求</Text>
+                <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    ① 实体名用标准业务术语，不用缩写；<br />
+                    ② 必须标注关系基数（1:1 / 1:N / N:N）；<br />
+                    ③ 基数不明确的，必须回访业务确认后再落图。
+                </Text>
+            </Box>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', borderLeft: '4px solid #F87D2F' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>关键属性怎么定</Text>
+                <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    关键属性指<b>若缺失则业务无法运转</b>的属性。它的识别带有一定主观性，
+                    必须依托企业真实的业务流程与业务活动来判断，不能凭感觉列。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>★ 属性只能从标准池选</Text>
+                <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 8 }}>
+                    一体化建模的关键机制：实体的属性不允许自由发挥，必须从数据标准池中选取。
+                    这正是上一部分数据标准真正发挥作用的地方 —— 标准不是文档，是建模的约束条件。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>24 / 31</Text>
+    </Box>
+</Slide>

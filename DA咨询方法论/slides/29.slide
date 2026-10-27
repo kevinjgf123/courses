@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            数据底座：入湖须过<span style={{ color: '#FA4F24' }}>六道标准</span>，数据湖本身不加工原始数据
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            先有信息架构这张蓝图，数据才谈得上入湖 —— 顺序反了，湖建好了水也是浑的
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 数据湖三特点 */}
+        <Box style={{ width: 400, flexDirection: 'column', gap: 13 }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>华为数据湖的三个特点</Text>
+            {[
+                { n: '01', t: '逻辑统一', d: '不是单一物理存储，而是多种物理存储，通过统一元数据语义层定义、拉通和管理。' },
+                { n: '02', t: '类型多样', d: '涵盖结构化数据、内部非结构化文本、传感器设备运行数据，以及外部媒体数据。' },
+                { n: '03', t: '原始记录', d: '只汇聚原始数据，不做任何转换、清洗、加工，保留数据最原始特征。' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #F87D2F' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#F87D2F' }}>{it.n}</Text>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 8 }}>{it.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 右 六标准 + 五方式 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', flex: 1, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>数据入湖的六项标准</Text>
+                <Box style={{ flexDirection: 'row', gap: 10, marginTop: 12, flex: 1 }}>
+                    {[
+                        '明确\n数据Owner', '发布\n数据标准', '定义\n数据密级',
+                        '明确\n数据源', '数据质量\n评估', '元数据\n注册',
+                    ].map((t, i) => (
+                        <Box key={i} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, alignItems: 'center', justifyContent: 'center', padding: '8px 6px' }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}</Text>
+                            <Text style={{ fontSize: 13, color: '#3A4050', textAlign: 'center', marginTop: 6, lineHeight: 1.35 }}>{t}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', flex: 1, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>五种入湖方式</Text>
+                <Box style={{ flexDirection: 'row', gap: 10, marginTop: 12, flex: 1 }}>
+                    {['批量集成', '数据复制同步', '消息集成', '流集成', '数据虚拟化'].map((t, i) => (
+                        <Box key={i} style={{ flex: 1, background: i === 0 ? '#FA4F24' : '#FFFFFF', borderRadius: 3, alignItems: 'center', justifyContent: 'center', padding: '8px 6px' }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: i === 0 ? '#FFFFFF' : '#3A4050', textAlign: 'center', lineHeight: 1.3 }}>{t}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>29 / 31</Text>
+    </Box>
+</Slide>

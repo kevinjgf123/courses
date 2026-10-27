@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>三层建模法</span>，概念→逻辑→物理逐级落地
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            数据模型是从数据视角对现实世界特征的模拟和抽象，反映业务信息（对象）之间的关联关系
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右三层 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 24 }}>
+
+        {/* 左 32% */}
+        <Box style={{
+            width: 336, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 28, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 04 · DATA MODEL</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+                    三层
+                    <br />
+                    建模法
+                </Text>
+            </Box>
+            <Box>
+                <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+                <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+                    三层不是三份文档，而是<b>同一现实</b>在三个抽象层次上的投影。每层回答的问题不同，粒度不同。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 68% 三层 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>三层的分工</Text>
+            {[
+                { l: '概念', t: '概念数据模型', d: '通过业务对象及其之间的关系，从宏观角度分析和设计企业的核心数据结构。描述「有哪些实体、彼此什么关系」，不涉及具体属性。', k: '对齐业务对象' },
+                { l: '逻辑', t: '逻辑数据模型', d: '利用逻辑数据实体及实体之间的关系，准确描述业务规则。引入关键数据属性，回答「实体有哪些关键属性、规则是什么」。', k: '固化业务规则' },
+                { l: '物理', t: '物理数据模型', d: '将逻辑模型中的实体、属性、属性约束、关系，如实转换为数据库软件能识别的物理实体关系。', k: '落到表结构' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', gap: 18, borderLeft: '4px solid #FA4F24' }}>
+                    <Box style={{ width: 58, height: 44, background: ['#FA4F24', '#F87D2F', '#FBA15C'][i], borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: i < 2 ? '#FFFFFF' : '#3A2000' }}>{it.l}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', width: 148 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ width: 132, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 8px' }}>
+                        <Text style={{ fontSize: 12, color: '#C43A17', textAlign: 'center' }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>22 / 31</Text>
+    </Box>
+</Slide>

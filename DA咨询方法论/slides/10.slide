@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：用<span style={{ color: '#FA4F24' }}>四判定法</span>识别业务对象，把争议变成确定性规则
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            业务对象是业务领域重要的人、事、物 —— 架构师、业务代表、数据Owner 常对它理解不一，须用规则统一
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右四判定 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 24 }}>
+
+        {/* 左 32% */}
+        <Box style={{
+            width: 336, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 28, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 01 · BUSINESS OBJECT</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+                    业务对象
+                    <br />
+                    识别法
+                </Text>
+            </Box>
+            <Box>
+                <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+                <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+                    稳定性来自规则。四条判定必须<Text style={{ fontWeight: 'bold' }}>全部满足</Text>，才能成为业务对象 —— 不是谁说是就是。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 68% 四判定 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>业务对象四判定原则</Text>
+            {[
+                { n: '原则一', t: '不可或缺', d: '指企业运作和管理中不可缺少的重要人、事、物。可有可无的不是业务对象。', e: '子公司 / 法人客户 / 客户合同 / 产品' },
+                { n: '原则二', t: '唯一身份标识', d: '有唯一的身份标识信息，能在企业范围内被唯一识别，不产生歧义。', e: '客户编号 / 合同号 / 物料编码' },
+                { n: '原则三', t: '相对独立并有属性', d: '相对独立存在，且有属性描述。只有标识名而无描述信息的，应识别为属性而非实体。', e: '客户有等级、行业、信用额度等属性' },
+                { n: '原则四', t: '可实例化', d: '可以被实例化，即能对应到真实存在的具体个体，而非抽象概念。', e: '「客户」可实例化为具体某家公司' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '12px 20px', gap: 16, borderLeft: '4px solid #FA4F24' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', width: 52 }}>{it.n}</Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', width: 148 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ width: 168, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 8px' }}>
+                        <Text style={{ fontSize: 12, color: '#C43A17', textAlign: 'center', lineHeight: 1.3 }}>{it.e}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>10 / 31</Text>
+    </Box>
+</Slide>

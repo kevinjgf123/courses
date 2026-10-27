@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            五条信息架构原则，建立企业层面的<span style={{ color: '#FA4F24' }}>共同行为准则</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            目标是「数据同源一致」—— 原则一旦确立，就由架构治理组织强制执行，而非部门自行约定
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 26, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上 三原则 */}
+        <Box style={{ flexDirection: 'row', gap: 16, flex: 1 }}>
+            {[
+                { n: '原则一', t: '数据按对象管理，明确数据Owner', d: '越重要的数据流经环节越多，不应以 IT 系统或流程边界管数据，而应从数据本身出发按对象做全生命周期管理。每个数据必须有唯一的业务责任主体。', tag: 'OWNER' },
+                { n: '原则二', t: '从企业视角定义信息架构', d: '任何数据 Owner 都不是代表自己所辖业务范围，而是代表公司管理数据。业务部门的诉求统一提交给 Owner 解决，避免各立山头。', tag: 'ENTERPRISE' },
+                { n: '原则三', t: '遵从公司的数据分类管理框架', d: '按数据特性分类（基础数据/主数据/事务数据/报告数据等），针对不同类别采取不同治理手段，实现最大投入产出比。', tag: 'CLASSIFY' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '20px 22px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+                    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+                        <Text style={{ fontSize: 11, color: '#B8BDC7', letterSpacing: 1 }}>{it.tag}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginTop: 12, lineHeight: 1.4 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 12, flex: 1 }}>{it.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 下 两原则 + 一票否决 */}
+        <Box style={{ flexDirection: 'row', gap: 16, flex: 1 }}>
+            {[
+                { n: '原则四', t: '业务对象结构化、数字化', d: '把业务运作中的对象、过程、规则转化为可管理的数据，为数字化转型奠定结构基础。', tag: 'DIGITAL' },
+                { n: '原则五', t: '数据服务化，同源共享', d: '一个对象一个 Owner，一份数据一个权威源。数据以服务方式提供，避免多次搬家导致的数据失真。', tag: 'ONE SOURCE' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '20px 22px', flexDirection: 'column', borderTop: '4px solid #F87D2F' }}>
+                    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#F87D2F' }}>{it.n}</Text>
+                        <Text style={{ fontSize: 11, color: '#B8BDC7', letterSpacing: 1 }}>{it.tag}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginTop: 12, lineHeight: 1.4 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 12 }}>{it.d}</Text>
+                </Box>
+            ))}
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '20px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.85)', letterSpacing: 1 }}>执行保障</Text>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FFFFFF', marginTop: 12, lineHeight: 1.45 }}>一票否决权</Text>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.94)', lineHeight: 1.55, marginTop: 12 }}>
+                    所有变革项目须遵从数据管控要求；对于不遵从的变革项目，数据管控组织拥有一票否决权。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>07 / 31</Text>
+    </Box>
+</Slide>

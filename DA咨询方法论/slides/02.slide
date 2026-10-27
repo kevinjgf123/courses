@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            本册覆盖<span style={{ color: '#FA4F24' }}>七个部分</span>，把信息架构四组件逐一拆到可交付
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            从总论到四组件再到数据底座与消费，每部分均含「方法 · 内容 · 模板」三段式作业
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 26, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 60% 五条 */}
+        <Box style={{ width: 680, flexDirection: 'column', gap: 13 }}>
+            {[
+                { n: '00', t: 'Approach 实施路径', d: '三阶段推进顺序与每一步产出物，先做什么后做什么', tag: 'P04' },
+                { n: '01', t: '数据架构总论', d: '四组件与五层目录骨架、五条架构原则、数字化转型三扩展', tag: 'P05–08' },
+                { n: '02', t: '业务对象识别', d: '四判定法识别重要人事物，输出业务对象清单与对象关系', tag: 'P09–12' },
+                { n: '03', t: '数据资产目录', d: '五层分层法，形成企业数据地图与认责落位', tag: 'P13–16' },
+                { n: '04', t: '数据标准', d: '三视角标准制定法，统一业务语言与数据规则', tag: 'P17–20' },
+                { n: '05', t: '企业级数据模型', d: '概念→逻辑→物理三层建模，控制两层一致性', tag: 'P21–24' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px', gap: 16 }}>
+                    <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#FA4F24', width: 48 }}>{it.n}</Text>
+                    <Box style={{ width: 168 }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{it.d}</Text>
+                    <Text style={{ fontSize: 13, color: '#C43A17', width: 64, textAlign: 'right' }}>{it.tag}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 右 40% 两条 + 收口 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+            {[
+                { n: '06', t: '数据分布', d: '数据源识别与 CRUD 矩阵，锁定唯一权威源', tag: 'P25–28' },
+                { n: '07', t: '底座与消费', d: '入湖六标准、五种方式与数据服务化「数出一孔」', tag: 'P29–30' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 14 }}>
+                        <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.45, marginTop: 8 }}>{it.d}</Text>
+                    <Text style={{ fontSize: 13, color: '#C43A17', marginTop: 6 }}>{it.tag}</Text>
+                </Box>
+            ))}
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>全册一条主线</Text>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5, marginTop: 8 }}>
+                    先有「治」，才有「存」—— 四组件设计清楚，数据入湖才有依据
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>02 / 31</Text>
+    </Box>
+</Slide>

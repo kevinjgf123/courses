@@ -1,0 +1,86 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之模板：<span style={{ color: '#FA4F24' }}>五层目录表</span>与命名规范，让目录可检索、可交接
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            字段即标准：层级、编码、名称、定义、责任主体、状态 —— 六列锁定一条目录记录
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 目录表 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginBottom: 10 }}>五层目录登记表（示例）</Text>
+            <Box style={{ border: '1px solid #E8E8E8', borderRadius: 4, overflow: 'hidden', flex: 1 }}>
+                {/* 表头 */}
+                <Box style={{ flexDirection: 'row', background: '#FA4F24', padding: '10px 14px' }}>
+                    {['层级', '目录编码', '名称', '责任主体', '状态'].map((h, i) => (
+                        <Text key={i} style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF', flex: i === 2 ? 1.5 : 1 }}>{h}</Text>
+                    ))}
+                </Box>
+                {[
+                    ['L1', 'D-CUST', '客户域', '数据管理部', '生效'],
+                    ['L2', 'D-CUST-CON', '合同管理', '合同管理部', '生效'],
+                    ['L3', 'BO-CON-001', '客户合同', '合同管理部（Owner）', '生效'],
+                    ['L3', 'BO-CUST-002', '法人客户', '客户管理部（Owner）', '生效'],
+                    ['L4', 'LE-CON-BASE', '合同基本信息', '数据管家', '生效'],
+                    ['L4', 'LE-CON-TERM', '合同条款', '数据管家', '生效'],
+                    ['L5', 'AT-CON-CODE', '合同编号', '数据管家', '生效'],
+                    ['L5', 'AT-CON-AMT', '合同金额', '数据管家', '生效'],
+                ].map((row, i) => (
+                    <Box key={i} style={{ flexDirection: 'row', padding: '9px 14px', background: i % 2 === 0 ? '#FFFFFF' : '#F7F7F8', alignItems: 'center' }}>
+                        {row.map((c, j) => (
+                            <Text key={j} style={{
+                                fontSize: 13, flex: j === 2 ? 1.5 : 1, lineHeight: 1.3,
+                                color: j === 0 ? '#FA4F24' : '#3A4050',
+                                fontWeight: j === 0 || j === 2 ? 'bold' : 'normal',
+                            }}>{c}</Text>
+                        ))}
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 右 命名规范 + 要求 */}
+        <Box style={{ width: 420, flexDirection: 'column', gap: 13 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>编码规范</Text>
+                <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    主题域 <Text style={{ fontWeight: 'bold', color: '#C43A17' }}>D-</Text> ·
+                    业务对象 <Text style={{ fontWeight: 'bold', color: '#C43A17' }}>BO-</Text> ·
+                    逻辑实体 <Text style={{ fontWeight: 'bold', color: '#C43A17' }}>LE-</Text> ·
+                    属性 <Text style={{ fontWeight: 'bold', color: '#C43A17' }}>AT-</Text>
+                </Text>
+            </Box>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', borderLeft: '4px solid #F87D2F' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>填写要求</Text>
+                <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+                    ① 编码全局唯一、终身不变；<br />
+                    ② 名称用业务统一定名，不用缩写；<br />
+                    ③ 责任主体须具体到部门，不能写「业务部门」。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>★ 从目录到模型</Text>
+                <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 8 }}>
+                    L1/L2 沿用主题域模型，L3/L4 引用概念模型阶段识别的实体。
+                    目录与模型共用同一套层级，才不会出现两张皮。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>16 / 31</Text>
+    </Box>
+</Slide>

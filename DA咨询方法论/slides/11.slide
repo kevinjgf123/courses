@@ -1,0 +1,83 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之内容：输出<span style={{ color: '#FA4F24' }}>业务对象清单</span>与对象关系，为四层架构确立共同锚点
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            以「子公司与法人客户签订客户合同」这一交易为例 —— 识别出的对象将成为全企业共用的语言
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 场景示例 */}
+        <Box style={{ width: 560, flexDirection: 'column', gap: 14 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>场景示例：一笔交易的业务对象</Text>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px' }}>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.6 }}>
+                    要完成一个交易、实现商业价值的兑现，企业内的某个子公司需与法人客户签订客户合同，
+                    合同中要明确交易的产品。在这个场景里，<Text style={{ fontWeight: 'bold', color: '#0F1423' }}>子公司、法人客户、客户合同、产品</Text>
+                    是企业需要管理和控制的核心对象。
+                </Text>
+            </Box>
+            {/* 对象关系 */}
+            <Box style={{ flex: 1, border: '1px solid #E8E8E8', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center', gap: 14 }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#8A8F99' }}>对象关系（概念层）</Text>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+                    <Box style={{ background: '#FA4F24', borderRadius: 4, padding: '12px 18px' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>子公司</Text>
+                    </Box>
+                    <Text style={{ fontSize: 18, color: '#FA4F24' }}>───</Text>
+                    <Box style={{ background: 'rgba(250,79,36,0.12)', border: '1px solid #FA4F24', borderRadius: 4, padding: '12px 18px' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>客户合同</Text>
+                    </Box>
+                    <Text style={{ fontSize: 18, color: '#FA4F24' }}>───</Text>
+                    <Box style={{ background: '#F87D2F', borderRadius: 4, padding: '12px 18px' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>产品</Text>
+                    </Box>
+                </Box>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+                    <Box style={{ background: '#F87D2F', borderRadius: 4, padding: '12px 18px' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>法人客户</Text>
+                    </Box>
+                    <Text style={{ fontSize: 15, color: '#8A8F99' }}>↑ 签订方</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 右 交付说明 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '18px 22px', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>交付物一：业务对象清单</Text>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.6, marginTop: 8 }}>
+                    按主题域分组，逐条登记业务对象的名称、定义、判定结论。这是后续资产目录 L3 层的直接输入。
+                </Text>
+            </Box>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '18px 22px', borderLeft: '4px solid #F87D2F' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>交付物二：对象关系图</Text>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.6, marginTop: 8 }}>
+                    描述对象之间的业务关联（谁与谁签约、谁承载什么），是概念数据模型的雏形。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '18px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 判定要点</Text>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.6, marginTop: 8 }}>
+                    如果一个数据元素只有一个标识名、没有描述性信息，它应被识别为<Text style={{ fontWeight: 'bold', color: '#0F1423' }}>属性</Text>而不是实体。
+                    这条判断经常被忽略，导致目录层级混乱。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>11 / 31</Text>
+    </Box>
+</Slide>

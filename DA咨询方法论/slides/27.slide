@@ -1,0 +1,64 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之内容：数据分布图、<span style={{ color: '#FA4F24' }}>信息链与数据流</span>，让血缘可追溯
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            前三个组件从静态角度定义数据与关系，数据分布则定义数据从哪来、往哪去 —— 它是唯一动态的组件
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 信息链 vs 数据流 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            {[
+                { t: '信息链（Information Chain）', d: '描述某一数据在流程或应用系统中是如何被创建、读取、更新、删除的 —— 偏「静态职责划分」。', k: '谁负责什么操作' },
+                { t: '数据流（Data Flow）', d: '端到端描述数据的来龙去脉：起源于哪里、在哪里存储和使用、在不同流程和系统间如何转化。', k: '数据怎么流转' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 8 }}>{it.d}</Text>
+                    <Box style={{ background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '5px 10px', marginTop: 10, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, color: '#C43A17', fontWeight: 'bold' }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '14px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>★ 为什么分布是动态组件</Text>
+                <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.5, marginTop: 8 }}>
+                    目录、标准、模型建完基本稳定，但数据流会随系统改造而变化。
+                    所以分布必须<b>定期复核</b>，否则架构会随时间腐化。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 交付物 */}
+        <Box style={{ width: 500, flexDirection: 'column', gap: 13 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>三份交付物</Text>
+            {[
+                { n: '交付物一', t: '数据分布图', d: '标注每个业务对象的权威数据源所在系统，以及它向哪些系统分发。', k: '看得见源头' },
+                { n: '交付物二', t: '数据源清单', d: '逐条登记权威源的系统名、责任部门、认证状态、生效范围。', k: '认得清责任' },
+                { n: '交付物三', t: 'CRUD 矩阵', d: '记录每个对象在各系统的操作权限，作为治理与稽核的证据。', k: '查得出问题' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', flexDirection: 'column', justifyContent: 'center', borderTop: '4px solid #F87D2F' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#F87D2F' }}>{it.n}</Text>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.45, marginTop: 6 }}>{it.d}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>27 / 31</Text>
+    </Box>
+</Slide>

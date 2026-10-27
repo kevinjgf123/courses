@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之模板：<span style={{ color: '#FA4F24' }}>业务对象定义卡</span>——字段即标准，填不出说明还没想清楚
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            一张卡片锁定对象的核心信息，作为资产目录 L3 的登记表与四判定结论的载体
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 卡片样例 */}
+        <Box style={{ width: 620, border: '1px solid #E8E8E8', borderRadius: 4, padding: '20px 24px', flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 12 }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>业务对象定义卡</Text>
+                <Text style={{ fontSize: 14, color: '#8A8F99' }}>示例：客户合同</Text>
+            </Box>
+            {/* 字段行 */}
+            <Box style={{ flexDirection: 'column', gap: 10, marginTop: 14, flex: 1 }}>
+                {[
+                    { k: '对象编号', v: 'BO-CON-001', h: '全局唯一，与资产目录一致' },
+                    { k: '对象名称', v: '客户合同', h: '业务统一定名，全企业共用' },
+                    { k: '所属主题域', v: '客户域（L1）→ 合同管理（L2）', h: 'L1/L2 定位' },
+                    { k: '业务定义', v: '企业与法人客户就交易内容达成的法律约定', h: '一句话说清是什么' },
+                    { k: '判定结论', v: '不可或缺 ✓ 唯一标识 ✓ 有属性 ✓ 可实例化 ✓', h: '四判定全过才成立' },
+                    { k: '数据 Owner', v: '合同管理部（业务责任主体）', h: '唯一业务责任人' },
+                    { k: '关键属性', v: '合同编号、签约方、标的、金额、生效日期', h: '主要属性清单' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 3, padding: '9px 12px' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', width: 86 }}>{it.k}</Text>
+                        <Text style={{ fontSize: 14, color: '#3A4050', flex: 1, lineHeight: 1.3 }}>{it.v}</Text>
+                        <Text style={{ fontSize: 11, color: '#B8BDC7', width: 132, textAlign: 'right', lineHeight: 1.3 }}>{it.h}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 右 填写要求 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '18px 22px', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>填写要求</Text>
+                <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.6, marginTop: 8 }}>
+                    ① 对象编号必须全局唯一，与资产目录 L3 一致；<br />
+                    ② 业务定义必须是完整陈述句，不能只写关键词；<br />
+                    ③ 判定结论必须逐条勾选，不允许「部分满足」。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '20px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>★ 模板的价值</Text>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.6, marginTop: 10 }}>
+                    卡片的用法不是事后套格式，而是走访时就带着它提问。
+                    <Text style={{ fontWeight: 'bold' }}>填不出的字段，就是接下来要去搞明白的地方</Text> —— 尤其是「数据 Owner」和「业务定义」这两栏。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · DA数据架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>12 / 31</Text>
+    </Box>
+</Slide>
