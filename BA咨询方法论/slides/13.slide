@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>价值流→能力两问法</span>，问对问题比画图重要
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     能力不从组织架构图推导，而是从每个价值流节点的「要什么」和「给什么」两问中长出来
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右两问 */}
+  <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 32% */}
+  <Box style={{
+    width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+  borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+  <Box>
+       <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 03 · CAPABILITY</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+         价值流
+    <br />
+       两问法
+       </Text>
+      </Box>
+    <Box>
+         <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+      <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+         每个节点只问两句：<Text style={{ fontWeight: 'bold' }}>这一步要什么？这一步给什么？</Text>
+      两问的答案就是能力的定义边界——比「根据经验列出能力」可靠得多。
+        </Text>
+            </Box>
+        </Box>
+
+     {/* 右 68% */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+         <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>以「报价」节点为例，两问如何长出能力</Text>
+    {[
+      { q: '这一步要什么？', e: '客户信息、量价政策、库存与产能状态、成本底线', c: '#FA4F24', tc: '#FFFFFF', r: '→ 客户管理能力 / 定价管理能力' },
+  { q: '这一步给什么？', e: '报价单、价格有效期、承诺交期与违约条款', c: '#F87D2F', tc: '#FFFFFF', r: '→ 报价管理能力 / 合同签订能力' },
+        ].map((it, i) => (
+            <Box key={i} style={{ flex: 1.35, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.c }}>{it.q}</Text>
+     <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>{it.e}</Text>
+            <Box style={{ background: it.c, borderRadius: 3, padding: '7px 12px', marginTop: 8 }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.tc }}>{it.r}</Text>
+      </Box>
+        </Box>
+  ))}
+       <Box style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '10px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>三条去重规则</Text>
+        <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 5 }}>
+       ① 多条价值流问出同名能力，必须合并——重复即说明能力颗粒度不对；<br />
+         ② 「要什么」和「给什么」问出同一能力，说明该节点不做实事，要考虑拆分节点；<br />
+   ③ 若一项能力只在一条价值流里出现一次，它多半是活动而不是能力，应下沉进流程。
+         </Text>
+            </Box>
+     </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+  <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+  </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>13 / 30</Text>
+    </Box>
+</Slide>

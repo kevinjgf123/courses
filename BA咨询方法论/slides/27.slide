@@ -1,0 +1,89 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+ {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+   <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之模板：<span style={{ color: '#FA4F24' }}>能力运营看板</span>——一屏看清架构是否在动
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     评审时最容易被追问的一句话是「你们改完架构之后呢」——这张看板就是答案
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上排三块指标 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 14 }}>
+      {[
+    { k: '能力总数', v: '118', u: '项', d: '覆盖 4 个能力域 · 18 个能力组', c: '#FA4F24' },
+   { k: '加权平均成熟度', v: 'L2.8', u: '', d: '较去年 +0.4 级', c: '#F8622F' },
+      { k: 'L4 以上占比', v: '23', u: '%', d: '目标 2027 年达到 35%', c: '#FBA15C' },
+     { k: '路线图覆盖', v: '27', u: '项', d: '占候选集 76%', c: '#FDC69A', tc: '#3A2000' },
+         ].map((it, i) => (
+       <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 13, color: (it.tc || '#FFFFFF'), opacity: 0.88 }}>{it.k}</Text>
+      <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 5, marginTop: 6 }}>
+     <Text style={{ fontSize: 40, fontWeight: 'bold', color: it.tc || '#FFFFFF' }}>{it.v}</Text>
+        <Text style={{ fontSize: 15, color: (it.tc || '#FFFFFF'), opacity: 0.85 }}>{it.u}</Text>
+      </Box>
+   <Text style={{ fontSize: 12, color: it.tc || 'rgba(255,255,255,0.82)', marginTop: 6 }}>{it.d}</Text>
+      </Box>
+       ))}
+      </Box>
+
+        {/* 下排：状态灯 + 风险 */}
+        <Box style={{ flex: 1.1, flexDirection: 'row', gap: 14 }}>
+            <Box style={{ flex: 1, border: '1px solid #E8E8E8', borderRadius: 4, padding: '14px 20px', flexDirection: 'column' }}>
+         <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>路线图能力项状态灯</Text>
+    <Box style={{ flexDirection: 'row', gap: 8, marginTop: 10, flex: 1 }}>
+     {[
+     { s: '正常推进', n: 17, c: '#FA4F24', tc: '#FFFFFF' },
+    { s: '进度滞后', n: 6, c: '#FBA15C', tc: '#3A2000' },
+  { s: '需高层介入', n: 3, c: '#D8DCE3', tc: '#3A4050' },
+          { s: '已达成归档', n: 1, c: '#0F1423', tc: '#FFFFFF' },
+       ].map((it, i) => (
+   <Box key={i} style={{ flex: it.n === 17 ? 3 : it.n === 1 ? 0.6 : 1, background: it.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 24, fontWeight: 'bold', color: it.tc }}>{it.n}</Text>
+   <Text style={{ fontSize: 11, color: it.tc, opacity: 0.88, marginTop: 3 }}>{it.s}</Text>
+      </Box>
+          ))}
+      </Box>
+        </Box>
+   <Box style={{ flex: 1, border: '1px solid #E8E8E8', borderRadius: 4, padding: '14px 20px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>本期需高层决策事项</Text>
+       <Box style={{ flex: 1, flexDirection: 'column', gap: 6, marginTop: 10 }}>
+      {[
+        { t: '全球寻源网络能力跨三事业部，需明确唯一主责方', p: 'P1' },
+   { t: '智能制造能力 L2 虚胖，需决定是撤还是补', p: 'P1' },
+    { t: '三套供应商系统重复建设，2026 H2 必须完成合并', p: 'P2' },
+    ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, background: i === 0 ? 'rgba(250,79,36,0.08)' : '#F7F7F8', borderRadius: 3, padding: '0 10px' }}>
+     <Box style={{ width: 28, height: 20, background: it.p === 'P1' ? '#FA4F24' : '#FBA15C', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 11, fontWeight: 'bold', color: it.p === 'P1' ? '#FFFFFF' : '#3A2000' }}>{it.p}</Text>
+    </Box>
+      <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.t}</Text>
+     </Box>
+          ))}
+   </Box>
+       </Box>
+        </Box>
+
+        {/* 底部说明 */}
+        <Box style={{ height: 62, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 24px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+       <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>看板用法</Text>
+     <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.5, flex: 1 }}>
+       每月更新一次，与经营例会合并汇报。看板上最重要的一栏不是数字，而是最下面那三条——<Text style={{ fontWeight: 'bold' }}>需要高层决策的事项没人替架构团队做主</Text>
+   </Text>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+<Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+     <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+    </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>27 / 30</Text>
+    </Box>
+</Slide>

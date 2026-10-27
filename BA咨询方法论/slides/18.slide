@@ -1,0 +1,62 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之内容：<span style={{ color: '#FA4F24' }}>五级成熟度的定义与判断依据</span>
+     </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   每级都必须写明「什么证据算达标」——否则评分就变成主观印象，没人能复核
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {/* 五级 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>L1–L5 定义与达标证据</Text>
+       {[
+        { l: 'L1', t: '无意识 / 临时应对', c: '#D8DCE3', tc: '#3A4050', d: '无固定流程，凭个人经验处理，结果不可预期', ev: '证据：无任何书面流程文件，依赖个别老员工' },
+    { l: 'L2', t: '可重复', c: '#FDC69A', tc: '#3A2000', d: '有约定俗成的做法，不同人做法基本一致', ev: '证据：存在口头惯例或零散文档，换人仍能跑通' },
+    { l: 'L3', t: '有定义', c: '#FBA15C', tc: '#3A2000', d: '有正式流程与制度，跨部门可照章执行', ev: '证据：发布版流程文件 + 责任矩阵，能找到 Owner' },
+        { l: 'L4', t: '可度量', c: '#F8622F', tc: '#FFFFFF', d: '有指标、有数据，能力水平可量化比较', ev: '证据：指标有连续 12 个月数据，可算行业分位' },
+  { l: 'L5', t: '持续优化', c: '#FA4F24', tc: '#FFFFFF', d: '基于数据反馈持续改进，标杆水平', ev: '证据：有改进机制记录 + 对标结论 + 行业领先' },
+       ].map((it, i) => (
+           <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 20px', gap: 16 }}>
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: it.tc, width: 52 }}>{it.l}</Text>
+      <Box style={{ width: 176 }}>
+      <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.tc }}>{it.t}</Text>
+          </Box>
+   <Text style={{ fontSize: 14, color: it.tc, opacity: 0.9, flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+       <Box style={{ width: 330, background: 'rgba(255,255,255,0.45)', borderRadius: 3, padding: '7px 10px' }}>
+         <Text style={{ fontSize: 12, color: it.tc, lineHeight: 1.4 }}>{it.ev}</Text>
+            </Box>
+            </Box>
+        ))}
+        </Box>
+
+     {/* 三条规则 */}
+        <Box style={{ height: 124, flexDirection: 'row', gap: 12 }}>
+     {[
+         { t: '「证据」栏是这张表的灵魂', d: '没有证据的评分一律降一级。访谈说「做得挺好」不构成证据，只有文件、系统和连续数据才算。' },
+         { t: '能力项之间可高可低', d: '同一家企业里 L5 和 L1 并存是常态。整体平均分没有意义，分布才有意义。' },
+            { t: '评分由谁做', d: '由业务 Owner 主导、CFO 与外部标杆校准。IT 部门代评的结果一定会偏高——因为它按系统实现打分，不按业务效果打分。' },
+       ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '12px 16px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+           <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.45, marginTop: 6 }}>{it.d}</Text>
+    </Box>
+      ))}
+    </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+    <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+       <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+     </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>18 / 30</Text>
+    </Box>
+</Slide>

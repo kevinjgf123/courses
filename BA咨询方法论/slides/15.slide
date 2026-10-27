@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+   <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之模板：<span style={{ color: '#FA4F24' }}>业务能力卡片</span>——字段填不满，说明这项能力还没想清楚
+  </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     一张卡片锁定一项能力的全部关键属性，是评估、热力图与路线图的共同底稿
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+{/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 卡片样例 */}
+        <Box style={{ width: 620, border: '1px solid #E8E8E8', borderRadius: 4, padding: '16px 22px', flexDirection: 'column' }}>
+ <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 12 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>业务能力卡片</Text>
+             <Text style={{ fontSize: 14, color: '#8A8F99' }}>示例：供应商准入管理</Text>
+            </Box>
+   <Box style={{ flexDirection: 'column', gap: 6, marginTop: 12, flex: 1 }}>
+       {[
+ { k: '能力编号', v: 'CAP-SC-03-012', h: '与能力地图一致' },
+    { k: '能力名称', v: '供应商准入管理', h: '动作+对象，不用部门名' },
+   { k: '能力层级', v: '供应链域 / 采购与寻源组', h: '域-组-项三级定位' },
+      { k: '能力定义', v: '对供应商资质、产能、履约能力进行准入评估并动态维护名录', h: '一句话说清会做什么' },
+           { k: '支撑价值流', v: '供应商引入流程、质量异常处置流程', h: '挂不上即无源能力' },
+     { k: '能力 Owner', v: '采购管理部（业务责任人）', h: '唯一，不允许共用' },
+         { k: '度量指标', v: '准入周期（天）、一次通过率、年度准入家数', h: '至少一个可量化指标' },
+          { k: '当前成熟度', v: 'L3 有定义未固化', h: '五级之一，需附判断依据' },
+        ].map((it, i) => (
+    <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 3, padding: '8px 12px' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', width: 96 }}>{it.k}</Text>
+    <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.25 }}>{it.v}</Text>
+  <Text style={{ fontSize: 10, color: '#B8BDC7', width: 134, textAlign: 'right', lineHeight: 1.25 }}>{it.h}</Text>
+      </Box>
+      ))}
+         </Box>
+        </Box>
+
+        {/* 右 填写要求 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', borderLeft: '4px solid #FA4F24' }}>
+           <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>填写要求</Text>
+   <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>
+     ① 能力名称必须是「动作+对象」，不得出现部门名；<br />
+          ② 能力定义写成完整句，不允许只写名词短语；<br />
+                ③ 支撑价值流至少一条，挂不上就不该立这项能力；<br />
+   ④ 度量指标不可写「效率」「质量」这类词，要落到可测数值。
+        </Text>
+   </Box>
+      <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '20px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>★ 模板的价值</Text>
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.6, marginTop: 10 }}>
+  卡片的真正用法是带着它去访谈。
+   <Text style={{ fontWeight: 'bold' }}>填不出的字段就是下一轮要问的问题</Text>
+      ——尤其是「支撑价值流」和「度量指标」两栏，
+    它们填不出来，说明这项能力还没有真正被业务认可。
+       </Text>
+         </Box>
+     </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+ </Box>
+    <Text style={{ fontSize: 14, color: '#8A8F99' }}>15 / 30</Text>
+    </Box>
+</Slide>

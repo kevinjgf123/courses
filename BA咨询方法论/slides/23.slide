@@ -1,0 +1,93 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之模板：<span style={{ color: '#FA4F24' }}>组织映射表</span>——让「能力落在谁身上」可查、可改
+   </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   组织调整频繁，这份表的价值在于把「调整影响面」显式化，而不是每次靠人肉回忆
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 映射表 */}
+        <Box style={{ width: 700, border: '1px solid #E8E8E8', borderRadius: 4, padding: '16px 20px', flexDirection: 'column' }}>
+ <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 10 }}>
+         <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>能力—组织映射表</Text>
+                <Text style={{ fontSize: 13, color: '#8A8F99' }}>示例：采购与寻源能力组</Text>
+    </Box>
+      <Box style={{ flexDirection: 'row', gap: 4, marginTop: 12, marginBottom: 6 }}>
+{['能力编号', '能力名称', '主责组织', '协同组织', '承担岗位数'].map((t, i) => (
+        <Box key={i} style={{ flex: i === 1 ? 2 : 1, background: '#0F1423', borderRadius: 2, padding: '7px 8px' }}>
+    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{t}</Text>
+            </Box>
+         ))}
+ </Box>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+{[
+        { a: 'CAP-SC-03-012', b: '供应商准入管理', c: '采购管理部', d: '质量部、工艺部', e: 7, f: '#FA4F24' },
+{ a: 'CAP-SC-03-014', b: '供应商分级与淘汰', c: '采购管理部', d: '质量部', e: 4, f: '#FA4F24' },
+ { a: 'CAP-SC-03-018', b: '采购成本分析', c: '采购管理部', d: '财务部', e: 5, f: '#F87D2F' },
+     { a: 'CAP-SC-03-021', b: '寻源策略制定', c: '战略采购部', d: '—', e: 3, f: '#FA4F24' },
+    { a: 'CAP-SC-03-026', b: '合同履约管理', c: '采购管理部', d: '法务部、财务部', e: 6, f: '#F87D2F' },
+    { a: 'CAP-SC-03-030', b: '供应风险管理', c: '风险管理部', d: '采购部、质量部', e: 4, f: '#B8BDC7' },
+     ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 4, alignItems: 'center', background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 2, padding: '0 4px' }}>
+     <Box style={{ flex: 1, background: it.f, borderRadius: 2, padding: '6px 6px' }}>
+      <Text style={{ fontSize: 10, color: '#FFFFFF' }}>{it.a}</Text>
+       </Box>
+   <Text style={{ flex: 2, fontSize: 12, color: '#0F1423', fontWeight: 'bold' }}>{it.b}</Text>
+     <Text style={{ flex: 1, fontSize: 11, color: '#3A4050' }}>{it.c}</Text>
+       <Text style={{ flex: 1.3, fontSize: 11, color: '#8A8F99' }}>{it.d}</Text>
+     <Text style={{ flex: 0.8, fontSize: 11, color: '#3A4050', textAlign: 'right' }}>{it.e} 个</Text>
+       </Box>
+          ))}
+    </Box>
+  <Box style={{ flexDirection: 'row', gap: 14, marginTop: 8 }}>
+   {[
+   { c: '#FA4F24', t: '主责唯一' },
+  { c: '#F87D2F', t: '主责在上级部门' },
+    { c: '#B8BDC7', t: '主责在独立风险部门' },
+       ].map((it, i) => (
+    <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+   <Box style={{ width: 14, height: 10, background: it.c, borderRadius: 2 }} />
+     <Text style={{ fontSize: 11, color: '#3A4050' }}>{it.t}</Text>
+        </Box>
+    ))}
+   </Box>
+        </Box>
+
+     {/* 右 要求 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 20px', borderLeft: '4px solid #FA4F24' }}>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>填写要求</Text>
+  <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.6, marginTop: 7 }}>
+ ① 主责组织必须唯一，空着即「无主能力」；<br />
+         ② 协同组织最多 3 个，超过说明职责边界没划清；<br />
+         ③ 承担岗位数为 0 的能力项必须回退重审；<br />
+                ④ 每个组织单元承接能力数超过 25 需标注为超载。
+         </Text>
+            </Box>
+ <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>★ 这张表的真正用途</Text>
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.6, marginTop: 9 }}>
+   组织调整方案评审时，<Text style={{ fontWeight: 'bold' }}>先查这张表再看组织图</Text>。
+      某个部门被撤并，直接读它的能力列——落在这些能力上的承接方必须同时指定，
+    否则架构就会在组织调整中悄悄断掉。
+    </Text>
+       </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>23 / 30</Text>
+    </Box>
+</Slide>

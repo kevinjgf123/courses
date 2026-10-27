@@ -1,0 +1,76 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+ <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>价值流识别与绘制</span>，端到端视角而非部门视角
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     价值流是「一件事从头到尾走完」的路径，它天然跨部门——跨部门正是它的价值所在
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+  <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 价值流链条 */}
+        <Box style={{ width: 660, flexDirection: 'column', gap: 10 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>以「合同签订」为例的价值流主干</Text>
+    {[
+      { s: '触发', t: '客户提出采购需求', d: '起点必须是客户侧动作，不是内部审批', c: '#0F1423', tc: '#FFFFFF' },
+    { s: '关键节点', t: '报价 → 谈判 → 内部审批 → 签约 → 交付', d: '每个节点必须能回答「谁在什么系统上做什么」', c: '#FA4F24', tc: '#FFFFFF' },
+     { s: '支撑活动', t: '信用校验、法务审核、财务授信', d: '支撑活动通常不属于主干，但必须显式画出', c: '#FBA15C', tc: '#3A2000' },
+      { s: '产出', t: '生效合同 + 履约义务', d: '终点要有明确产出物，没有产出物的流程不算价值流', c: '#FDC69A', tc: '#3A2000' },
+      ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 20px', gap: 16 }}>
+         <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.tc, width: 88 }}>{it.s}</Text>
+ <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.tc, flex: 1 }}>{it.t}</Text>
+       <Text style={{ fontSize: 13, color: it.tc, opacity: 0.85, width: 250, textAlign: 'right', lineHeight: 1.35 }}>{it.d}</Text>
+       </Box>
+   ))}
+   <Box style={{ height: 78, background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 关键判断：价值流的边界划在哪里</Text>
+      <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 6 }}>
+   起点和终点都必须是<Text style={{ fontWeight: 'bold' }}>企业外部</Text>或<Text style={{ fontWeight: 'bold' }}>明确的责任交接点</Text>。
+  如果起点是「收到销售部转来的合同」，那画出来的是内部流程图，不是价值流——业务架构要解决的是跨部门这件事本身该长什么样。
+  </Text>
+     </Box>
+    </Box>
+
+     {/* 右 要素 */}
+  <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>价值流图六项必备要素</Text>
+       {[
+    { n: '01', t: '价值流名称与边界', d: '一句话说清从哪到哪' },
+            { n: '02', t: '触发事件', d: '启动这条流的外部动作' },
+   { n: '03', t: '关键节点序列', d: '3–7 个，超了就该拆' },
+  { n: '04', t: '支撑活动', d: '不主干但必需的环节' },
+        { n: '05', t: '产出物', d: '流程的终点交付物' },
+            { n: '06', t: '所承接的举措', d: '挂不上举措就是无源之流' },
+          ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 16px', gap: 12 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FA4F24', width: 32 }}>{it.n}</Text>
+     <Box style={{ flex: 1 }}>
+      <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+      <Text style={{ fontSize: 12, color: '#8A8F99', marginTop: 3 }}>{it.d}</Text>
+     </Box>
+       </Box>
+   ))}
+   <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '12px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>节点数控制</Text>
+      <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.45, marginTop: 6 }}>
+    一条价值流主干超过 7 个节点，说明范围太大，应当按「事前 / 事中 / 事后」或按业务阶段拆成多条。
+  </Text>
+    </Box>
+   </Box>
+    </Box>
+
+    {/* C 区 */}
+<Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>10 / 30</Text>
+    </Box>
+</Slide>

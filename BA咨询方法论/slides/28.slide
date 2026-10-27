@@ -1,0 +1,63 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+     <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  四层贯通：<span style={{ color: '#FA4F24' }}>从一句战略口号到一项能力指标</span>，全程可追溯
+     </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 架构的价值不在于每一层单独正确，而在于四层之间能双向追溯——任何一项投入都能回答「为哪条战略服务」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+ {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 14 }}>
+
+        {/* 贯通链 */}
+     <Box style={{ flex: 1, border: '1px solid #E8E8E8', borderRadius: 4, padding: '18px 24px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>一条完整链路示例（以「降本增效」为例）</Text>
+ <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 8, marginTop: 14 }}>
+   {[
+      { l: '战略意图', v: '三年内降本 15%', c: '#FA4F24', tc: '#FFFFFF' },
+           { l: '举措', v: '采购成本优化', c: '#F8622F', tc: '#FFFFFF' },
+    { l: '变革项目', v: '集采平台上线', c: '#FBA15C', tc: '#3A2000' },
+  { l: '价值流', v: '采购需求到下单', c: '#FDC69A', tc: '#3A2000' },
+    { l: '业务能力', v: '采购成本分析 L2→L4', c: '#FDC69A', tc: '#3A2000' },
+  { l: '组织承接', v: '采购部 Owner 王某', c: '#FBA15C', tc: '#3A2000' },
+  { l: '度量指标', v: '单位成本降 6.8%', c: '#FA4F24', tc: '#FFFFFF' },
+        ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '10px 8px', alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 11, color: it.tc, opacity: 0.88 }}>{it.l}</Text>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.tc, marginTop: 7, textAlign: 'center', lineHeight: 1.35 }}>{it.v}</Text>
+     </Box>
+        ))}
+      </Box>
+        </Box>
+
+        {/* 双向追溯 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 14 }}>
+   <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>向下可追溯：投入有无出处</Text>
+   <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 7 }}>
+        任一笔能力建设预算，都能逐级向上找到它承接的变革项目、举措和战略意图。
+ 做不到向上追溯，说明这笔钱是「想做的事」，不是「战略要做的事」。
+    </Text>
+     </Box>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', borderLeft: '4px solid #F87D2F', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>向上可追溯：战略有无落地</Text>
+         <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 7 }}>
+      每条战略意图都必须能向下走到「至少一项能力指标」。走不到底的战略意图，本质上是<b style={{ fontWeight: 'bold' }}>一句没打算落地的口号</b>。
+      </Text>
+         </Box>
+     </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+  </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>28 / 30</Text>
+    </Box>
+</Slide>

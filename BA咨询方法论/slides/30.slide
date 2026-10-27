@@ -1,0 +1,52 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF' }}>
+    {/* 背景装饰 */}
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 8, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)' }} />
+    <Box style={{ position: 'absolute', right: -120, top: 120, width: 520, height: 520, background: 'rgba(250,79,36,0.06)', borderRadius: 260 }} />
+
+    {/* 主体 */}
+    <Box style={{ position: 'absolute', left: 128, top: 140, width: 1024, flexDirection: 'column', alignItems: 'center' }}>
+    <Text style={{ fontSize: 15, color: '#8A8F99', letterSpacing: 4 }}>结语 · BUSINESS ARCHITECTURE</Text>
+
+        <Text style={{ fontSize: 46, fontWeight: 'bold', color: '#0F1423', marginTop: 32, textAlign: 'center', lineHeight: 1.35 }}>
+            先有「做什么」，才有「要什么」——
+   <br />
+    <Text style={{ color: '#FA4F24' }}>业务架构让战略落地有路径</Text>
+        </Text>
+
+        <Box style={{ width: 88, height: 5, background: '#FA4F24', marginTop: 34 }} />
+
+  <Text style={{ fontSize: 19, color: '#3A4050', marginTop: 34, textAlign: 'center', lineHeight: 1.8, width: 880 }}>
+      价值流、能力、评估、映射，
+        <br />
+        决定了一份战略能不能被拆到人、拆到钱、拆到每一年的考核里。
+        </Text>
+
+        {/* 四组件回顾 */}
+        <Box style={{ flexDirection: 'row', gap: 14, marginTop: 42 }}>
+  {[
+         { t: '价值流', s: '做什么' },
+    { t: '业务能力', s: '凭什么做' },
+        { t: '能力评估', s: '做到哪一步' },
+    { t: '组织映射', s: '谁来做' },
+   ].map((it, i) => (
+     <Box key={i} style={{ background: i === 0 ? '#FA4F24' : '#F7F7F8', borderRadius: 4, padding: '14px 22px', alignItems: 'center', minWidth: 148 }}>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: i === 0 ? '#FFFFFF' : '#0F1423' }}>{it.t}</Text>
+    <Text style={{ fontSize: 13, color: i === 0 ? 'rgba(255,255,255,0.88)' : '#8A8F99', marginTop: 5 }}>{it.s}</Text>
+            </Box>
+      ))}
+     </Box>
+
+    <Text style={{ fontSize: 15, color: '#8A8F99', marginTop: 46, textAlign: 'center', lineHeight: 1.7 }}>
+     业务架构不是 IT 侧的规范，而是企业把<span style={{ color: '#C43A17', fontWeight: 'bold' }}>战略意图转译成日常动作</span>的唯一路径
+        </Text>
+    </Box>
+
+    {/* 页脚 */}
+    <Box style={{ position: 'absolute', left: 64, bottom: 56, right: 64, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+   </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>30 / 30</Text>
+    </Box>
+</Slide>

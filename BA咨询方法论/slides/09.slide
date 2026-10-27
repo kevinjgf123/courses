@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之方法：<span style={{ color: '#FA4F24' }}>战略解码五步法</span>，把口号变成可执行的价值流
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            战略解码不是翻译战略，而是逐层收敛——每一层都必须能被上一层解释，且必须落得下一层
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右五步 */}
+  <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+     {/* 左 32% */}
+        <Box style={{
+  width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+     <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 02 · VALUE STREAM</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+         战略解码
+        <br />
+     五步法
+       </Text>
+    </Box>
+   <Box>
+            <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+     <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+           「降本增效」是口号不是战略意图。<Text style={{ fontWeight: 'bold' }}>只有解码到具体变革项目、能挂上指标</Text>，才叫完成解码。
+    </Text>
+       </Box>
+        </Box>
+
+        {/* 右 68% 五步 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 11 }}>
+    <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>从战略到价值流的五个收敛动作</Text>
+  {[
+                { n: '01', t: '提取战略意图', en: 'INTENT', d: '把战略文本压缩成 5–8 条可判断真假的陈述句，每条必须能回答「做成了什么样算成功」。', k: '可判断 · 非口号' },
+    { n: '02', t: '识别关键举措', en: 'INITIATIVE', d: '每条战略意图对应 1–3 个举措。举措是战略的落地抓手，不做举措分解就会直接跳到项目。', k: '抓手 · 可命名' },
+     { n: '03', t: '圈定变革项目', en: 'PROJECT', d: '举措落成项目，项目必须绑定业务范围。「提升效率」这类无边界描述必须被砍掉或重写。', k: '有边界 · 可立项' },
+ { n: '04', t: '识别价值流', en: 'VALUE STREAM', d: '变革项目涉及的端到端价值流，先不画组织框。问的是「客户视角这件事怎么走完」。', k: '端到端 · 跨部门' },
+     { n: '05', t: '校验闭环', en: 'CHECK', d: '每条举措必须至少挂一条价值流，每条价值流必须至少承接一条举措。有挂不上或接不住，就是解码缺口。', k: '双向可查 · 无孤儿' },
+].map((it, i) => (
+  <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', gap: 14, borderLeft: '4px solid #FA4F24' }}>
+   <Box style={{ width: 58 }}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+      <Text style={{ fontSize: 8, color: '#B8BDC7' }}>{it.en}</Text>
+        </Box>
+   <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', width: 130 }}>{it.t}</Text>
+     <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+       <Box style={{ width: 112, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 4px' }}>
+        <Text style={{ fontSize: 11, color: '#C43A17', textAlign: 'center', lineHeight: 1.3 }}>{it.k}</Text>
+   </Box>
+       </Box>
+   ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+ <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+   </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>09 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      四层结构自上而下<span style={{ color: '#FA4F24' }}>逐层收敛</span>，自下而上逐层可追溯
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      战略意图 → 价值流 → 业务能力 → 组织承接，每一层只回答一个问题，每一层都可被上一层解释
+      </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+   {/* 左 四层骨架 */}
+        <Box style={{ width: 560, flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>业务架构四层骨架</Text>
+     {[
+    { l: 'L1', t: '战略意图层', d: '企业战略、业务愿景、年度重点', q: '往哪走', w: 560, c: '#FA4F24', tc: '#FFFFFF' },
+    { l: 'L2', t: '价值流层',   d: '端到端价值流、变革项目', q: '做什么', w: 500, c: '#F8622F', tc: '#FFFFFF' },
+         { l: 'L3', t: '能力层',     d: '能力域 / 能力组 / 能力项', q: '凭什么做', w: 440, c: '#FBA15C', tc: '#3A2000' },
+      { l: 'L4', t: '组织层',     d: '组织单元、岗位、流程活动', q: '谁来做', w: 380, c: '#FDC69A', tc: '#3A2000' },
+      ].map((it, i) => (
+       <Box key={i} style={{ width: it.w, height: 76, background: it.c, borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.tc, width: 38 }}>{it.l}</Text>
+        <Box style={{ flex: 1 }}>
+   <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.tc }}>{it.t}</Text>
+   <Text style={{ fontSize: 12, color: it.tc, opacity: 0.85, marginTop: 4 }}>{it.d}</Text>
+        </Box>
+       <Box style={{ background: 'rgba(255,255,255,0.35)', borderRadius: 3, padding: '6px 10px' }}>
+           <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.tc }}>{it.q}</Text>
+    </Box>
+        </Box>
+       ))}
+</Box>
+
+        {/* 右 说明 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+          <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px', borderLeft: '4px solid #FA4F24' }}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>每层只回答一个问题</Text>
+     <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+    价值流回答「做什么」，能力层回答「凭什么做」，组织层回答「谁来做」。
+     三个问题必须分别回答，不能合并成一个——合并就会退化成「组织架构图加几个标签」。
+     </Text>
+  </Box>
+        <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px', borderLeft: '4px solid #F87D2F' }}>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>为什么能力必须在组织之上</Text>
+      <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+    组织会频繁调整，但能力相对稳定。把能力挂在组织下面，等于说「能力随组织变」——
+  一次组织调整就要重画整套架构。能力独立出来，才有沉淀和复用的可能。
+          </Text>
+     </Box>
+            <Box style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '16px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 全册主线</Text>
+  <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+ 战略解码的价值，就是把 L1 的「往哪走」一句口号，变成 L3 上可度量、可考核的能力项。
+   中间任何一层偷懒，上层就会落空，下层就会返工。
+       </Text>
+         </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>05 / 30</Text>
+    </Box>
+</Slide>

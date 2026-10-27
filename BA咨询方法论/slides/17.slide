@@ -1,0 +1,109 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>成熟度 × 重要度二维评估</span>，两个维度缺一不可
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 只评成熟度，会把不重要的能力也做成标杆；只评重要度，会对全部能力一视同仁地投钱
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右矩阵 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 32% */}
+        <Box style={{
+            width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+  borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+    <Box>
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 04 · ASSESSMENT</Text>
+           <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+            二维
+        <br />
+            评估法
+    </Text>
+ </Box>
+     <Box>
+         <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+      <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+      两个维度是<Text style={{ fontWeight: 'bold' }}>独立打分、交叉定位</Text>的。
+ 不做二维就会退化成一张「都重要」的清单——那样的清单没法指导投资排序。
+    </Text>
+      </Box>
+  </Box>
+
+        {/* 右 68% */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 18 }}>
+      {/* 二维矩阵 */}
+     <Box style={{ width: 400, flexDirection: 'column' }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 10 }}>成熟度 × 重要度矩阵</Text>
+            <Box style={{ flex: 1, flexDirection: 'row' }}>
+        <Box style={{ width: 46, flexDirection: 'column', justifyContent: 'space-around', alignItems: 'flex-end', paddingRight: 6 }}>
+       {['高', '中', '低'].map((t, i) => (
+   <Text key={i} style={{ fontSize: 13, color: '#8A8F99' }}>{t}</Text>
+             ))}
+     </Box>
+      <Box style={{ flex: 1, flexDirection: 'column' }}>
+            {[
+    { l: '高重要', cells: [
+        { s: 'L1 L2', t: '维持', c: '#FA4F24', tc: '#FFFFFF' },
+     { s: 'L3 L4', t: '提升重点', c: '#F8622F', tc: '#FFFFFF' },
+       { s: 'L5', t: '风险', c: '#B8BDC7', tc: '#3A4050' }] },
+         { l: '中重要', cells: [
+         { s: 'L1 L2', t: '维持', c: '#FBA15C', tc: '#3A2000' },
+            { s: 'L3 L4', t: '选择性提升', c: '#FDC69A', tc: '#3A2000' },
+    { s: 'L5', t: '重构', c: '#D8DCE3', tc: '#3A4050' }] },
+ { l: '低重要', cells: [
+        { s: 'L1 L2', t: '维持', c: '#FDC69A', tc: '#3A2000' },
+   { s: 'L3 L4', t: '观察', c: '#E8E8E8', tc: '#8A8F99' },
+            { s: 'L5', t: '收缩/外包', c: '#F2F3F5', tc: '#8A8F99' }] },
+       ].map((row, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 6, marginBottom: 6, alignItems: 'stretch' }}>
+    <Box style={{ width: 0, flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 12, color: '#B8BDC7' }}>{row.l}</Text>
+    </Box>
+             {row.cells.map((c, j) => (
+         <Box key={j} style={{ flex: 1, background: c.c, borderRadius: 3, padding: '6px 4px', alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 11, color: c.tc, opacity: 0.85 }}>{c.s}</Text>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: c.tc, marginTop: 4, textAlign: 'center' }}>{c.t}</Text>
+          </Box>
+              ))}
+            </Box>
+       ))}
+   </Box>
+         </Box>
+    <Text style={{ fontSize: 13, color: '#8A8F99', textAlign: 'center', marginTop: 4 }}>能力成熟度等级（低 → 高）</Text>
+       </Box>
+
+            {/* 右 打法 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 11 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>四种格位对应四种打法</Text>
+ {[
+      { t: '提升重点', d: '高重要 + 低成熟 —— 投入产出比最高，路线图第一优先', c: '#FA4F24' },
+   { t: '选择性提升', d: '中重要 + 中低成熟 —— 排第二梯队，按剩余资源定', c: '#F8622F' },
+    { t: '风险', d: '高重要 + 无固化 —— 既要建能力也要补管理，风险最大', c: '#FBA15C' },
+   { t: '收缩 / 外包', d: '低重要 + 无固化 —— 明确不做，是最省钱的一格', c: '#B8BDC7' },
+       ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 16px', gap: 12, borderLeft: `4px solid ${it.c}` }}>
+           <Box style={{ flex: 1 }}>
+         <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginTop: 4, lineHeight: 1.4 }}>{it.d}</Text>
+     </Box>
+   </Box>
+         ))}
+    </Box>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+  </Box>
+    <Text style={{ fontSize: 14, color: '#8A8F99' }}>17 / 30</Text>
+    </Box>
+</Slide>

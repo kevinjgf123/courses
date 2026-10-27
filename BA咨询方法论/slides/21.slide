@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>能力—组织—岗位三线映射</span>，回答「谁来做」
+ </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    能力与组织解耦之后，必须靠映射关系重新接上——否则架构只是一张悬空的能力清单
+        </Text>
+  </Box>
+ <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右映射 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 32% */}
+        <Box style={{
+            width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+ }}>
+          <Box>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 05 · MAPPING</Text>
+         <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+              三线
+   <br />
+            映射法
+        </Text>
+    </Box>
+   <Box>
+            <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+    <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+         <Text style={{ fontWeight: 'bold' }}>一份能力可以对应多个组织，一个组织也可以承担多项能力</Text>
+           ——这就是必须显式画映射表的原因。
+       </Text>
+  </Box>
+    </Box>
+
+     {/* 右 68% */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>三线映射示例：供应商准入管理能力</Text>
+     {[
+  { l: '能力', t: '供应商准入管理', c: '#FA4F24', tc: '#FFFFFF', d: 'CAP-SC-03-012 · L3 · 重要度 88' },
+    { l: '组织', t: '采购管理部 / 质量管理部 / 工艺技术部', c: '#F8622F', tc: '#FFFFFF', d: '主责 + 协同，共 3 个组织单元' },
+    { l: '岗位', t: '供应商开发工程师 / 质量工程师 / 工艺审核员', c: '#FBA15C', tc: '#3A2000', d: '共 7 个岗位承担该能力' },
+   ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 18px', gap: 14 }}>
+   <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.tc, width: 42 }}>{it.l}</Text>
+     <Box style={{ flex: 1 }}>
+      <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.tc }}>{it.t}</Text>
+   <Text style={{ fontSize: 12, color: it.tc, opacity: 0.85, marginTop: 4 }}>{it.d}</Text>
+      </Box>
+             {i < 2 && <Text style={{ fontSize: 18, color: 'rgba(255,255,255,0.9)' }}>↓</Text>}
+         </Box>
+       ))}
+       <Box style={{ flex: 1.25, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>映射表必须暴露的三类问题</Text>
+     <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 6 }}>
+     ① <Text style={{ fontWeight: 'bold' }}>孤儿能力</Text>：没有任何组织承接——通常是识别时凭空加的；<br />
+      ② <Text style={{ fontWeight: 'bold' }}>无主能力</Text>：有多个组织协同但没有主责方——推进时会互相推诿；<br />
+     ③ <Text style={{ fontWeight: 'bold' }}>超载组织</Text>：一个组织承接的能力项超过 25 个——说明该组织实际在做定位外的事。
+          </Text>
+      </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>21 / 30</Text>
+    </Box>
+</Slide>

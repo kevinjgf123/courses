@@ -1,0 +1,51 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     五条原则，用来<span style={{ color: '#FA4F24' }}>拒绝「画得像但没用」</span>的业务架构
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    每一条都对应一类常见的失败做法——评审时逐条对照，比看图更有效
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 12 }}>
+
+ {[
+            { n: '01', t: '从战略出发，不从组织出发', d: '第一份价值流图必须脱离现有组织框绘制。先画组织再画价值流，会把现有职责固化进架构。', bad: '典型坑：按现有部门切价值流' },
+            { n: '02', t: '能力与组织解耦', d: '能力描述「企业会做什么」，组织描述「谁来做」。两者分开画、分开维护，通过映射关系连接。', bad: '典型坑：能力名字叫「营销部管理」' },
+            { n: '03', t: '能力必须可度量', d: '每项能力至少挂一个指标。没有指标的能力无法评估成熟度，也无法进入考核，只能算一句口号。', bad: '典型坑：能力只有名称没有度量' },
+            { n: '04', t: '颗粒度保持可比', d: '同一层级的能力项粒度要一致，不能既有「供应链管理」又有「打印」。粒度不齐就无法横向比较。', bad: '典型坑：同一层大小差十倍' },
+            { n: '05', t: '业务对象是唯一接口', d: '能力与能力的衔接必须通过业务对象说明，而不是靠箭头意思一下。对象是 BA 交给 DA 的正式交付物。', bad: '典型坑：箭头含义只在口头解释' },
+        ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 22px', gap: 18, borderLeft: '4px solid #FA4F24' }}>
+  <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FA4F24', width: 46 }}>{it.n}</Text>
+       <Box style={{ width: 218 }}>
+         <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.25 }}>{it.t}</Text>
+        </Box>
+           <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>{it.d}</Text>
+     <Box style={{ width: 240, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '8px 12px' }}>
+            <Text style={{ fontSize: 13, color: '#C43A17', lineHeight: 1.4 }}>{it.bad}</Text>
+          </Box>
+       </Box>
+        ))}
+
+    <Box style={{ height: 62, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 24px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>评审用法</Text>
+        <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.5, flex: 1 }}>
+     拿到一份业务架构，先不看画得好不好看，直接拿五条原则过一遍——凡是要靠「我们是这样理解的」才能解释的关系，都是不合格的
+        </Text>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>06 / 30</Text>
+    </Box>
+</Slide>

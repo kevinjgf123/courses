@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>能力运营机制与考核指标</span>，让架构活起来
+        </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 架构交付不是终点。没有运营机制和考核挂钩，半年后成熟度评分就会退回原样
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+{/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 运营节奏 */}
+     <Box style={{ width: 620, flexDirection: 'column', gap: 11 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>三段式运营节奏</Text>
+      {[
+         { p: '月', t: '能力指标跟踪', d: '能力 Owner 月度上报指标数据，与目标值比对；连续两月偏离则启动根因分析。', c: '#FA4F24' },
+     { p: '季', t: '成熟度复核', d: '按季度对重点能力重评 L 级。成熟度升级必须有证据，不接受自评提升。', c: '#F8622F' },
+      { p: '年', t: '架构刷新与重排', d: '年度重估重要度、更新热力图、重排路线图波次，并归档已完成能力。', c: '#FBA15C' },
+     ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px', gap: 16, borderLeft: `4px solid ${it.c}` }}>
+       <Box style={{ width: 62, height: 46, background: it.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+         <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.c === '#FBA15C' ? '#3A2000' : '#FFFFFF' }}>{it.p}</Text>
+          </Box>
+        <Box style={{ flex: 1 }}>
+      <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+      <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.45, marginTop: 5 }}>{it.d}</Text>
+         </Box>
+          </Box>
+    ))}
+     <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '14px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>★ 谁来维护这份架构</Text>
+         <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 7 }}>
+   业务架构的 Owner 必须是<b style={{ fontWeight: 'bold' }}>企业架构管理部门</b>，而不是 IT 部门。
+     IT 只能提供工具，维护责任一旦落到 IT，业务能力就会退化成系统功能清单。
+     </Text>
+      </Box>
+        </Box>
+
+        {/* 右 考核指标 */}
+  <Box style={{ flex: 1, flexDirection: 'column', gap: 11 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>挂到高管考核的四类指标</Text>
+    {[
+   { t: '业务能力成熟度', d: '本人分管领域的加权平均 L 级，以及 L4 以上能力项占比', k: '结果指标' },
+      { t: '战略举措承接率', d: '本部门承接举措中，已进入路线图并有预算的比例', k: '进度指标' },
+      { t: '能力 Owner 到位率', d: '本部门能力项中已指定唯一 Owner 的比例', k: '责任指标' },
+      { t: '重复能力收敛率', d: '跨部门重复建设能力的合并完成比例', k: '治理指标' },
+    ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 18px', gap: 12 }}>
+     <Box style={{ flex: 1 }}>
+        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginTop: 4, lineHeight: 1.4 }}>{it.d}</Text>
+     </Box>
+     <Box style={{ width: 74, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '7px 0', alignItems: 'center' }}>
+      <Text style={{ fontSize: 12, color: '#C43A17', fontWeight: 'bold' }}>{it.k}</Text>
+   </Box>
+     </Box>
+      ))}
+    <Box style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '14px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>一条经验</Text>
+   <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 6 }}>
+     我们见过不少企业，架构评审做得很漂亮，但因为没挂考核，半年后回看成熟度分几乎没动。
+     根因是<b style={{ fontWeight: 'bold' }}>没有任何人有动机去更新它</b> ——架构不是靠维护出来的，是靠考核逼出来的。
+      </Text>
+      </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+  <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+       <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>26 / 30</Text>
+    </Box>
+</Slide>

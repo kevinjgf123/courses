@@ -1,0 +1,81 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF' }}>
+    {/* 背景装饰 */}
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 8, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)' }} />
+
+    {/* 主体标题 */}
+    <Box style={{ position: 'absolute', left: 88, top: 62, width: 1104, flexDirection: 'column' }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#0F1423' }}>
+         业务架构回答<span style={{ color: '#FA4F24' }}>「做什么业务、凭什么做」</span>，它是 4A 的起点
+  </Text>
+  <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            没有业务架构，DA/AA/TA 各自为政；有了业务架构，四架构才有同一条因果链
+        </Text>
+    <Box style={{ height: 1, background: '#E8E8E8', marginTop: 18 }} />
+    </Box>
+
+    {/* B 区 */}
+  <Box style={{ position: 'absolute', left: 88, top: 186, width: 1104, height: 452, flexDirection: 'column', gap: 16 }}>
+
+     {/* 四架构贯通链 */}
+     <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 10 }}>
+    {[
+        { a: 'BA', cn: '业务架构', q: '做什么业务', d: '价值流 · 能力 · 组织', hero: true },
+    { a: 'DA', cn: '数据架构', q: '需要什么数据', d: '对象 · 标准 · 模型 · 分布', hero: false },
+ { a: 'AA', cn: '应用架构', q: '用什么系统承载', d: '应用 · 集成 · 复用', hero: false },
+                { a: 'TA', cn: '技术架构', q: '用什么技术实现', d: '平台 · 部署 · 运维', hero: false },
+        ].map((it, i) => (
+   <Box key={i} style={{
+          flex: 1, borderRadius: 4, padding: '18px 16px', flexDirection: 'column', justifyContent: 'center',
+    background: it.hero ? 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)' : '#F7F7F8',
+    }}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', color: it.hero ? '#FFFFFF' : '#FA4F24' }}>{it.a}</Text>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.hero ? '#FFFFFF' : '#0F1423', marginTop: 6 }}>{it.cn}</Text>
+                <Text style={{ fontSize: 15, color: it.hero ? 'rgba(255,255,255,0.95)' : '#3A4050', marginTop: 8 }}>{it.q}</Text>
+                <Text style={{ fontSize: 12, color: it.hero ? 'rgba(255,255,255,0.75)' : '#8A8F99', marginTop: 6 }}>{it.d}</Text>
+    {i < 3 && (
+          <Box style={{ position: 'absolute', right: 0, width: 4, height: 3, background: '#FA4F24', zIndex: 10 }} />
+          )}
+       </Box>
+     ))}
+      </Box>
+
+        {/* 华为战略解码链 */}
+   <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '16px 24px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+     <Box style={{ width: 168 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>战略解码链路</Text>
+  <Text style={{ fontSize: 11, color: '#B8BDC7', letterSpacing: 1, marginTop: 3 }}>DECODE CHAIN</Text>
+            </Box>
+      {['战略意图', '举措', '变革项目', '价值流', '业务能力', '组织单元', '岗位'].map((t, i) => (
+     <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+     <Box style={{ background: i >= 4 ? '#FA4F24' : '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 3, padding: '8px 6px', alignItems: 'center' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: i >= 4 ? '#FFFFFF' : '#3A4050' }}>{t}</Text>
+            </Box>
+   {i < 6 && <Text style={{ fontSize: 16, color: '#FA4F24', margin: '0 6px' }}>→</Text>}
+   </Box>
+       ))}
+   </Box>
+
+        {/* 三个判断 */}
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+{[
+    { t: '业务能力必须与组织解耦', d: '能力是「企业会做什么」，组织是「谁来做」。把两者绑死，一组织调整能力就全乱。' },
+    { t: '业务对象是四架构共同语言', d: 'BA 识别的业务对象，直接成为 DA 的 L3 核心层、AA 的功能边界、TA 的数据单元。' },
+    { t: '战略不落地成能力等于没做', d: '战略意图只有解码到价值流和能力项，并挂上指标，才算真正完成解码。' },
+      ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '14px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+     <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 7 }}>{it.d}</Text>
+         </Box>
+       ))}
+        </Box>
+    </Box>
+
+    {/* 页脚 */}
+    <Box style={{ position: 'absolute', left: 88, bottom: 40, right: 88, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+  <Text style={{ fontSize: 14, color: '#8A8F99' }}>03 / 30</Text>
+    </Box>
+</Slide>

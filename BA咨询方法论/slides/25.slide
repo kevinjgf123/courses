@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+之方法：<span style={{ color: '#FA4F24' }}>能力路线图与变革举措编排</span>，从诊断走到投入排序
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+  前面所有工作都为了这一页——把「提升哪项能力、先投谁、不做什么」变成一张有时间轴的表
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+     {/* 三步编排 */}
+  <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>编排三步</Text>
+    {[
+     { n: '01', t: '筛出候选能力', d: '从热力图「提升重点 + 风险」两格中筛出候选集，通常占全量能力的 15–25%。全量都提升等于没有优先级。', c: '#FA4F24' },
+      { n: '02', t: '定义跃迁目标', d: '每项候选能力明确「从 Ln 到 Lm」。目标跨级不宜超过 2 级，跨 3 级以上的项目周期长、风险高，应拆成多个波次。', c: '#F8622F' },
+      { n: '03', t: '编排波次与资源', d: '按波次排时间轴，每波次明确投入预算、承接变革项目与责任高管。波次间隔建议 6–12 个月，留出能力沉淀期。', c: '#FBA15C' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px', gap: 16, borderLeft: `4px solid ${it.c}` }}>
+       <Text style={{ fontSize: 28, fontWeight: 'bold', color: it.c, width: 46 }}>{it.n}</Text>
+    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', width: 178 }}>{it.t}</Text>
+          <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+          </Box>
+     ))}
+        </Box>
+
+        {/* 三波路线图 */}
+      <Box style={{ height: 192, border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 8 }}>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>能力路线图（三波次示例）</Text>
+ <Text style={{ fontSize: 12, color: '#8A8F99' }}>条形长度 = 能力跃迁所需周期</Text>
+    </Box>
+   <Box style={{ flex: 1, flexDirection: 'column', gap: 4, marginTop: 8 }}>
+       {[
+    { w: '2026 H2', a: '供应商分级与淘汰', s: 'L2 → L3', p: 68, c: '#FDC69A', tc: '#3A2000', r: '采购部 · 预算 320 万' },
+    { w: '2026 H2', a: '采购成本分析', s: 'L2 → L4', p: 68, c: '#FBA15C', tc: '#3A2000', r: '采购部 + 财务部 · 预算 480 万' },
+         { w: '2027 H1', a: '供应商准入管理', s: 'L3 → L4', p: 62, c: '#F8622F', tc: '#FFFFFF', r: '采购部 · 预算 550 万' },
+      { w: '2027 H2', a: '合同履约管理', s: 'L2 → L4', p: 42, c: '#F8622F', tc: '#FFFFFF', r: '采购部 + 法务部 · 预算 610 万' },
+        { w: '2028 H1', a: '全球寻源网络', s: 'L1 → L3', p: 24, c: '#FA4F24', tc: '#FFFFFF', r: '战略采购部 · 预算 1200 万' },
+    ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Text style={{ fontSize: 11, color: '#8A8F99', width: 58 }}>{it.w}</Text>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 152 }}>{it.a}</Text>
+      <Box style={{ flex: 1, height: 22, background: '#F2F3F5', borderRadius: 2 }}>
+ <Box style={{ width: `${it.p}%`, height: 22, background: it.c, borderRadius: 2, flexDirection: 'row', alignItems: 'center', paddingLeft: 8 }}>
+      <Text style={{ fontSize: 11, fontWeight: 'bold', color: it.tc }}>{it.s}</Text>
+     </Box>
+ </Box>
+      <Text style={{ fontSize: 10, color: '#B8BDC7', width: 176 }}>{it.r}</Text>
+       </Box>
+          ))}
+    </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+       <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+      </Box>
+  <Text style={{ fontSize: 14, color: '#8A8F99' }}>25 / 30</Text>
+    </Box>
+</Slide>

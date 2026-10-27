@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+{/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之模板：<span style={{ color: '#FA4F24' }}>价值流图与符号规范</span>——统一符号，才谈得上跨部门对话
+      </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+  同一套符号规范下画出的图，才能被不同部门读成同一个意思
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+<Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 符号规范表 */}
+  <Box style={{ width: 660, border: '1px solid #E8E8E8', borderRadius: 4, padding: '20px 24px', flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 12 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>价值流图符号规范表</Text>
+                <Text style={{ fontSize: 14, color: '#8A8F99' }}>示例：合同签订价值流</Text>
+            </Box>
+     <Box style={{ flexDirection: 'column', gap: 9, marginTop: 14, flex: 1 }}>
+    {[
+      { s: 'symbol', t: '价值流主干节点', d: '矩形，实线橙边', r: '每一步必须对应一个岗位或系统动作' },
+           { s: 'diamond', t: '判断 / 分支', d: '菱形，两个出口', r: '出口不超过 3 条，否则拆图' },
+        { s: 'oval', t: '触发事件', d: '椭圆，起点标识', r: '必须来自企业外部动作' },
+   { s: 'dashed', t: '支撑活动', d: '虚线灰边矩形', r: '不占主干但必须执行' },
+    { s: 'arrow', t: '产出物', d: '平行四边形 + 实线箭头', r: '终点必须有产出物' },
+       { s: 'dotted', t: '举措承接关系', d: '点线连到右侧举措标签', r: '挂不上举措即无源之流' },
+].map((it, i) => (
+          <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 14, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 3, padding: '8px 12px' }}>
+       <Box style={{ width: 92, alignItems: 'center' }}>
+     <Box style={{
+       width: it.s === 'diamond' ? 26 : it.s === 'oval' ? 34 : 44,
+                height: it.s === 'diamond' ? 26 : it.s === 'oval' ? 22 : 20,
+    background: it.s === 'dashed' ? 'transparent' : it.s === 'dotted' ? 'transparent' : '#FA4F24',
+       border: it.s === 'dashed' ? '2px dashed #B8BDC7' : it.s === 'dotted' ? '2px dotted #FA4F24' : 'none',
+        transform: it.s === 'diamond' ? 'rotate(45deg)' : 'none',
+    borderRadius: it.s === 'oval' ? 11 : 2,
+    }} />
+       </Box>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', width: 152 }}>{it.t}</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', width: 138 }}>{it.d}</Text>
+       <Text style={{ fontSize: 12, color: '#B8BDC7', flex: 1 }}>{it.r}</Text>
+       </Box>
+   ))}
+            </Box>
+        </Box>
+
+     {/* 右 填写要求 */}
+  <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+            <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '18px 22px', borderLeft: '4px solid #FA4F24' }}>
+    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>使用要求</Text>
+       <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.6, marginTop: 8 }}>
+            ① 每个符号的形状、颜色、线型全企业统一，不允许各部门自定义；<br />
+      ② 节点编号连续，不跳号——跳号通常意味着删过节点，会在评审时暴露；<br />
+     ③ 举措标签统一挂在图右侧，不允许挂在图上遮挡流向。
+         </Text>
+            </Box>
+          <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '20px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>★ 模板的价值</Text>
+  <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.6, marginTop: 10 }}>
+   规范的意义不在于好看，而在于可争议。
+  <Text style={{ fontWeight: 'bold' }}>当一张图各方都能按同一套符号读懂，争论才会回到业务本身</Text>
+  —— 而不是停在「我理解的你画的不一样」。
+  </Text>
+    </Box>
+     </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+ <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+     </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>11 / 30</Text>
+    </Box>
+</Slide>

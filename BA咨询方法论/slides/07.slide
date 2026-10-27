@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      BA 交付的<span style={{ color: '#FA4F24' }}>业务对象</span>，正是 DA/AA/TA 的共同起点
+   </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   四架构不是四份独立文档，而是同一条链上的四段——任何一段断开，后面三段都会跑偏
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 传递链 */}
+        <Box style={{ width: 700, flexDirection: 'column', gap: 10 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>业务对象的四段传递</Text>
+     {[
+            { s: 'BA 业务架构', o: '识别重要人事物', d: '输出业务对象清单与对象关系', c: '#FA4F24' },
+     { s: 'DA 数据架构', o: '业务对象 → L3 核心层', d: '向下生成逻辑实体与属性', c: '#F87D2F' },
+   { s: 'AA 应用架构', o: '对象 → 应用功能边界', d: '一个对象常跨多个应用，一个应用常含多个对象', c: '#FBA15C' },
+{ s: 'TA 技术架构', o: '对象 → 数据存储单元', d: '决定分库分表与读写分离的粒度', c: '#FDC69A' },
+          ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px', gap: 16 }}>
+            <Box style={{ width: 12, height: 60, background: it.c, borderRadius: 2 }} />
+      <Box style={{ width: 148 }}>
+         <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.s}</Text>
+   <Text style={{ fontSize: 13, color: '#FA4F24', marginTop: 4 }}>{it.o}</Text>
+          </Box>
+      <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>{it.d}</Text>
+   {i < 3 && <Text style={{ fontSize: 18, color: '#FA4F24' }}>↓</Text>}
+   </Box>
+         ))}
+    <Box style={{ height: 92, background: '#F7F7F8', borderRadius: 4, padding: '12px 20px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 为什么必须共用对象</Text>
+    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>
+     四个架构各自定义自己的名词，就会出现四套「客户」定义 —— 数据架构叫它客户编号，应用架构叫它 CUST_ID，流程里叫它往来单位。共用业务对象是唯一能终结这类分歧的手段。
+     </Text>
+   </Box>
+     </Box>
+
+        {/* 右 断链风险 */}
+   <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>四种典型断链</Text>
+    {[
+   { t: 'BA 只交组织图', d: '没有能力和对象，后面三段只能靠猜' },
+       { t: 'BA 交能力但无对象', d: '数据架构另起一套对象名，四架构对不上' },
+                { t: '对象无业务定义', d: '同名不同义，最终在集成时爆雷' },
+      { t: '能力与对象无关联', d: '无法回答「这个能力要动哪些数据」' },
+      ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+       <Box style={{ width: 24, height: 24, borderRadius: 12, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{i + 1}</Text>
+      </Box>
+      <Box style={{ flex: 1 }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginTop: 4 }}>{it.d}</Text>
+    </Box>
+  </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+       <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+  </Box>
+    <Text style={{ fontSize: 14, color: '#8A8F99' }}>07 / 30</Text>
+    </Box>
+</Slide>

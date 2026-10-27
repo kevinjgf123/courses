@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之内容：<span style={{ color: '#FA4F24' }}>能力域 / 能力组 / 能力项</span>三层分解
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   三层不是简单的层级缩放，每一层承担的管理动作完全不同
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 14 }}>
+
+        {/* 三层分解 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+ <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>三层分解结构（以「供应链」域为例）</Text>
+    <Box style={{ flexDirection: 'row', gap: 14, flex: 1 }}>
+        {[
+        { l: '能力域', en: 'DOMAIN', c: '#FA4F24', tc: '#FFFFFF', n: '3–5 个', m: '管理动作：对齐业务战略方向、决定投资优先级', v: ['战略与供应链', '产品与供应链', '供应与交付'] },
+       { l: '能力组', en: 'GROUP', c: '#F8622F', tc: '#FFFFFF', n: '每域 3–6 个', m: '管理动作：定义能力边界与协作关系', v: ['计划与预测', '采购与寻源', '制造与履约', '物流与交付'] },
+        { l: '能力项', en: 'CAPABILITY', c: '#FBA15C', tc: '#3A2000', n: '60–120 个', m: '管理动作：评估成熟度、挂指标、进路线图', v: ['需求预测', '供应商准入', '订单排程', '库存周转'] },
+       ].map((it, i) => (
+           <Box key={i} style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+    <Box style={{ flex: 1, background: it.c, borderRadius: 4, padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: it.tc }}>{it.l}</Text>
+        <Text style={{ fontSize: 10, color: it.tc, opacity: 0.8, letterSpacing: 1 }}>{it.en}</Text>
+       </Box>
+        <Text style={{ fontSize: 13, color: it.tc, opacity: 0.9, marginTop: 6 }}>{it.n}</Text>
+   </Box>
+      <Box style={{ flex: 1.4, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5 }}>{it.m}</Text>
+   <Box style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 9 }}>
+      {it.v.map((v, j) => (
+        <Box key={j} style={{ background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 2, padding: '4px 8px' }}>
+   <Text style={{ fontSize: 12, color: '#3A4050' }}>{v}</Text>
+         </Box>
+      ))}
+    </Box>
+       </Box>
+   </Box>
+          ))}
+            </Box>
+    </Box>
+
+        {/* 三条判断 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+{[
+      { t: '为什么不能只有一层', d: '只有「能力项」会变成一张几百行的清单，无法排优先级；只有「能力域」又太粗，落不到指标上。三层各管一件事，才可用。' },
+    { t: '能力域怎么划', d: '按价值流聚类而非按部门划。同一部门的能力可以分属不同域，同一域的能力通常跨多个部门。' },
+      { t: '数量控制的意义', d: '能力项超过 150 个，通常说明把活动也当成了能力；少于 40 个，说明颗粒度过粗，无法定位短板。60–120 是经验区间。' },
+     ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '14px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+        <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 7 }}>{it.d}</Text>
+       </Box>
+       ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+         <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+   </Box>
+  <Text style={{ fontSize: 14, color: '#8A8F99' }}>14 / 30</Text>
+    </Box>
+</Slide>

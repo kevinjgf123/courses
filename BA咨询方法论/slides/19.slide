@@ -1,0 +1,96 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之模板：<span style={{ color: '#FA4F24' }}>能力热力图与评估打分表</span>，一图一表锁定结论
+        </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+  热力图是给人看的，打分表是给流程看的——两者必须由同一份底稿产生，不允许各填一套
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+{/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 热力图 */}
+  <Box style={{ width: 600, border: '1px solid #E8E8E8', borderRadius: 4, padding: '10px 18px', flexDirection: 'column' }}>
+     <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 10 }}>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>能力热力图（域级）</Text>
+       <Text style={{ fontSize: 13, color: '#8A8F99' }}>色块=成熟度 · 数字=重要度</Text>
+            </Box>
+   <Box style={{ flexDirection: 'row', gap: 6, marginTop: 12, flex: 1 }}>
+            <Box style={{ width: 106, flexDirection: 'column', justifyContent: 'space-around' }}>
+  {['战略与供应链', '产品与供应链', '供应与交付'].map((t, i) => (
+   <Box key={i} style={{ height: 50, justifyContent: 'center' }}>
+       <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{t}</Text>
+            </Box>
+       ))}
+            </Box>
+       <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+   {[
+         { s: 'L4', n: 92 }, { s: 'L3', n: 78 }, { s: 'L2', n: 55 },
+  { s: 'L2', n: 40 }, { s: 'L3', n: 61 }, { s: 'L1', n: 22 },
+    { s: 'L5', n: 96 }, { s: 'L4', n: 88 }, { s: 'L4', n: 74 },
+         ].map((c, i) => (
+      <Box key={i} style={{
+ flex: 1, borderRadius: 3, alignItems: 'center', justifyContent: 'center',
+     background: c.s === 'L5' ? '#FA4F24' : c.s === 'L4' ? '#F8622F' : c.s === 'L3' ? '#FBA15C' : c.s === 'L2' ? '#FDC69A' : '#D8DCE3',
+       }}>
+         <Text style={{ fontSize: 19, fontWeight: 'bold', color: c.s === 'L5' || c.s === 'L4' ? '#FFFFFF' : '#3A4050' }}>{c.s}</Text>
+     <Text style={{ fontSize: 10, color: c.s === 'L5' || c.s === 'L4' ? 'rgba(255,255,255,0.85)' : '#3A4050', opacity: 0.9 }}>重要度 {c.n}</Text>
+      </Box>
+     ))}
+       </Box>
+      </Box>
+       <Box style={{ flexDirection: 'row', gap: 12, marginTop: 6, alignItems: 'center' }}>
+<Text style={{ fontSize: 12, color: '#8A8F99' }}>图例</Text>
+    {[
+ { t: 'L1', c: '#D8DCE3' }, { t: 'L2', c: '#FDC69A' }, { t: 'L3', c: '#FBA15C' }, { t: 'L4', c: '#F8622F' }, { t: 'L5', c: '#FA4F24' },
+     ].map((g, i) => (
+    <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+       <Box style={{ width: 18, height: 12, background: g.c, borderRadius: 2 }} />
+      <Text style={{ fontSize: 12, color: '#3A4050' }}>{g.t}</Text>
+    </Box>
+    ))}
+  </Box>
+</Box>
+
+        {/* 右 打分表 */}
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 11 }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>评估打分表</Text>
+    <Box style={{ border: '1px solid #E8E8E8', borderRadius: 4, flex: 1, flexDirection: 'column' }}>
+     {[
+     { k: '能力编号', v: 'CAP-SC-03-012', h: '与能力卡片编号一致' },
+   { k: '能力名称', v: '供应商准入管理', h: '动作+对象' },
+       { k: '成熟度评级', v: 'L3（有正式流程与制度）', h: '五级之一·需附证据' },
+     { k: '重要度评分', v: '88（战略紧密 40 + 价值贡献 28 + 客户可感知 20）', h: '三因子加权' },
+      { k: '评定人 / 日期', v: '采购管理部 张某 / 2026-10-15', h: '可追溯·可复核' },
+   { k: '证据清单', v: '制度 1 份、流程图 1 张、系统截图 2 张、指标数据 12 个月', h: '无证据降一级' },
+     ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', padding: '0 10px' }}>
+     <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', width: 76 }}>{it.k}</Text>
+    <Text style={{ fontSize: 11, color: '#3A4050', flex: 1, lineHeight: 1.3 }}>{it.v}</Text>
+    <Text style={{ fontSize: 10, color: '#B8BDC7', width: 94, textAlign: 'right', lineHeight: 1.3 }}>{it.h}</Text>
+       </Box>
+  ))}
+       </Box>
+  <Box style={{ height: 92, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '10px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>★ 两条硬规则</Text>
+    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 6 }}>
+   ① 无证据的评级一律降一级；<br />
+     ② 重要度三因子得分必须写出来，不允许只给总分。
+  </Text>
+       </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · BA业务架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>19 / 30</Text>
+    </Box>
+</Slide>
