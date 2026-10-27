@@ -1,0 +1,24 @@
+<Slide style={{ width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)', position: 'relative', padding: 0 }}>
+    <Box style={{ position: 'absolute', top: 118, left: 60 }}>
+        <Text style={{ fontSize: 300, fontWeight: 'bold', color: 'rgba(255,255,255,0.07)', lineHeight: 1.0 }}>
+            05
+        </Text>
+    </Box>
+    <Box style={{ position: 'absolute', top: 268, left: 640, width: 5, height: 152, background: '#FA4F24' }} />
+    <Box style={{ position: 'absolute', top: 276, left: 688, width: 538 }}>
+        <Text style={{ fontSize: 64, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.1 }}>
+            AA 咨询方法论
+        </Text>
+        <Text style={{ fontSize: 20, color: 'rgba(255,255,255,0.62)', marginTop: 18, letterSpacing: 2 }}>
+            APPLICATION ARCHITECTURE
+        </Text>
+        <Text style={{ fontSize: 20, color: 'rgba(255,255,255,0.86)', marginTop: 22, lineHeight: 1.5 }}>
+            能力映射应用组合与四态决策：方法、内容、模板
+        </Text>
+    </Box>
+    <Box style={{ position: 'absolute', bottom: 0, left: 0, width: 1280, height: 6, background: '#FA4F24' }} />
+    <Box style={{ position: 'absolute', bottom: 42, left: 688, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+    </Box>
+</Slide>

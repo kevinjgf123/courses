@@ -1,0 +1,64 @@
+<Slide style={{ width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)', position: 'relative', padding: 0 }}>
+    {/* 右侧橙红几何带 - 骑线切入（封面镜像） */}
+    <Box style={{
+        position: 'absolute', top: 0, right: 0, width: 470, height: 720,
+        background: 'linear-gradient(200deg, #FA4F24 0%, #F87D2F 100%)',
+    }} />
+    <Box style={{
+        position: 'absolute', top: 0, right: 412, width: 120, height: 720,
+        background: '#0F1423', transform: 'rotate(-9deg)',
+    }} />
+
+    {/* 左上品牌角标 */}
+    <Box style={{ position: 'absolute', top: 72, right: 64, width: 300, alignItems: 'flex-end' }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF', letterSpacing: 2 }}>
+            BOULDERAI
+        </Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', marginTop: 6, letterSpacing: 1 }}>
+            TECHNOLOGIES · SOLUTION
+        </Text>
+    </Box>
+
+    {/* 主金句区 */}
+    <Box style={{ position: 'absolute', top: 214, left: 88, width: 720, flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, color: '#F87D2F', letterSpacing: 4 }}>CONCLUSION · 结语</Text>
+        <Text style={{ fontSize: 54, fontWeight: 'bold', color: '#FFFFFF', marginTop: 26, lineHeight: 1.32 }}>
+            架构的确定性，
+            <br />
+            是转型唯一
+            <br />
+            <span style={{ color: '#FA4F24' }}>可复用的资产。</span>
+        </Text>
+        <Box style={{ width: 108, height: 5, background: '#FA4F24', marginTop: 32 }} />
+        <Text style={{ fontSize: 21, color: 'rgba(255,255,255,0.82)', marginTop: 30, lineHeight: 1.65 }}>
+            业务会变、技术会换，唯有被清晰定义的架构可以沉淀下来 ——
+            <br />
+            让每一次转型都不必从零开始。
+        </Text>
+    </Box>
+
+    {/* 左下角标 4A 回顾 */}
+    <Box style={{ position: 'absolute', bottom: 76, left: 88, width: 720, flexDirection: 'row', gap: 14 }}>
+        {['BA 业务架构', 'DA 数据架构', 'AA 应用架构', 'TA 技术架构'].map((t, i) => (
+            <Box key={i} style={{ border: '1px solid rgba(255,255,255,0.32)', borderRadius: 3, padding: '8px 16px' }}>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.9)' }}>{t}</Text>
+            </Box>
+        ))}
+    </Box>
+
+    {/* 右下巨型装饰字 */}
+    <Box style={{ position: 'absolute', bottom: 60, right: 76 }}>
+        <Text style={{ fontSize: 128, fontWeight: 'bold', color: 'rgba(255,255,255,0.2)', lineHeight: 1.0 }}>
+            EA
+        </Text>
+    </Box>
+
+    {/* 页脚 */}
+    <Box style={{ position: 'absolute', bottom: 26, left: 88, width: 1104, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>26 / 26</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,61 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', position: 'relative', padding: 0 }}>
+    {/* 左侧橙红几何带 - 骑线切入 */}
+    <Box style={{
+        position: 'absolute', top: 0, left: 0, width: 470, height: 720,
+        background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+    }} />
+    {/* 几何带缺口 - 白色斜切 */}
+    <Box style={{
+        position: 'absolute', top: 0, left: 412, width: 120, height: 720,
+        background: '#FFFFFF', transform: 'rotate(9deg)',
+    }} />
+    {/* 右侧细橙装饰线 */}
+    <Box style={{
+        position: 'absolute', top: 96, right: 96, width: 4, height: 88, background: '#FA4F24',
+    }} />
+
+    {/* 左侧品牌区 */}
+    <Box style={{ position: 'absolute', top: 72, left: 64, width: 300 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF', letterSpacing: 2 }}>
+            BOULDERAI
+        </Text>
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)', marginTop: 6, letterSpacing: 1 }}>
+            TECHNOLOGIES · SOLUTION
+        </Text>
+    </Box>
+
+    {/* 左侧竖向大字 */}
+    <Box style={{ position: 'absolute', bottom: 96, left: 64, width: 300 }}>
+        <Text style={{ fontSize: 88, fontWeight: 'bold', color: 'rgba(255,255,255,0.22)', lineHeight: 1.0 }}>
+            EA
+        </Text>
+        <Text style={{ fontSize: 15, color: '#FFFFFF', marginTop: 12, letterSpacing: 1 }}>
+            企业架构咨询方法论
+        </Text>
+    </Box>
+
+    {/* 右侧主标题区 */}
+    <Box style={{ position: 'absolute', top: 218, left: 620, width: 600 }}>
+        <Text style={{ fontSize: 76, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.2 }}>
+            EA企业架构
+            <br />
+            <span style={{ color: '#FA4F24' }}>咨询方法论</span>
+        </Text>
+        <Box style={{ width: 96, height: 5, background: '#FA4F24', marginTop: 28 }} />
+        <Text style={{ fontSize: 22, color: '#3A4050', marginTop: 26, lineHeight: 1.6 }}>
+            以「业务对象」为锚点，打通业务战略与 IT 投资的四层架构治理体系
+        </Text>
+    </Box>
+
+    {/* 右下依据与版本 */}
+    <Box style={{ position: 'absolute', bottom: 72, left: 620, width: 596 }}>
+        <Text style={{ fontSize: 16, color: '#8A8F99', lineHeight: 1.7 }}>
+            方法论依据：《华为数据之道》（华为公司数据管理部 著）
+            <br />
+            BA · DA · AA · TA 四层架构 | 方法 / 内容 / 模板 三段式作业标准
+        </Text>
+        <Text style={{ fontSize: 14, color: '#B4B8C0', marginTop: 10 }}>
+            硕磐智能 · 咨询交付版 · 2026.10
+        </Text>
+    </Box>
+</Slide>

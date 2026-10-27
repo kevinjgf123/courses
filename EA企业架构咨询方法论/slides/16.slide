@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            信息架构<span style={{ color: '#FA4F24' }}>四组件</span>：目录 · 标准 · 模型 · 分布
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            四组件不是四份文档，而是回答「有哪些数据、怎么统一、如何关联、存在哪里」的一套规范
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左巨型锚点 5 层 + 右四组件 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 30 }}>
+
+        {/* 左 30% 5 层锚点 */}
+        <Box style={{ flex: 30, flexDirection: 'column', justifyContent: 'center' }}>
+            <Text style={{
+                fontSize: 104, fontWeight: 'bold', lineHeight: 1.0,
+                backgroundImage: 'linear-gradient(135deg, #FA4F24 0%, #F87D2F 100%)',
+                backgroundClip: 'text', color: 'transparent',
+            }}>
+                5
+            </Text>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0F1423', marginTop: 8 }}>
+                层数据资产目录
+            </Text>
+            <Box style={{ width: 52, height: 4, background: '#FA4F24', marginTop: 12 }} />
+            <Text style={{ fontSize: 17, color: '#3A4050', marginTop: 14, lineHeight: 1.6 }}>
+                L1 主题域分组 → L2 主题域 → L3 业务对象 → L4 逻辑实体 → L5 属性
+            </Text>
+            <Text style={{ fontSize: 16, color: '#8A8F99', marginTop: 10, lineHeight: 1.55 }}>
+                L3 业务对象是信息架构的核心层，也是与 BA / AA / TA 集成的接口。
+            </Text>
+        </Box>
+
+        {/* 右 70% 四组件 */}
+        <Box style={{ flex: 70, flexDirection: 'column', gap: 10 }}>
+            {[
+                { n: '01', t: '数据资产目录', en: 'ASSET CATALOG', d: '形成企业数据地图，识别数据管理责任、解决归属争议、避免重复建设。五层分类是它的骨架。', k: '理清资产 · 识别责任' },
+                { n: '02', t: '数据标准', en: 'DATA STANDARD', d: '统一业务侧语言与理解，每个标准须覆盖业务视角（定义用途）、技术视角（类型长度）、管理视角（责任主体）。', k: '统一语言 · 三视角约束' },
+                { n: '03', t: '数据模型', en: 'DATA MODEL', d: '从数据视角模拟现实世界：概念模型对齐业务对象、逻辑模型固化规则、物理模型落到表结构。', k: '概念→逻辑→物理' },
+                { n: '04', t: '数据分布', en: 'DATA DISTRIBUTION', d: '定义唯一权威数据源与 CRUD 流转，描述信息链与数据流，让数据血缘可追溯。', k: '单一可信源 · 血缘可追' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: i === 0 ? 'rgba(250,79,36,0.1)' : '#F7F7F8', borderRadius: 4, padding: '12px 20px', gap: 16, borderLeft: '5px solid ' + (i === 0 ? '#FA4F24' : '#F87D2F') }}>
+                    <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FA4F24', width: 54 }}>{it.n}</Text>
+                    <Box style={{ width: 176 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                        <Text style={{ fontSize: 12, color: '#8A8F99', letterSpacing: 1 }}>{it.en}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 16, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ width: 138, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 8px' }}>
+                        <Text style={{ fontSize: 13, color: '#C43A17', textAlign: 'center' }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>16 / 26</Text>
+    </Box>
+</Slide>

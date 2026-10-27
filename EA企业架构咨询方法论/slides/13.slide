@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            BA 之模板：<span style={{ color: '#FA4F24' }}>能力卡片</span>与价值流图标准样式
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            模板的价值在于「字段即标准」—— 填不出某个字段，说明该能力还没真正被想清楚
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 上大图 + 下方卡片 */}
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 16 }}>
+
+        {/* 上：能力卡片模板 */}
+        <Box style={{ flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>模板 A · 业务能力卡片</Text>
+            <Box style={{ flexDirection: 'row', gap: 12, height: 168 }}>
+                {/* 卡片头部 */}
+                <Box style={{ width: 236, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: 18, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>CAPABILITY CARD</Text>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF', marginTop: 8 }}>能力卡片</Text>
+                    <Box style={{ marginTop: 'auto' }}>
+                        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+                            示例：订单履约能力
+                            <br />
+                            能力域：供应链 · 成熟度 3.2
+                        </Text>
+                    </Box>
+                </Box>
+                {/* 字段区 */}
+                {[
+                    { f: '能力编号', v: 'BA-SCM-014', note: '全局唯一，与资产目录一致' },
+                    { f: '能力定义', v: '按承诺时点交付订单', note: '一句话说清做什么' },
+                    { f: '业务规则', v: '信用额度校验 / 库存锁定', note: '规则数字化入口' },
+                    { f: '度量指标', v: '准时交付率 ≥ 98%', note: '可量化的 KPI' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24' }}>{it.f}</Text>
+                        <Text style={{ fontSize: 16, color: '#0F1423', marginTop: 8, lineHeight: 1.4 }}>{it.v}</Text>
+                        <Box style={{ marginTop: 'auto' }}>
+                            <Text style={{ fontSize: 13, color: '#8A8F99' }}>{it.note}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：价值流图符号规范 + 使用说明 */}
+        <Box style={{ flexDirection: 'column', gap: 10, flex: 1 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>模板 B · 价值流图符号规范</Text>
+            <Box style={{ flexDirection: 'row', gap: 12, flex: 1 }}>
+                {/* 符号示意 */}
+                <Box style={{ flex: 62, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                    {[
+                        { s: '▭', t: '价值阶段', d: '标准矩形' },
+                        { s: '◆', t: '里程碑', d: '菱形节点' },
+                        { s: '▷', t: '交付物', d: '右三角' },
+                        { s: '⟶', t: '流转方向', d: '实线箭头' },
+                        { s: '⤳', t: '断点/返工', d: '虚线回路' },
+                    ].map((it, i) => (
+                        <Box key={i} style={{ flex: 1, flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                            <Text style={{ fontSize: 28, color: '#FA4F24' }}>{it.s}</Text>
+                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', textAlign: 'center' }}>{it.t}</Text>
+                            <Text style={{ fontSize: 13, color: '#8A8F99', textAlign: 'center' }}>{it.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                {/* 使用说明 */}
+                <Box style={{ flex: 38, background: 'rgba(250,79,36,0.08)', borderRadius: 4, padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24', marginBottom: 8 }}>填写要求</Text>
+                    <Text style={{ fontSize: 15, color: '#0F1423', lineHeight: 1.6 }}>
+                        ① 每个阶段必须标注输入与输出交付物；<br />
+                        ② 断点与返工必须显式画出，不得美化；<br />
+                        ③ 阶段数控制在 5–8 个，避免过细。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>13 / 26</Text>
+    </Box>
+</Slide>

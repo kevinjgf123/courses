@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            DA 之方法：基于<span style={{ color: '#FA4F24' }}>业务对象</span>的信息架构设计法
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            业务对象是业务架构与数据架构的「共同语言」—— 先定对象，再谈标准与模型
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右四步 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 24 }}>
+
+        {/* 左 32% */}
+        <Box style={{
+            width: 336, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 28, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>DATA ARCHITECTURE</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+                    DA
+                    <br />
+                    数据架构
+                </Text>
+            </Box>
+            <Box>
+                <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+                <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+                    先有「治」（标准、模型、分布），才有「存」（按架构入湖落仓）。没有信息架构这张蓝图，数据底座就是一潭浑水。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 68% 四步 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>四步作业法</Text>
+            {[
+                { n: '01', t: '业务对象识别', d: '按四标准判定：重要人事 物 / 唯一标识 / 相对独立有属性 / 可实例化。', k: '业务对象清单' },
+                { n: '02', t: '资产目录分层', d: '按 L1 主题域分组 → L2 主题域 → L3 业务对象 → L4 逻辑实体 → L5 属性 五层落位。', k: '数据资产目录' },
+                { n: '03', t: '标准与模型设计', d: '定业务/技术/管理三视角数据标准；设计概念、逻辑、物理三层模型。', k: '数据标准 + 三层模型' },
+                { n: '04', t: '数据分布规划', d: '以 CRUD 矩阵锁定唯一权威数据源，理清信息链与数据流。', k: '数据分布图 + 数据源清单' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '12px 20px', gap: 18, borderLeft: '4px solid #FA4F24' }}>
+                    <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FA4F24', width: 56 }}>{it.n}</Text>
+                    <Box style={{ width: 168 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 16, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ width: 152, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 8px' }}>
+                        <Text style={{ fontSize: 13, color: '#C43A17', textAlign: 'center' }}>{it.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>15 / 26</Text>
+    </Box>
+</Slide>

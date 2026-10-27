@@ -1,0 +1,81 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            业务战略与 IT 战略必须<span style={{ color: '#FA4F24' }}>双向对齐、同源同频</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            每一条 IT 投资都必须能追溯到一条业务目标 —— 这是企业架构存在的唯一理由
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 非对称双栏 60:40 */}
+    <Box style={{ paddingTop: 26, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 30 }}>
+
+        {/* 左 60% 对齐矩阵 */}
+        <Box style={{ flex: 60, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423', marginBottom: 14 }}>
+                业务战略 ↔ IT 战略 映射矩阵
+            </Text>
+            <Box style={{ flexDirection: 'column', gap: 9 }}>
+                {[
+                    { bt: '市场增长', bd: '进入新区域 / 新客群', it: '多渠道前端 + 数据洞察', link: '强' },
+                    { bt: '成本领先', bd: '流程自动化、集中采购', it: '流程引擎 + 主数据统一', link: '强' },
+                    { bt: '产品创新', bd: '快速试错、缩短上市周期', it: '模块化应用 + 云原生底座', link: '中' },
+                    { bt: '风险合规', bd: '可信经营、审计可追溯', it: '数据安全分级 + 血缘追溯', link: '强' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ height: 71, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4 }}>
+                        <Box style={{ width: 176, paddingLeft: 18, flexDirection: 'column' }}>
+                            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FA4F24' }}>{it.bt}</Text>
+                            <Text style={{ fontSize: 15, color: '#8A8F99' }}>{it.bd}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 20, color: '#C9CBD1', width: 40, textAlign: 'center' }}>→</Text>
+                        <Text style={{ fontSize: 17, color: '#0F1423', flex: 1, paddingRight: 12 }}>{it.it}</Text>
+                        <Box style={{ width: 62, background: it.link === '强' ? '#FA4F24' : 'rgba(250,79,36,0.25)', margin: 8, borderRadius: 3, padding: '5px 0' }}>
+                            <Text style={{ fontSize: 14, color: it.link === '强' ? '#FFFFFF' : '#C43A17', textAlign: 'center' }}>{it.link}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+
+            {/* 判断条 */}
+            <Box style={{ marginTop: 12, background: 'rgba(250,79,36,0.08)', borderLeft: '4px solid #FA4F24', borderRadius: 3, padding: '14px 20px' }}>
+                <Text style={{ fontSize: 17, color: '#0F1423', lineHeight: 1.5 }}>
+                    <span style={{ fontWeight: 'bold', color: '#FA4F24' }}>判断：</span>
+                    对齐度不足的根因往往不是技术，而是业务战略本身没有说清优先级 —— 先补战略，再谈架构。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 40% 四条对齐准则 */}
+        <Box style={{ flex: 40, flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>
+                四条对齐准则
+            </Text>
+            {[
+                { n: '01', t: '目标可追溯', d: '每个 IT 项目挂载业务战略目标，无对应不予立项。' },
+                { n: '02', t: '口径统一', d: '业务与 IT 共用一套业务对象与指标定义。' },
+                { n: '03', t: '能力为桥', d: '以业务能力为中间语言，翻译战略意图。' },
+                { n: '04', t: '节奏匹配', d: 'IT 交付节奏必须匹配业务窗口。' },
+            ].map((it, i) => (
+                <Box key={i} style={{ height: 92, background: '#F7F7F8', borderRadius: 4, padding: '10px 16px', flexDirection: 'row', gap: 12 }}>
+                    <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FA4F24', width: 44 }}>{it.n}</Text>
+                    <Box style={{ flex: 1, flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                        <Text style={{ fontSize: 16, color: '#3A4050', marginTop: 7, lineHeight: 1.45 }}>{it.d}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>09 / 26</Text>
+    </Box>
+</Slide>

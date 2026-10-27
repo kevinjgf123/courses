@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            咨询作业分<span style={{ color: '#FA4F24' }}>五步</span>：从愿景到路线图
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            每一步都以「可评审的交付物」收口，避免咨询成果停留在访谈纪要
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右五步流程 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 24 }}>
+
+        {/* 左 30% 标题栏 */}
+        <Box style={{
+            width: 316, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+            borderRadius: 4, padding: 28, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+                <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>CONSULTING PROCESS</Text>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+                    五步法
+                    <br />
+                    作业流程
+                </Text>
+            </Box>
+            <Box>
+                <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+                <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+                    先对齐愿景与战略，再逐层展开 BA / DA / AA / TA，最后收口为可执行的迁移路线图。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 右 70% 五步 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 10, justifyContent: 'center' }}>
+            {[
+                { s: 'Step 1', t: '愿景与战略对齐', d: '访谈高层，锁定业务愿景、战略目标与 KPI 基线，形成战略输入清单。', out: '战略输入清单' },
+                { s: 'Step 2', t: '业务架构建模（BA）', d: '价值流拆解 → 能力识别 → 能力评估，输出业务能力地图。', out: '能力地图 + 价值流图' },
+                { s: 'Step 3', t: '数据架构设计（DA）', d: '基于业务对象识别资产目录、统一定义标准、设计模型与分布。', out: '信息架构四件套' },
+                { s: 'Step 4', t: '应用与技术架构（AA/TA）', d: '能力映射应用组合、评估冗余；技术分层选型与部署视图设计。', out: '应用组合清单 + 技术标准' },
+                { s: 'Step 5', t: '差距分析与路线图', d: 'AS-IS 与 TO-BE 对比，拆解为可排序、可投资、可考核的举措。', out: '架构路线图 + 投资建议' },
+            ].map((it, i) => (
+                <Box key={i} style={{
+                    flex: 1, flexDirection: 'row', alignItems: 'center', gap: 16,
+                    padding: '8px 18px', background: '#F7F7F8', borderRadius: 4,
+                }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FA4F24', width: 68 }}>{it.s}</Text>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', width: 190 }}>{it.t}</Text>
+                    <Text style={{ fontSize: 16, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{it.d}</Text>
+                    <Box style={{ width: 152, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '5px 8px' }}>
+                        <Text style={{ fontSize: 13, color: '#C43A17', textAlign: 'center' }}>{it.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>06 / 26</Text>
+    </Box>
+</Slide>

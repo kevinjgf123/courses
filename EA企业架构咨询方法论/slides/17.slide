@@ -1,0 +1,101 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            DA 之模板：资产目录、<span style={{ color: '#FA4F24' }}>标准卡</span>与 CRUD 矩阵
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            CRUD 矩阵是过程性工具，数据源是结论性设计 —— 发现多个「C」才能锁定唯一权威源
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 非对称双栏 60:40 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 26 }}>
+
+        {/* 左 60% 资产目录 + 标准卡 */}
+        <Box style={{ flex: 60, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>模板 A · 五层数据资产目录</Text>
+            <Box style={{ height: 174, flexDirection: 'column', gap: 6 }}>
+                {[
+                    { l: 'L1', t: '主题域分组 · 公司数据 Owner', bg: '#B32C0C', c: '#FFFFFF' },
+                    { l: 'L2', t: '主题域 · 领域数据 Owner', bg: '#FA4F24', c: '#FFFFFF' },
+                    { l: 'L3', t: '业务对象 · 业务对象 Owner（核心层）', bg: '#F87D2F', c: '#FFFFFF' },
+                    { l: 'L4', t: '逻辑实体 · 数据管家', bg: '#FBA47A', c: '#3A1A0A' },
+                    { l: 'L5', t: '属性 · 数据管家', bg: '#FDD5BE', c: '#3A1A0A' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.bg, borderRadius: 3, paddingLeft: 16, gap: 16 }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.c, width: 32 }}>{it.l}</Text>
+                        <Text style={{ fontSize: 16, color: it.c }}>{it.t}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423', marginTop: 2 }}>模板 B · 数据标准卡</Text>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', flexDirection: 'row', gap: 20 }}>
+                {[
+                    { v: '业务视角', d: '业务定义与用途、业务规则、同义词（统一语言）' },
+                    { v: '技术视角', d: '数据类型、长度、允许值（约束 IT 实施）' },
+                    { v: '管理视角', d: '规则责任主体、维护主体、监控主体（明确责任）' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, flexDirection: 'column', borderLeft: '3px solid #FA4F24', paddingLeft: 12 }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FA4F24' }}>{it.v}</Text>
+                        <Text style={{ fontSize: 15, color: '#3A4050', marginTop: 8, lineHeight: 1.5 }}>{it.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 右 40% CRUD 矩阵 */}
+        <Box style={{ flex: 40, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423', marginBottom: 12 }}>模板 C · CRUD 矩阵</Text>
+            <Box style={{ flexDirection: 'column', gap: 5 }}>
+                {/* 表头 */}
+                <Box style={{ height: 34, flexDirection: 'row', gap: 5 }}>
+                    <Box style={{ flex: 3 }}><Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>业务对象 / 应用</Text></Box>
+                    {['ERP', 'CRM', 'MES', 'WMS'].map((t, i) => (
+                        <Box key={i} style={{ flex: 1, background: '#0F1423', borderRadius: 2, justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 13, color: '#FFFFFF', textAlign: 'center' }}>{t}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                {[
+                    { o: '客户', v: ['C', 'C', 'R', '—'] },
+                    { o: '销售订单', v: ['C', 'R', 'R', 'R'] },
+                    { o: '物料', v: ['C', 'R', 'R', 'R'] },
+                    { o: '库存', v: ['R', '—', 'C', 'C'] },
+                    { o: '发票', v: ['C', 'R', '—', '—'] },
+                ].map((row, i) => (
+                    <Box key={i} style={{ height: 34, flexDirection: 'row', gap: 5 }}>
+                        <Box style={{ flex: 3, justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 14, color: '#0F1423' }}>{row.o}</Text>
+                        </Box>
+                        {row.v.map((v, j) => (
+                            <Box key={j} style={{ flex: 1, background: v === 'C' ? 'rgba(250,79,36,0.85)' : v === 'R' ? '#F1F2F4' : '#FBFBFC', borderRadius: 2, justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 14, fontWeight: v === 'C' ? 'bold' : 'normal', color: v === 'C' ? '#FFFFFF' : '#5A5F6B', textAlign: 'center' }}>{v}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ marginTop: 12, background: 'rgba(250,79,36,0.08)', borderLeft: '4px solid #FA4F24', borderRadius: 3, padding: '12px 16px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 16, color: '#0F1423', lineHeight: 1.5 }}>
+                    <span style={{ fontWeight: 'bold', color: '#FA4F24' }}>判断：</span>
+                    「客户」与「销售订单」均出现多个 C —— 数据源不清晰，必须治理到唯一创建方。
+                </Text>
+                <Text style={{ fontSize: 14, color: '#8A8F99' }}>
+                    C 创建 · R 读取 · U 更新 · D 删除
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>17 / 26</Text>
+    </Box>
+</Slide>

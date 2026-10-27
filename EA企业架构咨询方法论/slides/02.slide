@@ -1,0 +1,57 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 标题块 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            本方法论覆盖<span style={{ color: '#FA4F24' }}>六个主干模块</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            从方法论总纲到四层架构逐层落地 —— 每层均含「方法 / 内容 / 模板」三段式作业标准
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 目录 2 行 × 3 列 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, flexDirection: 'column', gap: 20, height: 479 }}>
+        {[
+            [
+                { no: '01', name: '方法论总体介绍', desc: '以业务对象为唯一锚点，构建方法—内容—模板的三段式作业闭环。' },
+                { no: '02', name: '业务愿景和战略', desc: '愿景定义「去哪」，战略回答「怎么去」，KPI 锁定如何度量。' },
+                { no: '03', name: 'BA 咨询方法论', desc: '价值流拆解与业务能力建模，输出能力地图与组织映射。' },
+            ],
+            [
+                { no: '04', name: 'DA 咨询方法论', desc: '基于业务对象设计信息架构：目录、标准、模型、分布四组件。' },
+                { no: '05', name: 'AA 咨询方法论', desc: '能力映射应用组合，以建 / 买 / 集成 / 退役四态决策治理。' },
+                { no: '06', name: 'TA 咨询方法论', desc: '以架构的确定性应对技术的不确定性，输出选型与演进路线。' },
+            ],
+        ].map((row, ri) => (
+            <Box key={ri} style={{ flexDirection: 'row', gap: 20, flex: 1 }}>
+                {row.map((it, i) => (
+                    <Box key={i} style={{
+                        flex: 1, flexDirection: 'row', alignItems: 'flex-start',
+                        padding: 24, background: '#F7F7F8', borderRadius: 4,
+                        borderLeft: '5px solid #FA4F24',
+                    }}>
+                        <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#FA4F24', lineHeight: 1.0, width: 78 }}>
+                            {it.no}
+                        </Text>
+                        <Box style={{ flexDirection: 'column', flex: 1 }}>
+                            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#0F1423' }}>{it.name}</Text>
+                            <Text style={{ fontSize: 18, color: '#3A4050', marginTop: 10, lineHeight: 1.5 }}>
+                                {it.desc}
+                            </Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        ))}
+    </Box>
+
+    {/* C 区 页脚 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>02 / 26</Text>
+    </Box>
+</Slide>

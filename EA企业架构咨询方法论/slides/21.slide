@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            AA 之模板：应用卡片与<span style={{ color: '#FA4F24' }}>建·买·集成·退役</span>决策表
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            决策表把「拍脑袋」变成「按标准判定」—— 四个字段就能定一个应用的去向
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 上大图 + 下方卡片 */}
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 16 }}>
+
+        {/* 上：应用卡片模板 */}
+        <Box style={{ flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>模板 A · 应用卡片</Text>
+            <Box style={{ flexDirection: 'row', gap: 12, height: 164 }}>
+                <Box style={{ width: 232, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: 18, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>APPLICATION CARD</Text>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF', marginTop: 8 }}>应用卡片</Text>
+                    <Box style={{ marginTop: 'auto' }}>
+                        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+                            示例：订单中心
+                            <br />
+                            承载能力：订单履约 · 决策：保留
+                        </Text>
+                    </Box>
+                </Box>
+                {[
+                    { f: '应用编号', v: 'AA-ORD-001', note: '全局唯一' },
+                    { f: '承载能力', v: '订单履约（BA-SCM-014）', note: '必须挂到能力' },
+                    { f: '技术健康度', v: 'B（主流栈 / 可维护）', note: 'A→D 四级' },
+                    { f: '业务价值', v: 'A（核心关键）', note: '与能力重要度一致' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24' }}>{it.f}</Text>
+                        <Text style={{ fontSize: 16, color: '#0F1423', marginTop: 8, lineHeight: 1.4 }}>{it.v}</Text>
+                        <Box style={{ marginTop: 'auto' }}>
+                            <Text style={{ fontSize: 13, color: '#8A8F99' }}>{it.note}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：四态决策表 */}
+        <Box style={{ flexDirection: 'column', gap: 10, flex: 1 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>模板 B · 建 · 买 · 集成 · 退役 决策表</Text>
+            <Box style={{ flexDirection: 'row', gap: 12, flex: 1 }}>
+                {[
+                    { k: '建 Build', when: '核心能力 + 无成熟产品', sig: '战略价值高 / 差异化强', c: '#FA4F24' },
+                    { k: '买 Buy', when: '非核心 + 市场成熟', sig: '可标准化 / 采购成本优', c: '#F87D2F' },
+                    { k: '集成 Integrate', when: '已有系统可复用', sig: '接口可打通 / 改造成本低', c: '#FBA47A' },
+                    { k: '退役 Retire', when: '低价值 + 高维护成本', sig: '功能可替代 / 用户少', c: '#0F1423' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '16px 18px', flexDirection: 'column', borderTop: '4px solid ' + it.c }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.c }}>{it.k}</Text>
+                        <Text style={{ fontSize: 16, color: '#0F1423', marginTop: 12, lineHeight: 1.45 }}>{it.when}</Text>
+                        <Box style={{ marginTop: 'auto', background: 'rgba(250,79,36,0.08)', borderRadius: 3, padding: '8px 10px' }}>
+                            <Text style={{ fontSize: 14, color: '#C43A17' }}>判定信号：{it.sig}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>21 / 26</Text>
+    </Box>
+</Slide>

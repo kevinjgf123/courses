@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            方法论以<span style={{ color: '#FA4F24' }}>「业务对象」</span>为唯一锚点贯穿四层
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            四层架构不是四份独立文档，而是同一套业务对象在不同抽象层的展开
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 非对称双栏 65:35 */}
+    <Box style={{ paddingTop: 26, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 28 }}>
+
+        {/* 左 65% 三段式作业闭环 */}
+        <Box style={{ flex: 65, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0F1423', marginBottom: 16 }}>
+                三段式作业闭环：方法 → 内容 → 模板
+            </Text>
+            <Box style={{ flexDirection: 'column', gap: 14, flex: 1 }}>
+                {[
+                    { k: '方法', en: 'METHOD', d: '回答「怎么做」。定义作业步骤、输入输出与判定标准，避免咨询成果因人而异。', c: '#FA4F24' },
+                    { k: '内容', en: 'CONTENT', d: '回答「做什么」。明确该层架构必须交付的结构化清单与关键要素，杜绝漏项。', c: '#F87D2F' },
+                    { k: '模板', en: 'TEMPLATE', d: '回答「做成什么样」。给出标准样式与填写要求，保证跨项目、跨团队成果可比可复用。', c: '#FBA47A' },
+                ].map((it, i) => (
+                    <Box key={i} style={{
+                        flex: 1, flexDirection: 'row', alignItems: 'center',
+                        background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '18px 24px', gap: 20,
+                    }}>
+                        <Box style={{ width: 92, flexDirection: 'column' }}>
+                            <Text style={{ fontSize: 26, fontWeight: 'bold', color: it.c }}>{it.k}</Text>
+                            <Text style={{ fontSize: 13, color: '#8A8F99', letterSpacing: 1 }}>{it.en}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 18, color: '#3A4050', lineHeight: 1.55, flex: 1 }}>{it.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 右 35% 三条设计总则 */}
+        <Box style={{ flex: 35, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0F1423', marginBottom: 16 }}>
+                三条设计总则
+            </Text>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+                {[
+                    { n: '①', t: '业务主导', d: '数据与架构的责任主体在业务，不在 IT。' },
+                    { n: '②', t: '企业视角', d: '跳出部门与系统边界，避免新的烟囱式建设。' },
+                    { n: '③', t: '同源共享', d: '一个对象一个 Owner，一份数据一个权威源。' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FA4F24' }}>{it.n} {it.t}</Text>
+                        <Text style={{ fontSize: 17, color: '#3A4050', marginTop: 10, lineHeight: 1.5 }}>{it.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>05 / 26</Text>
+    </Box>
+</Slide>

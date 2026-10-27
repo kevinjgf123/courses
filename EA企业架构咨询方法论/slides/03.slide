@@ -1,0 +1,90 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            四层架构共同回答<span style={{ color: '#FA4F24' }}>「战略如何落到系统」</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            业务架构是基础，数据架构是枢纽，应用架构是载体，技术架构是底座
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左侧巨型锚点 + 右侧四层架构图 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 32 }}>
+
+        {/* 左：巨型锚点数字 4A */}
+        <Box style={{ width: 232, flexDirection: 'column', justifyContent: 'center' }}>
+            <Text style={{
+                fontSize: 128, fontWeight: 'bold', lineHeight: 1.0,
+                backgroundImage: 'linear-gradient(135deg, #FA4F24 0%, #F87D2F 100%)',
+                backgroundClip: 'text', color: 'transparent',
+            }}>
+                4A
+            </Text>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0F1423', marginTop: 12 }}>
+                企业架构四层模型
+            </Text>
+            <Box style={{ width: 56, height: 4, background: '#FA4F24', marginTop: 14 }} />
+            <Text style={{ fontSize: 17, color: '#3A4050', marginTop: 16, lineHeight: 1.6 }}>
+                逐层分解、双向校验 —— 上层定「做什么」，下层答「怎么实现」。
+            </Text>
+        </Box>
+
+        {/* 右：四层堆叠架构图（SVG 骨架 + 独立文本层） */}
+        <Box style={{ flex: 1, position: 'relative' }}>
+            <svg width="840" height="330" style={{ position: 'absolute', top: 0, left: 0 }}>
+                {/* 层 1 BA */}
+                <rect x="0" y="0" width="620" height="72" rx="4" fill="#FA4F24" />
+                <rect x="636" y="0" width="204" height="72" rx="4" fill="none" stroke="#FA4F24" strokeWidth="1.5" />
+                {/* 层 2 DA */}
+                <rect x="0" y="86" width="620" height="72" rx="4" fill="#F87D2F" />
+                <rect x="636" y="86" width="204" height="72" rx="4" fill="none" stroke="#F87D2F" strokeWidth="1.5" />
+                {/* 层 3 AA */}
+                <rect x="0" y="172" width="620" height="72" rx="4" fill="#FBA47A" />
+                <rect x="636" y="172" width="204" height="72" rx="4" fill="none" stroke="#FBA47A" strokeWidth="1.5" />
+                {/* 层 4 TA */}
+                <rect x="0" y="258" width="620" height="72" rx="4" fill="#FDD5BE" />
+                <rect x="636" y="258" width="204" height="72" rx="4" fill="none" stroke="#FDD5BE" strokeWidth="1.5" />
+                {/* 右侧竖向箭头 */}
+                <line x1="852" y1="14" x2="852" y2="316" stroke="#FA4F24" strokeWidth="1.5" strokeDasharray="4 4" />
+                <polygon points="852,4 847,16 857,16" fill="#FA4F24" />
+                <polygon points="852,326 847,314 857,314" fill="#FA4F24" />
+            </svg>
+
+            {/* 层级文本（独立可编辑层） */}
+            <Box style={{ position: 'absolute', top: 0, left: 0, width: 840, height: 330, flexDirection: 'column' }}>
+                {[
+                    { code: 'BA', cn: '业务架构', en: 'Business Architecture', q: '做什么业务', color: '#FFFFFF' },
+                    { code: 'DA', cn: '数据架构', en: 'Data Architecture', q: '需要什么数据', color: '#FFFFFF' },
+                    { code: 'AA', cn: '应用架构', en: 'Application Architecture', q: '用什么系统承载', color: '#0F1423' },
+                    { code: 'TA', cn: '技术架构', en: 'Technology Architecture', q: '用什么技术实现', color: '#0F1423' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ height: 72, marginBottom: 14, flexDirection: 'row', alignItems: 'center' }}>
+                        <Box style={{ width: 620, flexDirection: 'row', alignItems: 'center', paddingLeft: 28, gap: 20 }}>
+                            <Text style={{ fontSize: 30, fontWeight: 'bold', color: it.color, width: 66 }}>{it.code}</Text>
+                            <Box style={{ flexDirection: 'column' }}>
+                                <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.color }}>{it.cn}</Text>
+                                <Text style={{ fontSize: 14, color: it.color === '#FFFFFF' ? 'rgba(255,255,255,0.82)' : '#7A4A34' }}>
+                                    {it.en}
+                                </Text>
+                            </Box>
+                        </Box>
+                        <Box style={{ width: 204, justifyContent: 'center', paddingLeft: 24 }}>
+                            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.q}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 页脚 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>03 / 26</Text>
+    </Box>
+</Slide>

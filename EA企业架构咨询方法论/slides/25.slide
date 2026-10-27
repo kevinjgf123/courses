@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            TA 之模板：技术组件卡片与<span style={{ color: '#FA4F24' }}>技术演进路线图</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            路线图把「目标态」拆成可验收的三阶段 —— 每阶段都有明确的技术里程碑与退坡条件
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 上大图（路线图）+ 下方卡片 */}
+    <Box style={{ paddingTop: 20, paddingBottom: 12, height: 481, flexDirection: 'column', gap: 14 }}>
+
+        {/* 上：技术演进路线图 ≥40% */}
+        <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>模板 A · 技术演进路线图</Text>
+        <Box style={{ height: 232, background: '#FBFBFC', borderRadius: 4, padding: '18px 24px', flexDirection: 'column' }}>
+            {/* 时间轴 */}
+            <Box style={{ flexDirection: 'row', alignItems: 'center', height: 26 }}>
+                <Box style={{ width: 3, height: 26, background: '#C9CBD1' }} />
+                <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 8 }}>当前</Text>
+                <Box style={{ flex: 1, height: 3, background: 'linear-gradient(90deg, #C9CBD1 0%, #FA4F24 100%)' }} />
+                <Text style={{ fontSize: 14, color: '#FA4F24', fontWeight: 'bold', marginRight: 0 }}>目标态</Text>
+            </Box>
+            {/* 三阶段 */}
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 12, marginTop: 12 }}>
+                {[
+                    { p: '阶段一', t: '夯实基础', h: 92, bg: '#FDD5BE', c: '#3A1A0A', m: '容器化率 60%', d: '统一云底座与基础监控' },
+                    { p: '阶段二', t: '平台整合', h: 120, bg: '#FBA47A', c: '#3A1A0A', m: '数据中台上线', d: '统一数据底座与集成总线' },
+                    { p: '阶段三', t: '云原生化', h: 148, bg: '#FA4F24', c: '#FFFFFF', m: '应用云原生 80%', d: '弹性伸缩与自动运维体系' },
+                ].map((it, i) => (
+                    <Box key={i} style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end', gap: 6 }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.c === '#FFFFFF' ? '#FA4F24' : '#0F1423' }}>{it.m}</Text>
+                        <Box style={{ height: it.h, background: it.bg, borderRadius: 3, padding: '10px 14px', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                            <Text style={{ fontSize: 13, color: it.c, opacity: 0.85 }}>{it.p}</Text>
+                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.c, marginTop: 4 }}>{it.t}</Text>
+                            <Text style={{ fontSize: 13, color: it.c, marginTop: 6, opacity: 0.9, lineHeight: 1.4 }}>{it.d}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：技术组件卡片模板 + 关键判断 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 20 }}>
+            <Box style={{ flex: 62, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423', marginBottom: 10 }}>模板 B · 技术组件卡片</Text>
+                <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', flexDirection: 'row', gap: 18 }}>
+                    {[
+                        { v: '组件定位', d: '所属技术层、承担的架构职责' },
+                        { v: '选型理由', d: '成熟度 / 生态 / 成本 / 锁定风险' },
+                        { v: '部署要求', d: '环境、规格、可用性等级' },
+                        { v: '运维责任', d: '责任团队、SLA、监控指标' },
+                    ].map((it, i) => (
+                        <Box key={i} style={{ flex: 1, flexDirection: 'column', borderLeft: '3px solid #FA4F24', paddingLeft: 12 }}>
+                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>{it.v}</Text>
+                            <Text style={{ fontSize: 14, color: '#3A4050', marginTop: 8, lineHeight: 1.5 }}>{it.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+            <Box style={{ flex: 38, background: 'rgba(250,79,36,0.08)', borderRadius: 4, padding: '16px 20px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>关键判断</Text>
+                <Text style={{ fontSize: 16, color: '#0F1423', marginTop: 10, lineHeight: 1.55 }}>
+                    技术路线的价值不在选了哪家产品，而在<span style={{ fontWeight: 'bold', color: '#FA4F24' }}>每阶段都能退坡</span> —— 若阶段目标不达标，可退回上一稳态而不致业务中断。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · EA企业架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>25 / 26</Text>
+    </Box>
+</Slide>
