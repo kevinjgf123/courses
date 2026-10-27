@@ -1,0 +1,83 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之总览：<span style={{ color: '#FA4F24' }}>三者各管哪一段</span>，一句话各自划清
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   把这三者混着谈，是过去两年 AI 项目最贵的沟通成本
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 三个盒子 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+        {[
+          { n: '知识库', s: 'KB', r: '回答「这件事过去是怎么做的、规定是什么」', q: '提供材料与出处', d: '非结构化 → 可引用单元', c: '#FA4F24', z: '上游' },
+     { n: 'Ontology', s: 'ONT', r: '回答「现在是什么状态、它们是什么关系」', q: '提供结构与口径', d: '材料 → 语义模型', c: '#F87D2F', z: '中枢' },
+        { n: 'Agent', s: 'AGT', r: '回答「接下来该做什么、谁来做」', q: '提供判断与行动', d: '语义 + 材料 → 决策', c: '#FBA15C', z: '下游' },
+        ].map((it, i) => (
+    <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + it.c, padding: '11px 15px', flexDirection: 'column' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+  <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+        <Text style={{ fontSize: 12, color: '#8A8F99', flex: 1, textAlign: 'right' }}>{it.z}</Text>
+            </Box>
+        <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 2 }}>{it.s}</Text>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginTop: 8, lineHeight: 1.4 }}>{it.r}</Text>
+     <Box style={{ flex: 1 }} />
+      <Box style={{ height: 26, background: '#FFFFFF', borderRadius: 3, justifyContent: 'center', padding: '0 10px' }}>
+        <Text style={{ fontSize: 11, fontWeight: 'bold', color: it.c }}>{it.q}</Text>
+        </Box>
+       <Box style={{ height: 26, background: '#FFF3EE', borderRadius: 3, justifyContent: 'center', padding: '0 10px', marginTop: 5 }}>
+        <Text style={{ fontSize: 11, color: '#C43A17' }}>{it.d}</Text>
+    </Box>
+          </Box>
+     ))}
+      </Box>
+
+  {/* 供给链路 */}
+      <Box style={{ height: 116, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>供给链路：知识如何一步步变成一个可执行的决定</Text>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 10, flex: 1 }}>
+       {[
+     { t: '文档 / 工单 / 邮件', s: '原始材料', c: '#8A8F99' },
+  { t: '知识库', s: '切片 + 实体 + 出处', c: '#FA4F24' },
+ { t: 'Ontology', s: '对象 + 口径 + Action', c: '#F87D2F' },
+    { t: 'Agent', s: '上下文 + 判断 + 权限', c: '#FBA15C' },
+            { t: 'Action', s: '受控变更 + 审计', c: '#5A6072' },
+          ].map((x, i) => (
+     <Box key={x.t} style={{ flexDirection: 'row', alignItems: 'center', flex: 1, gap: 5 }}>
+     <Box style={{ flex: 1, height: 48, borderRadius: 3, background: 'rgba(255,255,255,0.08)', borderLeft: '3px solid ' + x.c, padding: '0 10px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+       <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>{x.s}</Text>
+ </Box>
+              {i < 4 ? <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>→</Text> : null}
+       </Box>
+          ))}
+     </Box>
+      </Box>
+
+      {/* 三条常见误解 */}
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '10px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', marginBottom: 7 }}>三个必须当场纠正的误解</Text>
+  <Box style={{ flexDirection: 'row', gap: 10, flex: 1 }}>
+        {[
+   { m: '「知识库就是向量库」', t: '向量检索是最后一公里的实现方式，不是知识治理' },
+   { m: '「有本体就不用知识库了」', t: '本体存结构化事实，流程说明与经验判断仍要靠知识库' },
+            { m: '「Agent 自己会查知识」', t: 'Agent 只能请求调用，权限与范围必须由架构预先给定' },
+          ].map((x, i) => (
+       <Box key={x.m} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '7px 11px' }}>
+       <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.m}</Text>
+       <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 3, lineHeight: 1.4 }}>{x.t}</Text>
+            </Box>
+      ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+   <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+    </Box>
+</Slide>

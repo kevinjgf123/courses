@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之 AA：<span style={{ color: '#FA4F24' }}>检索拓扑</span>与上下文装配的编排方式
+        </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     知识库对外只暴露一个能力：给定一个问题，装配出一段带出处的上下文
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 四段检索链 */}
+      <Box style={{ height: 168, background: '#F7F7F8', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginBottom: 9 }}>标准检索链：四段，顺序不能颠倒</Text>
+        <Box style={{ flexDirection: 'row', alignItems: 'stretch', gap: 8, flex: 1 }}>
+    {[
+            { n: '① 过滤', t: '先按权限、密级、时效、部门收窄范围', d: '把不该看的排除在外，也把已失效的排除在外', c: '#0F1423' },
+            { n: '② 召回', t: '混合检索：向量 + 关键词并行', d: '向量管意思相近，关键词管确切编号与术语', c: '#F87D2F' },
+        { n: '③ 重排', t: '按可信等级、时效、场景相关性打分排序', d: '正式制度优先于个人经验，新版优先于旧版', c: '#E0651A' },
+     { n: '④ 装配', t: '截断、压缩、补出处、组织成结构化上下文', d: '每段带来源标识、可信等级与预算占用', c: '#FA4F24' },
+          ].map((x, i) => (
+      <Box key={x.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid ' + x.c, padding: '8px 11px' }}>
+         <Text style={{ fontSize: 14, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', marginTop: 4, lineHeight: 1.4 }}>{x.t}</Text>
+      <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 5, lineHeight: 1.4, flex: 1 }}>{x.d}</Text>
+      </Box>
+       ))}
+      </Box>
+    <Text style={{ fontSize: 11, color: '#C43A17', marginTop: 8, lineHeight: 1.4 }}>最常见的错误是跳过①直接做②——先检索再过滤，等于把越权内容召回来了再想办法藏，这中间的任何一次日志输出都可能泄露。</Text>
+      </Box>
+
+      {/* 三种编排 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+        <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '10px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#8A8F99' }}>单库直检</Text>
+          <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 6, lineHeight: 1.5, flex: 1 }}>一个问题只查一个知识域。适合领域边界清晰、库数量少的阶段。</Text>
+       <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>优点：可解释、易调优</Text>
+      </Box>
+        <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '10px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>路由分发</Text>
+     <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 6, lineHeight: 1.5, flex: 1 }}>先判断问题属于哪个域，再进对应库。库数量到十个以上必须做这一步。</Text>
+   <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>关键：路由错了后面全错</Text>
+        </Box>
+   <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '10px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24' }}>跨库联合</Text>
+          <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 6, lineHeight: 1.5, flex: 1 }}>一个问题需要多个库交叉验证，比如制度 + 案例 + 现行数据。</Text>
+      <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>关键：必须去重与标冲突</Text>
+   </Box>
+      </Box>
+
+      {/* 契约 */}
+  <Box style={{ height: 96, background: '#0F1423', borderRadius: 4, padding: '11px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 152 }}>装配输出的六项字段</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+          {['内容片段', '来源标识', '位置锚点', '可信等级', '版本与生效期', '预算占用'].map((t, i) => (
+         <Box key={t} style={{ flex: 1, height: 34, background: 'rgba(255,255,255,0.08)', borderRadius: 3, borderLeft: '3px solid #FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 11, color: '#FFFFFF', fontWeight: 'bold' }}>{t}</Text>
+            </Box>
+     ))}
+        </Box>
+    <Box style={{ width: 250 }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', lineHeight: 1.45 }}>这六项缺一不可：缺来源就没法溯源，缺可信等级就没法排序，缺预算占用就没法控制上下文消耗。</Text>
+        </Box>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>24 / 30</Text>
+    </Box>
+</Slide>

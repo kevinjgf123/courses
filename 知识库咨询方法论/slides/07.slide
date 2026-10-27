@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之构成：知识库的<span style={{ color: '#FA4F24' }}>五个组成部分</span>，缺一层就出一类问题
+        </Text>
+  <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 每层都有各自的失守方式，五层要分别设计、分别验收，不能合着买一套向量库了事
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 7 }}>
+  {/* 五层链路 */}
+      <Box style={{ height: 152, flexDirection: 'row', gap: 7, alignItems: 'stretch' }}>
+        {[
+        { n: 'L1', t: '知识源', s: '制度 / 方案 / 案例 / 工单 / 邮件 / 纪要', f: '失守：源没登记，出了问题不知道找谁', c: '#8A8F99' },
+          { n: 'L2', t: '切片层', s: '把内容切成能独立成立的最小单元', f: '失守：切碎了语义，片段看不懂', c: '#FBA15C' },
+     { n: 'L3', t: '实体层', s: '抽出对象、属性、关系，挂到本体上', f: '失守：只有文本没有结构，永远只能语义匹配', c: '#F87D2F' },
+        { n: 'L4', t: '索引层', s: '向量索引 + 关键词索引 + 元数据过滤', f: '失守：只有向量，精确词查不准', c: '#E0651A' },
+          { n: 'L5', t: '治理层', s: '口径、时效、权限、责任人与下架', f: '失守：知识过期冲突，越权检索', c: '#FA4F24' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + it.c, padding: '9px 13px', flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+           <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+        </Box>
+  <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 6, lineHeight: 1.45, flex: 1 }}>{it.s}</Text>
+       <Box style={{ height: 40, background: '#FFFFFF', borderRadius: 3, padding: '5px 9px' }}>
+    <Text style={{ fontSize: 10, color: '#C43A17', lineHeight: 1.35 }}>{it.f}</Text>
+     </Box>
+       </Box>
+   ))}
+      </Box>
+
+      {/* L2 切片对比 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '10px 14px', flexDirection: 'column' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>切片层是知识库最重要的设计决策</Text>
+    <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 6, lineHeight: 1.5, flex: 1 }}>
+    固定字数切片是最省事也最糟的做法：它会把一个完整判断从中间截断。检索时命中了半句「本项目须经」，模型根本不知道须经谁批。
+        </Text>
+       <Text style={{ fontSize: 12, color: '#5A6072', lineHeight: 1.5 }}>
+     推荐按语义边界切：章节标题、条款号、段落首句。实践中的经验是——如果人类读者需要靠上下文才能看懂这个片段，那它就不合格。
+     </Text>
+ </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>索引层：三种检索能力，各管一段</Text>
+   {[
+  { n: '语义检索', d: '查「意思相近」，靠向量' },
+       { n: '关键词检索', d: '查「确切编号与术语」，靠倒排' },
+            { n: '元数据过滤', d: '先按权限、时效、部门收窄范围' },
+          ].map((x, i) => (
+   <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24', width: 84 }}>{x.n}</Text>
+              <Text style={{ fontSize: 12, color: '#3A4050', flex: 1 }}>{x.d}</Text>
+      </Box>
+          ))}
+      <Text style={{ fontSize: 11, color: '#C43A17', marginTop: 6, lineHeight: 1.4 }}>生产上顺序必须是：先用元数据过滤缩小范围，再混合检索排序，最后才交给模型。</Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+    </Box>
+</Slide>

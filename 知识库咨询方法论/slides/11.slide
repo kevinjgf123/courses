@@ -1,0 +1,85 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+  <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之责任：知识库<span style={{ color: '#FA4F24' }}>岗位说明书与责任矩阵</span>，它不是一个岗位的活
+  </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+         知识库失败最常见的原因，是没有人为「知识的准确性」这个结果负责
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'row', gap: 11 }}>
+      {/* 岗位说明书 */}
+      <Box style={{ width: 566, flexDirection: 'column', gap: 7 }}>
+        <Box style={{ height: 246, background: '#F7F7F8', borderRadius: 4, padding: '11px 15px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>知识域责任人的说明书：七栏</Text>
+          {[
+      { k: '负责的知识域', v: '例如「华东区工程变更管理」，边界要写清不含什么' },
+            { k: '入库否决权', v: '说得出口也用得上——不合格的内容不接收' },
+      { k: '口径裁定权', v: '同一说法有歧义时，由这个人定' },
+         { k: '时效承诺', v: '多久复核一次、什么条件下立即下架' },
+            { k: '引用标准', v: '什么情况下必须标注出处，什么情况算引用错误' },
+            { k: '对账义务', v: '每月核对本域知识的失效清单' },
+   { k: '不承担什么', v: '不为技术故障、不为模型生成质量负责' },
+          ].map((it, i) => (
+         <Box key={it.k} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 106 }}>{it.k}</Text>
+    <Text style={{ fontSize: 12, color: '#3A4050', flex: 1 }}>{it.v}</Text>
+     </Box>
+          ))}
+    </Box>
+     <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '11px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>为什么要写「不承担什么」这一栏</Text>
+       <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 7, lineHeight: 1.55 }}>
+  知识库是跨部门产物，没有明确的免责边界就会变成谁都可以质疑、谁都不认领的活。把技术故障、模型生成质量、数据接入问题的责任明确切给对应角色，才能让知识责任人愿意签字。
+      </Text>
+     </Box>
+      </Box>
+
+      {/* 责任矩阵 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+        <Box style={{ height: 300, background: '#F7F7F8', borderRadius: 4, padding: '11px 14px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>四类责任 × 四种动作的 RACI</Text>
+    <Box style={{ flexDirection: 'row', gap: 5, marginBottom: 5 }}>
+        <Box style={{ width: 112 }} />
+            {['定口径', '准入', '复核', '下架'].map((t, i) => (
+        <Box key={t} style={{ flex: 1, height: 22, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#FFFFFF' }}>{t}</Text>
+      </Box>
+         ))}
+       </Box>
+  {[
+  { r: '知识域责任人', v: ['A', 'R', 'R', 'A'], c: '#FA4F24' },
+ { r: '知识运营', v: ['C', 'R', 'C', 'R'], c: '#F87D2F' },
+   { r: '架构 / 平台', v: ['C', 'C', 'I', 'I'], c: '#FBA15C' },
+      { r: '使用部门', v: ['I', 'I', 'C', 'C'], c: '#8A8F99' },
+    ].map((it, i) => (
+   <Box key={it.r} style={{ flex: 1, flexDirection: 'row', gap: 5, alignItems: 'center' }}>
+     <Box style={{ width: 112, height: 40, background: '#FFFFFF', borderLeft: '3px solid ' + it.c, padding: '0 8px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 11, color: '#0F1423' }}>{it.r}</Text>
+          </Box>
+     {it.v.map((x, k) => (
+       <Box key={k} style={{ flex: 1, height: 40, background: x === 'A' ? it.c : '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: x === 'A' ? '#FFFFFF' : (x === 'R' ? it.c : '#8A8F99') }}>{x}</Text>
+   </Box>
+            ))}
+   </Box>
+   ))}
+     <Text style={{ fontSize: 11, color: '#8A8F99', lineHeight: 1.45, marginTop: 6 }}>A 批准并负最终责任　R 实际执行　C 被咨询　I 被告知。定口径与下架必须落在业务侧，不能放在平台侧。</Text>
+        </Box>
+  <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '10px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>落地时的三个动作</Text>
+      <Text style={{ fontSize: 12, color: '#5A6072', marginTop: 6, lineHeight: 1.55 }}>
+      把「知识准确性」写进业务部门的年度考核；建知识治理委员会，每月过一次失效清单；把知识域责任人名单写进知识库首页，让使用方知道该找谁提异议。
+        </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>11 / 30</Text>
+    </Box>
+</Slide>

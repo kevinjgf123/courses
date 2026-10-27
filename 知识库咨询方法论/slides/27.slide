@@ -1,0 +1,65 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+     <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之失效：<span style={{ color: '#FA4F24' }}>五类典型失败模式</span>与对应的设计动作
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      这五类占了知识库项目返工原因的绝大部分，且都能在设计阶段挡住
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+        <Box style={{ width: 148, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>失败模式</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>典型症状</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>根因</Text></Box>
+        <Box style={{ flex: 1.2, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>设计阶段的对策</Text></Box>
+      </Box>
+
+  {[
+        { n: '过期与冲突', s: '答案自信但依据是废的', r: '没有时效台账，没有口径裁定人', f: '时效台账 + 责任人裁定权 + 检索前过滤失效版本', c: '#FA4F24' },
+        { n: '孤岛', s: '同一个问题跨库就答不全', r: '库与库之间不通，没有统一实体', f: '统一实体层 + 跨库联合检索 + 去重', c: '#F87D2F' },
+        { n: '权限泄漏', s: '检索到不该看的内容', r: '先检索后过滤，或输出侧无控制', f: '检索前过滤 + 内容密级标记 + 输出侧再拦一次', c: '#E0651A' },
+        { n: '引用幻觉', s: '有引用，但引错或引了个不相干的', r: '切片无位置锚点，重排只看相似度', f: '位置锚点必存 + 重排加入相关度与可信度打分', c: '#C43A17' },
+        { n: '无梯度评测', s: '只能说「感觉还行」，没法回归', r: '没有评测集，改一版不知道是好了还是坏了', f: '评测集与上线同步建设，改配置必须跑回归', c: '#0F1423' },
+      ].map((it, i) => (
+   <Box key={it.n} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+      <Box style={{ width: 148, background: '#F7F7F8', borderLeft: '4px solid ' + it.c, padding: '0 12px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+          </Box>
+          <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45 }}>{it.s}</Text>
+</Box>
+   <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 12, color: '#5A6072', lineHeight: 1.45 }}>{it.r}</Text>
+          </Box>
+      <Box style={{ flex: 1.2, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.45 }}>{it.f}</Text>
+          </Box>
+        </Box>
+      ))}
+
+      <Box style={{ height: 116, flexDirection: 'row', gap: 8 }}>
+   <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>一个共同点</Text>
+    <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 7, lineHeight: 1.55 }}>
+        五类里没有一类是「模型不够强」或「向量库不够好」造成的 —— 全部是治理与设计问题。所以知识库项目做不下去，通常不是技术选型错，是没有人把口径、时效、权限、锚点、评测当成设计对象。
+     </Text>
+        </Box>
+        <Box style={{ width: 340, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>最省钱的干预点</Text>
+      <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 6, lineHeight: 1.5 }}>
+  在第一类和第五类上花的精力，回报最高：第一类决定答案对不对，第五类保证改完之后还对。前者决定项目成败，后者决定项目能不能持续。
+        </Text>
+        </Box>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+  <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之立论：为什么<span style={{ color: '#FA4F24' }}>模型不算数、知识才算数</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        企业里有三类东西都能被检索出来，但它们的可信度完全不同
+  </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 三类东西 */}
+  <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+     {[
+     { n: '模型参数里的知识', s: '通用常识与统计规律', ok: '不知道你公司的口径', bad: '会编，且编得很自信', c: '#8A8F99' },
+   { n: '业务系统里的数据', s: '订单、库存、工单、台账', ok: '实时、结构化、可审计', bad: '不含判断，只含记录', c: '#FBA15C' },
+      { n: '知识库里的知识', s: '制度、口径、方案、经验、案例', ok: '有人负责、有时效、可引用', bad: '不治理就会过期与冲突', c: '#FA4F24' },
+      ].map((it, i) => (
+     <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + it.c, padding: '11px 15px', flexDirection: 'column' }}>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+      <Text style={{ fontSize: 12, color: '#8A8F99', marginTop: 3 }}>{it.s}</Text>
+       <Box style={{ flex: 1, marginTop: 8 }}>
+     <Box style={{ flexDirection: 'row', gap: 8, flex: 1 }}>
+       <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '7px 10px' }}>
+   <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#5A6072' }}>✓ 优势</Text>
+      <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.4 }}>{it.ok}</Text>
+    </Box>
+  <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, padding: '7px 10px' }}>
+       <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17' }}>✕ 短板</Text>
+       <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 3, lineHeight: 1.4 }}>{it.bad}</Text>
+     </Box>
+    </Box>
+          </Box>
+   </Box>
+        ))}
+      </Box>
+
+  {/* 核心问题 */}
+  <Box style={{ height: 104, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>知识库真正要回答的四个问题</Text>
+     <Box style={{ flexDirection: 'row', gap: 10, marginTop: 9, flex: 1 }}>
+       {[
+  { q: '哪条算数', a: '同口径冲突时以谁为准' },
+            { q: '谁说了算', a: '每条知识的责任人与复核人' },
+         { q: '什么时候过期', a: '时效窗口与下架触发条件' },
+       { q: '凭什么引用', a: '答案能指回来源的哪个位置' },
+      ].map((x, i) => (
+   <Box key={x.q} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '7px 11px' }}>
+  <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1).padStart(2, '0')}</Text>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>{x.q}</Text>
+ </Box>
+    <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', marginTop: 4 }}>{x.a}</Text>
+       </Box>
+     ))}
+        </Box>
+      </Box>
+
+      {/* 结论 */}
+      <Box style={{ height: 88, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', width: 168 }}>所以本册的立场</Text>
+    <Text style={{ fontSize: 14, color: '#0F1423', flex: 1, lineHeight: 1.55 }}>
+   知识库不是「把文档都倒进向量库」。它是一个有责任人、有口径、有时效、有权限、有引用的知识供给系统。向量检索只是它最后一公里的实现方式，不是它的定义。企业在这一层偷懒，代价会在 Agent 上线三个月后集中出现——因为Agent 会把矛盾的知识自信地拼在一起。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>03 / 30</Text>
+    </Box>
+</Slide>

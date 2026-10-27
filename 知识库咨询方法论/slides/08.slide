@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+     <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  之演进：从<span style={{ color: '#FA4F24' }}>RAG 到 OAG</span>，检索增强的三代做法
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+           企业场景的答案不在检索算法里，在「检索什么、谁来判、能不能改」这三件事上
+        </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 三代 */}
+      {[
+    { g: '第一代', t: 'RAG', s: '检索增强生成', how: '从文档里找相关片段，塞进提示词，模型据此作答', gain: '解决了「模型不知道你们公司的事」', risk: '检索错 → 答错；无法回答「所以该怎么做」', c: '#8A8F99' },
+        { g: '第二代', t: 'RAG + 工具调用', s: '让模型能查、能算、能调接口', how: '除了读文档，还能调函数查库、做精确计算', gain: '数字不再靠模型算，可靠性明显上升', risk: '读到的数据没权限约束；模型不知道什么能改', c: '#FBA15C' },
+   { g: '第三代', t: 'OAG', s: '本体增强生成', how: '本体提供对象·逻辑·Action，模型只在授权范围内取数与行动', gain: '答案锚定在业务事实与确定性逻辑上，可解释、可审计、可闭环', risk: '对本体质量要求高，前期投入大', c: '#FA4F24' },
+      ].map((it, i) => (
+ <Box key={it.g} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '10px 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+     <Box style={{ width: 128 }}>
+       <Text style={{ fontSize: 12, color: '#8A8F99' }}>{it.g}</Text>
+     <Text style={{ fontSize: 26, fontWeight: 'bold', color: it.c, marginTop: 1 }}>{it.t}</Text>
+  </Box>
+        <Box style={{ width: 210 }}>
+       <Text style={{ fontSize: 12, color: '#8A8F99' }}>{it.s}</Text>
+   <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 3, lineHeight: 1.35 }}>{it.how}</Text>
+       </Box>
+          <Box style={{ flex: 1, height: 40, background: '#FFFFFF', borderRadius: 3, padding: '0 11px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#3A4050' }}>↑ {it.gain}</Text>
+      </Box>
+        <Box style={{ width: 300, height: 40, background: '#FFF3EE', borderRadius: 3, padding: '0 11px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, color: '#C43A17' }}>↓ {it.risk}</Text>
+  </Box>
+        </Box>
+      ))}
+
+      {/* 关键约束 */}
+      <Box style={{ height: 114, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>OAG 的三条硬约束，也是本册最该被写进架构文档的三句话</Text>
+    <Box style={{ flexDirection: 'row', gap: 10, marginTop: 9, flex: 1 }}>
+          {[
+      { n: '模型不能直接访问工具', d: '模型只能提出「要用哪个工具」，由平台在发起调用的那个用户的权限内执行' },
+  { n: '写回必须经由Action', d: '即使函数里含写入动作，若不是从 Action 里执行，变更不会生效' },
+    { n: '读取控制不等于输出控制', d: '行列级访问控制只过滤读入提示词的数据，不覆盖模型输出，也不覆盖写回' },
+   ].map((x, i) => (
+      <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '7px 11px' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1).padStart(2, '0')}</Text>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+      </Box>
+  <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', marginTop: 4, lineHeight: 1.4 }}>{x.d}</Text>
+    </Box>
+     ))}
+        </Box>
+      </Box>
+
+  {/* 选型建议 */}
+      <Box style={{ height: 56, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', width: 128 }}>选型建议</Text>
+     <Text style={{ fontSize: 13, color: '#0F1423', flex: 1, lineHeight: 1.45 }}>
+      纯文档问答用第一代就够；涉及数字和接口用第二代；一旦要让 AI 参与决策闭环，或者答案必须可审计，直接上第三代。不要用第一代的成本去换第三代的场景。
+   </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>08 / 30</Text>
+    </Box>
+</Slide>

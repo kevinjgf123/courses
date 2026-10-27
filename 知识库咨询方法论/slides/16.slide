@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之信任：<span style={{ color: '#FA4F24' }}>引用与溯源</span>，知识库唯一的硬指标
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 准确率是可以优化的，引用是可以设计的；企业场景里后者决定这套系统能不能上
+  </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 好坏引用对比 */}
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #8A8F99', padding: '11px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#5A6072' }}>不可接受的回答</Text>
+     <Text style={{ fontSize: 13, color: '#3A4050', marginTop: 8, lineHeight: 1.6, flex: 1 }}>
+    「根据公司相关规定，该情况应当先取得审批再实施。相关制度见《工程变更管理办法》。」
+     </Text>
+   <Box style={{ flexDirection: 'row', gap: 8, marginTop: 8 }}>
+       {['没说哪一条', '没说第几页', '不知道是不是最新版', '读完还是不知道怎么做'].map((t, i) => (
+        <Box key={t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '6px 8px' }}>
+     <Text style={{ fontSize: 10, color: '#8A8F99', textAlign: 'center' }}>{t}</Text>
+         </Box>
+       ))}
+        </Box>
+  <Text style={{ fontSize: 12, color: '#C43A17', marginTop: 8 }}>这种回答等于没回答——它把核实成本原样退给了使用者。</Text>
+      </Box>
+
+<Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '11px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>合格的回答</Text>
+     <Text style={{ fontSize: 13, color: '#0F1423', marginTop: 8, lineHeight: 1.6, flex: 1 }}>
+      「该情况应先取得审批，依据《工程变更管理办法》第四章第 3.2 条（现行版本 2026-03 生效）。该条要求变更前完成技术方案评审并留档，评审通过后由分管领导在系统内确认。注意：2025 版同位置表述不同，已于 2026-03 失效。」
+    </Text>
+        <Box style={{ flexDirection: 'row', gap: 8, marginTop: 8 }}>
+    {['指到条款', '标明版本', '说明时效', '给了下一步动作'].map((t, i) => (
+         <Box key={t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '6px 8px' }}>
+       <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#FA4F24', textAlign: 'center' }}>{t}</Text>
+          </Box>
+      ))}
+        </Box>
+      <Text style={{ fontSize: 12, color: '#C43A17', marginTop: 8 }}>四段结构：结论 → 依据 → 时效 → 动作，缺一段都算不合格。</Text>
+   </Box>
+      </Box>
+
+      {/* 引用四级 */}
+      <Box style={{ height: 138, background: '#0F1423', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>引用质量分四级，上线要求至少达到 L2</Text>
+        <Box style={{ flexDirection: 'row', gap: 9, marginTop: 8, flex: 1 }}>
+    {[
+            { lv: 'L0', t: '无引用', d: '纯生成，出处靠猜', ok: false },
+            { lv: 'L1', t: '有出处但无定位', d: '说了来源名称，指不到位置', ok: false },
+            { lv: 'L2', t: '可定位', d: '指到章节、条款或页码', ok: true },
+   { lv: 'L3', t: '可验证', d: '一键回到原文并高亮该句，版本与生效期可见', ok: true },
+          ].map((x, i) => (
+   <Box key={x.lv} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid ' + (x.ok ? '#FA4F24' : '#5A6072'), padding: '7px 11px' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+       <Text style={{ fontSize: 15, fontWeight: 'bold', color: x.ok ? '#FA4F24' : 'rgba(255,255,255,0.5)' }}>{x.lv}</Text>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+      {x.ok ? <Text style={{ fontSize: 10, color: '#FA4F24', fontWeight: 'bold' }}>达标</Text> : null}
+   </Box>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', marginTop: 4, lineHeight: 1.4 }}>{x.d}</Text>
+       </Box>
+          ))}
+        </Box>
+</Box>
+
+      {/* 落地 */}
+      <Box style={{ height: 74, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', width: 152 }}>要做到 L3，库侧必须存三样</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+     {[
+ { t: '位置锚点', d: '章节号、条款号或页偏移，支持高亮回跳' },
+   { t: '版本与生效期', d: '每次修订留痕，检索时自动过滤失效版本' },
+     { t: '稳定性标识', d: '定位偏移量，内容变更后能自动校验锚点是否失效' },
+ ].map((x, i) => (
+      <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderLeft: '3px solid #FA4F24', borderRadius: 3, padding: '7px 11px' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+        <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 2, lineHeight: 1.35 }}>{x.d}</Text>
+     </Box>
+       ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>16 / 30</Text>
+    </Box>
+</Slide>

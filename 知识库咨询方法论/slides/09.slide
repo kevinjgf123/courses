@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+     <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之对照：<span style={{ color: '#FA4F24' }}>三类检索上下文</span>，各自解决什么问题
+        </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        「文档的文档」这一步最容易被忽略：先告诉模型有什么库、什么时候该查哪个库
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+  {/* 三类对照表 */}
+    <Box style={{ flexDirection: 'row', gap: 8 }}>
+    <Box style={{ width: 190, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>类型</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>取什么</Text></Box>
+        <Box style={{ width: 260, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>两种模式</Text></Box>
+        <Box style={{ width: 300, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>适合与不适合</Text></Box>
+  </Box>
+
+  {[
+   { n: '本体上下文', a: '从本体对象里取事实：对象、属性、关系、指标', m: '静态输入（全量对象类型）/ 动态输入（过滤后的对象集）', f: '适合：取数、对口径、判断「现在是什么状态」', nf: '不适合：需要主观判断或流程性说明', c: '#FA4F24' },
+        { n: '文档上下文', a: '从文档里取文本片段，带出处', m: '全文模式（整篇给模型）/ 相关片段模式（语义搜 K 个）', f: '适合：制度条款、方案说明、案例复盘', nf: '不适合：需要精确数字与最新状态', c: '#F87D2F' },
+        { n: '函数上下文', a: '自写检索逻辑，每次查询现场执行', m: '关键词 + 语义混合 / 跨库联合 / 自定义排序', f: '适合：内置检索不满足的任何场景', nf: '不适合：团队没人能维护这段逻辑', c: '#E0651A' },
+   ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+          <Box style={{ width: 190, background: '#F7F7F8', borderLeft: '4px solid ' + it.c, padding: '0 12px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+          </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45 }}>{it.a}</Text>
+          </Box>
+          <Box style={{ width: 260, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 12, color: '#5A6072', lineHeight: 1.45 }}>{it.m}</Text>
+     </Box>
+          <Box style={{ width: 300, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.4 }}>✓ {it.f}</Text>
+     <Text style={{ fontSize: 11, color: '#C43A17', marginTop: 3, lineHeight: 1.4 }}>✕ {it.nf}</Text>
+          </Box>
+        </Box>
+      ))}
+
+      {/* 关键设计 */}
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '10px 16px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>两个必须显式做的设计动作</Text>
+   {[
+       { n: '声明对象属性白名单', d: '不要把对象所有属性都塞给模型，可打印的属性要挑着给，既省 token 又减少误引' },
+        { n: '声明库清单与用途', d: '为每个文档库写一份说明，写清它覆盖什么范围、什么时候该查它' },
+    ].map((x, i) => (
+   <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, marginTop: i === 0 ? 7 : 0 }}>
+     <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1)}</Text>
+       <Box style={{ flex: 1 }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+      <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', marginTop: 2, lineHeight: 1.35 }}>{x.d}</Text>
+   </Box>
+       </Box>
+     ))}
+ </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>为什么要「文档的文档」</Text>
+    <Text style={{ fontSize: 12, color: '#5A6072', marginTop: 7, lineHeight: 1.55, flex: 1 }}>
+       库一多，模型就不知道该查哪一个。做法是给每个库单独写一份说明文档，写清库名与覆盖范围，把这些说明本身也纳入可检索范围。模型先读说明，再决定进哪个库。这不是多余动作——库少于五个可以先不做，超过十个不做必然出现「查错库」和「漏查库」。
+        </Text>
+    </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>09 / 30</Text>
+ </Box>
+</Slide>

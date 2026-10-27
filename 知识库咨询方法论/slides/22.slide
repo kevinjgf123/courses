@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之 BA：知识<span style={{ color: '#FA4F24' }}>服务谁</span>，以及谁不该被知识替代
+   </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    这一层最容易做虚，因为它既不产生代码也不产生报表，只有把人组织起来
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'row', gap: 11 }}>
+  {/* 左：知识流 */}
+      <Box style={{ width: 400, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 244, background: '#F7F7F8', borderRadius: 4, padding: '11px 15px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>一条知识的完整流转与每个环节的责任人</Text>
+          {[
+            { n: '产生', w: '业务人员', d: '在实际工作中形成经验与判断' },
+            { n: '沉淀', w: '知识运营', d: '整理成文，明确适用范围与边界' },
+      { n: '审核', w: '知识域责任人', d: '确认口径正确、表述无歧义' },
+            { n: '入库', w: '平台侧', d: '切片、抽取、挂出处、打标记' },
+            { n: '应用', w: '使用部门', d: '在工作中引用，并反馈是否好用' },
+          ].map((x, i) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 42 }}>{x.n}</Text>
+      <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', width: 96 }}>{x.w}</Text>
+      <Text style={{ fontSize: 11, color: '#5A6072', flex: 1 }}>{x.d}</Text>
+            </Box>
+    ))}
+     </Box>
+    <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '10px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>最容易被跳过的是「沉淀」这一环</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 6, lineHeight: 1.55 }}>
+ 经验留在个人脑子里时，效率最高但风险最大。人一走知识就断。把经验写下来是有成本的，这个成本必须被承认并算进部门预算，否则知识库永远是「有余力才做」的事。
+   </Text>
+      </Box>
+  </Box>
+
+      {/* 右：不替代 + 反馈 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+     <Box style={{ height: 152, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '11px 15px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', marginBottom: 7 }}>四类判断不能交给知识库</Text>
+       {[
+    { t: '首次出现的例外', d: '库里没有先例，需要人判断' },
+      { t: '利益相关方冲突', d: '涉及取舍，不是查得到答案的事' },
+  { t: '需要承担责任的决定', d: '知识提供参考，不提供背书' },
+    { t: '口径本身存疑时', d: '两处写的不一样，要人裁定而非等系统选' },
+    ].map((x, i) => (
+   <Box key={x.t} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+    <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>✕</Text>
+    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', width: 118 }}>{x.t}</Text>
+   <Text style={{ fontSize: 11, color: '#5A6072', flex: 1 }}>{x.d}</Text>
+       </Box>
+  ))}
+        </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '11px 15px', flexDirection: 'column' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>使用方的反馈回路：三个必须收集的信号</Text>
+          {[
+        { n: '找不到', d: '检索没召回，说明切片或索引有问题' },
+   { n: '不敢用', d: '找到但不敢引用，说明来源可信度标识不足' },
+   { n: '用了但错', d: '引用了却发现过时，说明治理机制失效' },
+     ].map((x, i) => (
+      <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 11, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+ <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 88 }}>{x.n}</Text>
+   <Text style={{ fontSize: 12, color: '#3A4050', flex: 1 }}>{x.d}</Text>
+    </Box>
+        ))}
+          <Box style={{ height: 46, background: '#FFFFFF', borderRadius: 3, padding: '7px 11px', marginTop: 6 }}>
+   <Text style={{ fontSize: 11, color: '#C43A17', lineHeight: 1.45 }}>这三个信号分别对应切片、标识、治理三类问题，必须分开归因——混在一起看就会得出「检索不准」这个错误结论。</Text>
+          </Box>
+ </Box>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>22 / 30</Text>
+    </Box>
+</Slide>

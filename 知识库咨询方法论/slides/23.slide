@@ -1,0 +1,62 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之 DA：知识的<span style={{ color: '#FA4F24' }}>三层数据</span>与必须显式建模的元数据
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     元数据不是可有可无的附加信息，它是知识能被治理的前提
+   </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 三层 */}
+      {[
+        { n: 'L1', t: '原文与切片层', c: '#8A8F99', bg: '#F7F7F8',
+    items: ['原文正文（保真不可改）', '切片单元 + 位置锚点', '文档版本与生效期', '密级标记与可见范围'],
+          guard: '原文必须与切片同时保存：只存切片，事后无法核对引用是否准确。' },
+   { n: 'L2', t: '实体与关系层', c: '#FBA15C', bg: '#FFF8F2',
+   items: ['识别出的业务对象', '对象属性与属性值', '对象之间的关系', '与本体的对应关系'],
+guard: '实体层只放从原文能直接读出的内容；任何推断结论都应单独标记置信度。' },
+ { n: 'L3', t: '出处与版本层', c: '#FA4F24', bg: '#FFF3EE',
+      items: ['每条内容指向来源位置', '修订历史与失效标记', '冲突记录与裁定结果', '评测与使用反馈'],
+guard: '冲突记录不能删。留住「这里曾经有过两种说法」比强行合一更有价值。' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, background: it.bg, borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '9px 14px', flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+       <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 28 }}>{it.n}</Text>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+          </Box>
+     <Box style={{ flexDirection: 'row', gap: 8, marginTop: 6, flex: 1 }}>
+     {it.items.map((x, k) => (
+            <Box key={k} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '5px 9px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35 }}>{x}</Text>
+     </Box>
+        ))}
+       </Box>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 5 }}>
+            <Text style={{ fontSize: 11, color: '#C43A17' }}>⚠</Text>
+     <Text style={{ fontSize: 11, color: '#5A6072', flex: 1, lineHeight: 1.35 }}>{it.guard}</Text>
+       </Box>
+        </Box>
+      ))}
+
+      {/* 必建模元数据 */}
+      <Box style={{ height: 124, background: '#0F1423', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>十二项必建模元数据：少一项，就有一类问题查不出来</Text>
+     <Box style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 7, marginTop: 9, flex: 1 }}>
+   {[
+ { n: '来源系统', g: 1 }, { n: '文档标识', g: 1 }, { n: '责任人', g: 1 }, { n: '生效期', g: 1 },
+          { n: '失效期', g: 1 }, { n: '版本号', g: 1 }, { n: '密级', g: 1 }, { n: '可见范围', g: 1 },
+    { n: '位置锚点', g: 1 }, { n: '口径归属', g: 1 }, { n: '置信度', g: 1 }, { n: '关联对象', g: 1 },
+        ].map((x, i) => (
+   <Box key={x.n} style={{ width: 168, height: 34, background: 'rgba(255,255,255,0.08)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '0 10px', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+    <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1).padStart(2, '0')}</Text>
+       <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{x.n}</Text>
+        </Box>
+      ))}
+    </Box>
+      </Box>
+
+      </Box>
+</Slide>

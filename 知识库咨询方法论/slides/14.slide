@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之分工一：知识库与<span style={{ color: '#FA4F24' }}>Ontology</span> 的四条分工线
+    </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   一句话：知识库往本体里灌事实与出处，本体往知识库里回写已生效的判定
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+        <Box style={{ width: 152, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>分工维度</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>知识库负责</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>Ontology 负责</Text></Box>
+   <Box style={{ width: 286, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>交界处最易出事的地方</Text></Box>
+      </Box>
+
+      {[
+  { d: '承载对象', a: '文档、方案、案例、工单、纪要、经验', b: '对象类型、属性、关系、指标定义', w: '同一概念在两边各有一套名字，谁也不认另一套', c: '#FA4F24' },
+        { d: '表达形式', a: '自然语言 + 切片片段 + 出处坐标', b: '结构化字段 + 类型约束 + 计算式', w: '文本里的口径没进结构化字段，被当成「不一致」反复返工', c: '#F87D2F' },
+        { d: '时间属性', a: '生效期、失效期、版本历史', b: '当前有效快照与变更记录', w: '本体只存了当前值，历史追溯不到，审计答不出一周前的口径', c: '#FBA15C' },
+        { d: '权限粒度', a: '文档级可见范围与密级标记', b: '对象级 / 属性级安全策略', w: '文档侧标了密级，检索后只读不脱敏，敏感内容被原样送进模型', c: '#E0651A' },
+      ].map((it, i) => (
+    <Box key={it.d} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+   <Box style={{ width: 152, background: '#F7F7F8', borderLeft: '4px solid ' + it.c, padding: '0 12px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c }}>{it.d}</Text>
+      </Box>
+     <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45 }}>{it.a}</Text>
+        </Box>
+          <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45 }}>{it.b}</Text>
+    </Box>
+      <Box style={{ width: 286, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 11, color: '#C43A17', lineHeight: 1.45 }}>{it.w}</Text>
+     </Box>
+        </Box>
+      ))}
+
+  {/* 回写 */}
+      <Box style={{ height: 108, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Box style={{ width: 178 }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>知识库 → 本体的四条注入通道</Text>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 5 }}>写回必须经由 Action，不能直连</Text>
+      </Box>
+   <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+          {[
+            { n: '抽取对象', d: '从文本里识别业务对象，创建或关联本体对象' },
+      { n: '补全属性', d: '把散落在文档里的属性值补到对象上，标注来源' },
+            { n: '挂接出处', d: '给对象属性挂上「依据哪份文档第几页」的引用' },
+        { n: '回写判定', d: '把已生效的审批结论回写为对象状态' },
+          ].map((x, i) => (
+        <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '7px 11px' }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+    <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.62)', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+         </Box>
+  ))}
+      </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>14 / 30</Text>
+    </Box>
+</Slide>

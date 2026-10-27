@@ -1,0 +1,64 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之定义：知识库的<span style={{ color: '#FA4F24' }}>四个角色</span>，缺第三个就一定失败
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+  企业建知识库普遍只建了前两个角色，所以一年之后库里全是互相矛盾的旧文档
+ </Text>
+    </Box>
+ <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 四个角色 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+        {[
+        { n: '角色一', t: '采集者', d: '把散落在文档、系统、邮件、群聊、会议纪要里的内容，变成可索引的单元', todo: '对接源清单、采集频率、格式归一', c: '#8A8F99' },
+          { n: '角色二', t: '加工者', d: '切片、抽取实体与关系、补口径标注，让片段能独立成立', todo: '切片规范、抽取规则、元数据补齐', c: '#FBA15C' },
+     { n: '角色三', t: '治理者', d: '定口径、管时效、管权限、管下架——决定哪条知识算数', todo: '口径字典、时效台账、责任矩阵', c: '#FA4F24', star: true },
+    { n: '角色四', t: '服务方', d: '以检索上下文的形式供给 Agent 与应用，并保证引用可追', todo: '检索策略、引用规范、评测集', c: '#F87D2F' },
+        ].map((it, i) => (
+     <Box key={it.n} style={{ flex: 1, background: it.star ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + it.c, padding: '11px 15px', flexDirection: 'column' }}>
+         <Text style={{ fontSize: 12, color: '#8A8F99' }}>{it.n}</Text>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.c, marginTop: 2 }}>{it.t}</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.5, flex: 1 }}>{it.d}</Text>
+      <Box style={{ height: 46, background: '#FFFFFF', borderRadius: 3, padding: '6px 10px', marginTop: 7 }}>
+     <Text style={{ fontSize: 10, color: '#8A8F99' }}>关键交付</Text>
+       <Text style={{ fontSize: 11, color: '#C43A17', fontWeight: 'bold', marginTop: 2, lineHeight: 1.35 }}>{it.todo}</Text>
+        </Box>
+     </Box>
+        ))}
+   </Box>
+
+   {/* 失败规律 */}
+      <Box style={{ height: 90, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C', width: 196 }}>为什么企业总是缺角色三</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.55 }}>
+  采集和加工有明确的产出物和技术工种，好分工也好考核；治理没有技术产出物，它的产出是「一道让大家放弃旧文档的决议」。所以大多数单位把它挂在某个部门兼管，没有人真正为知识准确性负责——最后知识库就退化成一个搜索更快的网盘。
+      </Text>
+      </Box>
+
+ {/* 三条判据 */}
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>判断一家企业的知识库是「知识库」还是「文档堆」，看三件事</Text>
+  <Box style={{ flexDirection: 'row', gap: 10, flex: 1 }}>
+       {[
+      { q: '同一个问题', a: '两个部门问同口径问题，答出来的数一样吗' },
+      { q: '一条三个月前的制度', a: '还有人在按它执行吗，系统会不会把它当成现行有效' },
+          { q: '一条答案', a: '能不能在十秒内点开到它依据的那份文件的第几页' },
+      ].map((x, i) => (
+   <Box key={x.q} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 11px' }}>
+         <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17' }}>{x.q}</Text>
+      <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 3, lineHeight: 1.4 }}>{x.a}</Text>
+   </Box>
+          ))}
+ </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>06 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     本册<span style={{ color: '#FA4F24' }}>结构</span>：四部分，一条主线
+      </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   前两部分讲知识库本身与三方关系，第三部分回到 4A，第四部分讲治理与演进
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 18, paddingBottom: 10, height: 479, flexDirection: 'row', gap: 12 }}>
+      <Box style={{ width: 632, flexDirection: 'column', gap: 8 }}>
+      {[
+   { n: '序论 + 方法', p: '03-04', t: '为什么 4A 之后还要谈知识库；Approach 七阶段与每步产出物', c: '#0F1423' },
+          { n: 'PART 01', p: '05-11', t: '知识库是什么：四个角色、五个组成、三类检索上下文、四级成熟度、岗位与责任', c: '#FA4F24' },
+  { n: 'PART 02', p: '12-19', t: '知识库 × Ontology × Agent：三方分工、引用与溯源、权限传播、供给链路', c: '#F87D2F' },
+  { n: 'PART 03', p: '20-25', t: '知识库的 4A：映射总览，以及 BA / DA / AA / TA 各自变成什么', c: '#E0651A' },
+     { n: 'PART 04', p: '26-30', t: '工程与治理：五道门、五类失败、可信度评测、四步演进、结语', c: '#C43A17' },
+     ].map((it, i) => (
+       <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+     <Box style={{ width: 128 }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+     <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 2 }}>{it.p}</Text>
+       </Box>
+    <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+     </Box>
+          ))}
+  <Box style={{ height: 66, background: '#0F1423', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C', width: 168 }}>本册要回答的核心问题</Text>
+      <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+      一条知识从产生到被引用，中间要经过什么；为什么向量库不等于知识库；Agent 要用知识时，为什么不能绕过本体。
+   </Text>
+   </Box>
+  </Box>
+
+  <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+  <Box style={{ height: 214, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', marginBottom: 8 }}>七册的关系：一条链路，不是七本独立册子</Text>
+        {[
+    { b: 'DA / BA / AA / TA', t: '四层架构，方法底座', c: '#8A8F99' },
+      { b: 'Ontology', t: '语义与动力学合一，汇流点', c: '#F87D2F' },
+     { b: 'Agent', t: '有职权的角色，消费知识与语义', c: '#FA4F24' },
+        { b: '知识库', t: '非结构化知识的供给与治理', c: '#0F1423' },
+    ].map((it, i) => (
+          <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 132 }}>{it.b}</Text>
+          <Text style={{ fontSize: 12, color: '#5A6072', flex: 1 }}>{it.t}</Text>
+        </Box>
+        ))}
+  </Box>
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>与 Agent 册的关系</Text>
+   <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', marginTop: 8, lineHeight: 1.6 }}>
+    Agent 册回答「它被允许做什么」，知识库册回答「它依据什么」。上下文规格书里的「来源、预算、时效、压缩、不可信标记」五项，都由这一册提供设计方法。
+        </Text>
+      </Box>
+   </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+   <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>02 / 30</Text>
+    </Box>
+</Slide>

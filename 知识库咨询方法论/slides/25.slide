@@ -1,0 +1,82 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之 TA：<span style={{ color: '#FA4F24' }}>运行时与非功能</span>，四个必须自己盯的指标
+    </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     知识库的选型之争往往跑题了，真正要盯的是这四个数能不能压住
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 组件 */}
+      <Box style={{ height: 96, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>运行时组件：标「新」的是知识库特有的</Text>
+     <Box style={{ flexDirection: 'row', gap: 5, flex: 1 }}>
+          {[
+    { t: '源接入', d: '文档 / 系统', c: '#8A8F99' },
+    { t: '解析管道', d: '正文提取 · 版面还原', c: '#FBA15C', n: true },
+      { t: '切片管道', d: '语义边界切分', c: '#FA4F24', n: true },
+   { t: '实体抽取', d: '对象 · 关系 · 出处', c: '#FA4F24', n: true },
+    { t: '向量索引', d: '语义召回', c: '#F87D2F' },
+   { t: '关键词索引', d: '精确匹配', c: '#F87D2F' },
+            { t: '重排服务', d: '可信度 · 时效打分', c: '#E0651A', n: true },
+      { t: '密级标记服务', d: '内容级标签', c: '#E0651A', n: true },
+  ].map((x, i) => (
+     <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid ' + x.c, padding: '5px 5px' }}>
+     <Text style={{ fontSize: 11, fontWeight: 'bold', color: x.c, textAlign: 'center' }}>{x.t}</Text>
+     <Text style={{ fontSize: 9, color: '#8A8F99', textAlign: 'center', marginTop: 2 }}>{x.d}</Text>
+       </Box>
+   ))}
+      </Box>
+      </Box>
+
+      {/* 四指标 */}
+  <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+   {[
+   { t: '召回率', q: '该找到的找到了吗', k: '评测集上人工标注的相关内容被召回的比例', bad: '低召回 → 答不全', how: '先查切片，再查索引，最后查过滤条件', c: '#FA4F24' },
+   { t: '准确率', q: '找到的是对的吗', k: '召回内容中真正相关的比例', bad: '低准确 → 被噪声带偏', how: '先看重排打分，再查元数据过滤顺序', c: '#F87D2F' },
+          { t: '引用可溯率', q: '能指回原文吗', k: '引用能一键回到原文并高亮对应句的比例', bad: '低溯率 → 不敢用', how: '先查位置锚点是否存了、是否失效', c: '#E0651A' },
+      { t: '上下文占用', q: '每次检索花了多少预算', k: '单次供给进提示词的 token 量与占比', bad: '超预算 → 挤掉本体事实', how: '先查召回条数，再查是否做了压缩', c: '#C43A17' },
+        ].map((it, i) => (
+      <Box key={it.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '9px 13px', flexDirection: 'column' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+       <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+   <Text style={{ fontSize: 11, color: '#5A6072', flex: 1 }}>{it.q}</Text>
+    </Box>
+        <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 7, lineHeight: 1.45, flex: 1 }}>{it.k}</Text>
+        <Box style={{ height: 26, background: '#FFFFFF', borderRadius: 3, justifyContent: 'center', padding: '0 9px' }}>
+     <Text style={{ fontSize: 10, color: '#C43A17', fontWeight: 'bold' }}>{it.bad}</Text>
+        </Box>
+     <Box style={{ height: 30, background: '#FFF3EE', borderRadius: 3, justifyContent: 'center', padding: '0 9px', marginTop: 5 }}>
+         <Text style={{ fontSize: 10, color: '#C43A17', lineHeight: 1.35 }}>{it.how}</Text>
+        </Box>
+ </Box>
+        ))}
+      </Box>
+
+      {/* 选型立场 */}
+      <Box style={{ height: 116, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 148 }}>关于向量库选型的立场</Text>
+     <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+     {[
+   { t: '先不谈选型', d: '先把评测集做出来，再看哪个库能过线。没有评测集的选型讨论都是拍脑袋' },
+     { t: '别只看召回率', d: '企业场景的瓶颈常在过滤与重排，不在向量库本身的检索质量' },
+        { t: '别忘了元数据', d: '缺少可靠的元数据支撑，再好的向量库也做不了权限与时效过滤' },
+    ].map((x, i) => (
+   <Box key={x.t} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 11px' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+      <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+    </Box>
+    ))}
+      </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>25 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,76 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之总览：知识库落在4A 的<span style={{ color: '#FA4F24' }}>哪一格、哪一层</span>
+      </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   它是一个业务应用，判断标准是：有明确服务对象、有明确责任人、有可度量产出
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+        <Box style={{ width: 46, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>层</Text></Box>
+        <Box style={{ width: 210, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>传统架构里的对应物</Text></Box>
+        <Box style={{ flex: 1.2, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>知识库场景下变成什么</Text></Box>
+        <Box style={{ width: 278, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>知识库独有的那部分</Text></Box>
+      </Box>
+
+      {[
+ { a: 'BA', b: '部门、流程、职责边界', c: '增加一类角色：知识域责任人，并对「知识准确性」直接负责', d: '口径裁定权与入库否决权', col: '#FA4F24' },
+        { a: 'DA', b: '数据模型、表结构、指标口径', c: '数据分三层：原文与切片、抽取出的实体与关系、出处与版本', d: '时效性与版本血缘', col: '#F87D2F' },
+      { a: 'AA', b: '应用清单、集成关系、调用链', c: '应用变成检索链路：过滤 → 混合检索 → 重排 → 装配', d: '上下文装配契约', col: '#E0651A' },
+    { a: 'TA', b: '运行环境、中间件、非功能指标', c: '运行时多了向量索引、切片管道、重排服务、密级标记服务', d: '召回质量与延迟的平衡', col: '#C43A17' },
+      ].map((it, i) => (
+        <Box key={it.a} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+   <Box style={{ width: 46, background: '#F7F7F8', borderLeft: '4px solid ' + it.col, alignItems: 'center', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.col }}>{it.a}</Text>
+     </Box>
+      <Box style={{ width: 210, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 12, color: '#5A6072', lineHeight: 1.4 }}>{it.b}</Text>
+   </Box>
+          <Box style={{ flex: 1.2, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, color: '#0F1423', lineHeight: 1.4 }}>{it.c}</Text>
+          </Box>
+          <Box style={{ width: 278, background: '#FFF3EE', borderLeft: '2px solid #FBA15C', padding: '0 12px', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.4 }}>{it.d}</Text>
+          </Box>
+        </Box>
+      ))}
+
+      {/* 服务对象 */}
+      <Box style={{ height: 128, background: '#0F1423', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>知识库的五类服务对象：需求不同，架构重点完全不同</Text>
+        <Box style={{ flexDirection: 'row', gap: 8, marginTop: 8, flex: 1 }}>
+          {[
+   { s: '一线员工', d: '查规范与流程', k: '要求：找得到、看得懂', c: '#8A8F99' },
+            { s: '业务专家', d: '找同类案例与经验', k: '要求：像不像、对不对口', c: '#FBA15C' },
+  { s: 'Agent', d: '取上下文与依据', k: '要求：预算可控、引用可追', c: '#FA4F24' },
+      { s: '管理者', d: '看知识资产健康度', k: '要求：时效与冲突可见', c: '#F87D2F' },
+   { s: '审计与合规', d: '验证依据与流程', k: '要求：可复现、可回溯', c: '#E0651A' },
+          ].map((x, i) => (
+            <Box key={x.s} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + x.c, padding: '7px 10px' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.s}</Text>
+  <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>{x.d}</Text>
+              <Text style={{ fontSize: 11, color: x.c, fontWeight: 'bold', marginTop: 4 }}>{x.k}</Text>
+         </Box>
+          ))}
+    </Box>
+      </Box>
+
+      <Box style={{ height: 62, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', width: 152 }}>这一页的落点</Text>
+        <Text style={{ fontSize: 13, color: '#0F1423', flex: 1, lineHeight: 1.5 }}>
+     知识库多出来的那一层，本质上和 Agent 多出来的那一层是同一件事——它不再只是「存放」，而是「决定什么算数」。谁来决定，就是 BA 里的责任人；决定的结果怎么落，就是 DA 里的口径与时效；决定的过程怎么被调用，就是 AA 里的装配契约；决定能不能一直做对，就是 TA 里的评测。
+     </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>21 / 30</Text>
+    </Box>
+</Slide>

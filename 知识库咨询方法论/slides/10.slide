@@ -1,0 +1,59 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之标尺：知识成熟度<span style={{ color: '#FA4F24' }}>四级</span>，先诚实定位再定投入
+  </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        大多数企业停在二级却按四级的要求投预算，这是知识库项目最常见的错配
+   </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {[
+        { lv: 'L1', t: '网盘级', s: '文档堆在一起，能搜到标题', f: '搜到但读不懂、切不开、没有版本', who: '谁上传谁负责，基本无人维护', c: '#8A8F99' },
+        { lv: 'L2', t: '可检索级', s: '有切片有索引，能问答', f: '答案没引用、不同库互相矛盾', who: '有 IT 或运营兼职维护，无专职', c: '#FBA15C' },
+        { lv: 'L3', t: '可信级', s: '每条知识有责任人和时效，能溯源', f: '治理成本高，需要跨部门配合', who: '每个知识域有明确责任人', c: '#F87D2F' },
+     { lv: 'L4', t: '可决策级', s: '知识与本体打通，能支撑判断与行动', f: '要求本体成熟，组织协同难度最高', who: '业务专家 + 架构师 + 治理委员会', c: '#FA4F24' },
+      ].map((it, i) => (
+        <Box key={it.lv} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '9px 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <Box style={{ width: 46, height: 40, background: it.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FFFFFF' }}>{it.lv}</Text>
+       </Box>
+     <Box style={{ width: 108 }}>
+      <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+     </Box>
+   <Box style={{ flex: 1, height: 40, background: '#FFFFFF', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 12, color: '#0F1423' }}>{it.s}</Text>
+          </Box>
+     <Box style={{ width: 250, height: 40, background: '#FFF3EE', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 11, color: '#C43A17' }}>{it.f}</Text>
+       </Box>
+     <Box style={{ width: 236, height: 40, background: '#F7F7F8', border: '1px solid #E8E8E8', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, color: '#5A6072' }}>{it.who}</Text>
+ </Box>
+        </Box>
+      ))}
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '10px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>跳级的真实代价</Text>
+    <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.88)', marginTop: 6, lineHeight: 1.55 }}>
+     从 L2 直接上 L4，最常见的失败不是技术不行，而是业务部门不愿意认领知识责任。第一阶段必须老老实实从 L2 做起，用「有引用」这个可感知的收益去换取业务方认领责任的动力。
+        </Text>
+     </Box>
+ <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '10px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>本册的建议节奏</Text>
+       <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 6, lineHeight: 1.55 }}>
+  先用一个业务域做到 L3，用它当样板去说服其他部门；L4 只在本体已成熟的领域做，因为没有本体的 L4 只是把矛盾放得更大。切忌全公司一起上 L4。
+     </Text>
+        </Box>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>10 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,75 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之分工二：知识库与 <span style={{ color: '#FA4F24' }}>Agent</span> 的四条分工线
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     一句话：知识库只提供「读」，不提供「信」；可信度由 Agent 的引用规范与本体口径共同担保
+ </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'row', gap: 11 }}>
+      {/* 左：不该给知识库的权限 */}
+      <Box style={{ width: 400, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 252, background: '#F7F7F8', borderRadius: 4, padding: '11px 15px', flexDirection: 'column' }}>
+  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>知识库的四条能力边界</Text>
+          {[
+      { t: '不做最终判断', d: '候选规则可以有倾向，不能有裁定权' },
+     { t: '不绕过本体改数据', d: '写回必须经由 Action' },
+        { t: '不参与权限裁定', d: '可见范围由本体安全策略决定' },
+      { t: '不替组织背书', d: '入库不代表该做法被正式批准' },
+          ].map((it, i) => (
+            <Box key={it.t} style={{ flex: 1, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8', justifyContent: 'center' }}>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+       <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>✕</Text>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+         </Box>
+   <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 3, marginLeft: 20, lineHeight: 1.4 }}>{it.d}</Text>
+ </Box>
+       ))}
+        </Box>
+ <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '10px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>为什么必须划这条线</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 6, lineHeight: 1.55 }}>
+  一旦知识库能裁定，它就会被当成权威源；而它装的其实是从各处抄来的、有时过期、有时互相矛盾的文本。这是把「可查」误当「可信」的典型事故。
+   </Text>
+  </Box>
+      </Box>
+
+      {/* 右：上下文装配契约 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 252, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>知识库交给 Agent 的上下文契约（五项）</Text>
+     <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 4 }}>缺一项，Agent 的输出就不可控</Text>
+    <Box style={{ marginTop: 9, flex: 1 }}>
+       {[
+        { n: '来源标识', d: '每段内容标明来自哪个库、哪份文档、哪个位置' },
+            { n: '可信等级', d: '正式制度 / 部门惯例 / 个人经验，模型据此调整语气' },
+        { n: '时效信息', d: '生效期与更新时间，过期内容不主动召回' },
+            { n: '预算占用', d: '本次供给占用了多少上下文预算' },
+        { n: '不可信标记', d: '外部来源内容只作参考，不作为判断依据' },
+ ].map((x, i) => (
+    <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.12)' }}>
+     <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 20 }}>{String(i + 1).padStart(2, '0')}</Text>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF', width: 96 }}>{x.n}</Text>
+     <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', flex: 1 }}>{x.d}</Text>
+         </Box>
+       ))}
+          </Box>
+  </Box>
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>Agent 侧对应的三项义务</Text>
+   <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 6, lineHeight: 1.6 }}>
+      一是只用带出处的内容回答，无出处就说明「没找到依据」而不是推测；二是引用要指到具体位置，不能只写「见某制度」；三是发现内容冲突时必须显式告知并请求裁定，不允许自行选一个继续往下走。
+        </Text>
+  </Box>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>15 / 30</Text>
+    </Box>
+</Slide>

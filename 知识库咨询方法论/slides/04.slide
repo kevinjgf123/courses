@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之路径：<span style={{ color: '#FA4F24' }}>Approach 七阶段</span>，先做什么后做什么、每步产出什么
+     </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+          前四阶段是治理，后三阶段是工程；顺序颠倒的代价是把口径问题拖到上线后爆
+ </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 7 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 7 }}>
+        <Box style={{ width: 46, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>阶段</Text></Box>
+        <Box style={{ width: 46, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>性质</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>这一步做什么</Text></Box>
+        <Box style={{ width: 340, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>产出物</Text></Box>
+      </Box>
+
+      {[
+   { n: '1', k: '治理', t: '盘点知识资产，定义要服务的场景', o: '知识资产清单 + 场景清单', c: '#FA4F24' },
+     { n: '2', k: '治理', t: '定口径、清冲突，明确同义不同说的处理规则', o: '口径字典 + 冲突台账', c: '#FA4F24' },
+        { n: '3', k: '设计', t: '设计切片规则与实体抽取，把文本变成可引用单元', o: '切片规范 + 抽取规则表', c: '#F87D2F' },
+        { n: '4', k: '治理', t: '设计权限模型与时效台账，明确谁可见、何时失效', o: '访问矩阵 + 时效台账', c: '#F87D2F' },
+ { n: '5', k: '设计', t: '设计检索策略与评测集，先定验收线再建库', o: '检索策略书 + 评测集', c: '#E0651A' },
+        { n: '6', k: '工程', t: '试运行，调切片、调召回、调重排', o: '试运行报告 + 调优记录', c: '#E0651A' },
+      { n: '7', k: '运营', t: '上线评审，转入生命周期治理', o: '上线评审表 + 治理运营手册', c: '#C43A17' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, flexDirection: 'row', gap: 7 }}>
+          <Box style={{ width: 46, background: '#F7F7F8', alignItems: 'center', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+    </Box>
+          <Box style={{ width: 46, background: it.bg || (it.k === '治理' ? '#FFF3EE' : '#F7F7F8'), alignItems: 'center', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 12, fontWeight: 'bold', color: it.c }}>{it.k}</Text>
+          </Box>
+   <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, color: '#0F1423' }}>{it.t}</Text>
+   </Box>
+     <Box style={{ width: 340, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center', borderLeft: '2px solid #FBA15C' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17' }}>{it.o}</Text>
+     </Box>
+        </Box>
+      ))}
+
+    {/* 三条硬规则 */}
+      <Box style={{ height: 68, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 128 }}>三条硬规则</Text>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      {[
+        { n: '先治理再建库', d: '口径不清就不要先上向量库' },
+        { n: '先只读后写回', d: '先做检索与引用，再谈写回' },
+  { n: '先有评测再扩域', d: '没有评测集不扩知识域' },
+      ].map((x, i) => (
+     <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '6px 10px' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+      <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1)}</Text>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+     </Box>
+  <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>{x.d}</Text>
+        </Box>
+    ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>04 / 30</Text>
+    </Box>
+</Slide>

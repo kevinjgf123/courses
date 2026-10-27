@@ -1,0 +1,52 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+  <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之闸门：<span style={{ color: '#FA4F24' }}>知识库五道门</span>，每道都能在内部自行验证
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     这五道门不需要外部安全团队参与，业务侧自己就能跑，但绝大多数单位没跑过
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {[
+        { n: '第一道', t: '时效门', q: '过期内容还会被召回吗？', how: '在库里放一条三个月的旧制度，看是否还能被检索到', c: '#FA4F24' },
+     { n: '第二道', t: '冲突门', q: '同口径两种说法会怎么处理？', how: '故意造两条矛盾内容，看系统是合并、报错还是显式告知冲突', c: '#F87D2F' },
+     { n: '第三道', t: '权限门', q: '检索前过滤，还是检索后隐藏？', how: '用一个无权限账号检索受限内容，看是否能召回、能读出正文', c: '#E0651A' },
+        { n: '第四道', t: '溯源门', q: '引用能不能一键回到原文？', how: '随机抽二十条引用，验证定位准确、版本正确、无死链', c: '#C43A17' },
+        { n: '第五道', t: '空值门', q: '找不到时它会承认吗？', how: '问一个库里确实没有的问题，看是编造还是明确说没找到', c: '#0F1423' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '9px 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 56 }}>{it.n}</Text>
+          <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423', width: 88 }}>{it.t}</Text>
+      <Box style={{ flex: 1, height: 40, background: '#FFFFFF', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 13, color: '#0F1423' }}>{it.q}</Text>
+       </Box>
+          <Box style={{ width: 456, height: 40, background: '#FFF3EE', borderRadius: 3, padding: '0 12px', justifyContent: 'center', flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17' }}>怎么测</Text>
+            <Text style={{ fontSize: 11, color: '#5A6072', flex: 1, lineHeight: 1.35 }}>{it.how}</Text>
+</Box>
+        </Box>
+      ))}
+
+  <Box style={{ height: 108, flexDirection: 'row', gap: 8 }}>
+   <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>通过线怎么定</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 7, lineHeight: 1.55 }}>
+    时效门与权限门必须 100%，一条不过就不许对内开放；冲突门要求系统必须显式告知冲突，不接受自行合并；溯源门要求抽样溯源率不低于 95%；空值门要求无依据时必须明确说没找到，不接受「据推测」。
+    </Text>
+      </Box>
+   <Box style={{ width: 300, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>第五道门最常被忽略</Text>
+          <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 6, lineHeight: 1.5 }}>企业里绝大多数幻觉不是出现在「找不到还硬答」，而是出现在「有一条弱相关的内容，模型顺着它编」。所以要测的是弱相关召回时的表现。</Text>
+        </Box>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+    </Box>
+</Slide>

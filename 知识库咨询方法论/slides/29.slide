@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+ <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+  <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  之演进：从<span style={{ color: '#FA4F24' }}>个人文档到企业知识资产</span>的四步
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     每一步都要有可度量的证据才允许往上走，不能靠感觉宣布「我们已经有知识库了」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 四步 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+        {[
+          { n: 'Step 1', t: '找得到', d: '把散落的文档集中起来，能搜到标题和全文', g: '门槛：无', m: '证据：搜得到率', c: '#8A8F99' },
+          { n: 'Step 2', t: '看得懂', d: '解析归一 + 语义切片，回答有内容可用', g: '门槛：正文提取率 ≥ 95%', m: '证据：切片可读性抽检', c: '#FBA15C' },
+          { n: 'Step 3', t: '敢引用', d: '有出处、有版本、有责任人，敢拿去做决策依据', g: '门槛：五道门过四道', m: '证据：溯源率 ≥ 95%', c: '#FA4F24' },
+          { n: 'Step 4', t: '能联动', d: '知识与本体打通，能被 Agent 调用并驱动动作', g: '门槛：本体已成熟', m: '证据：Agent 调用成功率', c: '#0F1423' },
+        ].map((it, i) => (
+  <Box key={it.n} style={{ flex: 1, marginTop: i * 14, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + it.c, padding: '10px 14px', flexDirection: 'column' }}>
+       <Text style={{ fontSize: 12, fontWeight: 'bold', color: it.c, letterSpacing: 1 }}>{it.n}</Text>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>{it.t}</Text>
+            <Text style={{ fontSize: 12, color: '#5A6072', marginTop: 7, lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+      <Box style={{ height: 44, background: '#FFFFFF', borderRadius: 3, padding: '6px 10px', marginTop: 6 }}>
+   <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17' }}>{it.g}</Text>
+     <Text style={{ fontSize: 10, color: '#8A8F99', marginTop: 2 }}>{it.m}</Text>
+      </Box>
+          </Box>
+      ))}
+      </Box>
+
+      {/* 每步的组织动作 */}
+      <Box style={{ height: 112, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '10px 16px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', marginBottom: 7 }}>每一步真正卡住项目的组织动作</Text>
+        <Box style={{ flexDirection: 'row', gap: 9, flex: 1 }}>
+       {[
+            { n: '找得到', d: '确定唯一存放位置，宣布散落副本一律作废' },
+          { n: '看得懂', d: '把解析质量纳入验收，不合格源不接入' },
+         { n: '敢引用', d: '让责任人签字，写进考核；否则永远停留在内部参考' },
+   { n: '能联动', d: '知识写回必须经由 Action，纳入变更评审' },
+          ].map((x, i) => (
+       <Box key={x.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 11px' }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{x.n}</Text>
+      <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+      </Box>
+          ))}
+   </Box>
+      </Box>
+
+      {/* 两条忠告 */}
+      <Box style={{ height: 100, flexDirection: 'row', gap: 8 }}>
+     <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>不要在第二步就宣称「我们有知识库了」</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 6, lineHeight: 1.5 }}>
+      搜得到和敢引用之间隔着整个治理体系。过早宣称会让使用者形成「答不出来就是库不全」的印象，而不是反馈问题，这条路走不通。
+    </Text>
+ </Box>
+   <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>允许退回上一级</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 6, lineHeight: 1.5 }}>
+     指标连续退步或时效门不过关时，把范围缩回一个知识域重新做扎实，比挂着「全公司知识库」的名头持续产出不可信答案要好得多。
+     </Text>
+      </Box>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+    </Box>
+</Slide>

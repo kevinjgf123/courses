@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之链路：<span style={{ color: '#FA4F24' }}>知识供给链路</span>的六个关口与各自的失败表现
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      端到端排查时按关口逐个过，比在结果上猜要快得多
+        </Text>
+    </Box>
+ <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+     <Box style={{ width: 46, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>关口</Text></Box>
+ <Box style={{ width: 148, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>做什么</Text></Box>
+        <Box style={{ width: 208, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>产出物</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>这一关失败的典型表现</Text></Box>
+      </Box>
+
+      {[
+    { n: '1', a: '源登记', b: '来源系统 / 文档库 / 责任人清单', c: '库里有内容但不知道谁维护，出错找不到人', col: '#8A8F99' },
+        { n: '2', a: '解析归一', b: '统一格式与正文提取', c: '扫描件、表格、PDF 提不出正文，检索永远命中不了', col: '#FBA15C' },
+        { n: '3', a: '切片', b: '切片单元 + 位置锚点', c: '切碎了语义，命中半句话，模型答非所问', col: '#F87D2F' },
+      { n: '4', a: '实体抽取', b: '对象 / 关系 / 属性 + 出处挂接', c: '只有文本没有结构，跨库无法关联、无法进本体', col: '#E0651A' },
+        { n: '5', a: '治理', b: '口径字典 + 时效台账 + 密级标记', c: '新旧口径并存，答案看着自信但依据是废的', col: '#FA4F24' },
+     { n: '6', a: '检索供给', b: '过滤策略 + 排序 + 上下文装配', c: '召回一堆弱相关内容，模型被噪声带偏', col: '#C43A17' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+ <Box style={{ width: 46, background: '#F7F7F8', alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.col }}>{it.n}</Text>
+       </Box>
+   <Box style={{ width: 148, background: '#F7F7F8', borderLeft: '4px solid ' + it.col, padding: '0 12px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.col }}>{it.a}</Text>
+     </Box>
+     <Box style={{ width: 208, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4 }}>{it.b}</Text>
+          </Box>
+          <Box style={{ flex: 1, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 12, color: '#C43A17', lineHeight: 1.4 }}>{it.c}</Text>
+  </Box>
+        </Box>
+      ))}
+
+      {/* 排查顺序 */}
+ <Box style={{ height: 116, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>答案不对时的排查顺序：从上游往下游查，不要从结果往回猜</Text>
+        <Box style={{ flexDirection: 'row', gap: 8, marginTop: 9, flex: 1 }}>
+          {[
+ { n: '先查第 2 关', d: '正文到底提出来没有——扫描件和表格是重灾区' },
+   { n: '再查第 3 关', d: '切片是否独立可读，命中片段自己能不能看懂' },
+     { n: '再查第 5 关', d: '召回的几条之间口径是否互相矛盾、是否已失效' },
+            { n: '最后查第 6 关', d: '召回排序是否把弱相关内容排在强相关内容前面' },
+          ].map((x, i) => (
+   <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '7px 11px' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+      <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+       </Box>
+     ))}
+    </Box>
+   <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 8 }}>
+      经验上，八成的「AI 答得不对」问题在第 2 和第 3 关就暴露了，跟模型能力关系不大。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>18 / 30</Text>
+    </Box>
+</Slide>

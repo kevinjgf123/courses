@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之评测：<span style={{ color: '#FA4F24' }}>可信度评测</span>与每次变更后的必跑回归
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   知识库没有评测集，就没有「改完变好了还是变差了」这个概念
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'row', gap: 11 }}>
+      {/* 左：五维 */}
+      <Box style={{ width: 648, flexDirection: 'column', gap: 7 }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>五个维度，各有各的度量方式</Text>
+     {[
+          { n: '正确性', q: '结论与官方口径一致吗', k: '专家盲评 100 条', bar: 100, c: '#FA4F24' },
+       { n: '完整性', q: '该说的要点说全了吗', k: '要点召回清单逐条对', bar: 85, c: '#F87D2F' },
+          { n: '可溯源性', q: '引用能否指回原文', k: '抽样验证定位准确率', bar: 95, c: '#E0651A' },
+          { n: '时效性', q: '引用的是不是现行有效版本', k: '检查召回内容命中失效版本的比例', bar: 100, c: '#C43A17' },
+          { n: '拒答率', q: '找不到时有没有乱答', k: '无答案样本的编造比例', bar: 100, c: '#0F1423' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c, width: 68 }}>{it.n}</Text>
+    <Text style={{ fontSize: 12, color: '#0F1423', width: 210 }}>{it.q}</Text>
+   <Text style={{ fontSize: 11, color: '#5A6072', flex: 1 }}>{it.k}</Text>
+       <Box style={{ width: 118, height: 22, background: '#FFFFFF', borderRadius: 11, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 11, fontWeight: 'bold', color: it.c }}>≥ {it.bar}%</Text>
+        </Box>
+     </Box>
+        ))}
+        <Box style={{ height: 96, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>评测集怎么建：一个可行做法</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 7, lineHeight: 1.55 }}>
+ 从真实工作里捞 200 条过去三个月被反复问的问题，让业务专家标出「标准答案」和「依据应该在哪」。注意一定要包含一部分库里根本没有答案的问题——这部分专门用来测拒答能力，否则评测集会虚假地好看。
+      </Text>
+        </Box>
+      </Box>
+
+      {/* 右：回归 + 责任 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 196, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '11px 15px', flexDirection: 'column' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', marginBottom: 8 }}>六类变更，六个都必须跑全量回归</Text>
+     {[
+            { n: '切片规则改了', d: '召回基线全变' },
+         { n: '加了新库', d: '会影响既有问题的路由判断' },
+            { n: '调整了重排权重', d: '排序变了，可溯源性可能下降' },
+      { n: '换了嵌入模型', d: '向量空间完全不同' },
+      { n: '调整了过滤条件', d: '可能误杀有效内容' },
+    { n: '大批量修订了文档', d: '位置锚点可能失效' },
+          ].map((x, i) => (
+      <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+     <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 20 }}>{String(i + 1)}</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', width: 172 }}>{x.n}</Text>
+        <Text style={{ fontSize: 11, color: '#5A6072', flex: 1 }}>{x.d}</Text>
+   </Box>
+        ))}
+     </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '11px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>两条运营纪律</Text>
+    <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+         一是评测集由业务侧维护，不由技术侧维护——因为什么算「答对」只有业务能定义；二是每次回归的结果要留档，包括退步的版本，这样质量问题能定位到具体哪一次变更。
+     </Text>
+   </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+    </Box>
+</Slide>

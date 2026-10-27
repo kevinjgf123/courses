@@ -1,0 +1,77 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  之硬边界：<span style={{ color: '#FA4F24' }}>权限传播</span>，读得进去不等于出得来
+     </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   这是知识库侧最容易被漏掉的一条，也是数据泄露最常见的发生位置
+   </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 边界图 */}
+      <Box style={{ height: 168, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginBottom: 9 }}>一个典型的泄露路径：过滤发生在左边，风险发生在右边</Text>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
+          {[
+         { t: '知识源', s: '密级文件', bg: '#F7F7F8', c: '#8A8F99' },
+  { t: '检索过滤', s: '按行列表访问控制过滤', bg: '#FFFFFF', c: '#FBA15C' },
+     { t: '模型处理', s: '拿到的已被过滤', bg: '#FFFFFF', c: '#F87D2F' },
+  { t: '模型输出', s: '不再受原始过滤约束', bg: '#FFF3EE', c: '#FA4F24' },
+      { t: '写回本体', s: '变更也不受该过滤约束', bg: '#FFF3EE', c: '#E0651A' },
+          ].map((x, i) => (
+    <Box key={x.t} style={{ flexDirection: 'row', alignItems: 'center', flex: 1, gap: 8 }}>
+       <Box style={{ flex: 1, height: 66, background: x.bg, borderRadius: 3, borderTop: '3px solid ' + x.c, padding: '8px 10px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: x.c }}>{x.t}</Text>
+        <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 3, lineHeight: 1.35 }}>{x.s}</Text>
+    </Box>
+    {i < 4 ? <Text style={{ fontSize: 14, color: '#C43A17', fontWeight: 'bold' }}>→</Text> : null}
+     </Box>
+          ))}
+     </Box>
+      </Box>
+
+  {/* 两条补法 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>补法一：标记 / 分类级访问控制</Text>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 7, lineHeight: 1.55, flex: 1 }}>
+    行级与列级的访问控制，本质上只管「哪些数据被读进提示词」。它不处理「读进来的数据在输出时怎么办」，也不处理「模型基于这些数据做出的变更要不要拦」。
+        </Text>
+       <Box style={{ height: 40, background: 'rgba(255,255,255,0.08)', borderRadius: 3, padding: '0 11px', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>所以要给内容本身打密级标记，让标记跟着走完整个链路</Text>
+        </Box>
+      </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>补法二：输出侧与写回侧再各拦一次</Text>
+   <Box style={{ marginTop: 7, flex: 1 }}>
+      {[
+   { t: '输出侧检查', d: '敏感等级高于请求人的内容，不允许出现在回答里' },
+    { t: '写回侧检查', d: '基于受限数据产生的变更，必须降级或转人工确认' },
+ { t: '检索侧留痕', d: '记录本次检索调用了哪些库、过滤掉了多少条' },
+    ].map((x, i) => (
+        <Box key={x.t} style={{ flex: 1, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.t}</Text>
+    <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 2, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+      ))}
+      </Box>
+        </Box>
+      </Box>
+
+      {/* 责任归属 */}
+      <Box style={{ height: 78, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', width: 152 }}>一条架构纪律</Text>
+        <Text style={{ fontSize: 13, color: '#0F1423', flex: 1, lineHeight: 1.5 }}>
+     凡是「读」进来有权限控制的地方，都必须问一句：出来的路上还有没有同样的控制。凡是没有回答的，一律按「没有保护」来处理。安全评审时这应该是第一张要看的架构图，而不是最后才想起来补的一条。
+     </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>17 / 30</Text>
+    </Box>
+</Slide>

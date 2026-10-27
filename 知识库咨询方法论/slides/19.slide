@@ -1,0 +1,58 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之写回：知识库<span style={{ color: '#FA4F24' }}>回写本体的三种方式</span>与它们的门槛
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    先分清「补充事实」和「形成结论」，前者是知识库能做的，后者不该由知识库发起
+  </Text>
+  </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+      {[
+   { n: '方式一', t: '补充事实', s: '把文档里已有的属性值补到对象上', ex: '合同扫描件里的签订日期，回填到合同对象的属性上',
+      pre: '必须是文档里白纸黑字写着的，不做任何推断', need: '低门槛：建抽取规则 + 挂出处', risk: '低：错了能按出处退回', c: '#8A8F99', lv: '第一批就做' },
+    { n: '方式二', t: '建立关联', s: '从文本里识别对象之间的关系并建链', ex: '邮件里提到的「张工」与工单里的负责人是同一人',
+   pre: '需要人工确认一次，之后同类自动', need: '中门槛：建实体消歧规则 + 人工复核队列', risk: '中：错误关系会误导后续检索', c: '#FBA15C', lv: '第二批' },
+      { n: '方式三', t: '回写结论', s: '把审批或判定结果写成本体的状态变更', ex: '审批意见落库，工单对象状态改为「已批准」',
+      pre: '必须由人或被授权的 Agent 发起，走 Action', need: '高门槛：Action 建模 + 权限 + 审计', risk: '高：错了是业务状态错误', c: '#FA4F24', lv: '谨慎做' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '10px 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+     <Box style={{ width: 142 }}>
+    <Text style={{ fontSize: 12, color: '#8A8F99' }}>{it.n}</Text>
+      <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.c, marginTop: 1 }}>{it.t}</Text>
+      </Box>
+      <Box style={{ width: 238, height: 42, background: '#FFFFFF', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4 }}>{it.s}</Text>
+        </Box>
+<Box style={{ width: 248, height: 42, background: '#FFFFFF', borderRadius: 3, padding: '0 11px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, color: '#0F1423', lineHeight: 1.4 }}>例：{it.ex}</Text>
+          </Box>
+          <Box style={{ width: 250, height: 42, background: '#FFF3EE', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 11, color: '#C43A17', lineHeight: 1.4 }}>{it.pre}</Text>
+          </Box>
+      <Box style={{ width: 220, height: 42, background: '#FFF3EE', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, color: '#C43A17', lineHeight: 1.4 }}>门槛：{it.need}</Text>
+            </Box>
+          <Box style={{ width: 126, height: 42, background: it.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{it.lv}</Text>
+       </Box>
+        </Box>
+      ))}
+
+      {/* 铁律 */}
+      <Box style={{ height: 92, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+ <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C', width: 152 }}>一条铁律</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.55 }}>
+     无论哪种方式，写回都必须经由 Action，且必须由人或被授权的 Agent 发起。即使函数里已经写好了写入动作，只要不是从 Action 里执行，变更就不会生效。这条约束的价值在于：它强制让每一次知识写回都留下授权记录。
+    </Text>
+      </Box>
+
+      <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 知识库咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>19 / 30</Text>
+    </Box>
+  </Box>
+</Slide>
