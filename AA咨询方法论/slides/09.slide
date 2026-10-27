@@ -1,0 +1,77 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>能力映射四问法</span>，把业务能力逐项落到系统
+   </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            起点必须是 BA 输出的能力清单，不能是「现在有哪些系统」——顺序反了就会固化现状
+  </Text>
+  </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右四问 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 32% */}
+    <Box style={{
+   width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+      borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+ }}>
+  <Box>
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 02 · MAPPING</Text>
+  <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+ 能力映射
+     <br />
+   四问法
+        </Text>
+      </Box>
+            <Box>
+      <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+     <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+    先摆能力，再找应用。反过来做（先列系统再问它干什么），
+     <Text style={{ fontWeight: 'bold' }}>等于给历史遗留做了背书</Text>。
+    </Text>
+        </Box>
+        </Box>
+
+   {/* 右 68% */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+    <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>对每一项业务能力问四句话</Text>
+            {[
+     { n: '01', t: '谁承载？', en: 'OWNER', d: '找出主责应用。不存在承载者的能力，标记为「能力空缺」，进入路线图。', k: '必答' },
+        { n: '02', t: '还谁在承载？', en: 'OVERLAP', d: '列出所有协同应用。若主责之外还有 3 个以上，说明能力边界该拆。', k: '查重复' },
+                { n: '03', t: '哪段是系统内的？', en: 'AUTOMATED', d: '区分哪些活动由应用自动完成、哪些仍靠线下。线下占比高的能力，自动化价值最大。', k: '找自动化点' },
+                { n: '04', t: '这个应用健康吗？', en: 'HEALTH', d: '承载该能力的应用，技术健康度如何。差的应用承载核心能力，是最大的风险点。', k: '风险识别' },
+     ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '10px 16px', gap: 14, borderLeft: '4px solid #FA4F24' }}>
+     <Box style={{ width: 58 }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+     <Text style={{ fontSize: 8, color: '#B8BDC7' }}>{it.en}</Text>
+   </Box>
+       <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', width: 132 }}>{it.t}</Text>
+                <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+             <Box style={{ width: 100, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 4px' }}>
+           <Text style={{ fontSize: 11, color: '#C43A17', textAlign: 'center', lineHeight: 1.3 }}>{it.k}</Text>
+      </Box>
+         </Box>
+            ))}
+        <Box style={{ flex: 0.9, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '9px 16px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>映射产出：能力—应用映射表</Text>
+       <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 4 }}>
+            一行一项能力，一列一个应用，交叉格填承载程度（主/协同/不承载）。
+   这张表是后面集成设计和四态决策的共同输入——填不出来，说明能力清单本身有问题。
+      </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+       <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>09 / 30</Text>
+    </Box>
+</Slide>

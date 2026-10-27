@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            之方法：<span style={{ color: '#FA4F24' }}>集成四问法与四种集成模式</span>
+      </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            集成是应用架构里最难做对的部分——大多数集成债不是设计出来的，是每一次「先临时对一下」累积出来的
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左四问 + 右四模式 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 45% 四问 */}
+        <Box style={{ width: 560, flexDirection: 'column', gap: 10 }}>
+    <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>每条集成关系问四句话</Text>
+            {[
+        { n: '01', t: '传的是什么？', d: '业务对象还是裸数据表。传对象（客户/订单）比传表字段更抗变更。' },
+     { n: '02', t: '谁拥有这份数据？', d: '源系统是唯一权威方，其余系统不得自行落库再改。' },
+   { n: '03', t: '同步还是异步？', d: '实时性要求决定方式。要求秒级响应用同步，可容忍延迟用异步。' },
+        { n: '04', t: '对方挂了怎么办？', d: '重试、降级、还是人工兜底。不设计失败路径的集成，上线后一定出事。' },
+     ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 18px', gap: 14, borderLeft: '4px solid #FA4F24' }}>
+   <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FA4F24', width: 34 }}>{it.n}</Text>
+      <Box style={{ flex: 1 }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+  <Text style={{ fontSize: 13, color: '#3A4050', marginTop: 4, lineHeight: 1.4 }}>{it.d}</Text>
+      </Box>
+     </Box>
+     ))}
+     <Box style={{ height: 82, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '12px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 第四问最容易被跳过</Text>
+       <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 5 }}>
+  集成设计的质量，八成体现在失败路径上。源系统不可用时消费方怎么办、数据延迟怎么办、
+   重复消费怎么办——这三个问题答不出来，集成就只是「能跑通而已」。
+     </Text>
+   </Box>
+        </Box>
+
+        {/* 右 55% 四种模式 */}
+   <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+   <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>四种集成模式与适用场景</Text>
+            {[
+   { m: '文件传输', en: 'FILE', d: '定时批量交换，耦合最低，适合跨组织、跨厂商', bad: '时效性差，格式易腐化', c: '#FDC69A', tc: '#3A2000' },
+        { m: '接口调用', en: 'API', d: '同步请求响应，实时性最好，适合核心交易链路', bad: '调用链过长时雪崩风险大', c: '#F8622F', tc: '#FFFFFF' },
+  { m: '消息订阅', en: 'MESSAGE', d: '异步解耦，双方只约定消息格式', bad: '排查困难，需强化监控', c: '#FBA15C', tc: '#3A2000' },
+            { m: '数据服务', en: 'DATA API', d: '统一数据出口，消费方不直连源库', bad: '需治理数据标准，否则服务即垃圾', c: '#FA4F24', tc: '#FFFFFF' },
+    ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '9px 16px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+   <Box style={{ width: 62 }}>
+       <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.tc }}>{it.m}</Text>
+      <Text style={{ fontSize: 8, color: it.tc, opacity: 0.8 }}>{it.en}</Text>
+     </Box>
+    <Box style={{ flex: 1 }}>
+      <Text style={{ fontSize: 13, color: it.tc, lineHeight: 1.35 }}>{it.d}</Text>
+      <Text style={{ fontSize: 11, color: it.tc, opacity: 0.8, marginTop: 3 }}>代价：{it.bad}</Text>
+   </Box>
+        </Box>
+      ))}
+   <Box style={{ height: 76, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '11px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>选择原则</Text>
+       <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1.5, marginTop: 5 }}>
+     实时性要求越高，越靠同步；耦合度要求越低，越靠异步；
+         跨组织边界一律走文件或消息，不走实时接口。
+       </Text>
+      </Box>
+     </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+   </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>13 / 30</Text>
+    </Box>
+</Slide>

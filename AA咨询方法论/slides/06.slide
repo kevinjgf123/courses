@@ -1,0 +1,51 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            五条原则，用来<span style={{ color: '#FA4F24' }}>拦住每一次「再加一个系统」</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    每一条都对应一种高频重复建设——评审新应用立项时逐条对照，比事后治理有效得多
+ </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {[
+         { n: '01', t: '每应用必须有业务 Owner', d: '挂在 IT 名下的应用，一定会长成没人愿意改的僵尸系统。Owner 是业务方，不是信息部门。', bad: '典型坑：业主不明，需求谁提谁改' },
+   { n: '02', t: '能力承载优先，不为部门建系统', d: '应用必须对应明确的能力。「给财务建个系统」不是立项理由，「支撑业财一体核算能力」才是。', bad: '典型坑：一个部门一个系统' },
+     { n: '03', t: '集成优于重建', d: '能通过接口复用的，不得另建平行系统。绝大多数重复建设都源于「接口打不通」而非「能力不具备」。', bad: '典型坑：三套相同的供应商管理' },
+            { n: '04', t: '核心自建，非核采购', d: '核心能力定制获取差异化，非核心优先成熟产品。不要把「自主可控」当成全自建的理由。', bad: '典型坑：连报销工具都自研' },
+    { n: '05', t: '定期组合评审，强制淘汰', d: '每年评估一次应用组合，低价值高维护的必须退役。评审要有退出结论，否则永远只进不出。', bad: '典型坑：清单只增不减' },
+        ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 22px', gap: 18, borderLeft: '4px solid #FA4F24' }}>
+   <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FA4F24', width: 46 }}>{it.n}</Text>
+    <Box style={{ width: 230 }}>
+   <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.25 }}>{it.t}</Text>
+      </Box>
+    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>{it.d}</Text>
+        <Box style={{ width: 246, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '8px 12px' }}>
+        <Text style={{ fontSize: 13, color: '#C43A17', lineHeight: 1.4 }}>{it.bad}</Text>
+     </Box>
+      </Box>
+        ))}
+
+      <Box style={{ height: 62, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 24px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>评审用法</Text>
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.5, flex: 1 }}>
+     任何新应用立项，先拿五条过一遍。凡是要靠「我们和别人不太一样」才能解释的，一律先问「差异在哪、值不值」——这个追问能挡掉一半的重复建设
+  </Text>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>06 / 30</Text>
+    </Box>
+</Slide>

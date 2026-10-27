@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之方法：<span style={{ color: '#FA4F24' }}>治理机制、评审门与合规红线</span>
+        </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   架构不是画出来的，是被门卡出来的
+    </Text>
+    </Box>
+ <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+  {/* 左 评审门 */}
+        <Box style={{ width: 470, flexDirection: 'column', gap: 9 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>四道门：每道卡一类问题</Text>
+ {[
+      { g: 'G1 立项门', q: '业务能力是否已有承载应用', d: '有 → 不新建，走集成；无 → 才进G2' },
+      { g: 'G2 架构门', q: '是否复用既有能力与平台服务', d: '复用率低于阈值必须书面说明' },
+      { g: 'G3 数据门', q: '是否新增一份数据副本', d: '新增副本需 DA 出具数据归属判定' },
+      { g: 'G4 上线门', q: '集成、监控、责任人是否齐备', d: '缺任一项不得进入生产' },
+   ].map((it, i) => (
+         <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: `4px solid #FA4F24` }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>{it.g}</Text>
+  <Text style={{ fontSize: 13, color: '#3A4050', marginTop: 3, lineHeight: 1.4 }}>{it.q}</Text>
+     <Text style={{ fontSize: 12, color: '#C43A17', marginTop: 2 }}>{it.d}</Text>
+      </Box>
+       ))}
+ <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>门后面站着谁，决定门有没有用</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.55 }}>
+        门由架构委员会把守，业务部门有一票否决权。没有业务方的否决权，门会被销售和交付压力冲垮；
+        没有架构委员会的同意权，门会变成走形式。三五个人就够，但必须在场。
+     </Text>
+   </Box>
+
+        {/* 右 治理机制 + 红线 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>三个常设机制</Text>
+      {[
+    { t: '应用目录例会', d: '每月一次，只看三张表：新增、变更、下线', c: '#FA4F24' },
+        { t: '架构评审', d: '新应用必审，重大变更必审，复用度必审', c: '#F8622F' },
+        { t: '例外台账', d: '绕过门的申请必须登记，带到期日', c: '#FBA15C' },
+   ].map((it, i) => (
+  <Box key={i} style={{ height: 56, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: `4px solid ${it.c}` }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423', width: 116 }}>{it.t}</Text>
+   <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+   </Box>
+    ))}
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>五条合规红线（越线直接否）</Text>
+      {[
+  '个人信息出境必须走数据合规评估，不接受口头承诺',
+   '生产数据不得出测试环境，脱敏必须可验证而非口头声明',
+   '核心系统不得依赖个人电脑或未登记的云服务',
+   '接口调用需有鉴权与限流，无鉴权接口不予上线',
+   '系统必须登记业务 Owner，无主系统视为高风险',
+    ].map((t, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#FFF3EE', borderRadius: 4, padding: '0 14px', gap: 10 }}>
+  <Box style={{ width: 6, height: 6, borderRadius: 3, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>{t}</Text>
+      </Box>
+    ))}
+    </Box>
+  </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · AA应用架构咨询方法论</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+    </Box>
+</Slide>

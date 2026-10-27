@@ -1,0 +1,82 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+  <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之模板：<span style={{ color: '#FA4F24' }}>API 台账与集成契约卡</span>，把口头约定变成书面约束
+        </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   集成债的根源几乎都是「当时没写下来」——契约卡就是补这一课
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 契约卡 */}
+     <Box style={{ width: 620, border: '1px solid #E8E8E8', borderRadius: 4, padding: '16px 22px', flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>集成契约卡</Text>
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>示例：客户主数据查询接口</Text>
+    </Box>
+            <Box style={{ flexDirection: 'column', gap: 6, marginTop: 12, flex: 1 }}>
+        {[
+      { k: '接口编号', v: 'API-MD-003', h: '全局唯一' },
+     { k: '提供方 / 消费方', v: '主数据平台 / 订单中心、履约协同（各 1 个）', h: '消费方超过 5 个需评审' },
+        { k: '业务语义', v: '按客户统一编号查询客户主数据（不含交易信息）', h: '一句话说清传什么' },
+  { k: '集成模式', v: 'API 同步调用', h: '实时性要求：秒级' },
+     { k: '数据对象', v: '客户（Customer）· 权威方=主数据平台', h: '须挂 DA 业务对象编号' },
+            { k: '版本策略', v: 'v2 当前；v1 保留至 2027-03-31', h: '不兼容变更须升版本' },
+   { k: '失败处理', v: '超时 2s · 重试 3 次 · 连续失败转人工待办', h: '必须写降级路径' },
+       { k: 'SLA / 监控', v: '可用性 99.9% · 日均 42 万次 · 告警接入统一平台', h: '调用可追溯' },
+      ].map((it, i) => (
+        <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 3, padding: '7px 12px' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 118 }}>{it.k}</Text>
+       <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.25 }}>{it.v}</Text>
+    <Text style={{ fontSize: 10, color: '#B8BDC7', width: 126, textAlign: 'right', lineHeight: 1.25 }}>{it.h}</Text>
+   </Box>
+        ))}
+  </Box>
+        </Box>
+
+    {/* 右 API 台账 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>API 台账（节选）</Text>
+    <Box style={{ border: '1px solid #E8E8E8', borderRadius: 4, flex: 1, flexDirection: 'column' }}>
+       {[
+       { k: 'API-MD-003', v: '客户主数据查询', m: 'API', c: 42 },
+        { k: 'API-MD-007', v: '产品目录查询', m: 'API', c: 26 },
+      { k: 'EVT-ORD-012', v: '订单状态变更事件', m: '消息', c: 118 },
+  { k: 'EVT-FIN-005', v: '结算完成事件', m: '消息', c: 9 },
+    { k: 'DS-BI-021', v: '经营分析数据集', m: '数据服务', c: 31 },
+      ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', padding: '0 12px' }}>
+       <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', width: 104 }}>{it.k}</Text>
+      <Text style={{ fontSize: 12, color: '#3A4050', flex: 1 }}>{it.v}</Text>
+     <Box style={{ width: 56, background: it.m === 'API' ? '#FA4F24' : it.m === '消息' ? '#F8622F' : '#FBA15C', borderRadius: 2, padding: '4px 0', alignItems: 'center' }}>
+       <Text style={{ fontSize: 10, fontWeight: 'bold', color: it.m === '数据服务' ? '#3A2000' : '#FFFFFF' }}>{it.m}</Text>
+    </Box>
+        <Text style={{ fontSize: 11, color: '#8A8F99', width: 52, textAlign: 'right' }}>{it.c} 万/日</Text>
+     </Box>
+    ))}
+   </Box>
+      <Box style={{ height: 128, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>★ 台账的核心价值</Text>
+   <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 7 }}>
+   把「谁提供了什么给谁」从口头共识变成可查清单。
+   <Text style={{ fontWeight: 'bold' }}>任何新增集成都要先过台账</Text>
+    ——先搜有没有现成接口，再决定是否新建。这一步能消掉大量重复接口。
+      </Text>
+      </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+   </Box>
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>15 / 30</Text>
+    </Box>
+</Slide>

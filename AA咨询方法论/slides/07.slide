@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            能力 → 应用 → 功能：<span style={{ color: '#FA4F24' }}>一条链上做三次收敛</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     这条链是 BA 交给 AA 的正式接口——AA 的所有决策，都必须能向上解释为「承载某项能力」
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 14 }}>
+
+        {/* 收敛链 */}
+  <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>以「订单履约」能力为例的三级收敛</Text>
+  {[
+{ l: '业务能力', n: 4, c: '#FA4F24', tc: '#FFFFFF', d: '接单能力 / 排程能力 / 履约跟踪能力 / 结算能力', k: '4 项能力' },
+ { l: '应用系统', n: 2, c: '#F8622F', tc: '#FFFFFF', d: '订单中心（接单+结算） · 履约协同平台（排程+跟踪）', k: '2 个应用' },
+   { l: '应用功能', n: 27, c: '#FBA15C', tc: '#3A2000', d: '每个应用平均 13 个功能点，按业务对象组织功能树', k: '27 个功能' },
+    ].map((it, i) => (
+             <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 20px', gap: 16 }}>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.tc, width: 92 }}>{it.l}</Text>
+    <Box style={{ flex: 1 }}>
+         <Text style={{ fontSize: 15, color: it.tc, lineHeight: 1.45 }}>{it.d}</Text>
+       </Box>
+     <Box style={{ background: 'rgba(255,255,255,0.35)', borderRadius: 3, padding: '7px 12px' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.tc }}>{it.k}</Text>
+   </Box>
+            {i < 2 && <Text style={{ fontSize: 17, color: it.tc, opacity: 0.8 }}>↓</Text>}
+       </Box>
+            ))}
+        </Box>
+
+        {/* 三条规则 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+       {[
+{ t: '能力只能被承载，不能被改写', d: '应用可以合并、拆分、重构，但承载能力的语义不能变。借系统重构之名削减能力定义，是架构失控的信号。' },
+  { t: '应用数量由收敛结果决定', d: '不是「几个部门就几个系统」。4 项能力收敛到 2 个应用是合理结果，1 项能力建 1 个应用才是浪费。' },
+            { t: '功能必须挂到业务对象', d: '功能树按业务对象组织，而不是按技术模块或菜单。这样才能回答「这个功能为哪个对象服务」。' },
+].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '13px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+       <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>{it.d}</Text>
+         </Box>
+       ))}
+        </Box>
+
+   {/* 数量区间参考 */}
+   <Box style={{ height: 76, border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423', width: 150 }}>应用数量经验区间</Text>
+       {[
+       { r: '大型集团', n: '80–200', c: '#FBA15C', tc: '#3A2000' },
+  { r: '中型企业', n: '30–80', c: '#F8622F', tc: '#FFFFFF' },
+   { r: '小型企业', n: '10–30', c: '#FA4F24', tc: '#FFFFFF' },
+        ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 3, padding: '8px 0', alignItems: 'center' }}>
+     <Text style={{ fontSize: 12, color: it.tc, opacity: 0.9 }}>{it.r}</Text>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.tc, marginTop: 3 }}>{it.n}</Text>
+            </Box>
+          ))}
+            <Box style={{ flex: 1.4 }}>
+   <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5 }}>
+      显著超出上限，说明存在重复建设或僵尸系统；显著低于下限，往往意味着能力尚未拆细到可承载粒度。
+     </Text>
+    </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+<Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+  <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+    </Box>
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>07 / 30</Text>
+    </Box>
+</Slide>

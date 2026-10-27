@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  {/* A 区 */}
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+  <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之模板：<span style={{ color: '#FA4F24' }}>数据服务目录 + 事件契约</span>，两张表把集成资产化
+ </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      一张管「谁在给数据」，一张管「谁在发事件」，都是可以直接发出去执行的东西
+    </Text>
+  </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  {/* B 区 */}
+  <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 数据服务目录模板 */}
+        <Box style={{ width: 620, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>模板一 · 数据服务目录</Text>
+            <Box style={{ flexDirection: 'row', gap: 4 }}>
+{['服务编号', '服务名称', '提供方', '消费方', 'SLA', '调用量'].map((t, i) => (
+     <Box key={i} style={{ flex: 1, background: '#0F1423', padding: '7px 4px', alignItems: 'center', borderRadius: 2 }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{t}</Text>
+            </Box>
+       ))}
+  </Box>
+        {[
+        { id: 'DS-001', n: '客户主数据服务', p: 'CRM', c: '订单/结算/风控', s: '99.9%', v: '日 12万' },
+    { id: 'DS-002', n: '组织机构树服务', p: 'OA', c: '审批/门户/BI', s: '99.5%', v: '日 3万' },
+    { id: 'DS-003', n: '合同台账服务', p: 'CLM', c: '收款/税务', s: '99.9%', v: '日 0.8万' },
+     { id: 'DS-004', n: '项目预算服务', p: 'EAM', c: '财务/报表', s: '99.0%', v: '日 0.2万' },
+     ].map((it, i) => (
+  <Box key={i} style={{ flexDirection: 'row', gap: 4, alignItems: 'center' }}>
+         {[
+   { v: it.id, c: '#FA4F24' },
+    { v: it.n, c: '#0F1423' },
+    { v: it.p, c: '#3A4050' },
+      { v: it.c, c: '#3A4050' },
+    { v: it.s, c: '#3A4050' },
+     { v: it.v, c: i === 3 ? '#C43A17' : '#3A4050' },
+       ].map((c, j) => (
+           <Box key={j} style={{ flex: 1, background: i === 3 ? '#FFF3EE' : '#F7F7F8', padding: '6px 4px', alignItems: 'center', borderRadius: 2, borderBottom: `1px solid ${c.c}` }}>
+            <Text style={{ fontSize: 12, color: c.c, fontWeight: j === 0 || j === 1 ? 'bold' : 'normal' }}>{c.v}</Text>
+       </Box>
+       ))}
+ </Box>
+        ))}
+   <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 16px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>必填四列：消费方、SLA、调用量</Text>
+            <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5, marginTop: 4 }}>
+         少了消费方就没人负责下线；少了调用量就无法判断该合该停。
+    最后一行示例是典型的「三年没动过」服务，属于合并候选。
+       </Text>
+        </Box>
+      </Box>
+
+     {/* 右 事件契约模板 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>模板二 · 事件契约</Text>
+        <Box style={{ background: '#0F1423', borderRadius: 4, padding: '14px 16px', flexDirection: 'column' }}>
+  {[
+    '事件名：ShipmentDispatched',
+            '业务语义：货物已离仓，物理交接完成',
+    '触发者：WMS 出库单状态流转',
+    '去重键：shipment_id + status',
+    '顺序保证：同一 shipment_id 内有序',
+    '失败处理：重试 3 次 → 死信 → 人工',
+          ].map((t, i) => (
+      <Text key={i} style={{ fontSize: 13, color: i === 0 ? '#FBA15C' : 'rgba(255,255,255,0.86)', fontFamily: 'monospace', lineHeight: 1.7 }}>
+       {t}
+       </Text>
+      ))}
+      </Box>
+   {[
+    { t: '签契约前先问', d: '消费方是系统还是人？系统要自己保证幂等' },
+       { t: '事件名要带业务动作', d: 'OrderPaid 好过 TableBUpdated，后者没人看得懂' },
+    { t: '留一条补偿通道', d: '死信必须有人看，否则等于静默丢数据' },
+        ].map((it, i) => (
+       <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24', width: 116 }}>{it.t}</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+     </Box>
+    ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · AA应用架构咨询方法论</Text>
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>23 / 30</Text>
+</Box>
+</Slide>

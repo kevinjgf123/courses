@@ -1,0 +1,75 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之模板：<span style={{ color: '#FA4F24' }}>应用卡片</span>——字段即标准，填不出就是没想清楚
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     一张卡片锁定一个应用的全部关键属性，是能力映射、组合评估、四态决策的共同底稿
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 卡片样例 */}
+    <Box style={{ width: 620, border: '1px solid #E8E8E8', borderRadius: 4, padding: '16px 22px', flexDirection: 'column' }}>
+     <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #FA4F24', paddingBottom: 12 }}>
+     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>应用卡片</Text>
+ <Text style={{ fontSize: 14, color: '#8A8F99' }}>示例：订单中心</Text>
+      </Box>
+      <Box style={{ flexDirection: 'column', gap: 6, marginTop: 12, flex: 1 }}>
+     {[
+     { k: '应用编号', v: 'AA-ORD-001', h: '全局唯一' },
+      { k: '应用名称', v: '订单中心', h: '业务命名，非技术名' },
+        { k: '承载能力', v: '接单能力（主）· 结算能力（主）· 排程能力（协同）', h: '必须挂到 BA 能力编号' },
+        { k: '业务 Owner', v: '销售运营部 王某', h: '唯一，非 IT 部门' },
+   { k: '资产分类', v: 'A1 核心交易类', h: '九类之一' },
+        { k: '技术栈', v: 'Java 8 / Oracle 11g / 自研框架', h: '含已停产项，需标注 EOL' },
+      { k: '技术健康度', v: 'B（主流栈 · 可维护 · 但 Oracle 已过保）', h: '四级评级之一' },
+            { k: '业务价值', v: 'A（直接产生交易与资金流）', h: '与能力重要度对齐' },
+    { k: '年维护成本', v: '约 480 万（含人力与许可）', h: '退役测算的依据' },
+     { k: '集成依赖', v: '被 6 个应用调用 · 依赖 4 个下游', h: '退役前必看' },
+        ].map((it, i) => (
+           <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 3, padding: '6px 12px' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 92 }}>{it.k}</Text>
+         <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.25 }}>{it.v}</Text>
+   <Text style={{ fontSize: 10, color: '#B8BDC7', width: 132, textAlign: 'right', lineHeight: 1.25 }}>{it.h}</Text>
+      </Box>
+   ))}
+      </Box>
+        </Box>
+
+        {/* 右 要求 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+      <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '14px 20px', borderLeft: '4px solid #FA4F24' }}>
+       <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>填写要求</Text>
+    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>
+           ① 承载能力必须挂 BA 能力编号，不允许只写文字；<br />
+              ② 业务 Owner 必须是业务部门的人，不能是 IT；<br />
+            ③ 技术栈须标注 EOL（已停产）项；<br />
+ ④ 集成依赖双向填写——被谁调用、依赖谁，缺一不可。
+          </Text>
+      </Box>
+<Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>★ 模板的价值</Text>
+   <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.95)', lineHeight: 1.6, marginTop: 9 }}>
+   卡片的用法是盘点时随身带着，逐系统问。
+    <Text style={{ fontWeight: 'bold' }}>填不出的字段就是接下来要去搞明白的地方</Text>
+      ——尤其「集成依赖」和「年维护成本」这两栏，
+     它们直接决定后面退役的可行性。
+    </Text>
+       </Box>
+     </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+      </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>11 / 30</Text>
+    </Box>
+</Slide>

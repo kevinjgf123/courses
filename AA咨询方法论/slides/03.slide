@@ -1,0 +1,84 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF' }}>
+    {/* 背景装饰 */}
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 8, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)' }} />
+
+    {/* 主体标题 */}
+    <Box style={{ position: 'absolute', left: 88, top: 62, width: 1104, flexDirection: 'column' }}>
+        <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#0F1423' }}>
+            应用架构回答<span style={{ color: '#FA4F24' }}>「用什么系统承载能力」</span>，它是能力落地的载体
+  </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     应用不是越多越好—— 每多一个应用，就多一份维护成本、一处集成风险、一条技术债
+        </Text>
+  <Box style={{ height: 1, background: '#E8E8E8', marginTop: 18 }} />
+    </Box>
+
+    {/* B 区 */}
+    <Box style={{ position: 'absolute', left: 88, top: 186, width: 1104, height: 452, flexDirection: 'column', gap: 16 }}>
+
+        {/* 4A 关系 + 应用数量 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 14 }}>
+    {[
+      { a: 'BA', cn: '业务架构', q: '做什么业务', d: '价值流 · 能力 · 组织', hero: false },
+         { a: 'DA', cn: '数据架构', q: '需要什么数据', d: '对象 · 标准 · 模型', hero: false },
+   { a: 'AA', cn: '应用架构', q: '用什么系统承载', d: '应用组合 · 集成 · 数据服务', hero: true },
+ { a: 'TA', cn: '技术架构', q: '用什么技术实现', d: '平台 · 部署 · 运维', hero: false },
+   ].map((it, i) => (
+            <Box key={i} style={{
+                flex: 1, borderRadius: 4, padding: '16px 16px', flexDirection: 'column', justifyContent: 'center',
+    background: it.hero ? 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)' : '#F7F7F8',
+        }}>
+    <Text style={{ fontSize: 28, fontWeight: 'bold', color: it.hero ? '#FFFFFF' : '#FA4F24' }}>{it.a}</Text>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.hero ? '#FFFFFF' : '#0F1423', marginTop: 5 }}>{it.cn}</Text>
+  <Text style={{ fontSize: 14, color: it.hero ? 'rgba(255,255,255,0.95)' : '#3A4050', marginTop: 6 }}>{it.q}</Text>
+         <Text style={{ fontSize: 11, color: it.hero ? 'rgba(255,255,255,0.75)' : '#8A8F99', marginTop: 5 }}>{it.d}</Text>
+     </Box>
+            ))}
+  <Box style={{ width: 300, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '14px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#C43A17' }}>一个判断标准</Text>
+   <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 6 }}>
+            问「这个系统对应哪项能力」。答不上来的应用，多半不需要存在。
+         </Text>
+       </Box>
+      </Box>
+
+        {/* 传导链 */}
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 24px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>能力到应用的传导链</Text>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12 }}>
+      {['业务能力', '应用功能', '应用系统', '集成关系', '数据服务'].map((t, i) => (
+                <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+      <Box style={{ flex: 1, background: i === 0 || i === 4 ? '#FA4F24' : '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 3, padding: '9px 6px', alignItems: 'center' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: i === 0 || i === 4 ? '#FFFFFF' : '#3A4050' }}>{t}</Text>
+          </Box>
+    {i < 4 && <Text style={{ fontSize: 16, color: '#FA4F24', margin: '0 6px' }}>→</Text>}
+       </Box>
+    ))}
+     </Box>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginTop: 10 }}>一一对应是例外，多数情况是多对多——多个能力共一个应用，一个能力散在多个应用</Text>
+   </Box>
+
+        {/* 三个判断 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+      {[
+         { t: '应用是能力的载体，不是部门的附属', d: '每个应用必须有明确 Owner 业务方。挂在 IT 名下无人负责的应用，一定会长成没人愿意改的僵尸系统。' },
+     { t: '集成优先于新建', d: '能通过接口复用的，不得另建平行系统。绝大多数重复建设，都是因为「接口打不通」而不是「能力不具备」。' },
+  { t: '减法比加法更难', d: '退役一个应用要动数据、动流程、动组织，比新建难得多。但不做减法，技术债会以指数速度累积。' },
+       ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '13px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+             <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+   <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>{it.d}</Text>
+            </Box>
+       ))}
+        </Box>
+    </Box>
+
+    {/* 页脚 */}
+    <Box style={{ position: 'absolute', left: 88, bottom: 40, right: 88, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+  <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+    </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>03 / 30</Text>
+    </Box>
+</Slide>

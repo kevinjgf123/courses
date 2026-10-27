@@ -1,0 +1,111 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+ <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之方法：<span style={{ color: '#FA4F24' }}>业务价值 × 技术健康度二维评估</span>
+      </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     只看技术健康度会砍掉核心系统，只看业务价值会留下技术债最重的系统——必须两个维度交叉
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右矩阵 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 32% */}
+<Box style={{
+ width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+      borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+        }}>
+            <Box>
+     <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 04 · ASSESSMENT</Text>
+ <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+            二维
+       <br />
+            评估法
+     </Text>
+        </Box>
+     <Box>
+         <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+   <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+     高价值 + 低健康度是最危险的一格：<Text style={{ fontWeight: 'bold' }}>它天天出问题，但没人敢动</Text>。
+          </Text>
+            </Box>
+   </Box>
+
+        {/* 右 68% */}
+     <Box style={{ flex: 1, flexDirection: 'row', gap: 18 }}>
+        {/* 矩阵 */}
+            <Box style={{ width: 420, flexDirection: 'column' }}>
+  <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 10 }}>应用热力矩阵</Text>
+   <Box style={{ flex: 1, flexDirection: 'row' }}>
+     <Box style={{ width: 46, flexDirection: 'column', justifyContent: 'space-around', alignItems: 'flex-end', paddingRight: 6 }}>
+   {['高', '中', '低'].map((t, i) => (
+     <Text key={i} style={{ fontSize: 13, color: '#8A8F99' }}>{t}</Text>
+     ))}
+     </Box>
+         <Box style={{ flex: 1, flexDirection: 'column' }}>
+     {[
+    { l: 'A核心', cells: [
+     { s: '替换', t: '重构', c: '#FA4F24', tc: '#FFFFFF' },
+        { s: '优先', t: '改造成本最高但收益最大', c: '#F8622F', tc: '#FFFFFF' },
+     { s: '维持', t: '健康核心，勿折腾', c: '#FBA15C', tc: '#3A2000' }] },
+    { l: 'B支撑', cells: [
+       { s: '集成', t: '并入核心', c: '#F8622F', tc: '#FFFFFF' },
+     { s: '优化', t: '常规演进', c: '#FDC69A', tc: '#3A2000' },
+      { s: '收缩', t: '合并入主系统', c: '#D8DCE3', tc: '#3A4050' }] },
+     { l: 'C工具', cells: [
+         { s: '退役', t: '直接下线', c: '#B8BDC7', tc: '#3A4050' },
+    { s: '退役', t: '功能可替代', c: '#D8DCE3', tc: '#3A4050' },
+     { s: '清理', t: '数据归档后清除', c: '#F2F3F5', tc: '#8A8F99' }] },
+     ].map((row, i) => (
+           <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 6, marginBottom: 6, alignItems: 'stretch' }}>
+   <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 12, color: '#B8BDC7' }}>{row.l}</Text>
+      </Box>
+         {row.cells.map((c, j) => (
+      <Box key={j} style={{ flex: 1, background: c.c, borderRadius: 3, padding: '6px 4px', alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: c.tc }}>{c.s}</Text>
+   <Text style={{ fontSize: 10, color: c.tc, opacity: 0.9, marginTop: 3, textAlign: 'center', lineHeight: 1.25 }}>{c.t}</Text>
+ </Box>
+          ))}
+     </Box>
+            ))}
+     </Box>
+         </Box>
+     <Text style={{ fontSize: 13, color: '#8A8F99', textAlign: 'center', marginTop: 4 }}>技术健康度 D → A（差 → 好）</Text>
+ </Box>
+
+        {/* 右 判据 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 11 }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>两个维度怎么打分</Text>
+ {[
+        { t: '业务价值（A/B/C）', d: '按承载能力的战略重要度定，与 BA 册的能力重要度直接对齐，不另起一套标准。', c: '#FA4F24' },
+   { t: '技术健康度（D/C/B/A）', d: '四项各 25 分：技术栈是否主流 · 是否可维护 · 性能是否够用 · 安全合规是否达标。', c: '#F8622F' },
+       ].map((it, i) => (
+           <Box key={i} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 16px', borderLeft: `4px solid ${it.c}` }}>
+   <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+  <Text style={{ fontSize: 13, color: '#3A4050', marginTop: 4, lineHeight: 1.45 }}>{it.d}</Text>
+      </Box>
+         ))}
+        <Box style={{ flex: 1.2, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '12px 16px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>最危险的一格：核心 + 差</Text>
+        <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 5 }}>
+      它承载核心能力，技术栈又已过保。年年说要改，年年不敢动——最后一定出事。
+      这类应用必须排进第一波改造，不能因为「改动风险大」而无限期搁置。
+        </Text>
+       </Box>
+            </Box>
+     </Box>
+    </Box>
+
+  {/* C 区 */}
+<Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+    </Box>
+   <Text style={{ fontSize: 14, color: '#8A8F99' }}>17 / 30</Text>
+    </Box>
+</Slide>

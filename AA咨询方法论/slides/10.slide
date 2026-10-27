@@ -1,0 +1,65 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之内容：<span style={{ color: '#FA4F24' }}>应用全景清单与九类资产</span>，先看清家底
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     盘点做不扎实，后面所有决策都是猜的——尤其「僵尸系统」只有通过逐个盘点才会暴露
+        </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+    {/* 九类资产 */}
+  <Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>应用组合九类资产</Text>
+       <Box style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9, flex: 1 }}>
+     {[
+      { n: 'A1', t: '核心交易类', d: '直接产生交易与资金流', c: '#FA4F24', tc: '#FFFFFF' },
+       { n: 'A2', t: '运营支撑类', d: '保障日常运营与作业', c: '#F8622F', tc: '#FFFFFF' },
+     { n: 'A3', t: '分析决策类', d: '报表、看板、数据分析', c: '#FBA15C', tc: '#3A2000' },
+        { n: 'A4', t: '协同集成类', d: '流程引擎、消息、门户', c: '#FDC69A', tc: '#3A2000' },
+{ n: 'A5', t: '基础技术类', d: '数据库、中间件、监控', c: '#D8DCE3', tc: '#3A4050' },
+            { n: 'A6', t: '公共服务类', d: '统一认证、权限、消息', c: '#D8DCE3', tc: '#3A4050' },
+    { n: 'A7', t: '遗留补丁类', d: '无人维护的部门自建系统', c: '#B8BDC7', tc: '#3A4050' },
+            { n: 'A8', t: '个人工具类', d: 'Excel 宏、本地脚本、外购小工具', c: '#B8BDC7', tc: '#3A4050' },
+            { n: 'A9', t: '外包托管类', d: '整体外包的业务系统', c: '#B8BDC7', tc: '#3A4050' },
+       ].map((it, i) => (
+       <Box key={i} style={{ width: 373, background: it.c, borderRadius: 4, padding: '9px 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.tc, width: 28 }}>{it.n}</Text>
+       <Box style={{ flex: 1 }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.tc }}>{it.t}</Text>
+       <Text style={{ fontSize: 11, color: it.tc, opacity: 0.82, marginTop: 3 }}>{it.d}</Text>
+          </Box>
+     </Box>
+            ))}
+      </Box>
+ </Box>
+
+        {/* 盘点要点 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+      {[
+      { t: 'A7/A8 是最容易漏的', d: '遗留补丁和个人工具往往不在 IT 资产清单里，但它们承载着真实业务。要盘进来，因为它们往往是真正的风险源。' },
+    { t: '六个必备盘点字段', d: '上线年份、用户数、技术栈、年维护成本、业务关键度、业务 Owner。缺任何一项，后续评估都会打回。' },
+            { t: '数据也要盘', d: '应用清单必须带出它的数据资产。僵尸系统最难退役的原因，通常是没人说得出里面存了什么数据。' },
+     ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '12px 16px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+ <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>{it.d}</Text>
+     </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+   </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>10 / 30</Text>
+    </Box>
+</Slide>

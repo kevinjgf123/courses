@@ -1,0 +1,46 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    五个把应用架构<span style={{ color: '#FA4F24' }}>做砸</span>的坑
+        </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    每一个都出在真实项目里，代价都不小
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+{/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 8 }}>
+        {[
+ { n: '01', t: '把应用架构画成了系统拓扑图', d: '全是服务器和中间件，没有业务能力', w: '后果：评审变成技术自嗨，业务方看不懂也不参与', c: '#0F1423' },
+        { n: '02', t: '只做盘点，不做决策', d: '清单很厚，但没有建买集成退役的结论', w: '后果：盘点成了年度作业，明年还得再来一遍', c: '#FA4F24' },
+        { n: '03', t: '把 Owner 给了 IT 部门', d: 'IT 既是运动员又是裁判', w: '后果：没人替业务做取舍，系统只增不减', c: '#F8622F' },
+     { n: '04', t: '集成清单只记接口不记数据归属', d: '接口表几百行，说不清数据是谁的', w: '后果：接口越加越多，源头一致性无人负责', c: '#FBA15C' },
+   { n: '05', t: '只谈新建，从不谈退役', d: '报告里没有一个下线建议', w: '后果：技术债逐年累积，五年后无法重构', c: '#FDC69A' },
+        ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 18px', gap: 16, borderLeft: `5px solid ${it.c}` }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.c, width: 34 }}>{it.n}</Text>
+     <Box style={{ flex: 1, flexDirection: 'column' }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+        <Text style={{ fontSize: 13, color: '#3A4050', marginTop: 2, lineHeight: 1.4 }}>{it.d}</Text>
+       </Box>
+   <Text style={{ fontSize: 13, color: '#C43A17', width: 330, lineHeight: 1.45 }}>{it.w}</Text>
+       </Box>
+   ))}
+   <Box style={{ height: 62, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', width: 168 }}>五个坑的共同根因</Text>
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', flex: 1, lineHeight: 1.45 }}>
+        把应用架构当成 IT 内部的技术管理，而不是业务与技术的共同决策。
+   只要业务不参与取舍，第3、5 条就一定会发生；只要不看数据归属，第4条一定会发生。
+        </Text>
+      </Box>
+ </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · AA应用架构咨询方法论</Text>
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+ </Box>
+</Slide>

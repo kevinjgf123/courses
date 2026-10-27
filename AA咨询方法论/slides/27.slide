@@ -1,0 +1,88 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+<Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+   <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之模板：<span style={{ color: '#FA4F24' }}>应用退役清单 + 评审检查表</span>，让下线有据可查
+      </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    左边是执行用的动作清单，右边是签字用的判据清单
+ </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+  <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 退役清单 */}
+        <Box style={{ width: 600, flexDirection: 'column', gap: 7 }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>模板一 · 应用退役清单</Text>
+      <Box style={{ background: '#0F1423', borderRadius: 2, flexDirection: 'row' }}>
+     {['#', '动作项', '责任方', '验收标准'].map((t, i) => (
+    <Box key={i} style={{ flex: i === 1 ? 3 : i === 3 ? 3 : 1, padding: '7px 6px', alignItems: 'center' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{t}</Text>
+            </Box>
+      ))}
+    </Box>
+            {[
+            { n: '1', a: '流量截断验证', o: '运维', s: '网关日志连续14天零调用' },
+     { n: '2', a: '功能迁移确认', o: '业务', s: '迁入应用已上线并验收' },
+         { n: '3', a: '数据归档', o: '数据', s: '归档可查、留存期满足监管' },
+   { n: '4', a: '接口改向', o: '架构', s: '所有消费方切换并复测' },
+         { n: '5', a: '账号回收', o: '安全', s: 'IAM 中凭证已失效' },
+        { n: '6', a: '环境销毁', o: '运维', s: '资源回收并出具证明' },
+  { n: '7', a: '代码归档', o: '研发', s: '仓库转只读，保留可追溯' },
+    ].map((it, i) => (
+     <Box key={i} style={{ flexDirection: 'row', alignItems: 'center' }}>
+          {[
+        { v: it.n, f: 0.4, c: '#FA4F24' },
+        { v: it.a, f: 2.2, c: '#0F1423' },
+     { v: it.o, f: 0.9, c: '#3A4050' },
+     { v: it.s, f: 2.9, c: '#3A4050' },
+      ].map((c, j) => (
+                <Box key={j} style={{ flex: c.f, padding: '6px 6px', alignItems: j === 0 ? 'center' : 'flex-start', background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderBottom: '1px solid #E8E8E8' }}>
+           <Text style={{ fontSize: 12, color: c.c, fontWeight: j <= 1 ? 'bold' : 'normal' }}>{c.v}</Text>
+    </Box>
+     ))}
+            </Box>
+   ))}
+    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5, marginTop: 4 }}>
+     第 1 项和第 4 项最常被跳过：只记得下线服务器，忘了还有人在调它的接口。
+  真实项目里，退役失败的绝大多数原因不是技术问题，是消费方没统计全。
+     </Text>
+    </Box>
+
+        {/* 右 评审检查表 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+     <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>模板二 · 评审检查表</Text>
+      {[
+            { q: '业务 Owner 是否书面确认迁移', w: '权重 25%' },
+    { q: '调用方是否全部识别并切换', w: '权重 25%' },
+       { q: '数据归档与留存期是否合规', w: '权重 20%' },
+            { q: '是否有替代应用承接能力', w: '权重 15%' },
+      { q: '账号凭证是否从 IAM 移除', w: '权重 10%' },
+    { q: '是否明确上线后观察期', w: '权重 5%' },
+      ].map((it, i) => (
+        <Box key={i} style={{ height: 46, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Box style={{ width: 20, height: 20, border: '1.5px solid #FA4F24', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 12, color: '#FA4F24' }}>✓</Text>
+ </Box>
+     <Text style={{ fontSize: 13, color: '#0F1423', flex: 1, lineHeight: 1.4 }}>{it.q}</Text>
+    <Text style={{ fontSize: 12, color: '#8A8F99' }}>{it.w}</Text>
+        </Box>
+   ))}
+    <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>为什么要有权重</Text>
+   <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 5 }}>
+      不给权重，检查表会退化成打勾仪式。给权重之后，缺一项业务确认就不能推进，
+      会强制组织真的去沟通，而不是自己给自己盖章。
+     </Text>
+        </Box>
+    </Box>
+ </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · AA应用架构咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+    </Box>
+</Slide>

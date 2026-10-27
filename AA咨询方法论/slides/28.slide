@@ -1,0 +1,47 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     收口：<span style={{ color: '#FA4F24' }}>架构确定性</span>，从「说得清」到「守得住」
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     咨询的终点不是那本架构文档，而是半年后还成立的六个判断
+        </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 14 }}>
+  {[
+ { n: '01', t: '能力映射有归属', d: '每个业务能力都能说出由哪个应用承载，说不出的就是架构缺口', c: '#0F1423', tc: '#FFFFFF' },
+        { n: '02', t: '每个应用有业务 Owner', d: 'Owner 是业务部门不是 IT。IT 是服务提供方，业务才是需求方', c: '#FA4F24', tc: '#FFFFFF' },
+    { n: '03', t: '集成有契约可依', d: '数据服务与事件都有书面契约，能查到消费方和SLA', c: '#F8622F', tc: '#FFFFFF' },
+      { n: '04', t: '新增被门拦住', d: '四道评审门真正在用，例外有台账、有到期日', c: '#FBA15C', tc: '#3A2000' },
+ { n: '05', t: '退役是常态动作', d: '减法有清单、有签字、有观察期，不是偶发运动', c: '#FDC69A', tc: '#3A2000' },
+        { n: '06', t: '架构与预算同源', d: '立项预算与架构结论对齐，钱花在通过门的项目上', c: '#FFE3C2', tc: '#3A2000' },
+      ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 20px', gap: 16 }}>
+     <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.tc, width: 38 }}>{it.n}</Text>
+        <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.tc, width: 210 }}>{it.t}</Text>
+      <Text style={{ fontSize: 14, color: it.tc, opacity: 0.92, flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+   </Box>
+    ))}
+        <Box style={{ height: 92, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '12px 20px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#C43A17', width: 190, lineHeight: 1.4 }}>
+            咨询交付的最后一问
+          </Text>
+  <Text style={{ fontSize: 15, color: '#3A4050', flex: 1, lineHeight: 1.55 }}>
+         项目验收那天问客户：半年后谁来更新应用目录？谁来盯例外台账到期？谁来判断一个系统该不该下线？
+     三个问题里有两个答不上来，架构就还没有落地，只是停在文档里。真正的落地标志不是评审通过，
+        是有人开始因为门被拦而感到不方便——那才说明门在起作用。
+     </Text>
+   </Box>
+ </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · AA应用架构咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+    </Box>
+</Slide>

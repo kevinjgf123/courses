@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+   <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+       三层结构自上而下<span style={{ color: '#FA4F24' }}>逐层隔离</span>，把变化关在层内
+   </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            展现层变最频繁，技术层最稳定——层间隔离做对了，改一处不会牵动全栈
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+  <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 三层骨架 */}
+        <Box style={{ width: 560, flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>应用架构三层骨架</Text>
+            {[
+    { l: 'L1', t: '展现层', d: 'PC / 移动 / 大屏 / 门户 · 交互与呈现', q: '变化最快', w: 560, c: '#FA4F24', tc: '#FFFFFF' },
+    { l: 'L2', t: '支撑层', d: '业务服务 · 流程引擎 · 规则引擎 · 批处理', q: '承载能力', w: 500, c: '#F8622F', tc: '#FFFFFF' },
+      { l: 'L3', t: '数据访问层', d: '数据服务 · 缓存 · 消息 · 存储访问', q: '最稳定', w: 440, c: '#FBA15C', tc: '#3A2000' },
+   ].map((it, i) => (
+         <Box key={i} style={{ width: it.w, height: 92, background: it.c, borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+   <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.tc, width: 36 }}>{it.l}</Text>
+ <Box style={{ flex: 1 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.tc }}>{it.t}</Text>
+        <Text style={{ fontSize: 12, color: it.tc, opacity: 0.85, marginTop: 5 }}>{it.d}</Text>
+          </Box>
+      <Box style={{ background: 'rgba(255,255,255,0.35)', borderRadius: 3, padding: '6px 10px' }}>
+       <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.tc }}>{it.q}</Text>
+        </Box>
+      </Box>
+      ))}
+       <Box style={{ height: 84, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 层间隔离的判断标准</Text>
+ <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.55, marginTop: 6 }}>
+       改前端界面，支撑层不动；换数据库，数据访问层之上不动。
+      如果做不到，说明层间在直连对方的数据或代码——这就是最常见的架构腐化起点。
+   </Text>
+      </Box>
+        </Box>
+
+     {/* 右 说明 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+       <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px', borderLeft: '4px solid #FA4F24' }}>
+   <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>为什么要分这三层</Text>
+       <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+   不是为了好看，而是因为三者变化节奏不同：展现层跟着用户需求季度变，支撑层跟着业务能力年度变，
+      数据访问层跟着数据模型两年才变一次。把不同节奏的东西放一起，就会互相拖。
+     </Text>
+          </Box>
+       <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '16px 22px', borderLeft: '4px solid #F87D2F' }}>
+         <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>支撑层是主战场</Text>
+            <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+   应用架构九成的治理精力都花在支撑层。这里一个接口定错，六个展现层跟着错；
+     这里一个能力拆错，后面数据服务与集成全要返工。
+       </Text>
+            </Box>
+      <Box style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '16px 22px', flexDirection: 'column', justifyContent: 'center' }}>
+<Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 全册主线</Text>
+   <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.55, marginTop: 8 }}>
+      三层不是要你先做分层设计，而是判断现有系统**有没有**按这三层切。
+      大多数企业的现状是：展现层直接读库，支撑层里塞满历史脚本——先看清现状，再谈重构。
+    </Text>
+       </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+       <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>05 / 30</Text>
+    </Box>
+</Slide>

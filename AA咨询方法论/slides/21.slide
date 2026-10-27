@@ -1,0 +1,76 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之方法：<span style={{ color: '#FA4F24' }}>数据消费识别法</span>，从「谁要数据」倒推服务
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   这是 DA 与 AA 的正式交接界面——DA 定义数据，AA 决定这些数据以什么方式被谁拿走
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 左标题栏 + 右三问 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 32% */}
+    <Box style={{
+        width: 320, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)',
+     borderRadius: 4, padding: 26, flexDirection: 'column', justifyContent: 'space-between',
+    }}>
+    <Box>
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.8)', letterSpacing: 2 }}>STEP 05 · DATA FLOW</Text>
+     <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+     数据消费
+     <br />
+      识别法
+ </Text>
+      </Box>
+  <Box>
+     <Box style={{ width: 44, height: 4, background: 'rgba(255,255,255,0.7)' }} />
+     <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.94)', marginTop: 16, lineHeight: 1.55 }}>
+    顺序是<b style={{ fontWeight: 'bold' }}>先问消费者，再定服务</b>。
+   从「我们有什么数据」出发做服务，一定做出一堆没人用的接口。
+     </Text>
+  </Box>
+        </Box>
+
+        {/* 右 68% */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 11 }}>
+            <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0F1423' }}>对每项关键业务对象问三句</Text>
+    {[
+          { n: '01', t: '谁要用？', en: 'CONSUMER', d: '列出全部消费方：前台应用、分析看板、外部报送、监管接口。一个对象超过 5 个消费方，要重新考虑粒度。', k: '消费方 ≤ 5' },
+     { n: '02', t: '用来做什么？', en: 'PURPOSE', d: '消费目的是什么决策或动作。答不上来的消费方，多半是「历史习惯」，应该考虑下线。', k: '目的可说清' },
+    { n: '03', t: '要什么粒度？', en: 'GRANULARITY', d: '要明细还是汇总、要实时还是 T+1。粒度定错服务就会返工——定高了浪费，定低了不够用。', k: '粒度先定' },
+].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '10px 16px', gap: 14, borderLeft: '4px solid #FA4F24' }}>
+    <Box style={{ width: 58 }}>
+     <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+       <Text style={{ fontSize: 8, color: '#B8BDC7' }}>{it.en}</Text>
+    </Box>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', width: 134 }}>{it.t}</Text>
+      <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+  <Box style={{ width: 100, background: 'rgba(250,79,36,0.1)', borderRadius: 3, padding: '6px 4px' }}>
+      <Text style={{ fontSize: 11, color: '#C43A17', textAlign: 'center', lineHeight: 1.3 }}>{it.k}</Text>
+   </Box>
+     </Box>
+       ))}
+      <Box style={{ flex: 1, background: 'rgba(250,79,36,0.06)', borderRadius: 4, padding: '10px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>产出：数据服务清单</Text>
+      <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 4 }}>
+ 一行一个「业务对象 × 消费方 × 粒度 × 时效」，写明是实时接口还是 T+1 推送。
+ 这张表会直接变成下一页的数据服务目录。
+       </Text>
+        </Box>
+   </Box>
+ </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+     <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+    </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>21 / 30</Text>
+    </Box>
+</Slide>

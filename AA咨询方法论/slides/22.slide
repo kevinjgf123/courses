@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  之内容：<span style={{ color: '#FA4F24' }}>数据服务化与事件契约</span>，从「数出一孔」到「数不乱」
+        </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            服务化解决「不让别人直连我的库」，事件契约解决「改了之后怎么通知别人」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+
+        {/* 左 数据服务化 */}
+        <Box style={{ width: 630, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>数据服务化四步</Text>
+  {[
+        { n: '01', t: '收口', d: '源系统只对外暴露数据服务，不暴露库表。禁止直连只读账号。', c: '#0F1423', tc: '#FFFFFF' },
+        { n: '02', t: '定义', d: '服务基于业务对象定义，不基于物理表。字段语义挂 DA 的数据标准。', c: '#FA4F24', tc: '#FFFFFF' },
+      { n: '03', t: '编排', d: '共性服务上移下沉，个性服务留在业务应用。避免每个消费方各造一套。', c: '#FBA15C', tc: '#3A2000' },
+      { n: '04', t: '计量', d: '每个服务记录调用方、频次、字段使用情况。低使用率服务合并下线。', c: '#FDC69A', tc: '#3A2000' },
+     ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 18px', gap: 14 }}>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.tc, width: 34 }}>{it.n}</Text>
+       <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.tc, width: 52 }}>{it.t}</Text>
+    <Text style={{ fontSize: 14, color: it.tc, opacity: 0.9, flex: 1 }}>{it.d}</Text>
+      {i < 3 && <Text style={{ fontSize: 15, color: it.tc, opacity: 0.75 }}>↓</Text>}
+    </Box>
+      ))}
+        <Box style={{ height: 82, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', borderLeft: '4px solid #FA4F24', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17' }}>★ 第四步最容易被忽略</Text>
+      <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 4 }}>
+     数据服务建完之后如果没有计量，用例会一路增长，直到没人知道哪个还在被用。
+    没有使用统计的服务目录，一定会在两年后变成垃圾场。
+    </Text>
+        </Box>
+    </Box>
+
+        {/* 右 事件契约 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>事件契约要约定什么</Text>
+     {[
+   { t: '事件语义', d: '发生了什么业务事实（订单已发货），不是「某表被更新了」', c: '#FA4F24' },
+   { t: '触发与顺序', d: '什么条件下触发；同一实体的多个事件是否保证顺序', c: '#F8622F' },
+    { t: '幂等与去重', d: '消费方必须能识别重复消费。契约要写明去重键', c: '#FBA15C' },
+    { t: '失败与补偿', d: '消费失败怎么办：重试几次、进死信还是人工介入', c: '#FDC69A', tc: '#3A2000' },
+   ].map((it, i) => (
+         <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 16px', gap: 12, borderLeft: `4px solid ${it.c}` }}>
+    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423', width: 106 }}>{it.t}</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+   </Box>
+     ))}
+ <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+ <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>同步 vs 事件的选择</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1.5, marginTop: 5 }}>
+     需要对方立刻给结果 → 同步接口；只需要「通知你一声」→ 发事件。
+     事件用多了排查困难，所以只在跨域通知时用。
+    </Text>
+     </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · AA应用架构咨询方法论</Text>
+   </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>22 / 30</Text>
+    </Box>
+</Slide>
