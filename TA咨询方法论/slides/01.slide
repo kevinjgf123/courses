@@ -1,0 +1,41 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF' }}>
+    {/* 左侧橙红几何带 */}
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 460, height: 720, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)' }} />
+    <Box style={{ position: 'absolute', left: 400, top: 0, width: 120, height: 720, background: 'linear-gradient(160deg, rgba(250,79,36,0.35) 0%, rgba(248,125,47,0) 100%)' }} />
+
+    {/* 左侧品牌文字 */}
+    <Box style={{ position: 'absolute', left: 64, top: 64, flexDirection: 'column' }}>
+      <Text style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', letterSpacing: 3 }}>BOULDERAI</Text>
+      <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', letterSpacing: 2, marginTop: 4 }}>TECHNOLOGIES · SOLUTION</Text>
+    </Box>
+    <Box style={{ position: 'absolute', left: 64, bottom: 72, flexDirection: 'column' }}>
+      <Box style={{ width: 56, height: 4, background: 'rgba(255,255,255,0.8)' }} />
+  <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: 'bold', marginTop: 18 }}>硕磐智能</Text>
+      <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', marginTop: 6 }}>咨询交付版 · TECHNOLOGY ARCHITECTURE</Text>
+    </Box>
+
+    {/* 右侧主标题 */}
+    <Box style={{ position: 'absolute', left: 540, top: 150, width: 660, flexDirection: 'column' }}>
+      <Text style={{ fontSize: 88, fontWeight: 'bold', color: '#FA4F24', lineHeight: 1.0 }}>TA</Text>
+        <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#0F1423', marginTop: 18, lineHeight: 1.2 }}>技术架构咨询方法论</Text>
+        <Box style={{ width: 88, height: 5, background: '#FA4F24', marginTop: 26 }} />
+  <Text style={{ fontSize: 21, color: '#3A4050', marginTop: 26, lineHeight: 1.6 }}>
+   用架构的确定性对冲技术的不确定性，让技术换代不推翻业务
+      </Text>
+    </Box>
+
+    {/* 底部四个标签 */}
+    <Box style={{ position: 'absolute', left: 540, top: 560, flexDirection: 'row', gap: 12 }}>
+  {['分层骨架', '组件标准', '部署视图', '演进路线'].map((t, i) => (
+            <Box key={i} style={{ background: 'rgba(250,79,36,0.08)', borderRadius: 3, padding: '8px 18px' }}>
+     <Text style={{ fontSize: 16, color: '#C43A17', fontWeight: 'bold' }}>{t}</Text>
+   </Box>
+        ))}
+    </Box>
+
+    {/* 依据说明 */}
+    <Box style={{ position: 'absolute', left: 540, bottom: 78, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Box style={{ width: 4, height: 18, background: '#F87D2F' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>方法论依据：《华为数据之道》（华为公司数据管理部 著）</Text>
+    </Box>
+</Slide>

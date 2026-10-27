@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>技术风险台账与三类风险源</span>
+      </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   技术风险要能提前两年看到，才来得及做替换而不是救火
+        </Text>
+    </Box>
+ <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 三类风险源 */}
+        <Box style={{ width: 470, flexDirection: 'column', gap: 8 }}>
+     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>技术风险只有三个来源</Text>
+   {[
+   { n: 'R1', t: '外部供应风险', d: '组件停止维护、厂商涨价或退出、许可变更', c: '#0F1423' },
+     { n: 'R2', t: '版本老化风险', d: '组件过 EOL 且无安全补丁，继续用等于裸奔', c: '#FA4F24' },
+        { n: 'R3', t: '技能流失风险', d: '只有一个人懂这套技术，他一走就无人接管', c: '#FBA15C' },
+      ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+   <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FFFFFF', width: 36 }}>{it.n}</Text>
+     <Box style={{ flex: 1, flexDirection: 'column' }}>
+   <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 3, lineHeight: 1.4 }}>{it.d}</Text>
+      </Box>
+     </Box>
+    ))}
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>R3 最被低估</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.55, marginTop: 3 }}>
+    外部供应风险能通过合同和备选方案缓解；技能流失风险只能通过轮岗和文档沉淀解决，
+   而它恰恰最容易被当成「团队的事」，不进技术台账。
+    </Text>
+      </Box>
+        </Box>
+
+      {/* 右 风险台账 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>风险台账（示例）</Text>
+  <Box style={{ flexDirection: 'row', gap: 4 }}>
+          {['风险', '源', '剩余月数', '影响应用', '对策'].map((t, i) => (
+            <Box key={i} style={{ flex: i === 3 ? 1.5 : 1, background: '#0F1423', padding: '7px 4px', alignItems: 'center', borderRadius: 2 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{t}</Text>
+        </Box>
+     ))}
+      </Box>
+    {[
+     { r: '商业数据库过 EOL', s: 'R1', m: '14', a: '12', c: '启动替换，Q2 完成评估' },
+      { r: '消息队列许可变更', s: 'R1', m: '9', a: '8', c: '切换开源版本，双跑验证' },
+      { r: '旧版容器平台无补丁', s: 'R2', m: '6', a: '15', c: '升平台版本，暂停新接入' },
+  { r: '核心中间件仅1人可维护', s: 'R3', m: '常态', a: '6', c: '轮岗2人 + 补齐运维文档' },
+    ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 4, alignItems: 'center' }}>
+      {[{ v: it.r, f: 1.9 }, { v: it.s, f: 0.7 }, { v: it.m, f: 0.9 }, { v: it.a, f: 0.8 }, { v: it.c, f: 2 }].map((c, j) => (
+          <Box key={j} style={{ flex: c.f, background: i === 3 ? '#FFF3EE' : (i % 2 === 0 ? '#F7F7F8' : '#FFFFFF'), borderRadius: 2, padding: '0 4px', alignItems: 'center', borderBottom: '1px solid #E8E8E8' }}>
+     <Text style={{ fontSize: 11, color: j === 1 ? '#FA4F24' : (j === 2 ? '#C43A17' : '#3A4050'), fontWeight: j === 0 ? 'bold' : 'normal' }}>{c.v}</Text>
+       </Box>
+       ))}
+   </Box>
+      ))}
+   <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>「剩余月数」是这张表的关键列</Text>
+   <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 5 }}>
+   有了倒计时，替换才能被排进预算。EOL 时间其实都是公开的，
+  只是没人把它换算成「还剩几个月」。换成月份之后，它才变成一个可决策的信息。
+        </Text>
+      </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+    </Box>
+</Slide>

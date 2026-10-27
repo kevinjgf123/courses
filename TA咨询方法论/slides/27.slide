@@ -1,0 +1,59 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之方法：<span style={{ color: '#FA4F24' }}>组件退役三步法</span>，技术人比业务人更恋旧
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+       换掉一个用了十年的中间件，难的不是技术，是「万一出事谁负责」
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+{/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 12 }}>
+ {[
+      { n: 'STEP 1', t: '评估', c: '#0F1423', tc: '#FFFFFF',
+    d: '迁移改造工作量、性能影响、隐性依赖',
+    pts: ['隐性依赖最费时：动态 SQL、存储过程、定时任务常常漏统计', '先在测试环境跑一遍全量回归，别在生产试错'] },
+      { n: 'STEP 2', t: '双跑', c: '#FA4F24', tc: '#FFFFFF',
+   d: '新旧并行，数据双向比对，差异归零再切',
+      pts: ['双跑期至少覆盖一个完整业务周期，含月末与季末', '比对不只看数据，还要比性能与资源占用'] },
+        { n: 'STEP 3', t: '切换', c: '#FBA15C', tc: '#3A2000',
+       d: '切流量、观察期保回滚、旧组件下线',
+      pts: ['观察期至少一个月，旧环境不立刻销毁', '下线要回收许可与账号，成本才算真省下来'] },
+      ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 14 }}>
+    <Box style={{ width: 126, background: it.c, borderRadius: 4, alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+     <Text style={{ fontSize: 12, fontWeight: 'bold', color: it.tc, letterSpacing: 1 }}>{it.n}</Text>
+  <Text style={{ fontSize: 24, fontWeight: 'bold', color: it.tc, marginTop: 3 }}>{it.t}</Text>
+       </Box>
+ <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 16, color: '#0F1423', lineHeight: 1.4 }}>{it.d}</Text>
+     {it.pts.map((p, j) => (
+            <Text key={j} style={{ fontSize: 13, color: j === 0 ? '#C43A17' : '#5A6072', lineHeight: 1.45, marginTop: 3 }}>· {p}</Text>
+       ))}
+   </Box>
+   {i < 2 && (
+     <Box style={{ width: 24, alignItems: 'center', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 16, color: '#FA4F24', fontWeight: 'bold' }}>↓</Text>
+   </Box>
+   )}
+  </Box>
+   ))}
+        <Box style={{ height: 66, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', width: 210 }}>★ 为什么组件退役总在最后</Text>
+   <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', flex: 1, lineHeight: 1.45 }}>
+     替换项目没有新功能那样的可见度，也不写在业务部门的 KPI 里。
+     所以它必须被当作一个独立的、有预算有里程碑的项目立项，否则永远排不上队。
+      </Text>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+    </Box>
+</Slide>

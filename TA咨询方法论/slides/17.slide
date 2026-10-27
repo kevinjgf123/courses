@@ -1,0 +1,53 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之方法：<span style={{ color: '#FA4F24' }}>非功能需求六维量化法</span>，不允许出现「较高」「较快」
+  </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     每一条非功能需求都必须能用一个数验收，否则不写进架构
+      </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 10 }}>
+      {[
+        { n: '性能', q: '多少请求内响应完', d: 'P99 响应时间 ≤ 300ms（订单提交）', c: '#0F1423' },
+        { n: '可用性', q: '一年允许停多久', d: '核心系统 99.95%，年停机 ≤ 4.4 小时', c: '#3A4050' },
+   { n: '容量', q: '能扛多大并发', d: '峰值 3000 TPS，余量不低于 30%', c: '#5A6072' },
+  { n: '可扩展', q: '多久能顶上去', d: '10 分钟内扩容到 2 倍，横向加节点', c: '#FA4F24' },
+      { n: '可恢复', q: '多久能恢复现场', d: 'RTO ≤ 30 分钟，RPO ≤ 5 分钟', c: '#F8622F' },
+      { n: '可维护', q: '谁改、多久能改完', d: '一次变更 ≤ 2 小时发布，1 人日完成', c: '#FBA15C' },
+      ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 18px', gap: 16, borderLeft: `5px solid ${it.c}` }}>
+       <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.c, width: 84 }}>{it.n}</Text>
+          <Text style={{ fontSize: 14, color: '#5A6072', width: 152 }}>{it.q}</Text>
+      <Text style={{ fontSize: 14, color: '#0F1423', fontWeight: 'bold', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+     </Box>
+      ))}
+      <Box style={{ flexDirection: 'row', gap: 14, flex: 1 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '10px 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>为什么必须量化</Text>
+          <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.55, marginTop: 3 }}>
+  「系统要快」无法验收，「P99 ≤ 300ms」可以。模糊的非功能需求等于没有，
+      出事时没有任何依据判断是谁的责任。
+    </Text>
+   </Box>
+   <Box style={{ width: 400, background: '#0F1423', borderRadius: 4, padding: '10px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>RTO 与 RPO 怎么记</Text>
+  <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', lineHeight: 1.55, marginTop: 3 }}>
+   RTO 是「多久能起来」，RPO 是「最多丢多少数据」。两个数可以同时很小，也可以差很远——
+   关键看业务能接受丢多少。
+  </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>17 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,47 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      收口：<span style={{ color: '#FA4F24' }}>架构确定性</span>，六个半年后还成立的判断
+        </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     咨询的终点不是那份架构文档，而是这六件事有没有真的在运转
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+ {[
+     { n: '01', t: '分层是清的', d: '每一层只依赖下一层，没有跨层调用。层边界可以用接口文档说清楚', c: '#0F1423', tc: '#FFFFFF' },
+   { n: '02', t: '组件是登记的', d: '所有在用的组件都在清单里，版本精确、锁定风险已标级', c: '#3A4050', tc: '#FFFFFF' },
+  { n: '03', t: '环境是隔离的', d: '四分区达标、配置外置、凭据不同源，预发真的和生产同构', c: '#5A6072', tc: '#FFFFFF' },
+      { n: '04', t: '需求是量化的', d: '性能 / 可用性 / 容量 / 恢复，四类数字都有验收判据，没有「较快」这种词', c: '#F8622F', tc: '#FFFFFF' },
+   { n: '05', t: '标准是落地的', d: '四条标准接进了流水线，不只是文档；新人第一次交付问不到三个人', c: '#FA4F24', tc: '#FFFFFF' },
+    { n: '06', t: '风险是有倒计时的', d: '高风险组件还剩几个月到期，写在台账上，且已进入预算', c: '#FBA15C', tc: '#3A2000' },
+      ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 18px', gap: 16 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.tc, width: 36 }}>{it.n}</Text>
+ <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.tc, width: 190 }}>{it.t}</Text>
+      <Text style={{ fontSize: 14, color: it.tc, opacity: 0.93, flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+  </Box>
+   ))}
+        <Box style={{ height: 94, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '12px 20px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+ <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C43A17', width: 186, lineHeight: 1.4 }}>
+    交付那天问客户
+     </Text>
+  <Text style={{ fontSize: 15, color: '#3A4050', flex: 1, lineHeight: 1.55 }}>
+      半年后谁来更新组件清单和版本？谁盯例外台账到期？谁判断一个组件该开始替换？
+   这三问有两个答不上来，技术架构就还停在文档里。真正的落地标志不是评审通过，
+       而是有人开始因为「EOL 还有九个月」而主动排预算——那才叫确定性。
+    </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+    </Box>
+</Slide>

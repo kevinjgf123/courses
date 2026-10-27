@@ -1,0 +1,82 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+ <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之内容：<span style={{ color: '#FA4F24' }}>部署视图与资源基线</span>，画到可用区粒度为止
+      </Text>
+  <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     部署视图回答「挂了怎么办」，所以必须画到故障切换的最小单位
+      </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 三级部署粒度 */}
+        <Box style={{ width: 500, flexDirection: 'column', gap: 8 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>部署视图的三个粒度</Text>
+     {[
+      { n: '①', t: '全局视图', d: '几个机房 / 几个可用区，各自承载什么', p: '给管理层看，决定投入', c: '#0F1423' },
+   { n: '②', t: '可用区视图', d: '同一业务的节点分布，跨区是否真的跨', p: '给运维看，决定容灾', c: '#FA4F24' },
+   { n: '③', t: '节点视图', d: '单节点上的进程、中间件实例、副本数', p: '给开发看，决定容量', c: '#F8622F' },
+     ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14, borderLeft: `5px solid ${it.c}` }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.c, width: 26 }}>{it.n}</Text>
+     <Box style={{ flex: 1, flexDirection: 'column' }}>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+     <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 2 }}>{it.d}</Text>
+     </Box>
+     <Text style={{ fontSize: 12, color: it.c, width: 132, textAlign: 'right', lineHeight: 1.4 }}>{it.p}</Text>
+        </Box>
+     ))}
+       <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>★ 常见的自欺：假双活</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.95)', lineHeight: 1.45, marginTop: 4 }}>
+ 架构图上标着「双活」，但两个可用区共用同一个数据库或同一套文件存储。
+   判断方法只有一个：关掉 A 区，看 B 区还能不能独立接住全部流量。
+      </Text>
+      </Box>
+   </Box>
+
+        {/* 右 资源基线表 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>资源基线表（按业务定，不按人定）</Text>
+        <Box style={{ flexDirection: 'row', gap: 4 }}>
+          {['业务', '节点', '规格', '副本', '可承载'].map((t, i) => (
+      <Box key={i} style={{ flex: i === 0 ? 1.6 : 1, background: '#0F1423', padding: '7px 4px', alignItems: 'center', borderRadius: 2 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{t}</Text>
+       </Box>
+        ))}
+      </Box>
+    {[
+   { b: '订单中心', n: '12', s: '8C16G', r: '6+6', v: '2400 TPS' },
+    { b: '结算批处理', n: '8', s: '16C32G', r: '4+4', v: '1.2万笔/时' },
+      { b: '客户查询', n: '20', s: '4C8G', r: '10+10', v: '8000 QPS' },
+      { b: '报表平台', n: '10', s: '8C16G', r: '5+5', v: '600 并发' },
+  { b: '消息网关', n: '6', s: '4C8G', r: '3+3', v: '5万条/秒' },
+        ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 4, alignItems: 'center' }}>
+          {[{ v: it.b, f: 1.6 }, { v: it.n, f: 1 }, { v: it.s, f: 1 }, { v: it.r, f: 1 }, { v: it.v, f: 1 }].map((c, j) => (
+       <Box key={j} style={{ flex: c.f, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 2, padding: '0 4px', alignItems: 'center', borderBottom: j === 0 ? `2px solid #FA4F24` : '1px solid #E8E8E8' }}>
+        <Text style={{ fontSize: 12, color: j === 0 ? '#0F1423' : '#3A4050', fontWeight: j === 0 ? 'bold' : 'normal' }}>{c.v}</Text>
+     </Box>
+   ))}
+      </Box>
+     ))}
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>「可承载」这一列最值钱</Text>
+     <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 3 }}>
+     前四列是配置，最后一列是容量。有了容量列，才能算「这个业务当前用了多少、还有多少余量」——
+     扩容决策从拍脑袋变成算术题。
+     </Text>
+       </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>14 / 30</Text>
+    </Box>
+</Slide>

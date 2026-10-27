@@ -1,0 +1,30 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+    <Box style={{ position: 'absolute', left: 0, bottom: 0, width: 720, height: 720, background: 'linear-gradient(160deg, rgba(250,79,36,0.26) 0%, rgba(250,79,36,0) 68%)' }} />
+
+    <Box style={{ position: 'absolute', left: 92, top: 128, width: 800, flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 4 }}>EPILOGUE</Text>
+  <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 20 }} />
+   <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#FFFFFF', marginTop: 28, lineHeight: 1.2 }}>
+    技术会换代，<br />只有<span style={{ color: '#FA4F24' }}>确定性</span>能留下
+        </Text>
+  <Text style={{ fontSize: 19, color: 'rgba(255,255,255,0.8)', marginTop: 26, lineHeight: 1.75 }}>
+   组件会下线、版本会过期、云会搬家。<br />
+        真正可复用的资产，是分层结构与那四条标准。<br />
+        把它们守住，下一次换代才不用从零开始。
+    </Text>
+        <Box style={{ flexDirection: 'row', gap: 14, marginTop: 34 }}>
+{['分层稳定', '标准统一', '组件可替', '演进有路'].map((t, i) => (
+         <Box key={i} style={{ border: '1px solid rgba(250,79,36,0.6)', borderRadius: 4, padding: '8px 18px' }}>
+         <Text style={{ fontSize: 16, color: '#FBA15C' }}>{t}</Text>
+       </Box>
+      ))}
+  </Box>
+    </Box>
+
+    <Box style={{ position: 'absolute', right: 88, bottom: 64, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · TA技术架构咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>30 / 30</Text>
+    </Box>
+</Slide>

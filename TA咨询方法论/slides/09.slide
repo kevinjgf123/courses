@@ -1,0 +1,43 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之方法：<span style={{ color: '#FA4F24' }}>技术组件盘点五问法</span>，别让清单变成技术名词大全
+      </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+       盘点的对象是「被实际依赖的组件」，不是「公司知道的技术」
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 12 }}>
+      {[
+    { n: 'Q1', t: '谁在用？', d: '能说出具体应用名和调用场景的才算组件。只在技术文档里出现的，是知识不是资产。', c: '#0F1423' },
+        { n: 'Q2', t: '哪个版本？', d: '同一个组件三个版本，等于三份技术债。版本必须精确到小版本，不能写「最新版」。', c: '#3A4050' },
+      { n: 'Q3', t: '谁提供、谁维护？', d: '自研组件必须有团队和 Owner。开源组件必须写清社区与许可证类型。', c: '#FA4F24' },
+        { n: 'Q4', t: '换掉有多难？', d: '评估迁移成本，不评估的时候会在换代那天才发现代价。', c: '#F8622F' },
+        { n: 'Q5', t: '出故障谁扛？', d: '关键组件要有兜底方案，没有兜底的组件不进核心链路。', c: '#FBA15C' },
+      ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 18px', gap: 16, borderLeft: `5px solid ${it.c}` }}>
+          <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.c, width: 44 }}>{it.n}</Text>
+      <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', width: 168 }}>{it.t}</Text>
+ <Text style={{ fontSize: 14, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+   </Box>
+   ))}
+    <Box style={{ height: 76, background: '#0F1423', borderRadius: 4, padding: '12px 20px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FBA15C', width: 200 }}>★ 数据从哪来</Text>
+     <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.88)', flex: 1, lineHeight: 1.5 }}>
+   从制品库和依赖清单反扫，而不是让各团队填报。填报的数据会自我美化——没人会主动交代自己引入了几个老版本。
+    反扫出来的数据难看，但那是真数。拿到真数之后才有得治。
+      </Text>
+ </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>09 / 30</Text>
+    </Box>
+</Slide>

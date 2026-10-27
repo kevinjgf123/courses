@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+     <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之方法：<span style={{ color: '#FA4F24' }}>技术架构五层骨架</span>，先把层划清再谈选型
+      </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   自下而上：基础设施 → 资源平台 → 中间件 → 技术服务 → 应用运行环境
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 五层 */}
+   <Box style={{ width: 560, flexDirection: 'column', gap: 7 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>五层骨架与各层关注点</Text>
+ {[
+    { n: 'L5', t: '应用运行环境', d: '应用跑在哪：容器 / 虚机 / 混合。关注隔离与弹性', c: '#0F1423', tc: '#FFFFFF' },
+    { n: 'L4', t: '技术服务层', d: '对应用提供统一能力：网关、消息、缓存、任务调度', c: '#2A2F3D', tc: '#FFFFFF' },
+    { n: 'L3', t: '中间件层', d: '数据库、注册中心、配置中心、搜索。选型风险最高的一层', c: '#5A6072', tc: '#FFFFFF' },
+      { n: 'L2', t: '资源平台层', d: '计算、存储、网络以资源池形式供给，取代按台采购', c: '#8A8F99', tc: '#FFFFFF' },
+     { n: 'L1', t: '基础设施层', d: '机房、网络、电力、硬件。生命周期最长，变更最慢', c: '#C9CCD4', tc: '#3A4050' },
+    ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 16px', gap: 14 }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.tc, width: 34 }}>{it.n}</Text>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.tc, width: 138 }}>{it.t}</Text>
+  <Text style={{ fontSize: 13, color: it.tc, opacity: 0.92, flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+   {i < 4 && <Text style={{ fontSize: 14, color: it.tc, opacity: 0.6 }}>↓</Text>}
+     </Box>
+   ))}
+      <Box style={{ height: 56, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FA4F24' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 96 }}>★ 分层的意义</Text>
+     <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>
+ 层与层之间只能通过约定好的接口交互。一旦某层内部的组件换了，上面各层不受影响——这就是确定性的物理基础。
+  </Text>
+     </Box>
+        </Box>
+
+  {/* 右 划层三问 + 反例 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>划层三问</Text>
+       {[
+    { q: '这层会不会自己变？', d: '会变得快 → 放上面（L5/L4）；变得慢 → 放下面（L1/L2）' },
+    { q: '上层需不需要知道它的实现？', d: '需要 → 说明没划好，接口漏了' },
+     { q: '出问题能定位到层吗？', d: '不能 → 层边界是虚的，只是画了个框' },
+      ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+      <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>{it.q}</Text>
+     <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.45, marginTop: 3 }}>{it.d}</Text>
+     </Box>
+       ))}
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>两个真实反例</Text>
+       {[
+      { t: '把中间件拆进应用层', d: '每个应用自带数据库组件，最后没人说得清用的是哪个版本' },
+     { t: '把平台层做成一张网', d: '网络自成体系、没有服务化接口，扩容只能整块加机器' },
+      ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+     <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.45, marginTop: 3 }}>{it.d}</Text>
+      </Box>
+   ))}
+    </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>05 / 30</Text>
+    </Box>
+</Slide>

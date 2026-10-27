@@ -1,0 +1,77 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之模板：<span style={{ color: '#FA4F24' }}>技术组件卡片</span>，一张卡说清一个组件的全部判断
+      </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    字段填不出来，说明这个组件还没被真正评估过
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 卡片 */}
+        <Box style={{ width: 590, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>组件卡片 · 示例：关系型数据库</Text>
+            <Box style={{ background: '#0F1423', borderRadius: 4, padding: '10px 16px', flexDirection: 'row', alignItems: 'center' }}>
+ <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF', flex: 1 }}>TECHNOLOGY COMPONENT CARD</Text>
+   <Text style={{ fontSize: 13, color: '#FBA15C' }}>TC-003 · 高风险</Text>
+            </Box>
+  {[
+      { k: '所属层', v: 'L3 中间件' },
+   { k: '当前版本', v: '集中 8 个；生产 4 个大版本并存' },
+      { k: '使用方', v: '订单 / 结算 / 主数据（12 个应用）' },
+   { k: '维护方', v: '平台组 + 供应商双轨' },
+   { k: '许可证', v: '企业版，年度订阅' },
+   { k: '锁定原因', v: '深度依赖其存储过程语法，换库需改业务代码' },
+    { k: '替代方案', v: '开源库可选，但需 6 个月改造 + 双写验证' },
+      { k: '退出时间', v: '合同 2027-06，需提前 6 个月启动替换评估' },
+     ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 2, padding: '0 12px' }}>
+                <Text style={{ fontSize: 12, color: '#8A8F99', width: 82 }}>{it.k}</Text>
+        <Text style={{ fontSize: 13, color: '#0F1423', flex: 1, fontWeight: 'bold' }}>{it.v}</Text>
+        </Box>
+      ))}
+        </Box>
+
+     {/* 右 必填四列 + 用法 */}
+ <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>必填四列</Text>
+  {[
+    { n: '1', t: '锁定原因', d: '为什么换不掉。这是高风险组件存在的唯一理由' },
+    { n: '2', t: '替代方案', d: '换不掉也要说得出换成什么。答不出就说明还没评估过' },
+      { n: '3', t: '退出时间', d: '合同到期的日子。技术决策必须被商业合同倒逼' },
+        { n: '4', t: '使用方', d: '具体到应用名，没有使用方就不用维护这张卡' },
+      ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FA4F24' }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FA4F24', width: 20 }}>{it.n}</Text>
+ <Box style={{ flex: 1, flexDirection: 'column' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 2 }}>{it.d}</Text>
+     </Box>
+   </Box>
+       ))}
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>怎么用这张卡</Text>
+            <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.6 }}>
+     卡片不是资料库，是决策依据。评审时看三张卡就够了：核心组件的锁定原因、
+   自研公共件的重复情况、合同即将到期组件的退出时间。
+     </Text>
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>最容易被跳过的一栏</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.5, marginTop: 5 }}>
+      「锁定原因」。大多数组织只会写「历史遗留」。写不出具体原因，
+      就没法评估这个组件到底是真锁定还是假锁定——而假锁定的组件最费钱。
+      </Text>
+   </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>11 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,100 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之方法：<span style={{ color: '#FA4F24' }}>技术生命周期四象限</span>，决定投多少力气
+      </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     组合成熟度 × 替代难度，把组件分四类，每类管法不同
+        </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 22 }}>
+        {/* 左 二维象限 */}
+     <Box style={{ width: 520, flexDirection: 'column', gap: 8 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>成熟度 × 替代难度</Text>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
+      {/* Y 轴标签 */}
+            <Box style={{ width: 26, flexDirection: 'column', justifyContent: 'space-between', paddingBottom: 26 }}>
+         <Text style={{ fontSize: 11, color: '#8A8F99' }}>成熟</Text>
+     <Text style={{ fontSize: 11, color: '#8A8F99' }}>新</Text>
+     </Box>
+          <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+       <Box style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
+                <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '10px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>守成</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 3, lineHeight: 1.35 }}>成熟且难替代 → 加固运维，别折腾</Text>
+          </Box>
+  <Box style={{ flex: 1, background: '#FA4F24', borderRadius: 4, padding: '10px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>押注</Text>
+   <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', marginTop: 3, lineHeight: 1.35 }}>成熟且易替代 → 标准化即可，别自研</Text>
+         </Box>
+      </Box>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
+          <Box style={{ flex: 1, background: '#FDC69A', borderRadius: 4, padding: '10px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#3A2000' }}>试点</Text>
+   <Text style={{ fontSize: 12, color: '#3A2000', marginTop: 3, lineHeight: 1.35, opacity: 0.85 }}>新且难替代 → 小范围试点，验证后铺开</Text>
+     </Box>
+     <Box style={{ flex: 1, background: '#5A6072', borderRadius: 4, padding: '10px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>观察</Text>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 3, lineHeight: 1.35 }}>新且易替代 → 不自研，等生态成熟</Text>
+    </Box>
+         </Box>
+   <Box style={{ height: 22, flexDirection: 'row', justifyContent: 'space-around', paddingLeft: 30 }}>
+   <Text style={{ fontSize: 12, color: '#5A6072' }}>替代难度高</Text>
+         <Text style={{ fontSize: 12, color: '#5A6072' }}>替代难度低</Text>
+      </Box>
+       </Box>
+      </Box>
+   <Box style={{ height: 56, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FA4F24' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 92 }}>★ 判断顺序</Text>
+  <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>
+  先定「替代难度」——它由外部生态决定，不由团队意愿决定。难度高的只能在「守成」和「试点」之间选。
+     </Text>
+      </Box>
+        </Box>
+
+    {/* 右 判定依据 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>两个维度怎么判</Text>
+     <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>替代难度 · 四个信号</Text>
+  {[
+     '社区/厂商是否还在持续维护',
+   '是否有第二家可替换来源',
+    '迁移是否需要改业务代码',
+    '这个组件掌握在几家公司手里',
+       ].map((t, i) => (
+              <Text key={i} style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.65 }}>· {t}</Text>
+       ))}
+ </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>成熟度 · 四个信号</Text>
+        {[
+       '文档是否完整、社区问答是否够用',
+  '故障案例是否有公开积累',
+            '团队里有几个人真正用过',
+            '出问题时能否自查定位',
+   ].map((t, i) => (
+        <Text key={i} style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.65 }}>· {t}</Text>
+            ))}
+   </Box>
+        <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>这一页要防的错</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 5 }}>
+      用「团队觉得这个技术很先进」当成熟度依据。新技术往往不成熟，但团队意愿极高，
+     结果是把最不成熟的组件放在最核心的交易链路上。
+         </Text>
+      </Box>
+        </Box>
+ </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+    </Box>
+</Slide>

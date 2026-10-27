@@ -1,0 +1,57 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  之方法：<span style={{ color: '#FA4F24' }}>环境四分区与配置隔离红线</span>
+    </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     大多数生产事故的最后一步，都是开发连上了生产的库
+      </Text>
+  </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 11 }}>
+      {[
+      { n: '01', t: '开发 DEV', d: '代码与配置频繁变更，允许脏数据', c: '#5A6072', tc: '#FFFFFF' },
+        { n: '02', t: '测试 SIT / UAT', d: '数据脱敏，贴近生产结构但不必同规模', c: '#8A8F99', tc: '#FFFFFF' },
+        { n: '03', t: '预发 PRE', d: '与生产同构：同版本、同中间件、同配置结构。不做预发的发布必出事', c: '#FA4F24', tc: '#FFFFFF' },
+        { n: '04', t: '生产 PRD', d: '变更需审批、双人操作、可回滚', c: '#0F1423', tc: '#FFFFFF' },
+      ].map((it, i) => (
+ <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: it.c, borderRadius: 4, padding: '0 18px', gap: 18 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.tc, width: 42 }}>{it.n}</Text>
+   <Text style={{ fontSize: 19, fontWeight: 'bold', color: it.tc, width: 160 }}>{it.t}</Text>
+       <Text style={{ fontSize: 14, color: it.tc, opacity: 0.92, flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+   {i < 3 && <Text style={{ fontSize: 15, color: it.tc, opacity: 0.6 }}>→</Text>}
+     </Box>
+   ))}
+  <Box style={{ flexDirection: 'row', gap: 14, flex: 1 }}>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>四条隔离红线</Text>
+  {[
+      '凭据隔离：各环境密钥不同源，禁止共用',
+      '数据隔离：生产数据不入测试，须脱敏',
+       '网络隔离：生产不对开发开反向通道',
+  '账号隔离：运维账号按环境申请，到期收回',
+    ].map((t, i) => (
+          <Text key={i} style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.6 }}>· {t}</Text>
+       ))}
+      </Box>
+        <Box style={{ width: 336, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>★ 预发最容易被砍掉</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', lineHeight: 1.6, marginTop: 5 }}>
+ 预发是「最后一次在生产之外发现问题」的机会。为了省资源砍掉预发，
+      等于把发现问题的时机推到用户面前。而且省下的那点资源，
+      远不够赔一次生产事故的停机损失。
+      </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+    </Box>
+</Slide>

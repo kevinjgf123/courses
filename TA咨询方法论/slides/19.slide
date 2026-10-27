@@ -1,0 +1,87 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+之模板：<span style={{ color: '#FA4F24' }}>容量测算表与压测验收卡</span>，两个数才敢签字
+      </Text>
+  <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        算出来的产能，和实测出来的产能，差着 30% 是常态
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 容量测算表 */}
+        <Box style={{ width: 610, flexDirection: 'column', gap: 8 }}>
+     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>模板一 · 容量测算表</Text>
+       <Box style={{ flexDirection: 'row', gap: 4 }}>
+         {['业务', '日均量', '峰值系数', '目标峰值', '测算节点'].map((t, i) => (
+  <Box key={i} style={{ flex: i === 4 ? 1.5 : 1, background: '#0F1423', padding: '7px 3px', alignItems: 'center', borderRadius: 2 }}>
+         <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{t}</Text>
+       </Box>
+      ))}
+      </Box>
+            {[
+      { b: '订单中心', d: '1800万', k: '6.0×', t: '3000 TPS', n: '24（12+12）' },
+            { b: '客户查询', d: '5200万', k: '12.0×', t: '8000 QPS', n: '20（10+10）' },
+          { b: '结算批处理', d: '420万', k: '8.0×', t: '1.2万/时', n: '8（4+4）' },
+       { b: '消息网关', d: '9000万', k: '5.0×', t: '5万条/秒', n: '6（3+3）' },
+     ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 4, alignItems: 'center' }}>
+  {[{ v: it.b, f: 1.4 }, { v: it.d, f: 1 }, { v: it.k, f: 1 }, { v: it.t, f: 1 }, { v: it.n, f: 1.5 }].map((c, j) => (
+       <Box key={j} style={{ flex: c.f, background: i % 2 === 0 ? '#F7F7F8' : '#FFFFFF', borderRadius: 2, padding: '0 3px', alignItems: 'center', borderBottom: j === 0 ? '2px solid #FA4F24' : '1px solid #E8E8E8' }}>
+                <Text style={{ fontSize: 12, color: j === 0 ? '#0F1423' : '#3A4050', fontWeight: j === 0 ? 'bold' : 'normal' }}>{c.v}</Text>
+      </Box>
+       ))}
+      </Box>
+      ))}
+       <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>峰值系数从哪来</Text>
+      <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 3 }}>
+  取最近 12 个月实际值的 P99 除以均值，不要拍脑袋。实测峰值系数通常比直觉高，
+  因为月末、季末、年度结算这些尖峰是可预测的。
+     </Text>
+      </Box>
+        </Box>
+
+        {/* 右 压测验收卡 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>模板二 · 压测验收卡</Text>
+            <Box style={{ background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+       {[
+            '目标：目标峰值 × 1.3，持续 30 分钟',
+     '判据①：P99 ≤ 300ms',
+            '判据②：业务零错误码',
+       '判据③：CPU ≤ 60%，内存无持续增长',
+          '判据④：扩容演练在 10 分钟内完成',
+     ].map((t, i) => (
+   <Text key={i} style={{ fontSize: 13, color: i === 0 ? '#FBA15C' : 'rgba(255,255,255,0.88)', fontFamily: 'monospace', lineHeight: 1.75 }}>{t}</Text>
+   ))}
+       </Box>
+   {[
+     { t: '为什么要 ×1.3', d: '刚好压到目标值，等于没有余量。留三成是给自己和给故障留的' },
+     { t: 'CPU ≤ 60% 的意义', d: '到 80% 就开始抖。压测时看着没崩，线上流量抖动一样会崩' },
+       ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FA4F24' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24', width: 118 }}>{it.t}</Text>
+     <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+  </Box>
+    ))}
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>压测报告最容易造假的地方</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', lineHeight: 1.55, marginTop: 5 }}>
+  用开发环境的短时数据冒充生产等效压测。判断方法只有一个：看报告里有没有
+         数据依赖比例、连接池上限、缓存命中率这几项。有，才算真压过。
+    </Text>
+       </Box>
+   </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>19 / 30</Text>
+    </Box>
+</Slide>

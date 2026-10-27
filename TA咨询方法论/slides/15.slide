@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+之模板：<span style={{ color: '#FA4F24' }}>部署就绪检查表</span>，上线前的最后一关
+      </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      十二项全过才允许进生产，任一项不过就地退回，不做例外
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 8 }}>
+      <Box style={{ flexDirection: 'row', gap: 12, flex: 1 }}>
+    {[
+   { g: '容量与性能', c: '#0F1423', items: ['已压测并记录峰值 QPS/TPS', '预留余量不低于 30%', '单点瓶颈已定位并处理'] },
+        { g: '可用性', c: '#FA4F24', items: ['关键节点跨区部署', '已演练主备切换', '依赖组件有兜底方案'] },
+   ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', borderTop: `5px solid ${it.c}` }}>
+ <Box style={{ height: 34, justifyContent: 'center', padding: '0 16px' }}>
+      <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.c }}>{it.g}</Text>
+   </Box>
+     {it.items.map((t, j) => (
+    <Box key={j} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', padding: '0 16px', gap: 10 }}>
+  <Box style={{ width: 16, height: 16, border: '1.5px solid #FA4F24', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 10, color: '#FA4F24' }}>✓</Text>
+     </Box>
+   <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{t}</Text>
+    </Box>
+    ))}
+     </Box>
+   ))}
+      </Box>
+      <Box style={{ flexDirection: 'row', gap: 12, flex: 1 }}>
+        {[
+      { g: '可观测性', c: '#F8622F', items: ['四信号齐备：日志 / 指标 / 链路 / 事件', '告警已配且能触达责任人', '关键路径有链路追踪'] },
+    { g: '可回滚', c: '#FBA15C', items: ['有回滚方案且已演练', '数据变更可逆或已备好补偿', '回滚时间在可接受范围内'] },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', borderTop: `5px solid ${it.c}` }}>
+   <Box style={{ height: 34, justifyContent: 'center', padding: '0 16px' }}>
+            <Text style={{ fontSize: 17, fontWeight: 'bold', color: it.c }}>{it.g}</Text>
+            </Box>
+    {it.items.map((t, j) => (
+      <Box key={j} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', padding: '0 16px', gap: 10 }}>
+            <Box style={{ width: 16, height: 16, border: '1.5px solid #FA4F24', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 10, color: '#FA4F24' }}>✓</Text>
+   </Box>
+     <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{t}</Text>
+       </Box>
+     ))}
+       </Box>
+    ))}
+      </Box>
+        <Box style={{ height: 66, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', width: 220 }}>★ 为什么不做「例外」</Text>
+ <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', flex: 1, lineHeight: 1.45 }}>
+    上线检查是唯一一道「事后无法补救」的关口。压测可以补，切换可以补，
+   但没回滚方案就上线的版本，一旦出问题只能靠现场救火。
+      </Text>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · TA技术架构咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>15 / 30</Text>
+    </Box>
+</Slide>
