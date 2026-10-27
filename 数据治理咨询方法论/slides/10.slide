@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        对象与属性安全策略：<span style={{ color: '#FA4F24' }}>从行级到单元格级</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        直接在对象类型上配策略，与底层数据源权限解耦——这是本册最需要在架构图上画清楚的一条
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 三级 */}
+      <Box style={{ height: 146, flexDirection: 'row', gap: 10 }}>
+        {[
+          { t: '对象级安全策略', s: '行级', d: '在对象类型上直接配置，决定不同用户能看到哪些对象实例', c: '#FA4F24' },
+          { t: '属性级安全策略', s: '列级', d: '在对象策略之上配置，只能选主键以外的属性，且一个非主键属性最多属于一个', c: '#F87D2F' },
+          { t: '两者组合', s: '单元格级', d: '对象策略管行、属性策略管列，组合起来就得到单元格级的统一安全', c: '#E0651A' },
+        ].map((it, i) => (
+          <Box key={it.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + it.c, padding: '11px 14px', flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+              <Box style={{ height: 20, background: it.c, padding: '0 8px', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 10.5, color: '#FFFFFF' }}>{it.s}</Text>
+              </Box>
+            </Box>
+            <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.5 }}>{it.d}</Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ width: 424, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>四条设计约束，写方案时必须落到纸面</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 10 }}>
+            {[
+              { n: '1', t: '主键属性不能进属性策略', d: '所以主键的可见性只能由对象策略决定，无法单独隐藏' },
+              { n: '2', t: '细粒度比较权重上限一万', d: '对象策略与属性策略合计的权重必须低于该限制，否则策略写不进去' },
+              { n: '3', t: '默认继承数据源全部强制控制', d: '标记、组织、分类都会继承下来，可新增也可移除不再需要的' },
+              { n: '4', t: '下载权限检查位置取决于对象类型存放位置', d: '存在项目中则检查对象类型；用本体角色或数据源派生权限则检查底层数据源' },
+            ].map((it, i) => (
+              <Box key={it.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 11, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24', width: 16 }}>{it.n}</Text>
+                <Box style={{ flex: 1, flexDirection: 'column' }}>
+                  <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{it.t}</Text>
+                  <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.58)', marginTop: 2, lineHeight: 1.4 }}>{it.d}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>为什么官方建议从受限视图迁移过来</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.5 }}>
+            三个理由：统一了单元格级安全、策略更新近乎即时、支持流式与分支。受限视图是一层带过滤策略的虚拟层，如果它过滤掉某一行，对应的对象在本体图谱里对那个用户就等于不存在——这个效果是对的，但维护成本高，而且改策略要等数据重建。
+          </Text>
+          <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '9px 12px', marginTop: 9 }}>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17' }}>一个容易漏的坑：物化与历史事务</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 5, lineHeight: 1.5 }}>
+              对象安全策略也决定物化数据的权限，且取最严格者。但添加或移除标记后，标记只反映在该标记存在期间提交的事务。已经产生的历史事务不会自动被覆盖，必须手工给物化或底层数据集补打标记。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box style={{ height: 64, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 152 }}>2026 年新增能力</Text>
+        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.5 }}>
+          四月策略配置正式可用，六月策略测试能力正式可用——可以选一个具体用户，测他能看到这个对象的哪些属性。限制是不能测试派生属性的可见性，因为它同时依赖用户对派生属性来源对象的可见性。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>10 / 30</Text>
+    </Box>
+</Slide>

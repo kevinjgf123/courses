@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        之路径：<span style={{ color: '#FA4F24' }}>Approach 八阶段</span>，先做什么后做什么、每步产出什么
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        顺序是按「不可逆程度」排的：标记不可删、策略可回退、流程可改——所以标记必须最早定
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 7 }}>
+      <Box style={{ flexDirection: 'row', gap: 7 }}>
+        <Box style={{ width: 46, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>阶段</Text></Box>
+        <Box style={{ width: 46, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>性质</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>这一步做什么</Text></Box>
+        <Box style={{ width: 340, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}><Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>产出物</Text></Box>
+      </Box>
+
+      {[
+        { n: '1', k: '治理', t: '盘点治理资产与合规场景，先定「治到哪为止」', o: '治理资产清单 + 场景清单', c: '#FA4F24' },
+        { n: '2', k: '治理', t: '定裁定权、审批权、执行权，并签成制度文件', o: '责任矩阵 + 治理制度文件', c: '#FA4F24' },
+        { n: '3', k: '设计', t: '设计标记类别与层级，划分敏感度与最小必要', o: '分类分级表 + 标记目录', c: '#F87D2F' },
+        { n: '4', k: '设计', t: '组合角色、标记、属性、用途四类控制成策略', o: '权限矩阵 + 策略清单', c: '#F87D2F' },
+        { n: '5', k: '设计', t: '设计血缘层级与元数据字段，规定产出方式', o: '血缘矩阵 + 元数据规范', c: '#E0651A' },
+        { n: '6', k: '工程', t: '设计五类健康检查、告警与可信度指标', o: '健康检查清单 + 告警矩阵', c: '#E0651A' },
+        { n: '7', k: '工程', t: '设计提案、评审、双签与回退流程', o: '提案规范 + 审批流程图', c: '#C43A17' },
+        { n: '8', k: '运营', t: '设计审计日志、成熟度评估与演进路线', o: '审计规范 + 演进路线图', c: '#C43A17' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, flexDirection: 'row', gap: 7 }}>
+          <Box style={{ width: 46, background: '#F7F7F8', alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+          </Box>
+          <Box style={{ width: 46, background: it.k === '治理' ? '#FFF3EE' : '#F7F7F8', alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: it.c }}>{it.k}</Text>
+          </Box>
+          <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 13, color: '#0F1423' }}>{it.t}</Text>
+          </Box>
+          <Box style={{ width: 340, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center', borderLeft: '2px solid #FBA15C' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17' }}>{it.o}</Text>
+          </Box>
+        </Box>
+      ))}
+
+      <Box style={{ height: 62, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 128 }}>三条硬规则</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+          {[
+            { n: '先分标记再给权限', d: '标记撤不掉，权限可以撤' },
+            { n: '先只读再开放降级', d: '降级必须有除作者外的第二人审批' },
+            { n: '先有日志再扩范围', d: '没有「为什么」，就只剩「谁」和「什么」' },
+          ].map((x, i) => (
+            <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '6px 10px' }}>
+              <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1)}</Text>
+                <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+              </Box>
+              <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>04 / 30</Text>
+    </Box>
+</Slide>

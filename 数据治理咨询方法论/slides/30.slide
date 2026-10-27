@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      结语：治理不是把门锁上，是让每一步都<span style={{ color: '#FA4F24' }}>可被解释</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      九册走完一条线：先有治，才有存；有存才有语义；有语义才有智能；有智能才谈得上可信
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 216, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>九册主线回顾：从治理到智能</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 12 }}>
+        {[
+          { n: 'DA', t: '数据架构', c: '数据架构是枢纽', d: '先有治，才有存' },
+          { n: 'BA', t: '业务架构', c: '业务架构是基础', d: '能力与组织解耦' },
+          { n: 'AA', t: '应用架构', c: '应用架构是载体', d: '应用多了带来技术债' },
+          { n: 'TA', t: '技术架构', c: '技术架构是底座', d: '不押注单点技术' },
+          { n: 'Ontology', t: '本体', c: '4A 的汇流点', d: '语义与动力学合一' },
+          { n: 'Agent', t: '智能体', c: '4A 的新实践点', d: '明确谁来判断、停在哪' },
+          { n: '知识库', t: '知识库', c: '4A 的新实践点', d: '知识要被治理，不只是存' },
+          { n: '管道', t: '管道处理', c: '4A 的新实践点', d: '进出本体要可管可追可退' },
+          { n: '治理', t: '数据治理', c: '4A 的新实践点', d: '管的是动作，不是文件' },
+        ].map((x, i) => (
+          <Box key={x.n} style={{ flex: 1, background: i === 8 ? 'rgba(250,79,36,0.26)' : 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid ' + (i === 8 ? '#FA4F24' : '#FBA15C'), padding: '9px 8px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: i === 8 ? '#FA4F24' : '#FBA15C' }}>{x.n}</Text>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF', marginTop: 4 }}>{x.t}</Text>
+            <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', marginTop: 5, lineHeight: 1.4, flex: 1 }}>{x.c}</Text>
+            <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>数据治理留下的六条主张</Text>
+        <Box style={{ flexDirection: 'column', gap: 5, marginTop: 8 }}>
+          {[
+            '治理不是管数据，是管「谁能用、用来干什么、出了事谁担责」。',
+            '标记是治理的最小可执行单位；标记只定义一次，四个方向复用。',
+            '策略必须是数据，不是配置——它要能版本化、测试、回放、回滚。',
+            '治理的失败是静默的，所以审计日志是唯一的检出手段。',
+            'AI 时代治理对象多了一层：工具、记忆、遥测日志都受管。',
+            '治理必须可退：密级只能升不能降，是假治理。',
+          ].map((t, i) => (
+            <Text key={i} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+              <tspan style={{ fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}. </tspan>{t}
+            </Text>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>三条起步动作（本周就能做）</Text>
+        <Box style={{ flexDirection: 'column', gap: 9, marginTop: 9 }}>
+          {[
+            { t: '先分标记，再给权限', d: '没有标记体系的权限系统，等于按文件夹发钥匙。' },
+            { t: '先只读标记，再开放降级', d: '降级能力必须最后开，且必须带二审人。' },
+            { t: '先有审计日志，再扩治理范围', d: '没有日志就先别扩——扩了就查不出来了。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论 · 第九册完</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>30 / 30</Text>
+  </Box>
+</Slide>

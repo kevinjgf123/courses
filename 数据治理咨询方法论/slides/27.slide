@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      AA 层：策略即应用——审批必须是编排里的一个<span style={{ color: '#FA4F24' }}>节点</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      治理不是一个「后台配置页」，它是一组要部署、要监控、要有人维护的业务应用
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 210, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>治理应用清单：六个必须独立交付的应用</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9, marginTop: 11 }}>
+        {[
+          { n: 'G1', t: '数据目录', d: '集合公开、文件授权；紫色对勾标识已编目；全量搜索遍历全部元数据。治理成果的可见面。' },
+          { n: 'G2', t: '健康监控', d: '监控视图看范围、健康检查看单资源；告警走平台内通知、邮件摘要、外部系统三条路。' },
+          { n: 'G3', t: 'Linter', d: '识别反模式、给优化建议、分配责任人、定期复核。是唯一能自动发现「治理退化」的应用。' },
+          { n: 'G4', t: '提案审批', d: '提案、复核、驳回、补件全流程留痕；PBAC 主动模式挂起任务等批准。' },
+          { n: 'G5', t: '策略控制台', d: '行级/列级策略的可视化编排，带比较器验证效果；导出策略即代码。' },
+          { n: 'G6', t: 'Agent 出口', d: '工具白名单、记忆密级、遥测日志管辖。默认拒绝，逐个放开。' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid #FBA15C', padding: '10px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>{x.n} · {x.t}</Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.78)', marginTop: 6, lineHeight: 1.5 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+        交付顺序建议：G4 → G1 → G2 → G3 → G5 → G6。先把审批流跑起来（有流程才有人用），再让它可见（目录），再让它会报警（健康），最后才是精细化。
+      </Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.2, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>治理在编排上与别的应用最大的不同</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          普通应用编排是「把事做完」，治理编排是「按规矩做事，而且要留证」。因此每个动作后面都要挂一个审计记录动作；涉及敏感数据的动作前面还要挂一个策略判定动作；涉及降级的动作中间必须挂一个人工审批动作。
+        </Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          落到实现上就是一条约束：<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>任何绕过策略引擎直接读写数据的路径，都属于架构缺陷，不属于「灵活配置」</tspan>。
+        </Text>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>两条用法模式要分清</Text>
+        <Box style={{ flexDirection: 'column', gap: 7, marginTop: 8 }}>
+          <Box style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 10px' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>被动模式：记录理由后放行</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>适合常规使用，事后可审计，不阻塞业务。</Text>
+          </Box>
+          <Box style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '8px 10px' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>主动模式：挂起并由合规官批准</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>适合高敏感数据，会阻塞——要有 SLA，否则业务会绕道。</Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      治理 <span style={{ color: '#FA4F24' }}>×</span> 知识库：密级随切片走，检索时才做判定
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      知识库把「一份数据」变成「一万个片段」，也让一次授权变成一万次判定
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 205, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>切片是新的治理单元</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          原文只有一份标记，切片之后每个片段都必须自带密级标记。切分动作本身就是一个「复制」动作——它在物理上把一段受控内容变成了 N 段可被独立检索的内容，每一段都必须继承原文标记。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.5 }}>
+            切片继承规则：一律取<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>最高密级</tspan>，不做降级推断。宁可密级高一点，也不允许低判。
+          </Text>
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>授权发生在检索层，不是入库层</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          入库时统一按最高密级存，检索时再按用户身份逐条过滤。好处是权限变更即时生效——撤权后不需要重建索引，下一次查询就不见了。这与「先在库里存全量、靠查询收口」是同一思路。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.5 }}>
+            但仍有<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>生成式出口</tspan>风险：检索层过滤了输入，不一定过滤了大模型的最终回答。回答本身要再做一次密级与来源标注。
+          </Text>
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>三条知识库特有的失效</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 7, lineHeight: 1.75 }}>
+          一、<tspan style={{ color: '#FFFFFF' }}>推断泄漏</tspan>：模型从低密级片段里推出高密级结论，检索层管不住；二、<tspan style={{ color: '#FFFFFF' }}>缓存泄漏</tspan>：向量缓存跨会话复用，撤权后旧答案仍在；三、<tspan style={{ color: '#FFFFFF' }}>引用缺失</tspan>：回答没有回指原始切片，审计时无法定位来源。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+            处方：回答必须携带切片 ID 列表，且切片 ID 必须与授权记录可对账。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>知识库治理落地五步</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 10 }}>
+        {[
+          { n: '01', t: '建密级词典', d: '把本域的敏感类型映射到已有标记类别，不新造密级。' },
+          { n: '02', t: '切片时打标', d: '用原文标记驱动切片标记，继承取最高。' },
+          { n: '03', t: '过滤在检索', d: '按用户标记集合过滤召回结果，撤权即时生效。' },
+          { n: '04', t: '回答带引用', d: '输出切片 ID 与来源，回答本身再做密级判定。' },
+          { n: '05', t: '缓存随权失效', d: '缓存键包含用户标记集合，权限一变缓存即失效。' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '9px 11px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>{x.t}</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 5, lineHeight: 1.5 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>19 / 30</Text>
+  </Box>
+</Slide>

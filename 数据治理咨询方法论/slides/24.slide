@@ -1,0 +1,124 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      数据治理的 4A 映射总览：把治理当成一个业务应用来设计
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      它同样有业务对象、有组织、有应用、有技术底座，只是每一层都被治理这件事重新洗了一遍
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>BA 业务架构</Text>
+        <Text style={{ fontSize: 11, color: '#FA4F24', marginTop: 3 }}>谁裁定 · 谁审批 · 谁担责</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '数据所有者：定义密级与用途',
+            '数据管理员：日常维护与打标',
+            '合规官：审批降级与放行',
+            '审批人：提案的第二人复核',
+            '使用人：只在授权范围内消费',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: '#FFFFFF', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4 }}>
+            特殊之处：治理是<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>唯一必须四方齐备</tspan>的4A 实践点——少了担责方，策略就只是配置。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>DA 数据架构</Text>
+        <Text style={{ fontSize: 11, color: '#FA4F24', marginTop: 3 }}>治理元数据模型</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '标记类别表（不可删、不可改类）',
+            '属性安全策略表（行级+列级）',
+            '血缘与版本表（主动采集）',
+            '动作日志表（谁、什么、为什么）',
+            '提案与审批状态表',
+            '降级与撤回事件表',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: '#FFFFFF', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4 }}>
+            特殊之处：血缘必须是<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>主动元数据</tspan>，靠爬虫补的血缘永远滞后于现实。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>AA 应用架构</Text>
+        <Text style={{ fontSize: 11, color: '#FA4F24', marginTop: 3 }}>策略即应用 · 编排含审批</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '数据目录：治理成果的可见面',
+            '健康检查：范围型监控 + 告警',
+            'Linter：反模式识别与责任人分派',
+            '提案与审批工作流',
+            '检查点（Checkpoints）：用途控制',
+            'Agent 出口策略控制台',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: '#FFFFFF', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4 }}>
+            特殊之处：审批是<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>应用节点</tspan>，不是邮件。PBAC 主动模式会挂起任务等人批。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 15px', flexDirection: 'column', borderTop: '4px solid #FBA15C' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>TA 技术架构</Text>
+        <Text style={{ fontSize: 11, color: '#FBA15C', marginTop: 3 }}>策略即代码 · 审计不可篡改</Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 5 }}>
+          {[
+            '策略执行引擎（四种控制融合）',
+            '功能性加密服务（Cipher）',
+            '不可篡改审计存储（Action Log）',
+            '策略即代码仓库与版本化',
+            '精确策略比较引擎（上限 10,000）',
+            '密级计算与降级网关',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', lineHeight: 1.45 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 8, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '7px 9px' }}>
+          <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.4 }}>
+            特殊之处：策略引擎是热路径，必须<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>可解释、可回放、可回滚</tspan>。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 142, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>数据治理的四个「特有之处」</Text>
+      <Box style={{ width: 1, height: 62, background: '#FBA15C' }} />
+      {[
+        { t: '治理对象是策略本身', d: '管的是谁能用、干什么、谁担责' },
+        { t: '失败是静默的', d: '越权不报错，审计是唯一检出手段' },
+        { t: '必须可退', d: '密级只能升不能降是假治理' },
+        { t: 'AI 多了一层对象', d: '工具、记忆、遥测日志都受管' },
+      ].map((x) => (
+        <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', marginTop: 4, lineHeight: 1.4 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>24 / 30</Text>
+  </Box>
+</Slide>

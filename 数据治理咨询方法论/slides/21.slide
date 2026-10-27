@@ -1,0 +1,96 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      治理 <span style={{ color: '#FA4F24' }}>×</span> Ontology：策略是本体的一部分，不是外挂
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      没有策略的对象类型，就是一个还没有定义清楚的对象
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 262, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>本体层要新增的四类对象</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          在业务对象、属性、关系、动作为主的本体里，必须补上治理自身的四类对象，否则策略无处安放。
+        </Text>
+        <Box style={{ flex: 1, marginTop: 9, flexDirection: 'column', gap: 6 }}>
+          {[
+            { t: '标记类别对象', d: '密级的定义域，本身带可见性（可见/隐藏）与成员管理' },
+            { t: '策略对象', d: '对象级、属性级、用途级策略，作为可版本化的资源存在' },
+            { t: '理由对象', d: 'PBAC 主动模式下申请人提交的理由，永久留痕' },
+            { t: '审批对象', d: '提案、复核、降级申请与其状态机，等价于治理的工作流' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
+              <Box style={{ width: 5, height: 5, background: '#FA4F24', marginTop: 6 }} />
+              <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>
+                <tspan style={{ fontWeight: 'bold', color: '#0F1423' }}>{x.t}</tspan>：{x.d}
+              </Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>为什么不能外挂</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 8, lineHeight: 1.6 }}>
+          策略外挂的典型症状是：本体里能看到<tspan style={{ color: '#FFFFFF' }}>「客户」这个对象和它的 30 个属性</tspan>，但没人能回答「这个属性能不能给外部合作方看」。
+        </Text>
+        <Box style={{ marginTop: 10, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.55 }}>
+            根因：属性安全策略<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>只能作用在非主键属性上</tspan>。没把属性建模清楚，就没法建策略——这不是治理没做，是本体没做。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, marginTop: 10, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.55 }}>
+            结论：本体设计阶段就要同时回答两个问题——这个属性是什么、这个属性给谁看。缺第二个问题，本体就还差一半。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>两条不可越界的规则</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.65 }}>
+          一、<tspan style={{ fontWeight: 'bold' }}>标记类别一旦创建不可删除，也不可改类别</tspan>——这是为了让历史审计记录永远可解释；二、<tspan style={{ fontWeight: 'bold' }}>默认继承数据源全部强制控制</tspan>——新建对象不会因为「忘了配策略」而裸奔。
+        </Text>
+        <Box style={{ marginTop: 10, background: '#FFFFFF', borderRadius: 3, padding: '9px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            还有一条常被忽略：有「打标记」和「管理权限」但不是「类别成员」的用户，能打标记却看不到数据。权限模型不是一维的，是四维的。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>本体设计评审时必须回答的十个治理问题</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 6, marginTop: 9, flexWrap: 'wrap', alignContent: 'flex-start' }}>
+        {[
+          '每个对象类型的归属组织是哪个？',
+          '每个属性归哪个密级类别？',
+          '哪些属性可对单个对象做行级管控？',
+          '哪些属性属于属性安全策略，且互相不重叠？',
+          '哪些动作必须挂审批节点？',
+          '哪些动作只允许只读提交？',
+          '哪些对象允许去标记，审批人是谁？',
+          '哪些对象允许进入 Agent 的工具清单？',
+          '本体的版本变更，谁批准？',
+          '策略变更后，历史数据怎么回溯？',
+        ].map((q, i) => (
+          <Box key={q} style={{ width: '19.4%', background: '#F7F7F8', borderRadius: 3, padding: '7px 9px' }}>
+            <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.4 }}>
+              <tspan style={{ fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}. </tspan>{q}
+            </Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>21 / 30</Text>
+  </Box>
+</Slide>

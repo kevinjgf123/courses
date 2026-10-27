@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        提案与审批：<span style={{ color: '#FA4F24' }}>把评审从「靠自觉」变成「走流程」</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        策略本身是最危险的可配置项——放宽一次权限就可能无法收回，所以策略的变更必须像代码一样被评审
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 168, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>策略变更的六个步骤</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 7, marginTop: 11 }}>
+          {[
+            { n: '1', t: '开分支', d: '从主干派生一个工作分支', c: '#8A8F99' },
+            { n: '2', t: '改策略', d: '在分支上调整对象或属性策略', c: '#F87D2F' },
+            { n: '3', t: '测试', d: '选一个真实用户测他能看到什么', c: '#E0651A' },
+            { n: '4', t: '提提案', d: '提交进入审批流', c: '#FA4F24' },
+            { n: '5', t: '评审', d: '合规、数据owner、平台三方签', c: '#C43A17' },
+            { n: '6', t: '合并', d: '合回主干并即时生效', c: '#0F1423' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '9px 11px', borderTop: '3px solid ' + it.c }}>
+              <Box style={{ width: 20, height: 20, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+              </Box>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF', marginTop: 7 }}>{it.t}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', marginTop: 4, lineHeight: 1.4 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 11, lineHeight: 1.5 }}>
+          关键在于平台层面的强制：提案的创建、评审、合并这一整条生命周期由平台管，不依赖某个人记得要走流程。这样影子 IT 和未经授权的变更在结构上就不可能发生。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>策略评审要看的四件事</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 9 }}>
+            {[
+              { b: '放宽了谁', d: '这次变更让哪些原本看不到的人或组能看到哪些属性' },
+              { b: '收紧了谁', d: '有没有人在这次变更中突然失去了原有的访问权' },
+              { b: '影响哪些对象', d: '这个对象类型被哪些应用、动作、接口使用，影响面有多大' },
+              { b: '能不能退', d: '合并后如何回退，回退需要多久，生效需要多久' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+                <Box style={{ width: 78, height: 24, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{it.b}</Text>
+                </Box>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>策略测试：2026 年六月才有的能力</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            在本体管理器里可以对对象与属性安全策略做测试：选一个用户，测他能看到这个对象的哪些属性。这解决了策略设计最难的环节——策略写对了不等于效果对，必须用真实身份验一遍。
+          </Text>
+          <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '9px 12px', marginTop: 9 }}>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#E0651A' }}>两个已知限制</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 5, lineHeight: 1.5 }}>
+              一、派生属性的可见性测不了，因为它同时依赖用户对派生属性来源对象的可见性。二、测试者若既不是被引用组织的成员也不是管理员，访客成员与次级组织不会计入，平台会用提示明确列出你没有权限的组织。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>16 / 30</Text>
+    </Box>
+</Slide>

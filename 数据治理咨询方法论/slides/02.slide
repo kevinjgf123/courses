@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        本册<span style={{ color: '#FA4F24' }}>结构</span>：四部分，一条主线
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        前两部分讲治理本身与运行机制，第三部分讲治理与四方关系，第四部分回到 4A 与落地治理
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 10, height: 479, flexDirection: 'row', gap: 12 }}>
+      <Box style={{ width: 632, flexDirection: 'column', gap: 8 }}>
+        {[
+          { n: '序论 + 方法', p: '03-04', t: 'AI 时代治理对象的新变化；Approach 八阶段与每步产出物', c: '#0F1423' },
+          { n: 'PART 01', p: '05-10', t: '治理本身：保护与治理之别、八项原则、四类控制、标记、单元格级策略', c: '#FA4F24' },
+          { n: 'PART 02', p: '11-16', t: '运行机制：血缘与审计、降级与脱敏、元数据、数据目录、健康检查与 Linter', c: '#F87D2F' },
+          { n: 'PART 03', p: '17-22', t: '治理 × 管道 × 知识库 × Agent × Ontology，以及四条硬边界', c: '#E0651A' },
+          { n: 'PART 04', p: '23-30', t: '回到 4A、成熟度五级、五类失效、十二项评审与结语', c: '#C43A17' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Box style={{ width: 128 }}>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+              <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 2 }}>{it.p}</Text>
+            </Box>
+            <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+          </Box>
+        ))}
+        <Box style={{ height: 66, background: '#0F1423', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C', width: 168 }}>本册要回答的核心问题</Text>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+            为什么治理的对象从数据变成了策略；标记为什么撤不掉；以及智能体时代多出来的记忆、工具与日志，为什么必须用同一套标记管。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 214, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', marginBottom: 8 }}>九册的关系：一条链路，不是九本独立册子</Text>
+          {[
+            { b: 'DA / BA / AA / TA', t: '四层架构，方法底座', c: '#8A8F99' },
+            { b: 'Ontology', t: '语义与动力学合一，汇流点', c: '#F87D2F' },
+            { b: '管道 / 知识库 / Agent', t: '进、出、供依据、做判断', c: '#FA4F24' },
+            { b: '数据治理', t: '给前面所有环节配护栏与审计', c: '#0F1423' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 168 }}>{it.b}</Text>
+              <Text style={{ fontSize: 12, color: '#5A6072', flex: 1 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>与管道册的关系</Text>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', marginTop: 8, lineHeight: 1.6 }}>
+            管道册讲标记怎么随血缘自动传播、传播怎么被中断、降级为什么要双人审批；这一册把整套治理机制从头讲一遍，并把治理与四方关系一起收口。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>02 / 30</Text>
+    </Box>
+</Slide>

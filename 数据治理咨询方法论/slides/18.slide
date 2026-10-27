@@ -1,0 +1,61 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        治理 <span style={{ color: '#FA4F24' }}>×</span> 管道：标记沿血缘自动传播
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        管道是治理最大的放大器——它既能让标记正确传递，也能在一次清洗里把标记洗掉
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 202, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>标记传播的两种机制与一次中断</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 11 }}>
+          <Box style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>容器继承</Text>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.78)', marginTop: 6, lineHeight: 1.5 }}>
+              存在带标记的项目或文件夹里的资源，自动继承该容器的标记。这一条靠组织纪律就能守住。
+            </Text>
+          </Box>
+          <Box style={{ flex: 1.2, background: 'rgba(250,79,36,0.16)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24' }}>血缘传播（最关键）</Text>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', marginTop: 6, lineHeight: 1.5 }}>
+              用带标记的数据集经过清洗、聚合、富化生成新数据集时，构建系统会自动分析血缘，把标记强制施加到下游产物上。无论经过多少次变换，只要源头带敏感标记，所有衍生物都自动携带。开发者无法在代码里简单地把标记去掉。
+            </Text>
+          </Box>
+          <Box style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>传播中断</Text>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.78)', marginTop: 6, lineHeight: 1.5 }}>
+              语法上可以主动打断遗传，但这是敏感操作：需要「去标记」特权、分支受保护、除作者外第二人审批，三条缺一不可。
+            </Text>
+          </Box>
+        </Box>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+          逻辑是严格的「与」：一个数据对象同时带有若干标记，用户必须同时拥有全部标记才能访问。这样才能同时满足「通过式授权」和「知情权」的双重要求。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>治理在管道上要落的三个动作</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            一、在同步任务的粒度上打标记，而不是只在文件粒度——官方支持同步集合甚至单个同步按角色或分类级做控制；二、在管道分支沙箱里就能验标记是否正确传播，别等上线才发现洗掉了；三、把「是否发生过降级」写进元数据，让下游知道这份数据已经不是原始密级了。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>管道治理的反面案例</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            最常见的翻车方式不是忘记打标记，而是显式去标记后忘了补回来——数据流出去时是对的，回来就变成裸的了。症状是下游反复出现「这个字段怎么突然不见了」，或者反过来「这个字段怎么突然出现了」。处方是把降级事件建成一等公民元数据，而不是当成一次性操作。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>18 / 30</Text>
+    </Box>
+</Slide>

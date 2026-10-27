@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        序论：AI 时代<span style={{ color: '#FA4F24' }}>数据治理的新含义</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        过去治理的对象是数据，现在治理的对象是「策略、动作、记忆与日志」——它们同样会泄露、同样需要追责
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      <Box style={{ width: 400, background: '#0F1423', borderRadius: 4, padding: '18px 20px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FBA15C' }}>治理对象的三次扩张</Text>
+        <Box style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginTop: 12, marginBottom: 12 }} />
+        {[
+          { t: '一、从数据到数据流', d: '早期只管库里的表，现在要管数据在管道里怎么流动、被谁打上什么标记、流出去之后变成什么' },
+          { t: '二、从数据到语义', d: '本体里的对象类型、链接、函数与动作，本身也是治理对象——它们决定了数据能变成什么样的现实动作' },
+          { t: '三、从数据到智能体', d: '智能体的记忆、工具调用、上下文片段与运行日志，都是数据，也都是泄露通道，传统那套管不到' },
+        ].map((it, i) => (
+          <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Box style={{ width: 20, height: 20, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{String(i + 1)}</Text>
+              </Box>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+            </Box>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', marginTop: 6, lineHeight: 1.55 }}>{it.d}</Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 176, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 10 }}>四类新对象，各自带一条治理要求</Text>
+          {[
+            { b: '策略', t: '权限规则、标记、检查点必须像数据一样有版本、有测试、有回退', c: '#FA4F24' },
+            { b: '动作', t: '每一次写回都要留动作日志，记录谁、何时、改了哪个对象的哪个属性', c: '#F87D2F' },
+            { b: '记忆', t: '智能体的工作记忆与情节记忆按同样的标记分层，不能只在入口打一次', c: '#E0651A' },
+            { b: '日志', t: '日志本身受标记管辖，日志访问权限要能按项目、工作流、智能体分别控制', c: '#C43A17' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+              <Box style={{ width: 56, height: 26, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{it.b}</Text>
+              </Box>
+              <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ height: 138, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 18px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>为什么传统那套不管用了</Text>
+          <Text style={{ fontSize: 12.5, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            传统治理假设「数据被人看」，所以只需管住查询入口。智能体时代的问题是：智能体会把数据读进上下文、拼进提示词、发给出站接口、写进记忆。这四条路径传统权限模型一条都看不见。
+          </Text>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>本册的一句话主张</Text>
+          <Text style={{ fontSize: 15, color: '#FFFFFF', marginTop: 8, lineHeight: 1.5 }}>
+            治理不是把门锁好，而是让每一次开门都有理由、有记录、有可撤销的版本。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>03 / 30</Text>
+    </Box>
+</Slide>

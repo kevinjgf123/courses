@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        四种访问控制的融合：<span style={{ color: '#FA4F24' }}>角色 / 强制 / 属性 / 用途</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        传统系统只做第一种；真正管住数据，靠的是四种叠加，其中第四种最常缺失
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 254, flexDirection: 'row', gap: 9 }}>
+        {[
+          { a: 'RBAC', t: '基于角色', c: '#8A8F99', log: '「你属于分析师组，所以能访问情报库」', lim: '角色爆炸：要区分「只看元数据」和「看原始内容」就得建几千个角色', use: '只用于管理功能权限，比如能不能编辑，不能用于数据可见性' },
+          { a: 'MAC', t: '基于标记（强制）', c: '#FA4F24', log: '「数据标为机密，用户必须有机密许可」', lim: '传统只处理密级等级，难以处理隐私、行动代号这类横向标签', use: '支持多维标签组合：个人身份信息 + 机密 + 行动受限' },
+          { a: 'ABAC', t: '基于属性', c: '#F87D2F', log: '「如果你所属区域等于数据产生区域，则允许访问」', lim: '实施复杂，需要策略引擎实时算，且难以在关系图里直观表达', use: '行级动态判定，受限视图与细粒度策略都用它' },
+          { a: 'PBAC', t: '基于用途', c: '#E0651A', log: '「你有权限，但必须声明是为了什么才访问」', lim: '传统系统基本只有资格校验，没有动机校验，内部滥用无从发现', use: '检查点机制，强制捕获操作意图并审计或审批' },
+        ].map((it, i) => (
+          <Box key={it.a} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', overflow: 'hidden' }}>
+            <Box style={{ height: 54, background: it.c, padding: '0 13px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>{it.a}</Text>
+            </Box>
+            <Box style={{ flex: 1, padding: '10px 13px' }}>
+              <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+              <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '6px 8px', marginTop: 7 }}>
+                <Text style={{ fontSize: 10.5, color: '#0F1423', lineHeight: 1.4 }}>{it.log}</Text>
+              </Box>
+              <Box style={{ flex: 1, flexDirection: 'column', marginTop: 8, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 10, color: '#8A8F99' }}>典型局限</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6072', marginTop: 2, lineHeight: 1.4 }}>{it.lim}</Text>
+              </Box>
+              <Box style={{ background: '#FFF3EE', borderLeft: '2px solid ' + it.c, padding: '6px 8px', marginTop: 6 }}>
+                <Text style={{ fontSize: 10, color: it.c }}>在平台里的位置</Text>
+                <Text style={{ fontSize: 10.5, color: '#3A4050', marginTop: 2, lineHeight: 1.4 }}>{it.use}</Text>
+              </Box>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>用途控制的两种模式，差别很大</Text>
+          {[
+            { t: '被动模式', d: '记录理由后立即放行，事后审计，作用是威慑' },
+            { t: '主动模式', d: '操作挂起，请求送交合规官，批准后才给临时令牌' },
+          ].map((it, i) => (
+            <Box key={it.t} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: i === 0 ? 8 : 6 }}>
+              <Box style={{ width: 62, height: 24, background: 'rgba(250,79,36,0.24)', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FA4F24' }}>{it.t}</Text>
+              </Box>
+              <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>为什么用途控制最能发现内部滥用</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            有了理由字段，日志才从「谁访问了什么」变成「谁访问了什么、为什么」。安全团队据此可以跑异常检测：一名分析师凌晨两点访问了 500 条名人护照信息，理由栏填的是无意义字符——这在角色模型里是完全合法的，在用途模型里就是违规。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>08 / 30</Text>
+    </Box>
+</Slide>

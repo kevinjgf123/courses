@@ -1,0 +1,58 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        八项原则：<span style={{ color: '#FA4F24' }}>FIPPs 给治理的底线</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        基于 OECD 隐私与跨境数据流指南，八条原则不是口号，每一条都对应一个可验证的设计要求
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 240, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        {[
+          { n: '01', t: '采集限制', d: '个人数据的采集应有界限，且须以合法公平手段取得，必要时取得数据主体同意', v: '可验证：采集清单 + 采集依据', c: '#FA4F24' },
+          { n: '02', t: '数据质量', d: '个人数据应与使用目的相关，并在必要范围内准确、完整、保持最新', v: '可验证：质量规则 + 时效承诺', c: '#FA4F24' },
+          { n: '03', t: '目的规范', d: '收集目的最迟应在收集时即明确，后续使用限于该目的或相容目的', v: '可验证：目的登记 + 变更记录', c: '#F87D2F' },
+          { n: '04', t: '使用限制', d: '不得用于指定目的之外的披露、提供或使用，除非主体同意或法律授权', v: '可验证：用途检查点（Checkpoint）', c: '#F87D2F' },
+          { n: '05', t: '安全保障', d: '以合理的安全防护应对丢失、未授权访问、破坏、使用、修改或披露风险', v: '可验证：密级 + 加密 + 出口策略', c: '#E0651A' },
+          { n: '06', t: '公开性', d: '应有公开透明的政策，说明数据的存在性质、主要用途与责任主体身份和联系方式', v: '可验证：数据地图 + 责任人公示', c: '#E0651A' },
+          { n: '07', t: '个人参与', d: '个人有权知悉、获取、更正、补充、删除，并有权对拒绝提出质疑', v: '可验证：响应时限 + 处置留痕', c: '#C43A17' },
+          { n: '08', t: '问责', d: '责任主体应对落实上述原则的各项措施负责', v: '可验证：责任矩阵 + 签字栏', c: '#C43A17' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ width: 'calc(25% - 6px)', height: 116, background: '#F7F7F8', borderRadius: 4, borderLeft: '3px solid ' + it.c, padding: '9px 11px', flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+              <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+            </Box>
+            <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 6, lineHeight: 1.45 }}>{it.d}</Text>
+            <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '4px 7px', marginTop: 7, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 10, color: it.c, lineHeight: 1.35 }}>{it.v}</Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ width: 400, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>贯穿八项的核心主题：数据最小化</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.86)', marginTop: 8, lineHeight: 1.55 }}>
+            采集限制对应「少采」、目的规范对应「按目的采」、使用限制对应「只用在这个目的上」，安全保障对应「采了要护住」。所以最小化不只是采集阶段的事，它在用途限定上要再落一次。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>AI 时代最容易被违反的两条</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.55 }}>
+            第 03 条目的规范：模型训练、微调、评测各算不算原目的？绝大多数企业没登记过。第 07 条个人参与：数据被用于生成结论后，如何响应「删除并重新训练」？目前几乎无人能答。这两条是下一阶段治理的主战场。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+    </Box>
+</Slide>

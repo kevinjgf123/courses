@@ -1,0 +1,102 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      成熟度五级 · 五类失效 · 十二项评审
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      治理水平不看上了多少工具，只看三件事：能不能答、能不能拦、能不能退
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 128, flexDirection: 'row', gap: 9 }}>
+      {[
+        { l: 'L1 无意识', d: '有制度无系统，密级写在文档里，执行靠人记。', c: '#8A8F99' },
+        { l: 'L2 有目录', d: '数据能被找到、能被申请，但策略与权限仍分离。', c: '#FBA15C' },
+        { l: 'L3 有标记', d: '密级体系落地，行级列级策略上线，血缘能追溯。', c: '#F87D2F' },
+        { l: 'L4 有闭环', d: '审批进流程，审计可回放，降级可撤回。', c: '#FA4F24' },
+        { l: 'L5 有内生', d: '新数据默认继承强制控制，违规能被自动检出。', c: '#C43A17' },
+      ].map((x, i) => (
+        <Box key={x.l} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + x.c, padding: '11px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: x.c }}>L{i + 1}</Text>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginTop: 3 }}>{x.l}</Text>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>五类失效：治理出问题都在这五种形态里</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 6 }}>
+          {[
+            { t: '静默越权', d: '越权不报错，日志里也看不出来——因为只记了成功不记了拒绝。' },
+            { t: '标记洗白', d: '数据流经管道或切片后标记消失，回来就成了裸数据。' },
+            { t: '策略外挂', d: '策略在文档里，系统里没有对应实现，两边不一致。' },
+            { t: '推断泄漏', d: '低密级数据被聚合、推理出高密级结论，检索层管不住。' },
+            { t: '审计断链', d: '有日志但缺「为什么」，出事时无法定位决策过程。' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '7px 10px' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.78)', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.15, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>十二项评审：给治理体系做体检的清单</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 6, alignContent: 'flex-start' }}>
+          {[
+            '标记类别是否有删除入口？',
+            '是否有属性在多个列级策略中重叠？',
+            '拒绝事件是否入库？',
+            '血缘是主动采集还是事后爬取？',
+            'Agent 工具清单是否有默认拒绝？',
+            '记忆是否跨会话保留？',
+            '回答是否携带可对账的切片 ID？',
+            '降级事件是否为一级元数据？',
+            '策略变更是否有版本与回滚？',
+            '引擎失败时是拒绝还是放行？',
+            '审计是否记录了「为什么」？',
+            '策略是否有可指认的批准人？',
+          ].map((q, i) => (
+            <Box key={q} style={{ width: '48.6%', background: '#F7F7F8', borderRadius: 3, padding: '6px 9px' }}>
+              <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.4 }}>
+                <tspan style={{ fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}. </tspan>{q}
+              </Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 0.75, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>三问自检</Text>
+        <Box style={{ flexDirection: 'column', gap: 9, marginTop: 9 }}>
+          {[
+            { q: '能答吗？', a: '随便指一个敏感对象，能不能三十秒内说出谁能看、为什么。' },
+            { q: '能拦吗？', a: '模拟一次越权尝试，系统是拒绝并留下记录，还是默默放行。' },
+            { q: '能退吗？', a: '今天把某份数据降级，明天能不能完整撤回并追溯影响面。' },
+          ].map((x) => (
+            <Box key={x.q}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.q}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.a}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 10, background: '#FFFFFF', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>
+            三问有一问答不上来，就不要急着扩治理范围——先补短板。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+  </Box>
+</Slide>

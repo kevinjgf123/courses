@@ -1,0 +1,102 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      BA 层：治理是一次<span style={{ color: '#FA4F24' }}>责任分配</span>，不是一次技术选型
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      技术能把权限卡死，但卡不住「这件事该不该做」——那必须由人来裁定
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.25, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>五类角色与他们的裁决权</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 7 }}>
+          {[
+            { r: '数据所有者', p: '定义密级类别与用途范围', c: '#FA4F24', n: '业务侧' },
+            { r: '数据管理员', p: '执行打标、分类分级与日常维护', c: '#F87D2F', n: '数据侧' },
+            { r: '合规官', p: '审批降级、去标记与用途放行', c: '#C43A17', n: '合规侧' },
+            { r: '审批人', p: '除作者外的第二人复核（强制）', c: '#0F1423', n: '管理层' },
+            { r: '使用人', p: '在授权范围内消费，不得转授', c: '#8A8F99', n: '消费侧' },
+          ].map((x) => (
+            <Box key={x.r} style={{ flexDirection: 'row', gap: 9, alignItems: 'center' }}>
+              <Box style={{ width: 92, background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid ' + x.c, padding: '6px 8px' }}>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.r}</Text>
+              </Box>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{x.p}</Text>
+              <Text style={{ fontSize: 10.5, color: x.c, fontWeight: 'bold' }}>{x.n}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: '#FFF3EE', borderRadius: 3, padding: '8px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            常见失败：把五类角色压成两类——「安全部门管规则，业务部门随便用」。结果是规则没人落地、业务没人敢用。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>责任矩阵 RACI 的治理版本</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 5 }}>
+          {[
+            { t: 'R 执行', d: '数据管理员负责执行打标与策略落地' },
+            { t: 'A 批准', d: '合规官对降级与用途放行负最终责任' },
+            { t: 'C 咨询', d: '安全部门提供八项原则与基线要求' },
+            { t: 'I 知会', d: '使用方需知晓自己的授权边界与记录方式' },
+          ].map((x) => (
+            <Box key={x.t} style={{ background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '7px 10px' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.78)', marginTop: 3, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px' }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+            每一条策略都必须能指出它的 A（批准人）。指不出来的策略，就是没审批的策略，等于没有策略。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>BA 层三个必答问题</Text>
+        <Box style={{ flexDirection: 'column', gap: 8, marginTop: 9 }}>
+          {[
+            { q: '这个对象的密级由谁定？', a: '定不了就说明业务侧没参与，治理会退化成IT 自娱自乐。' },
+            { q: '出了泄露事故，向谁通报？', a: '必须有唯一接收人，且这个人的名字要写进策略里。' },
+            { q: '降级申请的审批人是谁？', a: '不能是申请人的直属上级——层级越近越容易放水。' },
+          ].map((x) => (
+            <Box key={x.q}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.q}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.a}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 92, background: '#F7F7F8', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>BA 层的产出物清单</Text>
+      <Box style={{ flexDirection: 'row', gap: 8, marginTop: 8 }}>
+        {[
+          '数据治理责任矩阵（RACI）',
+          '密级与用途定义说明书',
+          '降级与撤回审批流程（含二审人）',
+          '争议裁决与例外登记簿',
+          '违规处理与问责规则',
+        ].map((t) => (
+          <Box key={t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '8px 10px' }}>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45 }}>{t}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>25 / 30</Text>
+  </Box>
+</Slide>

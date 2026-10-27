@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        降级与脱敏：<span style={{ color: '#FA4F24' }}>数据分得出去的四个条件</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        「数据能共享，但不能全共享」是所有治理场景的真实矛盾，破解它的代价是四个必须同时满足的条件
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      {/* 四条件 */}
+      <Box style={{ width: 452, flexDirection: 'column', gap: 8 }}>
+        {[
+          { n: '条件一', t: '有权移除标记', d: '执行降级的人必须拥有「去标记」特权，这个特权通常独立于普通的数据编辑权限', c: '#FA4F24' },
+          { n: '条件二', t: '代码分支受保护', d: '含有去标记逻辑的分支必须被设定为受保护状态，防止临时改一行就放出去', c: '#F87D2F' },
+          { n: '条件三', t: '除作者外第二人审批', d: '强制要求数据安全官之类角色审查并批准合并，双人控制是硬约束', c: '#E0651A' },
+          { n: '条件四', t: '降级结果可回溯', d: '降级产生的新数据集要重新打标记、留版本，并且能被血缘追回去', c: '#C43A17' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <Box style={{ width: 58, height: 40, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'column' }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+              <Text style={{ fontSize: 11.5, color: '#5A6072', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 208, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>功能性加密：让同一行里不同字段有不同密级</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 10 }}>
+            {[
+              { b: '通道', d: '定义加密算法与密钥生命周期，通常只有极少数管理员可见', c: '#FA4F24' },
+              { b: '许可证', d: '可分配的权限对象，有加密许可的只能转成密文不能逆，解密许可的可还原', c: '#F87D2F' },
+              { b: '密文值', d: '库里实际存的是带通道标识的格式化字符串，不是明文', c: '#E0651A' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Box style={{ width: 62, height: 26, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{it.b}</Text>
+                </Box>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.86)', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 9, lineHeight: 1.5 }}>
+            它甚至支持图像的可逆像素扰乱：原始人脸被打散成噪点存库，界面里能看到背景但看不清人脸，只有持有许可并在浏览器端插入密钥才还原。这样即便截图外泄，敏感信息本身仍然安全。
+          </Text>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>一个具体的例子，说明为什么必须做功能性加密</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            假设一个对象包含姓名、照片、电话、风险等级四个属性。数据摄入时用「只加密」许可把姓名、照片、电话加密，平台管理员只能看到乱码，但能看到明文的风险等级用于索引和筛选。普通分析师有读取权但无解密许可，界面上只显示「高危」；高级调查员持有「解密」许可，点一下才还原明文。这就是「能共享但不全共享」的标准解法。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+    </Box>
+</Slide>

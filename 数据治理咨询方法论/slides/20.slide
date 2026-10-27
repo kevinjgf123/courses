@@ -1,0 +1,54 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      治理 <span style={{ color: '#FA4F24' }}>×</span> Agent：工具、记忆与日志都要受同一套管
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      Agent 会自己找数据、自己留记忆、自己发结论——治理必须覆盖它做的每一件事
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 196, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>Agent 的四个新增治理面</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 11 }}>
+        {[
+          { t: '记忆（Memory）', d: '长期记忆会跨会话保留历史结论，等于把数据复制到一个没有数据血缘的存储里。记忆必须与工具使用同一套安全架构，打上标记、纳入撤回范围。' },
+          { t: '工具（Tool）', d: '出口策略决定这个 Agent 能把数据发到哪里。没有出口策略的工具调用，等于给了它一张无限额度的信用卡。' },
+          { t: '日志（Telemetry）', d: '智能体自己的运行日志本身也受标记管辖——记录了「谁问了什么、检索到了什么」的日志，敏感度不低于原始数据。' },
+          { t: '提交条件', d: '粒度化的提交标准：不是「这个任务能不能做」，而是「这个任务做出来的结果能不能落到目标数据集」。' },
+        ].map((x) => (
+          <Box key={x.t} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.78)', marginTop: 6, lineHeight: 1.5 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+        核心判断：Agent 没有引入新的治理对象，只是把「同一个动作可能被执行成千上万次」这件事放大了——所以策略必须可被机器执行，而不是靠人记住。
+      </Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>Agent 治理与数据治理的三个差别</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          一、<tspan style={{ fontWeight: 'bold' }}>时机不同</tspan>：数据治理管的是静态存量，Agent 治理必须在动作发生前拦截；二、<tspan style={{ fontWeight: 'bold' }}>判定者不同</tspan>：模型自己判断该调什么工具，判定逻辑本身要纳入可审计范围；三、<tspan style={{ fontWeight: 'bold' }}>责任不同</tspan>：传统数据治理里执行者是人，Agent 里执行者是系统，责任必须显式落到流程审批节点上。
+        </Text>
+      </Box>
+      <Box style={{ flex: 0.9, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>落地顺序：先禁出口，再开记忆</Text>
+        <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.6 }}>
+          很多团队顺序做反了：先把记忆打开方便提效，半年后才发现 Agent 记的东西没法撤回。建议顺序是——先给所有工具配默认拒绝的出口策略，再按白名单逐个放开；长期记忆先只做会话级，等标记与撤回机制跑通再升到跨会话。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>20 / 30</Text>
+  </Box>
+</Slide>

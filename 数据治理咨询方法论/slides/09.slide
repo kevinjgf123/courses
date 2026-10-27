@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        Marking：<span style={{ color: '#FA4F24' }}>治理的最小可执行单位</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        它有一组反直觉的特性——不可删除、不可改类、权限与成员资格分离，所以必须在第一天设计清楚
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      {/* 四种权限 */}
+      <Box style={{ width: 430, background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>一个标记上的四种权限，彼此独立</Text>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 7, marginTop: 10 }}>
+          {[
+            { n: '管理权限', d: '授予权限、管理成员与元数据', c: '#FA4F24' },
+            { n: '打标记', d: '能给资源打上此标记，但不含成员资格', c: '#F87D2F' },
+            { n: '去标记', d: '移除标记，还必须同时具备打标记能力', c: '#E0651A' },
+            { n: '成员', d: '只有成员能看到被此标记保护的资源', c: '#C43A17' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid ' + it.c, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 72 }}>{it.n}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ background: '#FFF3EE', borderRadius: 3, borderLeft: '2px solid #FA4F24', padding: '9px 12px', marginTop: 10 }}>
+          <Text style={{ fontSize: 11.5, color: '#C43A17', lineHeight: 1.5 }}>
+            官方特别提醒的坑：一个人可以同时有「打标记」和「管理权限」，但不是成员。他能给文件、目录和项目打标记、也能管标记本身，却看不到被标记的数据。做权限设计时经常把「打标记」误当成「能看」。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 196, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>三条不可逆与两条可选，是治理设计的全部前提</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 10 }}>
+            {[
+              { b: '不可删除', t: '标记与标记类别一旦创建就不能删除', c: '#FA4F24' },
+              { b: '不可改类', t: '已创建的标记不能移到别的类别，分类体系要一次定对', c: '#FA4F24' },
+              { b: '类别决定可见性', t: '可见性按类别分配、不能逐个标记分配；隐藏类别的存在本身即为敏感', c: '#F87D2F' },
+              { b: '按组织隔离', t: '一个标记类别可限制到单一组织，绝不向组织外可见', c: '#E0651A' },
+              { b: '全局授予', t: '有标记不等于能看全部内容，仍需通过角色获得权限', c: '#C43A17' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Box style={{ width: 82, height: 23, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{it.b}</Text>
+                </Box>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1, lineHeight: 1.4 }}>{it.t}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>咨询结论：标记体系要在 Approach 第三阶段就冻结</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            因为它不可删除也不可改类，所以标记类别的划分一旦上线就基本定型。后来发现少了一类，只能新加一个类别去补，或者给所有资源补打新标记——无论哪种，都要重跑一遍历史数据的标记，这比改权限贵十倍。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>09 / 30</Text>
+    </Box>
+</Slide>

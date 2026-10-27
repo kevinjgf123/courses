@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        数据目录与数据健康：<span style={{ color: '#FA4F24' }}>让治理的成果被人看见、天天被用</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        目录解决「知道有什么」，健康检查解决「现在敢不敢用」——这两个是治理体系里唯二有日常使用频率的东西
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 214, flexDirection: 'row', gap: 10 }}>
+        {/* 目录 */}
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>数据目录：精选视图与全量搜索</Text>
+          {[
+            { t: '集合是治理的抓手', d: '按主题、受众或用途组织；任何人可看集合及其描述，但只能访问共享给他的精选文件' },
+            { t: '全量搜索是兜底', d: '平台级搜索能遍历所有资源的全部元数据，包括表格、代码工作簿等' },
+            { t: '徽章即状态', d: '整个平台用紫色对勾徽章标识「这一份已编目」，是编目工作量的可见度量' },
+            { t: '对外可集成', d: '数据、元数据与分析结果都能通过读写接口访问，可与企业既有系统深度集成' },
+          ].map((it, i) => (
+            <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24' }}>{it.t}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        {/* 健康 */}
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>数据健康：两个功能区，别混用</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 9 }}>
+            {[
+              { b: '监控视图', d: '范围型监控规则，适合按项目、目录或单个资源统一盯一批对象；资源增加时覆盖面自动扩展', c: '#FA4F24' },
+              { b: '健康检查', d: '单资源精细校验，可对数据集做内容与模式校验，适合某个具体资源的深度体检', c: '#F87D2F' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + it.c, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: it.c, width: 76 }}>{it.b}</Text>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+          <Box style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginTop: 8, marginBottom: 8 }} />
+          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>三条告警路径，缺一条就等于没告警</Text>
+          <Box style={{ flexDirection: 'row', gap: 7, marginTop: 7 }}>
+            {['平台内通知', '邮件摘要', '外部系统对接'].map((t, i) => (
+              <Box key={t} style={{ flex: 1, height: 26, background: 'rgba(250,79,36,0.22)', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#FA4F24' }}>{t}</Text>
+              </Box>
+            ))}
+          </Box>
+          <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.55)', marginTop: 6 }}>
+            外部系统那条要能推到值班工具上，否则告警进了平台但没人看
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>Linter：把治理的反模式主动报出来</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            官方提供的诊断工具会分析当前登记状态、识别反模式、给出优化建议，可以把最高影响的建议分配给具体用户去处理，并支持引导式或自动化的修复流程，还能定期复核影响。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>治理闭环：从被发现到被处理</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            用户报的问题、目录里看到的提示、健康检查发出的告警，都应该汇到同一个待办池，按严重级别排序，明确责任人和处理时限。处理完的结论要回写到元数据上，让下次访问同一份数据的人能看到「这个问题已确认、结论是什么」。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>15 / 30</Text>
+    </Box>
+</Slide>

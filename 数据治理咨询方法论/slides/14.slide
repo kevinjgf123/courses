@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        元数据：<span style={{ color: '#FA4F24' }}>四类必备与三条硬要求</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        官方对好元数据提了四条要求，其中「可被评审」这一条被绝大多数企业漏掉——采了但没人能看，等于没采
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 208, flexDirection: 'row', gap: 9 }}>
+        {[
+          { t: '技术元数据', d: '位置、类型、大小、行数、数据源、格式、编码、更新时间', w: '回答「它在哪、什么格式」', c: '#FA4F24' },
+          { t: '业务元数据', d: '业务描述、口径定义、责任人、用途、限制条件、使用建议', w: '回答「它是什么、怎么用才对」', c: '#F87D2F' },
+          { t: '治理元数据', d: '标记与密级、血缘、处理规则、质量结论、权限策略、留存期', w: '回答「谁能用、能用到哪」', c: '#E0651A' },
+          { t: '运维元数据', d: '构建状态、健康检查结论、事务历史、成本占用、失败记录', w: '回答「现在能不能信」', c: '#C43A17' },
+        ].map((it, i) => (
+          <Box key={it.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', overflow: 'hidden' }}>
+            <Box style={{ height: 48, background: it.c, padding: '0 13px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+            </Box>
+            <Box style={{ flex: 1, padding: '10px 13px' }}>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>{it.d}</Text>
+              <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '2px solid ' + it.c, padding: '6px 9px', marginTop: 9, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: it.c, lineHeight: 1.4 }}>{it.w}</Text>
+              </Box>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>官方四条要求，第三条最常被违反</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 9 }}>
+            {[
+              { n: '全面采集', t: '每份数据至少带一组默认元数据，让人能看懂它是什么，且记录一致、可检索', c: '#FA4F24' },
+              { n: '实时更新', t: '数据变了元数据跟着变，在访问那一刻就把最新结论呈现出来', c: '#F87D2F' },
+              { n: '可被评审', t: '必须能被用户检索到，尤其是能批量检索用于授权分析', c: '#E0651A' },
+              { n: '动态趋势', t: '跟踪元数据本身的变化趋势，这才能提前发现问题', c: '#C43A17' },
+            ].map((it, i) => (
+              <Box key={it.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 11, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Box style={{ width: 74, height: 24, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+                </Box>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>为什么「可被评审」是分水岭</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            官方原话大意是：很多系统采了元数据，却存在用户进不去的表里或离线文档里，这会大幅降低采集本身的价值——因为很多人根本不知道它在那儿，也不知道自己可以用。咨询里的典型症状是：元数据表格几十万行，但没人能在三十秒内回答「客户主数据谁能改」。
+          </Text>
+          <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '9px 12px', marginTop: 9 }}>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17' }}>一个判断标准</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 5, lineHeight: 1.5 }}>
+              随机抽一位业务分析师，给他一个具体指标名，如果他能在两分钟内找到口径定义、责任人和最近健康结论，元数据治理就是及格的；找不到，就是把元数据当成仓库而不是当成产品。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>14 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        数据保护 vs 数据治理：<span style={{ color: '#FA4F24' }}>一个管手段，一个管全程</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        官方定义划出的这条线，是很多企业把治理做窄的根源——把治理等同于加密与脱敏
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 122, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid #8A8F99', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#5A6072' }}>数据保护</Text>
+          <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 3 }}>DATA PROTECTION</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.55 }}>
+            官方定义：确保个人数据的处理「始终限制在达成合法处理结果所必要的范围内，且与之相称」的技术与组织手段。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderTop: '3px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FA4F24' }}>数据治理</Text>
+          <Text style={{ fontSize: 11, color: '#C43A17', marginTop: 3 }}>DATA GOVERNANCE</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.55 }}>
+            官方定义：管理企业数据在加工全生命周期中的行为——从接入到访问，再到删除。范围明显更宽。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>治理对象的完整清单：六段生命周期，每段都有独立的失控方式</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 7, marginTop: 11 }}>
+          {[
+            { n: '接入', t: '该不该采', d: '超范围采集、目的外用', c: '#FA4F24' },
+            { n: '存储', t: '存多久', d: '留存过久、缺删除机制', c: '#F87D2F' },
+            { n: '加工', t: '标记怎么传', d: '清洗过程把密级洗掉了', c: '#E0651A' },
+            { n: '访问', t: '谁在用', d: '权限过宽、用途不分', c: '#C43A17' },
+            { n: '共享', t: '流出去了吗', d: '外发无标记、无出口策略', c: '#0F1423' },
+            { n: '删除', t: '能删干净吗', d: '删了但备份、缓存、副本还在', c: '#8A8F99' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid ' + it.c, padding: '9px 10px' }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF', marginTop: 5 }}>{it.t}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', marginTop: 5, lineHeight: 1.45 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+          绝大多数企业的治理只做到了「访问」这一段：把权限配好，设个角色，完事。前面三段和后面两段基本靠自觉，于是超范围采集和删不干净的问题永远在。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>它为什么算一个业务应用</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            有明确的业务产出物（分类分级表、权限矩阵、审批规范）、有生命周期（六段，每段有进出条件）、有服务对象（业务合规、数据平台、智能体三类）、有可审计的执行记录。四样齐全，就可以立项、可以验收、可以被监管方检查。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一句话记法</Text>
+          <Text style={{ fontSize: 13, color: '#0F1423', marginTop: 8, lineHeight: 1.55 }}>
+            数据保护回答「怎么把数据包起来」，数据治理回答「这一路上每一次打开包的行为由谁批准、为什么打开、事后怎么查」。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>06 / 30</Text>
+    </Box>
+</Slide>

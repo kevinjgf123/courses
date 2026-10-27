@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      四方关系总览：治理是怎么贯穿管道、知识库、Agent 与本体的
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      四个方向不是四套方案——标记只定义一次，沿四个方向分别有各自的落法
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 226, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>一标记、四落法：同一条治理主线在四个方向的落点</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 12, alignItems: 'stretch' }}>
+        <Box style={{ width: 150, background: 'rgba(250,79,36,0.22)', borderRadius: 3, border: '1px solid #FA4F24', padding: '11px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>标记体系</Text>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', marginTop: 5, lineHeight: 1.45 }}>
+            唯一事实源：密级类别 + 可见性 + 四种权限
+          </Text>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 7, lineHeight: 1.4 }}>
+            只定义一次，四处复用
+          </Text>
+        </Box>
+        {[
+          { dir: '→ 管道', obj: '数据集 / 同步任务 / 分支', act: '容器继承 + 血缘传播', risk: '一次清洗把标记洗掉', ctrl: '降级事件建成一等公民元数据' },
+          { dir: '→ 知识库', obj: '切片 / 索引 / 检索结果', act: '切片继承最高密级 + 检索层过滤', risk: '缓存跨会话泄漏', ctrl: '缓存键包含用户标记集合' },
+          { dir: '→ Agent', obj: '工具 / 记忆 / 遥测日志', act: '出口策略 + 记忆打标 + 日志受管', risk: '动作被复制上万次', ctrl: '默认拒绝出口，白名单逐个放开' },
+          { dir: '→ 本体', obj: '对象类型 / 属性 / 动作', act: '策略对象内建为本体资源', risk: '策略外挂导致属性没人管', ctrl: '本体评审必答十个治理问题' },
+        ].map((x) => (
+          <Box key={x.dir} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid #FBA15C', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>{x.dir}</Text>
+            <Text style={{ fontSize: 11, color: '#FFFFFF', marginTop: 6, lineHeight: 1.4 }}>{x.obj}</Text>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.78)', marginTop: 5, lineHeight: 1.4 }}>{x.act}</Text>
+            <Text style={{ fontSize: 10.5, color: '#FBA15C', marginTop: 5, lineHeight: 1.4 }}>风险：{x.risk}</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.72)', marginTop: 3, lineHeight: 1.4 }}>对策：{x.ctrl}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.2, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>治理的四条硬边界（不可协商）</Text>
+        <Box style={{ flexDirection: 'column', gap: 5, marginTop: 7 }}>
+          {[
+            '一、最小必要：个人数据的处理范围，不得超过达成合法结果所必需的界限，且必须与之相称。',
+            '二、目的限定：只能用于收集时声明的目的，变更目的需要重新授权。',
+            '三、只读优先：能只读提交就不要给写权限，能不落盘就不要落盘。',
+            '四、全程留痕：谁、什么、为什么——审计必须能回答这三个问题，缺一不可。',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>{t}</Text>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>推论：治理的对象是「动作」，不是「文件」</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          一旦把治理对象从「文件」改成「动作」，全部设计都要重写：权限从按文件夹授权变成按用途审批，审计从「谁下载了这个文件」变成「谁以什么理由让系统做了这个动作」，标记从「贴标签」变成「随血缘与调用链传播」。
+        </Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+          这也是为什么数据治理不能只交给安全团队——它变成了业务流程的一部分，必须由业务、数据、安全三方共同定义。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>22 / 30</Text>
+  </Box>
+</Slide>

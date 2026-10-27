@@ -1,0 +1,77 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      DA 层：治理元数据模型与<span style={{ color: '#FA4F24' }}>十四项必建模</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      治理的元数据比业务元数据更严格——它决定的是「能不能看见」，不是「怎么理解」
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 208, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>十四项必建模治理元数据（按四组分）</Text>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 11 }}>
+        {[
+          { g: '密级组', items: ['标记类别（不可删不可改类）', '类别可见性（可见/隐藏）', '四维权限（管理/应用/移除/成员）'] },
+          { g: '策略组', items: ['对象安全策略（行级）', '属性安全策略（列级）', '检查点与用途策略（PBAC）'] },
+          { g: '血缘组', items: ['数据集版本与来源代码', '父数据集与构建运行时', '影响面与祖先链'] },
+          { g: '审计组', items: ['动作日志（谁/什么/为什么）', '提案与审批状态', '降级与撤回事件'] },
+        ].map((x) => (
+          <Box key={x.g} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>{x.g}</Text>
+            <Box style={{ flex: 1, marginTop: 8, flexDirection: 'column', gap: 6 }}>
+              {x.items.map((it) => (
+                <Text key={it} style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.45 }}>· {it}</Text>
+              ))}
+            </Box>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+        建模顺序有依赖：先有标记类别，才谈得上属性安全策略；先有血缘，才谈得上传播与影响面。倒过来做，一定返工。
+      </Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>三条建模硬约束</Text>
+        <Box style={{ flexDirection: 'column', gap: 6, marginTop: 8 }}>
+          {[
+            '主键属性不得进入属性安全策略——保证行仍可定位；非主键属性最多归属一个属性安全策略，避免叠加冲突。',
+            '标记类别不能删除、不能改类别——历史审计记录必须永久可解释。',
+            '新对象默认继承数据源全部强制控制——不许出现「因为忘配所以裸奔」。',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>{t}</Text>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>元数据采集的四项硬要求</Text>
+        <Box style={{ flexDirection: 'column', gap: 6, marginTop: 8 }}>
+          {[
+            '全面捕获：血缘、版本、策略、访问，一处不落。',
+            '实时更新：动作提交即落库，不做 T+1 汇总。',
+            '可审阅：合规官能自己查到，不需要工程师代查。',
+            '可做动态趋势分析：支持密级随时间的漂移分析。',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>{t}</Text>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>最容易漏掉的三项</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+          一、<tspan style={{ fontWeight: 'bold' }}>理由对象</tspan>：PBAC 主动模式下申请人写的理由，不建模就等于没有审计证据；二、<tspan style={{ fontWeight: 'bold' }}>降级事件</tspan>：标记只影响标记存在期间提交的事务，历史事务要额外手工补标；三、<tspan style={{ fontWeight: 'bold' }}>Agent 遥测日志</tspan>：它本身受标记管辖，漏了就等于把审计对象漏在体系外。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+  </Box>
+</Slide>

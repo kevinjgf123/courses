@@ -1,0 +1,97 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      TA 层：策略引擎、审计存储与<span style={{ color: '#FA4F24' }}>策略即代码</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      治理引擎跑在热路径上：它每一次判定都必须可解释、可回放、可回滚
+    </Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ height: 285, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>四种控制的融合：各管一段，不可互相替代</Text>
+        <Box style={{ flex: 1, marginTop: 10, flexDirection: 'column', gap: 6 }}>
+          {[
+            { k: 'RBAC', v: '只适合功能权限（能不能点这个按钮），不适合数据可见性。' },
+            { k: 'MAC', v: '标记强制控制，数据自带密级，与用户无关——这一层最容易被误当成 RBAC。' },
+            { k: 'ABAC', v: '受限视图与精确策略，按行按列动态判定；精确策略比较权重上限 10,000。' },
+            { k: 'PBAC', v: '检查点做用途控制；被动记录理由放行，主动挂起等批准。' },
+          ].map((x) => (
+            <Box key={x.k} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
+              <Box style={{ width: 44, background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '4px 0', alignItems: 'center' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FBA15C' }}>{x.k}</Text>
+              </Box>
+              <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', flex: 1, lineHeight: 1.5, marginTop: 2 }}>{x.v}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px' }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45 }}>
+            物化权限取最严格者：四种控制同时命中时，不做加法，做<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>取严</tspan>。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>功能性加密：Cipher 三层</Text>
+        <Box style={{ flexDirection: 'column', gap: 6, marginTop: 9 }}>
+          {[
+            { k: 'Cipher Channel', v: '把某个业务对象整体放进密级通道，访问需授权。' },
+            { k: 'Cipher License', v: '访问凭证，明确这次访问是为什么、被谁授予的。' },
+            { k: 'Cipher Value', v: '值级加密，支持同一行的不同字段处于不同密级。' },
+          ].map((x) => (
+            <Box key={x.k} style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '8px 10px' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{x.v}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 9, lineHeight: 1.45 }}>
+          图像也能保护——用可逆像素扰乱，脱敏不是「打码」，打码不可逆。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>策略即代码的四条要求</Text>
+        <Box style={{ flexDirection: 'column', gap: 7, marginTop: 9 }}>
+          {[
+            '策略可版本化：谁在什么时候改了哪条策略，可比对、可回滚。',
+            '策略可测试：先在测试策略环境验证，再推生产——测试策略本身已GA。',
+            '策略可回放：拿一条历史事务，能重放出当时的判定结果。',
+            '策略可导出：控制台配的策略要能导出成代码进仓库，避免只在数据库里。',
+          ].map((t) => (
+            <Text key={t} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>· {t}</Text>
+          ))}
+        </Box>
+        <Box style={{ marginTop: 9, background: '#F7F7F8', borderRadius: 3, padding: '8px 10px' }}>
+          <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45 }}>
+            已知限制要交代清楚：派生属性的可见性无法测试。从受限视图迁移到精确策略时，要留观察期。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>TA 层的三条非功能底线</Text>
+      {[
+        { t: '审计存储不可篡改', d: '动作日志只允许追加，不允许改与删' },
+        { t: '引擎不成为单点', d: '策略判定失败时的默认行为是拒绝，不是放行' },
+        { t: '敏感信息不落日志', d: '审计记「谁访问了哪类数据」，不记具体内容' },
+      ].map((x) => (
+        <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '10px 12px' }}>
+          <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 数据治理咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+  </Box>
+</Slide>
