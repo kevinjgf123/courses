@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            成熟度五级 L1–L5：<span style={{ color: '#FA4F24' }}>逐级演进，不能跨越式升级</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            客户说「我们要一步到位做智能」时，这张表就是最有力的回应——跳级的代价是全部重来
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 五级阶梯 */}
+        <Box style={{ height: 274, flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
+            {[
+                { L: 'L1', t: '流程数字化', d: '单点线上化，替代人工', h: 122, c: '#FBA15C' },
+                { L: 'L2', t: '业务集成', d: '系统互通，数据初共享', h: 150, c: '#F0873C' },
+                { L: 'L3', t: '端到端拉通', d: '全链路协同，业财一体', h: 178, c: '#E0641E' },
+                { L: 'L4', t: '智能优化', d: '数据驱动决策，智能预测', h: 206, c: '#D2531A' },
+                { L: 'L5', t: 'AI 原生化', d: '体系自主进化，业务重构', h: 234, c: '#C43A17' },
+            ].map((x) => (
+                <Box key={x.L} style={{ flex: 1, height: x.h, background: x.c, borderRadius: 4, padding: '12px 13px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', color: 'rgba(255,255,255,0.95)', lineHeight: 1.0 }}>{x.L}</Text>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', marginTop: 7 }}>{x.t}</Text>
+                    <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.3, marginTop: 5 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 不可跳跃铁律 */}
+        <Box style={{ height: 52, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 18 }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 132 }}>不可跨越规律</Text>
+            <Text style={{ fontSize: 16, color: '#FFFFFF', flex: 1, lineHeight: 1.35 }}>
+                L3 没做到就直接上 L4，等于在流沙上盖楼；<tspan style={{ color: '#FA4F24' }}>每一级都有它必须补齐的前提</tspan>
+            </Text>
+        </Box>
+
+        {/* 底部三块 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+            {[
+                {
+                    k: '典型症状：卡在 L1', d: '系统建了不少，但部门之间还是靠邮件和 Excel 对账', c: '#FA4F24',
+                },
+                {
+                    k: '典型症状：假L3', d: '接口打通了，但端到端流程还是人工在中间穿针引线', c: '#E0641E',
+                },
+                {
+                    k: '典型症状：跳L5', d: '数据底座和指标口径都没统一，就先上 AI 应用', c: '#C43A17',
+                },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, borderLeft: '4px solid ' + x.c, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 5 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>12 / 35</Text>
+    </Box>
+</Slide>

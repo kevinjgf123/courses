@@ -1,0 +1,114 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            前面十二册是分域专册，这一册是<span style={{ color: '#FA4F24' }}>它们共同的底座</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            不先立愿景和架构，Ontology、Agent、知识库、管道、治理、主数据、指标、FDE 每一册都无处安放
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 20, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：定位卡 */}
+        <Box style={{ height: 104, background: '#0F1423', borderRadius: 4, padding: '14px 22px', flexDirection: 'row', alignItems: 'center', gap: 24 }}>
+            <Text style={{ fontSize: 15, color: '#FBA15C', letterSpacing: 2, width: 128 }}>本册定位</Text>
+            <Text style={{ fontSize: 21, color: '#FFFFFF', lineHeight: 1.5, flex: 1 }}>
+                这一册讲<span style={{ color: '#FA4F24' }}>先做什么、后做什么、每一步交什么</span>；
+                其余各册讲每一步<span style={{ color: '#FA4F24' }}>怎么做</span>
+            </Text>
+            <Box style={{ width: 1, height: 52, background: 'rgba(255,255,255,0.2)' }} />
+            <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.68)', lineHeight: 1.5, width: 246 }}>
+                底座不定，上面每一层都是自说自话的孤立系统
+            </Text>
+        </Box>
+
+        {/* 中：两列 */}
+        <Box style={{ height: 236, flexDirection: 'row', gap: 10 }}>
+
+            {/* 左：三阶十二步 */}
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>
+                    规划方法论：<tspan style={{ color: '#FA4F24' }}>三阶十二步</tspan>
+                </Text>
+                <Text style={{ fontSize: 12.5, color: '#8A8F99', marginTop: 5, marginBottom: 10 }}>
+                    解决：项目从哪来、先干哪个、凭什么排优先级
+                </Text>
+                {[
+                    { s: '第一阶', t: '以终为始，描绘愿景', d: '步骤 1–5', c: '#FA4F24' },
+                    { s: '第二阶', t: '统一认识，设计架构蓝图', d: '步骤 6–7', c: '#E0641E' },
+                    { s: '第三阶', t: '把握节奏，规划举措和项目', d: '步骤 8–12', c: '#C43A17' },
+                ].map((x, i) => (
+                    <Box key={x.s} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#FFFFFF', borderRadius: 3, borderLeft: '4px solid ' + x.c, padding: '0 14px', marginTop: i === 0 ? 0 : 7 }}>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: x.c, width: 62 }}>{x.s}</Text>
+                        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                        <Text style={{ fontSize: 12, color: '#8A8F99' }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            {/* 右：4A Y 模型 */}
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>
+                    架构方法论：<tspan style={{ color: '#FA4F24' }}>4A Y 模型</tspan>
+                </Text>
+                <Text style={{ fontSize: 12.5, color: '#8A8F99', marginTop: 5, marginBottom: 10 }}>
+                    解决：四层怎么排、怎么对齐、收口落在哪个对象上
+                </Text>
+                {[
+                    { s: 'BA', t: '业务架构', d: '价值流 · 能力 · 流程' },
+                    { s: 'IA/DA', t: '信息（数据）架构', d: '概念 · 逻辑 · 物理' },
+                    { s: 'AA', t: '应用架构', d: '模块 · 服务 · 集成' },
+                    { s: 'TA', t: '技术架构', d: '组件 · 部署 · DFX' },
+                ].map((x, i) => (
+                    <Box key={x.s} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#FFFFFF', borderRadius: 3, padding: '0 14px', marginTop: i === 0 ? 0 : 5 }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 70 }}>{x.s}</Text>
+                        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', width: 140 }}>{x.t}</Text>
+                        <Text style={{ fontSize: 12, color: '#8A8F99', flex: 1 }}>{x.d}</Text>
+                    </Box>
+                ))}
+                <Box style={{ height: 30, background: '#FFF3EE', borderRadius: 3, border: '1px solid #FBA15C', flexDirection: 'row', alignItems: 'center', padding: '0 14px', marginTop: 7 }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>收口点：业务对象</Text>
+                    <Text style={{ fontSize: 11.5, color: '#5A6070', flex: 1, marginLeft: 10 }}>不落到它，四 A 各画各的</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：十二册位置 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>前面十二册在这张底座上的位置</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
+                {[
+                    { b: '4A', t: '架构分层', c: '#FA4F24' },
+                    { b: 'ONT', t: 'Ontology' },
+                    { b: 'AGT', t: 'Agent' },
+                    { b: 'KB', t: '知识库' },
+                    { b: 'PIPE', t: '管道' },
+                    { b: 'GOV', t: '治理' },
+                    { b: 'MDM', t: '主数据' },
+                    { b: 'KPI', t: '指标' },
+                    { b: 'BA', t: '业务' },
+                    { b: 'DA', t: '数据' },
+                    { b: 'FDE', t: '交付模型' },
+                ].map((x) => (
+                    <Box key={x.b} style={{ flex: 1, background: x.c || '#F7F7F8', borderRadius: 3, alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: x.c ? '#FFFFFF' : '#0F1423' }}>{x.b}</Text>
+                        <Text style={{ fontSize: 9.5, color: x.c ? 'rgba(255,255,255,0.85)' : '#8A8F99', marginTop: 2 }}>{x.t}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>03 / 35</Text>
+    </Box>
+</Slide>

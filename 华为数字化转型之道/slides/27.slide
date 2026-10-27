@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            十二步的<span style={{ color: '#FA4F24' }}>产出物清单</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这张表就是交付清单——每一步交不出来什么，是判断规划做没做扎实的唯一客观标准
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 14, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+
+        {/* 清单表 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+            <Box style={{ height: 24, flexDirection: 'row', gap: 4 }}>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#8A8F99', width: 42 }}>步骤</Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#8A8F99', width: 218 }}>做什么</Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#8A8F99', flex: 1 }}>必须交出来的产出物</Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#8A8F99', width: 62 }}>性质</Text>
+            </Box>
+            {[
+                { n: '01', d: '理解企业战略诉求', o: '高层访谈纪要 · 战略解码与关注要点', k: '主线', c: '#FA4F24' },
+                { n: '02', d: '5「看」', o: '五看扫描记录 · 数字化机会与价值清单', k: '主线', c: '#FA4F24' },
+                { n: '03', d: '成熟度评估', o: '关键用户访谈纪要 · 成熟度打分表', k: '主线', c: '#FA4F24' },
+                { n: '04', d: '现状和差距分析', o: '三层差距清单（能力 / 数据 / 技术）', k: '主线', c: '#FA4F24' },
+                { n: '05', d: '描绘数字化愿景', o: '愿景蓝图（三件事：什么样 / 体验 / 技术路径）', k: '主线', c: '#FA4F24' },
+                { n: '06', d: '设计顶层架构蓝图', o: '顶层架构蓝图（分层分级 · 六个设计原则过审）', k: '主线', c: '#E0641E' },
+                { n: '07', d: '一体四面细化', o: 'BA / IA/DA / AA / TA 分域成果 · 突破口结论', k: '主线', c: '#E0641E' },
+                { n: '08', d: '指标体系', o: '转型指标体系与预设值（结果 / 过程 / 体验）', k: '可选', c: '#C43A17', o2: true },
+                { n: '09', d: '识别转型举措', o: '举措清单与举措目标', k: '主线', c: '#C43A17' },
+                { n: '10', d: '举措设计', o: '举措架构方案 · 变革点细分', k: '可选', c: '#C43A17', o2: true },
+                { n: '11', d: '转型路标', o: '分期路标 · 每期重点与抓手', k: '可选', c: '#C43A17', o2: true },
+                { n: '12', d: '规划项目', o: '项目清单 · 公司级 / 领域级分工 · 排期', k: '主线', c: '#C43A17' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, flexDirection: 'row', gap: 4, alignItems: 'stretch' }}>
+                    <Box style={{ width: 42, background: x.c, borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                    </Box>
+                    <Box style={{ width: 218, background: '#F7F7F8', borderRadius: 2, padding: '0 11px', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.d}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, background: x.o2 ? '#FFF3EE' : '#F7F7F8', borderRadius: 2, padding: '0 11px', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 11.5, color: '#3A4050' }}>{x.o}</Text>
+                    </Box>
+                    <Box style={{ width: 62, borderRadius: 2, background: x.o2 ? '#FFFFFF' : '#0F1423', border: x.o2 ? '1px solid #E8E8E8' : 'none', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, color: x.o2 ? '#8A8F99' : '#FBA15C', fontWeight: 'bold' }}>{x.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部三条 */}
+        <Box style={{ height: 50, flexDirection: 'row', gap: 9 }}>
+            {[
+                { k: '主线 9 项', v: '交不出来，说明这一阶没做完，后面全是推演' },
+                { k: '可选 3 项', v: '不交不会立刻崩，但年底一定无法验收' },
+                { k: '整张表的用法', v: '评审时逐行打勾，空行不超过两行算合格' },
+            ].map((x, i) => (
+                <Box key={x.k} style={{ flex: 1, background: i === 0 ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid #FA4F24', borderRadius: 3, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: i === 0 ? '#FBA15C' : '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11.5, color: i === 0 ? 'rgba(255,255,255,0.82)' : '#5A6070', marginTop: 3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>27 / 35</Text>
+    </Box>
+</Slide>

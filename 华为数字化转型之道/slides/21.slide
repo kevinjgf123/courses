@@ -1,0 +1,59 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            华为自己的架构蓝图：<span style={{ color: '#FA4F24' }}>五层结构</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            原书 3.2.2——这是一个成熟企业的答案，可以用来跟客户说「做到这一层要多久」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 五层阶梯 */}
+        <Box style={{ height: 300, flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
+            {[
+                { n: '1', t: '客户联接', d: '统一对外界面：客户能触达什么、能自助什么、能被感知到什么', h: 204, c: '#FA4F24', o: '对应 BA 的价值流起点' },
+                { n: '2', t: '一线作战平台', d: '给一线人员用的作战工具，把能力送到人手上而不是送到系统里', h: 228, c: '#E0641E', o: '对应 4 类场景中的作业场景' },
+                { n: '3', t: '能力数字化', d: '把业务能力沉淀成可复用的服务，而不是每个项目重新开发一遍', h: 252, c: '#D2531A', o: '对应 AA 的中台化与服务化' },
+                { n: '4', t: '数字化运营', d: '企业自己转得更快：运营可视、决策及时、异常主动预警', h: 276, c: '#C43A17', o: '对应 IA/DA + 指标体系' },
+                { n: '5', t: '云化 IT 平台', d: '统一技术底座，支撑上面四层弹性扩展与快速迭代', h: 300, c: '#9E3410', o: '对应 TA 与云化数字平台' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, height: x.h, background: x.c, borderRadius: 4, padding: '14px 13px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', fontWeight: 'bold' }}>{x.n}</Text>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FFFFFF', marginTop: 5 }}>{x.t}</Text>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45, marginTop: 9, flex: 1 }}>{x.d}</Text>
+                    <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.95)', lineHeight: 1.35, borderTop: '1px solid rgba(255,255,255,0.28)', paddingTop: 8 }}>{x.o}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部两块 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 138 }}>五层与 4A 的关系</Text>
+                <Text style={{ fontSize: 13.5, color: '#FFFFFF', flex: 1, lineHeight: 1.45 }}>
+                    五层是<tspan style={{ color: '#FA4F24' }}>按能力视角</tspan>的画法，4A 是<tspan style={{ color: '#FA4F24' }}>按架构域</tspan>的画法。同一套内容，两种切法——汇报用五层，实施用 4A
+                </Text>
+            </Box>
+            <Box style={{ width: 400, background: '#FFF3EE', borderRadius: 3, borderLeft: '4px solid #FBA15C', padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>给客户的说法</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.45, marginTop: 5 }}>
+                    五层不必一次建齐。多数企业先做 2 和 3，底座跟着走，再回头补 1 和 4
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>21 / 35</Text>
+    </Box>
+</Slide>

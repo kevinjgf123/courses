@@ -1,0 +1,124 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            4A <span style={{ color: '#FA4F24' }}>Y 模型</span>全景：为什么必须收口到业务对象
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            Y 的上半身是业务往下拆，下半身是数据往上收，两条线在「业务对象」这个点上交汇——不交汇，四 A 就各画各的
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 12, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 7 }}>
+
+        {/* 左：三段式 Y 形 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+
+            {/* 上半身 BA */}
+            <Box style={{ width: 296, background: '#F7F7F8', borderRadius: 4, padding: '11px 13px', flexDirection: 'column' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                    <Box style={{ width: 30, height: 20, background: '#FA4F24', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FFFFFF' }}>BA</Text>
+                    </Box>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>业务架构（上半身）</Text>
+                </Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 5, marginTop: 9 }}>
+                    {[
+                        { n: '1', t: '价值流', d: 'LTC / IPD / ITR 等端到端' },
+                        { n: '2', t: '业务能力', d: '价值流分解出的能力清单' },
+                        { n: '3', t: '业务活动', d: '能力落成的具体活动' },
+                    ].map((x) => (
+                        <Box key={x.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 2, borderLeft: '3px solid #FA4F24', padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}. {x.t}</Text>
+                            <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 2 }}>{x.d}</Text>
+                        </Box>
+                    ))}
+                    <Box style={{ height: 34, background: '#FA4F24', borderRadius: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>↓ 拆到业务对象为止</Text>
+                    </Box>
+                </Box>
+            </Box>
+
+            {/* 中间收口 */}
+            <Box style={{ width: 322, flexDirection: 'column', gap: 7 }}>
+                <Box style={{ height: 92, background: '#0F1423', borderRadius: 4, flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 16px' }}>
+                    <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FA4F24' }}>业务对象</Text>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 7, textAlign: 'center', lineHeight: 1.4 }}>连接 BA 与IA/DA 的桥梁，也是整个 Y 的收口点</Text>
+                </Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+                    {[
+                        { a: 'AA', t: '应用架构', r: '通过业务服务收口到业务对象', c: '#D2531A' },
+                        { a: 'IA/DA', t: '信息架构', r: '通过数据实体收口到业务对象', c: '#E0641E' },
+                    ].map((x) => (
+                        <Box key={x.a} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '4px solid ' + x.c, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: x.c }}>{x.a}</Text>
+                                <Text style={{ fontSize: 12.5, color: '#0F1423', fontWeight: 'bold' }}>{x.t}</Text>
+                            </Box>
+                            <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 4 }}>{x.r}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+
+            {/* 下半身 IA/DA + TA */}
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+                <Box style={{ height: 132, background: '#F7F7F8', borderRadius: 4, padding: '11px 13px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                        <Box style={{ width: 44, height: 20, background: '#E0641E', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#FFFFFF' }}>IA/DA</Text>
+                        </Box>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>信息架构（下半身）</Text>
+                    </Box>
+                    <Box style={{ flex: 1, flexDirection: 'row', gap: 5, marginTop: 9 }}>
+                        {['概念模型', '逻辑模型', '物理模型'].map((t, i) => (
+                            <Box key={t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 2, flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 3 }}>
+                                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#E0641E' }}>{t}</Text>
+                                <Text style={{ fontSize: 9.5, color: '#8A8F99', textAlign: 'center', lineHeight: 1.3 }}>
+                                    {['识别主体', '定义主键', '具现化'][i]}
+                                </Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 8 }}>对象 → 数据实体 → 表结构，一步不落</Text>
+                </Box>
+                <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '11px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                        <Box style={{ width: 30, height: 20, background: '#C43A17', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FFFFFF' }}>TA</Text>
+                        </Box>
+                        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FFFFFF' }}>技术架构（贯穿托底）</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', lineHeight: 1.45, marginTop: 8 }}>
+                        组件选型 · 部署模型 · 安全设计 · 运营设计 · DFX—— 支撑上面三层跑得动、扛得住
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 底部三句 */}
+        <Box style={{ height: 46, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '上半身：从外而内', v: '价值流 → 能力 → 活动 → 对象', c: '#FA4F24', dark: false },
+                { k: '下半身：从内而上', v: '对象 → 数据实体 → 表结构', c: '#E0641E', dark: false },
+                { k: 'TA：贯穿托底', v: '不参与拆分，但决定这一切能不能真跑', c: '#C43A17', dark: true },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.dark ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid ' + x.c, borderRadius: 3, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: x.dark ? '#FBA15C' : x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: x.dark ? 'rgba(255,255,255,0.85)' : '#5A6070', marginTop: 3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>29 / 35</Text>
+    </Box>
+</Slide>

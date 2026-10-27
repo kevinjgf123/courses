@@ -1,0 +1,107 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            Approach：<span style={{ color: '#FA4F24' }}>三阶十二步</span>全景与每一步的产出物
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            粗线是主线不能跳，空心角标的是华为标注的可选步——但跳过的项目一定接不住
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 7 }}>
+
+        {/* 阶段色带 */}
+        <Box style={{ height: 26, flexDirection: 'row', gap: 4 }}>
+            <Box style={{ flex: 1, background: '#FA4F24', borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>第一阶　以终为始，描绘愿景（1–5）</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#E0641E', borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>第二阶　统一认识，设计架构蓝图（6–7）</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#C43A17', borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>第三阶　把握节奏，规划举措和项目（8–12）</Text>
+            </Box>
+        </Box>
+
+        {/* 12 步网格 4 列 × 3 行 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 5 }}>
+            {[
+                [
+                    { n: '01', t: '理解企业战略诉求', o: '高层访谈纪要 · 战略解码与关注要点', c: '#FA4F24' },
+                    { n: '02', t: '5「看」', o: '五看扫描记录 · 机会与价值清单', c: '#FA4F24' },
+                    { n: '03', t: '成熟度评估', o: '关键用户访谈纪要 · 成熟度打分表', c: '#FA4F24' },
+                    { n: '04', t: '现状和差距分析', o: '差距清单 · 业界对标结论', c: '#FA4F24' },
+                    { n: '05', t: '描绘数字化愿景', o: '愿景蓝图 · 不拘泥现状的前瞻目标', c: '#FA4F24', main: true },
+                ],
+                [
+                    { n: '06', t: '设计顶层架构蓝图', o: '顶层架构蓝图（分层分级）', c: '#E0641E' },
+                    { n: '07', t: '「一体四面」细化', o: 'BA/IA/AA/TA 分域细化 · 突破口识别', c: '#E0641E', main: true },
+                ],
+                [
+                    { n: '08', t: '指标体系', o: '转型指标体系与预设值', c: '#C43A17', opt: true },
+                    { n: '09', t: '识别转型举措', o: '举措清单 · 关键成功要素与目标', c: '#C43A17' },
+                    { n: '10', t: '举措设计', o: '举措架构方案 · 变革点细分', c: '#C43A17', opt: true },
+                    { n: '11', t: '数字化转型路标', o: '分期路标 · 每阶段关注重点与抓手', c: '#C43A17', opt: true },
+                    { n: '12', t: '规划项目', o: '项目清单 · 公司级与领域级分工 · 排期', c: '#C43A17', main: true },
+                ],
+            ].map((row, ri) => (
+                <Box key={ri} style={{ flex: 1, flexDirection: 'row', gap: 5 }}>
+                    {row.map((x) => (
+                        <Box key={x.n} style={{
+                            flex: 1,
+                            background: '#FFFFFF',
+                            borderRadius: 3,
+                            border: '1px solid #E8E8E8',
+                            borderTop: '3px solid ' + x.c,
+                            padding: '8px 11px',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                        }}>
+                            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                                <Text style={{ fontSize: 13, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+                                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                                {x.opt && (
+                                    <Box style={{ height: 15, padding: '0 5px', borderRadius: 2, border: '1px solid #8A8F99', flexDirection: 'row', alignItems: 'center' }}>
+                                        <Text style={{ fontSize: 9.5, color: '#8A8F99' }}>可选</Text>
+                                    </Box>
+                                )}
+                                {x.main && (
+                                    <Box style={{ height: 15, padding: '0 5px', borderRadius: 2, background: x.c, flexDirection: 'row', alignItems: 'center' }}>
+                                        <Text style={{ fontSize: 9.5, color: '#FFFFFF' }}>主线</Text>
+                                    </Box>
+                                )}
+                            </Box>
+                            <Text style={{ fontSize: 10, color: '#5A6070', lineHeight: 1.35, marginTop: 4 }}>产出：{x.o}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部三条铁律 */}
+        <Box style={{ height: 30, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '顺序不可颠倒', v: '三阶有强依赖，跳步做的架构接不住前面的愿景', c: '#FA4F24', dark: true },
+                { k: '主线不可省', v: '5、7、12 是三个阶各自的收口步，交不出来等于没规划', c: '#F87D2F', dark: false },
+                { k: '可选不是不做', v: '时间允许建议全走一遍，规划出的项目更能被变革组承接', c: '#FA4F24', dark: false },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.dark ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid ' + x.c, borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: x.dark ? '#FBA15C' : '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10, color: x.dark ? 'rgba(255,255,255,0.88)' : '#5A6070', flex: 1, lineHeight: 1.3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>04 / 35</Text>
+    </Box>
+</Slide>

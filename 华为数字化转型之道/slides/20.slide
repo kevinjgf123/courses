@@ -1,0 +1,61 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            架构蓝图的 <span style={{ color: '#FA4F24' }}>6 个设计原则</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这六条是审图清单——客户拿方案来对照这六条，六条都过的图基本不会跑偏
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 六条 */}
+        <Box style={{ height: 302, flexDirection: 'column', gap: 8 }}>
+            {[
+                { n: '1', t: '以客户为中心，由外而内进行蓝图设计', d: '先看客户和端到端流程，再看内部环节——顺序反了就成了内部视角的自我改良', c: '#FA4F24', k: '最常被违反的一条' },
+                { n: '2', t: '明确在哪些端到端流程提升业务效率', d: '提升点必须落在端到端流程上，落在部门内不算数', c: '#E0641E', k: '落到 LTC 这样的主流程上' },
+                { n: '3', t: '从内部视角，看从哪些关键环节入手提升业务能力', d: '端到端定了方向，内部要落到具体能力上，否则方向无处执行', c: '#D2531A', k: '关键环节清单' },
+                { n: '4', t: '各部门的责任分工和层级关系要清晰', d: '架构图上能看出谁负责、谁支撑、谁被依赖', c: '#C43A17', k: '架构治理的前提' },
+                { n: '5', t: '明确定义全局性工作', d: '哪些事必须由公司统一做，不能各领域自己搞——数据标准、集成规范等', c: '#9E3410', k: '对应三个平台能力' },
+                { n: '6', t: '体现架构的演进方向', d: '蓝图要写清从当前到目标分几步走，不是把终态画出来就完事', c: '#8A3A0E', k: '连接第三阶的路标' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 9 }}>
+                    <Box style={{ width: 34, background: x.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                    </Box>
+                    <Box style={{ width: 350, background: '#F7F7F8', borderRadius: 3, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.3 }}>{x.t}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4 }}>{x.d}</Text>
+                    </Box>
+                    <Box style={{ width: 208, background: '#FFF3EE', borderRadius: 3, borderLeft: '4px solid ' + x.c, padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 11.5, color: '#C43A17', lineHeight: 1.35 }}>{x.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部审图清单 */}
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '12px 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 150 }}>拿到客户蓝图先问三句</Text>
+            <Text style={{ fontSize: 13.5, color: '#FFFFFF', flex: 1, lineHeight: 1.5 }}>
+                ① 提升点落在端到端流程还是部门内？　② 全局性工作谁定标准？　③ 从现在到目标分几步？
+            </Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)', width: 218, lineHeight: 1.4 }}>三问答不上来，这份蓝图还只是系统规划</Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>20 / 35</Text>
+    </Box>
+</Slide>

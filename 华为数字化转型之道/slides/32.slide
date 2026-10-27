@@ -1,0 +1,101 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            IA / DA 信息架构：<span style={{ color: '#FA4F24' }}>承上启下</span>的三层模型
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这一层最占口舌：原书写 IA，《华为数据之道》写 DA，同一层两种叫法——现场被挑口径时怎么答
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 14, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 8 }}>
+
+        {/* 上：口径差异 */}
+        <Box style={{ height: 92, flexDirection: 'row', gap: 9 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <Box style={{ width: 42, height: 42, background: '#E0641E', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>IA</Text>
+                </Box>
+                <Box style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#FFFFFF' }}>《华为数字化转型之道》原书写法</Text>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.78)', marginTop: 5 }}>Information Architecture　信息架构</Text>
+                </Box>
+            </Box>
+            <Box style={{ width: 96, background: '#FA4F24', borderRadius: 4, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FFFFFF' }}>=</Text>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.92)', marginTop: 4 }}>同一层</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <Box style={{ width: 42, height: 42, background: '#D2531A', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>DA</Text>
+                </Box>
+                <Box style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#FFFFFF' }}>《华为数据之道》与业界通用写法</Text>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.78)', marginTop: 5 }}>Data Architecture　数据架构</Text>
+                </Box>
+            </Box>
+            <Box style={{ width: 316, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>现场怎么答</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, marginTop: 4 }}>两种都对，但要能立刻说清是哪本册子的哪一层</Text>
+            </Box>
+        </Box>
+
+        {/* 中：三层模型 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            {[
+                {
+                    L: '概念数据模型', q: '识别主体', c: '#E0641E',
+                    d: '从业务架构的业务对象出发，识别出主体及其关系——不涉及任何技术词',
+                    ex: '设备、批次、缺陷、订单 之间的关系',
+                    o: '概念模型图',
+                },
+                {
+                    L: '逻辑数据模型', q: '定义主键', c: '#D2531A',
+                    d: '给每个主体定义唯一标识与属性，消除歧义——多系统口径统一的真正抓手',
+                    ex: '一个设备在设备台账、工单、质检三处主键如何一致',
+                    o: '逻辑表结构 + 主键规则',
+                },
+                {
+                    L: '物理数据模型', q: '具现化', c: '#C43A17',
+                    d: '落到具体库表结构、存储位置与访问方式——这一步才进入技术范畴',
+                    ex: '设备表的主键、分区策略、读写路径',
+                    o: '库表结构与分布',
+                },
+            ].map((x) => (
+                <Box key={x.L} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 15px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                        <Text style={{ fontSize: 16.5, fontWeight: 'bold', color: x.c }}>{x.L}</Text>
+                        <Box style={{ height: 16, background: x.c, borderRadius: 2, padding: '0 6px', flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={{ fontSize: 10, color: '#FFFFFF' }}>{x.q}</Text>
+                        </Box>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#FFFFFF', borderRadius: 2, padding: '7px 10px' }}>
+                        <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4 }}>{x.ex}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11, color: x.c, marginTop: 8 }}>产出：{x.o}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部：现场话术 */}
+        <Box style={{ height: 42, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 138 }}>被追问时的说法</Text>
+            <Text style={{ fontSize: 14, color: '#FFFFFF', flex: 1, lineHeight: 1.4 }}>
+                「这一层华为原书叫 IA，数据之道叫 DA，<tspan style={{ color: '#FA4F24' }}>指的都是业务对象往数据落的那一层</tspan>——您按哪本册子叫都行，内容是同一件事。」
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>32 / 35</Text>
+    </Box>
+</Slide>

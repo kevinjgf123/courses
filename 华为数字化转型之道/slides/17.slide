@@ -1,0 +1,95 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            步骤 3–4：<span style={{ color: '#FA4F24' }}>成熟度评估</span>与现状差距分析
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            评估要靠关键业务用户面对面访谈——访谈本身就是诊断，评估只是它的副产品
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 14, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：两步横排 */}
+        <Box style={{ height: 170, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                    <Box style={{ width: 26, height: 26, background: '#E0641E', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>03</Text>
+                    </Box>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>数字化转型成熟度评估</Text>
+                </Box>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>
+                    进行关键业务用户的访谈，基于「数字化转型评估模型」对模型中各项内容面对面交流和现场评估
+                </Text>
+                <Box style={{ height: 36, background: '#E0641E', borderRadius: 3, padding: '0 11px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.94)' }}>产出：访谈纪要 · 成熟度打分表 · 关键需求记录</Text>
+                </Box>
+            </Box>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                    <Box style={{ width: 26, height: 26, background: '#D2531A', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>04</Text>
+                    </Box>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>现状和差距分析</Text>
+                </Box>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>
+                    与业界实践对比，针对业务诉求识别业务和 IT 上的差距；对标行业标杆，识别数字技术使用上的差距
+                </Text>
+                <Box style={{ height: 36, background: '#D2531A', borderRadius: 3, padding: '0 11px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.94)' }}>产出：现状与差距清单 · 业界对标结论</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 中：差距分析的三个维度 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>差距要分三层看——混在一起说，就说不清该先补哪一层</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+                {[
+                    {
+                        L: '能力差距', c: '#FA4F24',
+                        d: '业务能力本身缺什么——比如缺端到端计划能力、缺质量闭环能力',
+                        k: '对应 BA：价值流与能力体系',
+                    },
+                    {
+                        L: '数据差距', c: '#E0641E',
+                        d: '同一条业务在不同系统里的口径不一致，主数据散在各处，没有统一定义',
+                        k: '对应 IA/DA：数据标准与模型',
+                    },
+                    {
+                        L: '技术差距', c: '#C43A17',
+                        d: '底座能力不足——算力、网络、安全、集成方式支撑不了新的架构要求',
+                        k: '对应 AA / TA：应用与技术底座',
+                    },
+                ].map((x) => (
+                    <Box key={x.L} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, border: '1px solid #E8E8E8', borderLeft: '4px solid ' + x.c, padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.L}</Text>
+                        <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                        <Text style={{ fontSize: 11.5, color: '#C43A17', marginTop: 9 }}>{x.k}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ height: 46, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 122 }}>为什么要分三层</Text>
+            <Text style={{ fontSize: 14.5, color: '#FFFFFF', flex: 1, lineHeight: 1.4 }}>
+                因为三层差距<tspan style={{ color: '#FA4F24' }}>分别对应后面第 7 步里的三个架构域</tspan>——差距分析不是描述现状，是在给架构设计派活
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>17 / 35</Text>
+    </Box>
+</Slide>

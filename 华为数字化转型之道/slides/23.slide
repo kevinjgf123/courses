@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            第三阶：把握节奏，<span style={{ color: '#FA4F24' }}>规划举措和项目</span>（步骤 8–12）
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            五步里有三步华为标注可选——但它们恰恰是决定「项目能不能接住」的三步
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 五步 */}
+        <Box style={{ height: 206, flexDirection: 'row', gap: 8 }}>
+            {[
+                { n: '08', t: '指标体系', d: '衡量转型是否对准价值达成、是否达到预设值', o: '指标体系 + 预设值', c: '#C43A17', opt: true },
+                { n: '09', t: '识别举措', d: '基于架构蓝图识别关键成功要素，形成并定义举措', o: '举措清单 + 举措目标', c: '#C43A17' },
+                { n: '10', t: '举措设计', d: '打开每个举措，设计其架构方案，细化到具体变革点', o: '举措架构方案', c: '#C43A17', opt: true },
+                { n: '11', t: '转型路标', d: '明确哪些是基础工作需先期开展，每阶段的重点与抓手', o: '分期路标 + 抓手', c: '#C43A17', opt: true },
+                { n: '12', t: '规划项目', d: '规划变革项目落实举措，节奏与路标一致', o: '项目清单 + 分工 + 排期', c: '#C43A17', main: true },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 12 }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+                        {x.opt && (
+                            <Box style={{ height: 16, borderRadius: 2, border: '1px solid #8A8F99', padding: '0 6px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 10, color: '#8A8F99' }}>可选</Text>
+                            </Box>
+                        )}
+                        {x.main && (
+                            <Box style={{ height: 16, background: x.c, borderRadius: 2, padding: '0 6px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 10, color: '#FFFFFF' }}>主线</Text>
+                            </Box>
+                        )}
+                    </Box>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423', marginTop: 10, lineHeight: 1.3 }}>{x.t}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 9, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ height: 40, background: x.c, borderRadius: 3, marginBottom: 10, padding: '0 9px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.94)', lineHeight: 1.3 }}>{x.o}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：为什么三步可选但建议都做 */}
+        <Box style={{ height: 148, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1.3, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>为什么华为标「可选」，却建议全走一遍</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 8, marginTop: 12 }}>
+                    {[
+                        { k: '不设指标', v: '举措做完了，说不清有没有对准价值——年底只能靠汇报口径自证' },
+                        { k: '不做举措设计', v: '举措停在口号层，项目承接时各自理解，落地变形' },
+                        { k: '不设路标', v: '所有项目同一时间上马，基础工作没做完就上应用，返工不可避免' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: 'rgba(255,255,255,0.06)', borderLeft: '3px solid #FA4F24', borderRadius: 2, padding: '0 12px', gap: 12 }}>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24', width: 104 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+            <Box style={{ width: 452, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FBA15C', padding: '14px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>原书的关键提示</Text>
+                <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.55, marginTop: 12, flex: 1 }}>
+                    粗线连接的方框是主线活动，部分步骤可选。华为明确建议：时间允许的话把步骤都走一遍——这样规划出来的项目更具实操性，更能被变革项目组承接和落地。
+                </Text>
+                <Text style={{ fontSize: 11.5, color: '#C43A17', lineHeight: 1.4 }}>「更能被变革项目组承接」是这句话的重点：不是给领导看的，是给执行方用的</Text>
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 152 }}>第三阶的收口判据</Text>
+            <Text style={{ fontSize: 15, color: '#FFFFFF', flex: 1, lineHeight: 1.4 }}>
+                每个项目都能回答三个问题：<tspan style={{ color: '#FA4F24' }}>它承接哪条举措 · 在哪期路标 · 谁来做（公司级还是领域级）</tspan>
+            </Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)', width: 230, lineHeight: 1.4 }}>答不全就说明第三阶只是列了个清单</Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>23 / 35</Text>
+    </Box>
+</Slide>

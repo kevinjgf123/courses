@@ -1,0 +1,100 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            步骤 5：<span style={{ color: '#FA4F24' }}>描绘数字化转型愿景</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            关键在「不拘泥于现状」——愿景是三年后要成为什么，不是现状加几个修饰词
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 14, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：左 输入 / 右 愿景蓝图 */}
+        <Box style={{ height: 236, flexDirection: 'row', gap: 10 }}>
+
+            {/* 左：输入 */}
+            <Box style={{ width: 372, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>这一步的三个输入</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 8, marginTop: 12 }}>
+                    {[
+                        { n: '步骤 1', t: '战略关注要点', d: '战略解码后必须靠技术才能达成的那几条' },
+                        { n: '步骤 2', t: '5 看的扫描结论', d: '客户、行业、技术三方面看到的机会与风险' },
+                        { n: '步骤 3–4', t: '成熟度与差距', d: '当前在哪儿、与目标差多远' },
+                    ].map((x, i) => (
+                        <Box key={x.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                                <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>{x.n}</Text>
+                                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                            </Box>
+                            <Text style={{ fontSize: 11.5, color: '#5A6070', lineHeight: 1.4, marginTop: 4 }}>{x.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+
+            {/* 右：愿景蓝图要包含什么 */}
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '16px 20px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>一份能用的愿景蓝图必须回答三件事</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 8, marginTop: 13 }}>
+                    {[
+                        { q: '变成什么样', a: '有量化的价值目标，而不是只有方向词——如运营成本降低多少、交付周期缩短多少' },
+                        { q: '客户体验变成什么样', a: '客户在哪些环节的体验被重构，重构后他能直接感知到什么差别' },
+                        { q: '靠什么技术路径', a: '要引入哪些技术使能，演进路线怎么走，哪一步是基础必做' },
+                    ].map((x, i) => (
+                        <Box key={x.q} style={{ flex: 1, background: 'rgba(255,255,255,0.06)', borderRadius: 3, borderLeft: '3px solid ' + ['#FA4F24', '#E0641E', '#C43A17'][i], padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                            <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#FFFFFF', width: 138 }}>{x.q}</Text>
+                            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', flex: 1, lineHeight: 1.4 }}>{x.a}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 中：不合格 vs 合格 */}
+        <Box style={{ height: 132, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, border: '1px solid #E8E8E8', padding: '13px 18px', flexDirection: 'column' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#8A8F99' }}>不合格的愿景</Text>
+                    <Box style={{ height: 16, background: '#8A8F99', borderRadius: 2, padding: '0 6px', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 10, color: '#FFFFFF' }}>无法验证</Text>
+                    </Box>
+                </Box>
+                <Text style={{ fontSize: 13.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>
+                    「以客户为中心，用数据驱动，打造行业领先的智慧企业」
+                </Text>
+                <Text style={{ fontSize: 12, color: '#5A6070', lineHeight: 1.4 }}>问题：没有一句能被验证，三年后无法判断做到没做到</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, border: '1px solid #FBA15C', padding: '13px 18px', flexDirection: 'column' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>合格的愿景</Text>
+                    <Box style={{ height: 16, background: '#FA4F24', borderRadius: 2, padding: '0 6px', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 10, color: '#FFFFFF' }}>可验证</Text>
+                    </Box>
+                </Box>
+                <Text style={{ fontSize: 13.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>
+                    「三年内让一线报修到闭环的平均时长从 5 天缩到 1 天，客户自助解决率达到 60%」
+                </Text>
+                <Text style={{ fontSize: 12, color: '#C43A17', lineHeight: 1.4 }}>好处：能直接进指标体系，年底就能验收</Text>
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ height: 44, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 130 }}>交付这一步的判据</Text>
+            <Text style={{ fontSize: 15, color: '#FFFFFF', flex: 1 }}>愿景里每一句都能被<tspan style={{ color: '#FA4F24' }}>拆成第 8 步的指标</tspan>；拆不出来的，就是口号，删掉重写</Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>18 / 35</Text>
+    </Box>
+</Slide>

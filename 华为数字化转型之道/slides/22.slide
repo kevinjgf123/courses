@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            步骤 7详解：<span style={{ color: '#FA4F24' }}>「一体四面」与突破口识别</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            一体是公司统一蓝图，四面是各领域自己的细化——四面不能各画各的，必须回到同一张图上对齐
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 14, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+
+        {/* 上：一体 vs 四面 */}
+        <Box style={{ height: 118, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+                <Box style={{ width: 46, height: 46, background: '#FA4F24', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>体</Text>
+                </Box>
+                <Box style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>一体：全公司一张统一蓝图</Text>
+                    <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.8)', lineHeight: 1.45, marginTop: 7 }}>
+                        各领域在同一套方法、同一个愿景下细化，避免出现五套互不相认的架构
+                    </Text>
+                </Box>
+            </Box>
+            <Box style={{ flex: 1.5, background: '#F7F7F8', borderRadius: 4, padding: '13px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>四面：各领域按四 A 各自细化</Text>
+                <Box style={{ flexDirection: 'row', gap: 6, marginTop: 9 }}>
+                    {['BA 业务', 'IA/DA 信息', 'AA 应用', 'TA 技术'].map((x, i) => (
+                        <Box key={x} style={{ flex: 1, height: 26, background: ['#FA4F24', '#E0641E', '#D2531A', '#C43A17'][i], borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Text style={{ fontSize: 12, color: '#5A6070', lineHeight: 1.4, marginTop: 8 }}>各领域结合自身诉求，从架构上思考本领域从哪些方面入手，识别「突破口」</Text>
+            </Box>
+        </Box>
+
+        {/* 中：突破口怎么找 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>突破口的判定逻辑：哪个域的缺失，已经卡住了另外三个域</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+                {[
+                    { L: '卡 BA', s: '价值流本身没理顺，业务效率和体验都无从谈起', c: '#FA4F24', o: '先做业务能力与流程重构' },
+                    { L: '卡 IA/DA', s: '业务对象定义不清，同一实体在多系统里对不上，下游全错', c: '#E0641E', o: '先统一数据标准与主数据' },
+                    { L: '卡 AA', s: '系统烟囱林立，跨部门流程要人工在中间穿针引线', c: '#D2531A', o: '先做集成与服务化，拆掉重复功能' },
+                    { L: '卡 TA', s: '底座撑不住——性能、弹性、安全都不满足新的架构要求', c: '#C43A17', o: '先补云化底座与技术标准' },
+                ].map((x) => (
+                    <Box key={x.L} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, border: '1px solid #E8E8E8', borderTop: '3px solid ' + x.c, padding: '12px 14px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.L}</Text>
+                        <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 9, flex: 1 }}>{x.s}</Text>
+                        <Box style={{ background: '#FFF3EE', borderRadius: 2, paddingTop: 7, paddingBottom: 7, paddingLeft: 9, paddingRight: 9 }}>
+                            <Text style={{ fontSize: 11, color: '#C43A17', lineHeight: 1.35 }}>{x.o}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ height: 46, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 160 }}>现场的一句硬判据</Text>
+            <Text style={{ fontSize: 15, color: '#FFFFFF', flex: 1, lineHeight: 1.4 }}>
+                四个域里如果有两个都说「我这边要等对方」——<tspan style={{ color: '#FA4F24' }}>那就是突破口还没找到，不是事情复杂</tspan>
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>22 / 35</Text>
+    </Box>
+</Slide>

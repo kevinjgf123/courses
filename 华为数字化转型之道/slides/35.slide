@@ -1,0 +1,89 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            结语：这一册是底座，<span style={{ color: '#FA4F24' }}>十三册合起来才是一套打法</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            三阶十二步管顺序，4A Y 模型管内容，其余各册管做法——三样齐了才是完整的咨询交付
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：三条立场 */}
+        <Box style={{ height: 128, flexDirection: 'row', gap: 9 }}>
+            {[
+                { n: '1', t: '顺序不可颠倒', d: '三阶有强依赖。先有愿景才有架构，先有架构才有举措，先有举措才有项目——跳步做的架构接不住前面的愿景', c: '#FA4F24' },
+                { n: '2', t: '主线与可选要分清', d: '8、10、11 是华为标注的可选步，但跳过它们的规划出来的项目一定接不住——因为没指标、没设计、没节奏', c: '#E0641E' },
+                { n: '3', t: '四 A 必落业务对象', d: 'Y 模型的收口点不是流程也不是系统。落不到业务对象，四A 就各画各的，谁也接不住谁', c: '#C43A17' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + x.c, padding: '14px 16px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                        <Box style={{ width: 24, height: 24, background: x.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：13 册全景 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>十三册的分工：顺序轴 · 内容轴 · 做法轴</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+                <Box style={{ width: 296, background: '#0F1423', borderRadius: 4, padding: '13px 15px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>顺序轴（本册）</Text>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.78)', lineHeight: 1.45, marginTop: 8, flex: 1 }}>
+                        三阶十二步：先做什么、后做什么、每一步交什么
+                    </Text>
+                    <Box style={{ height: 30, background: '#FA4F24', borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>本册 · 35 页</Text>
+                    </Box>
+                </Box>
+                <Box style={{ width: 296, background: '#0F1423', borderRadius: 4, padding: '13px 15px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>内容轴（本册）</Text>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.78)', lineHeight: 1.45, marginTop: 8, flex: 1 }}>
+                        4A Y 模型：四个架构域怎么排、怎么对齐、收口在哪里
+                    </Text>
+                    <Box style={{ height: 30, background: '#C43A17', borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>BA / IA(DA) / AA / TA</Text>
+                    </Box>
+                </Box>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '13px 15px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>做法轴（前面十二册）</Text>
+                    <Box style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 4, marginTop: 9, alignContent: 'flex-start' }}>
+                        {['EA 企业架构', 'BA 业务架构', 'DA 数据架构', 'AA 应用架构', 'TA 技术架构', 'Ontology', 'Agent', '知识库', '管道处理', '数据治理', '主数据', '指标', 'FDE'].map((x, i) => (
+                            <Box key={x} style={{ height: 22, background: '#FFFFFF', borderRadius: 2, border: '1px solid #E8E8E8', padding: '0 8px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 10.5, color: i === 12 ? '#FA4F24' : '#0F1423', fontWeight: i === 12 ? 'bold' : 'normal' }}>{x}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Text style={{ fontSize: 11, color: '#5A6070', marginTop: 8 }}>每一册都是做法轴上的一段，挂在顺序轴的某一步上用</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 底部红牌 */}
+        <Box style={{ height: 58, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 3, padding: '0 22px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+            <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)', width: 158 }}>一句可复用的收口问法</Text>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FFFFFF', flex: 1, lineHeight: 1.3 }}>
+                把这次规划的 PPT 全部删掉，客户手里还剩下什么？
+            </Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.88)', width: 220, lineHeight: 1.4 }}>剩下的如果是产出物清单，答对了；如果只剩愿景和举措，没有清单，还没做完</Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>35 / 35</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,82 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            BA 业务架构：<span style={{ color: '#FA4F24' }}>四类结构化资产</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            业务架构不是画流程图，是把业务战略翻译成四类可复用的结构化资产
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 四类资产 */}
+        <Box style={{ height: 202, flexDirection: 'row', gap: 9 }}>
+            {[
+                { n: '1', t: '价值链', d: '识别企业级价值流——LTC 线索到现金、IPD 集成产品开发、ITR 问题到解决', o: '企业级价值流清单', c: '#FA4F24' },
+                { n: '2', t: '流程体系', d: '端到端流程分层（华为常用 L1–L5），并用 PDCA 把规则固化', o: '流程分层清单 + 规则', c: '#E0641E' },
+                { n: '3', t: '能力体系', d: '把价值流分解成分层能力清单，明确责任归属与成熟度要求', o: '能力地图与归属', c: '#D2531A' },
+                { n: '4', t: '业务对象', d: '识别核心业务实体及其协作关系——这是喂给数据架构的输入', o: '业务对象与关系', c: '#C43A17' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 15px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                        <Box style={{ width: 26, height: 26, background: x.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 12, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ height: 34, background: x.c, borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.94)', lineHeight: 1.3 }}>产出：{x.o}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：三个要素关系 */}
+        <Box style={{ height: 146, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1.4, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>BA 要确定的三件事</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 8, marginTop: 11 }}>
+                    {[
+                        { t: '价值流', d: '为客户创造什么价值（业务语言）', c: '#FA4F24' },
+                        { t: '业务能力', d: '业务场景与形态（能力语言）', c: '#E0641E' },
+                        { t: '业务流程与服务', d: '支持业务流灵活编排（落地语言）', c: '#D2531A' },
+                    ].map((x) => (
+                        <Box key={x.t} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: 'rgba(255,255,255,0.06)', borderLeft: '3px solid ' + x.c, borderRadius: 2, padding: '0 12px', gap: 12 }}>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: x.c, width: 108 }}>{x.t}</Text>
+                            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)' }}>{x.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+            <Box style={{ width: 372, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '14px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>确定用例视图</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>
+                    华为对 BA 的最终要求是「确定用例视图」——不是画一版静态组织图，而是定义清楚未来业务要交付哪几类能力、每类能力服务谁
+                </Text>
+                <Text style={{ fontSize: 11, color: '#C43A17', lineHeight: 1.4 }}>用例视图定不下来，说明还停留在组织调整层面</Text>
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 148 }}>风险控制点</Text>
+            <Text style={{ fontSize: 14, color: '#FFFFFF', flex: 1, lineHeight: 1.45 }}>
+                华为实践里在流程中嵌入八类风险控制点（角色分离、合规内嵌等）——<tspan style={{ color: '#FA4F24' }}>把控制放进流程，而不是流程之外再设一道审批</tspan>
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>31 / 35</Text>
+    </Box>
+</Slide>

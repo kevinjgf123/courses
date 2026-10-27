@@ -1,0 +1,84 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            华为数字化转型的整体框架：<span style={{ color: '#FA4F24' }}>1 套方法 · 4 类场景 · 3 个平台能力</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            一套方法贯穿全过程，四类场景是业务重构的着手处，三个平台是支撑——少任何一个，转型都落不了地
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：1 套方法 */}
+        <Box style={{ height: 96, background: '#0F1423', borderRadius: 4, padding: '14px 22px', flexDirection: 'row', alignItems: 'center', gap: 22 }}>
+            <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FA4F24' }}>1</Text>
+            <Text style={{ fontSize: 15, color: '#FBA15C', width: 92, lineHeight: 1.35 }}>套方法</Text>
+            <Box style={{ width: 1, height: 46, background: 'rgba(255,255,255,0.2)' }} />
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FFFFFF', width: 210 }}>三阶十二步规划方法论</Text>
+            <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', flex: 1, lineHeight: 1.45 }}>
+                贯穿转型全过程的方法主线：从战略解码到架构蓝图，再到举措与项目节奏
+            </Text>
+            <Box style={{ height: 30, background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 14px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12.5, color: '#FBA15C', fontWeight: 'bold' }}>本册 P14–27 展开</Text>
+            </Box>
+        </Box>
+
+        {/* 中：4 类场景 */}
+        <Box style={{ height: 176, flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 8 }}>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FA4F24' }}>4</Text>
+                <Text style={{ fontSize: 15, color: '#C43A17', width: 92 }}>类场景</Text>
+                <Text style={{ fontSize: 14, color: '#8A8F99' }}>业务重构的四个着手处——先判断客户的问题落在哪一类，再决定投哪个平台</Text>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+                {[
+                    { n: '作业', t: '数字化作业', d: '内部怎么干得更顺：研发、制造、运维、服务的作业方式重构', tag: '降本·提效' },
+                    { n: '交易', t: '数字化交易', d: '和客户怎么打交道：营销、获客、签约、交付、服务的在线化', tag: '获客·体验' },
+                    { n: '运营', t: '数字化运营', d: '企业怎么自己转得更快：经营分析、决策、协同的在线化', tag: '可视·决策' },
+                    { n: '办公', t: '数字化办公', d: '员工怎么协同：连接、协作、知识与流程的在线化', tag: '效率·留才' },
+                ].map((x, i) => (
+                    <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderTop: '3px solid ' + ['#FA4F24', '#E0641E', '#D2531A', '#C43A17'][i], padding: '12px 14px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                        <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 7, flex: 1 }}>{x.d}</Text>
+                        <Text style={{ fontSize: 11, color: '#C43A17' }}>{x.tag}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：3 个平台 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 8 }}>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FA4F24' }}>3</Text>
+                <Text style={{ fontSize: 15, color: '#C43A17', width: 92 }}>个平台</Text>
+                <Text style={{ fontSize: 14, color: '#8A8F99' }}>原书平台篇第11–13 章——三个能力要统一构建，否则场景里做出来的东西无法复用</Text>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+                {[
+                    { t: '统一数据底座', d: '统一数据标准、数据模型、湖仓一体与分级授权，让数据一次建、全域用', tag: '原书第 11 章' },
+                    { t: '云化数字平台', d: '统一算力与平台底座，支撑多场景快速迭代与弹性扩展', tag: '原书第 12 章' },
+                    { t: '变革治理体系', d: '从决策、执行到复盘的闭环机制，保证转型不靠个人热情撑着', tag: '原书第 13 章' },
+                ].map((x, i) => (
+                    <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, border: '1px solid #E8E8E8', borderLeft: '4px solid ' + ['#FA4F24', '#E0641E', '#C43A17'][i], padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.45, marginTop: 7 }}>{x.d}</Text>
+                        <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 6 }}>{x.tag}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>08 / 35</Text>
+    </Box>
+</Slide>

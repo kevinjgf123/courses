@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            TA 技术架构：<span style={{ color: '#FA4F24' }}>六层设计与三横两纵</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            技术架构不参与业务拆分，但决定上面三层能不能真跑——弹性、安全、自主可控都在这一层定
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 14, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+
+        {/* 上：六层设计 */}
+        <Box style={{ height: 148, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>TA 的六个设计层次（自上而下逐层收敛）</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 5 }}>
+                {[
+                    { n: '策略', d: '技术路线与自主可控' },
+                    { n: '框架', d: '整体技术标准体系' },
+                    { n: '组件', d: '组件化与可复用' },
+                    { n: '服务', d: '平台服务能力' },
+                    { n: '平台', d: '云化数字底座' },
+                    { n: '部署', d: '部署模型与运行视图' },
+                ].map((x, i) => (
+                    <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderBottom: '3px solid ' + ['#FA4F24', '#E0641E', '#D2531A', '#C43A17', '#9E3410', '#8A3A0E'][i], padding: '0 8px', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: ['#FA4F24', '#E0641E', '#D2531A', '#C43A17', '#9E3410', '#8A3A0E'][i] }}>{x.n}</Text>
+                        <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 5, textAlign: 'center', lineHeight: 1.35 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 中：三横两纵 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>华为云化数字平台：三横两纵</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 6, marginTop: 11 }}>
+                    {[
+                        { t: '基础设施层', d: '计算、存储、网络、AI 算力', c: '#FA4F24' },
+                        { t: '数字平台层', d: '数据平台、集成平台、开发平台', c: '#E0641E' },
+                        { t: '公共服务层', d: '对内对外统一的能力开放接口', c: '#D2531A' },
+                    ].map((x) => (
+                        <Box key={x.t} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: 'rgba(255,255,255,0.06)', borderLeft: '3px solid ' + x.c, borderRadius: 2, padding: '0 12px', gap: 12 }}>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: x.c, width: 96 }}>{x.t}</Text>
+                            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)' }}>{x.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginTop: 10 }}>两纵贯穿全部：安全保障体系 · 运营维护体系</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 4, border: '1px solid #E8E8E8', padding: '13px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>TA 要确定的设计内容</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 7, marginTop: 11 }}>
+                    {[
+                        { t: '组件技术选型', d: '能自主可控的优先，不被单一厂商锁定' },
+                        { t: '部署模型视图', d: '云、边、端怎么协同，流量峰值怎么扛' },
+                        { t: '自研开发模型', d: '自研与外购的边界在哪，怎么管' },
+                        { t: '安全设计', d: '身份、权限、审计、数据边界' },
+                        { t: '运营设计', d: '监控、计量、成本怎么管' },
+                        { t: 'DFX 设计', d: '可用、可扩展、可维护、可测试性的量化目标' },
+                    ].map((x) => (
+                        <Box key={x.t} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                            <Box style={{ width: 132, background: '#F7F7F8', borderRadius: 2, height: '100%', padding: '0 9px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                            </Box>
+                            <Text style={{ fontSize: 11.5, color: '#5A6070', flex: 1 }}>{x.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ height: 44, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 138 }}>三个层次治理</Text>
+            <Text style={{ fontSize: 14, color: '#FFFFFF', flex: 1 }}>企业级管原则与标准· 领域级管本域设计 · 解决方案级管项目落地</Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)', width: 236, lineHeight: 1.4 }}>管控三招：立法、嵌入流程、合规审计</Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>34 / 35</Text>
+    </Box>
+</Slide>

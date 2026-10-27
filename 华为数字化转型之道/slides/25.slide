@@ -1,0 +1,105 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            步骤 11–12：<span style={{ color: '#FA4F24' }}>转型路标</span>与项目规划
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            路标的作用不是给时间表，是明确「哪件事必须先做完，否则后面全是白做」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 14, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：路标三阶段示意 */}
+        <Box style={{ height: 168, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+            {[
+                { t: '第一期', s: '基础期', d: '先把底座类工作做完——数据标准、主数据、集成规范', c: '#FA4F24', k: '这一期不上应用' },
+                { t: '第二期', s: '能力期', d: '把业务能力沉淀为服务，场景在服务上搭起来', c: '#E0641E', k: '按能力分批上线' },
+                { t: '第三期', s: '智能期', d: '数据与能力齐备后，才谈智能优化与 AI 原生', c: '#C43A17', k: '不能提前' },
+            ].map((x, i) => (
+                <Box key={x.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + x.c, padding: '13px 16px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.t}</Text>
+                        <Text style={{ fontSize: 13, color: '#0F1423', fontWeight: 'bold' }}>{x.s}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ height: 26, background: x.c, borderRadius: 2, flexDirection: 'row', alignItems: 'center', padding: '0 10px' }}>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.95)' }}>{x.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+            <Box style={{ width: 300, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>路标要写清三件事</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 8, marginTop: 11 }}>
+                    {[
+                        '哪些工作是基础工作，必须先期开展',
+                        '每一阶段的关注重点是什么',
+                        '每一阶段的抓手是什么',
+                    ].map((x, i) => (
+                        <Box key={x} style={{ flexDirection: 'row', alignItems: 'center', gap: 7, flex: 1 }}>
+                            <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>{'0' + (i + 1)}</Text>
+                            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.86)', lineHeight: 1.35, flex: 1 }}>{x}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 中：项目规划两件事 */}
+        <Box style={{ height: 130, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                    <Box style={{ width: 26, height: 26, background: '#C43A17', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>12</Text>
+                    </Box>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>规划变革项目</Text>
+                </Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 8, marginTop: 11 }}>
+                    {[
+                        '规划变革项目，落实数字化转型愿景和举措',
+                        '项目的节奏与数字化转型路标保持一致',
+                    ].map((x, i) => (
+                        <Box key={x} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
+                            <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>{'0' + (i + 1)}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#C43A17' }}>明确两级分工</Text>
+                <Box style={{ flex: 1, flexDirection: 'row', gap: 10, marginTop: 12 }}>
+                    {[
+                        { t: '公司层级做', d: '全局性工作：数据标准、集成规范、平台底座', c: '#FA4F24' },
+                        { t: '领域自己做', d: '本领域应用与流程，按公司规范执行', c: '#E0641E' },
+                    ].map((x) => (
+                        <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid ' + x.c, padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 14, fontWeight: 'bold', color: x.c }}>{x.t}</Text>
+                            <Text style={{ fontSize: 11.5, color: '#5A6070', lineHeight: 1.4, marginTop: 6 }}>{x.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '12px 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 160 }}>这一阶最容易出的错</Text>
+            <Text style={{ fontSize: 14, color: '#FFFFFF', flex: 1, lineHeight: 1.5 }}>
+                所有项目都写成「公司级重点项目」——<tspan style={{ color: '#FA4F24' }}>责任一旦不清，最先做的就是基础工作，因为谁都想先摘看得见的果子</tspan>
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>25 / 35</Text>
+    </Box>
+</Slide>

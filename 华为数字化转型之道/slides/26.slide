@@ -1,0 +1,106 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            三阶与 4A 的<span style={{ color: '#FA4F24' }}>交叉关系</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            十二步是时间轴，4A 是内容轴——两条轴交叉才能定位：某一步该产出哪个架构域的东西
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：交叉矩阵 */}
+        <Box style={{ height: 288, flexDirection: 'row', gap: 8 }}>
+
+            {/* 行标 */}
+            <Box style={{ width: 128, flexDirection: 'column', gap: 6 }}>
+                <Box style={{ height: 34, flexDirection: 'row', alignItems: 'center' }} />
+                {[
+                    { t: '第一阶', s: '描绘愿景', c: '#FA4F24' },
+                    { t: '第二阶', s: '设计蓝图', c: '#E0641E' },
+                    { t: '第三阶', s: '举措项目', c: '#C43A17' },
+                ].map((x) => (
+                    <Box key={x.t} style={{ flex: 1, background: x.c, borderRadius: 3, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+                        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.88)', marginTop: 2 }}>{x.s}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            {/* 列标 + 交叉内容 */}
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+                <Box style={{ height: 34, flexDirection: 'row', gap: 6 }}>
+                    {[
+                        { a: 'BA', t: '业务架构', c: '#FA4F24' },
+                        { a: 'IA/DA', t: '信息架构', c: '#E0641E' },
+                        { a: 'AA', t: '应用架构', c: '#D2531A' },
+                        { a: 'TA', t: '技术架构', c: '#C43A17' },
+                    ].map((x) => (
+                        <Box key={x.a} style={{ flex: 1, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7 }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>{x.a}</Text>
+                            <Text style={{ fontSize: 11.5, color: '#FFFFFF' }}>{x.t}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                {[
+                    [
+                        { c: '愿景要对准业务战略', t: '能力与体验目标写进愿景' },
+                        { c: '数据差距进愿景', t: '数据乱象写进愿景' },
+                        { c: '系统现状进愿景', t: '烟囱现状写进愿景' },
+                        { c: '技术欠账进愿景', t: '底座约束写进愿景' },
+                    ],
+                    [
+                        { c: '价值流与业务能力', t: '核心产出：BA' },
+                        { c: '概念 / 逻辑 / 物理模型', t: '核心产出：IA/DA' },
+                        { c: '系统边界与集成关系', t: '核心产出：AA' },
+                        { c: '底座与技术标准', t: '核心产出：TA' },
+                    ],
+                    [
+                        { c: '流程重构类举措', t: '改的是流程和权责' },
+                        { c: '治理与口径类举措', t: '改的是标准与定义' },
+                        { c: '集成与服务化举措', t: '改的是系统关系' },
+                        { c: '底座与技术举措', t: '改的是基础设施' },
+                    ],
+                ].map((row, ri) => (
+                    <Box key={ri} style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
+                        {row.map((x, ci) => (
+                            <Box key={ci} style={{ flex: 1, background: ri === 1 ? '#FFF3EE' : '#F7F7F8', borderRadius: 3, borderLeft: '3px solid ' + ['#FA4F24', '#E0641E', '#D2531A', '#C43A17'][ci], padding: '0 11px', flexDirection: 'column', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.3 }}>{x.c}</Text>
+                                <Text style={{ fontSize: 10.5, color: '#8A8F99', lineHeight: 1.3, marginTop: 4 }}>{x.t}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 底部两条 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>交叉矩阵读出来的第一件事</Text>
+                <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.86)', lineHeight: 1.45, marginTop: 7 }}>
+                    第一阶四个架构域都碰，但碰的是<span style={{ color: '#FA4F24' }}>现状与差距</span>；第二阶才产出正式设计成果——两个阶段性质完全不同
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, borderLeft: '4px solid #FA4F24', padding: '0 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>交叉矩阵读出来的第二件事</Text>
+                <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.45, marginTop: 7 }}>
+                    第三阶每一列的举措性质不同——<tspan style={{ color: '#FA4F24' }}>数据举措不能由业务部门牵头</tspan>，分工不清就会卡住
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>26 / 35</Text>
+    </Box>
+</Slide>

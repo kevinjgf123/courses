@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            四类场景怎么选：<span style={{ color: '#FA4F24' }}>先定位问题落在哪一象限</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            场景选错，后面所有架构投入都会打偏——先判断客户的痛是「内部效率」还是「对外体验」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 四列详解 */}
+        <Box style={{ height: 276, flexDirection: 'row', gap: 9 }}>
+            {[
+                {
+                    n: '数字化作业', c: '#FA4F24', q: '「我们内部干活太慢、太乱」',
+                    chk: ['研发协同与知识沉淀', '制造与运维的作业方式', '一线人员是否在用'],
+                    d: '业务作业模式重构。指标看周期、质量、单位人力产出',
+                },
+                {
+                    n: '数字化交易', c: '#E0641E', q: '「客户不买、不用、投诉」',
+                    chk: ['获客与线索到现金', '交付与服务的在线化', '客户体验断点在哪'],
+                    d: '交易与客户体验重构。指标看转化率、周期、客户满意度',
+                },
+                {
+                    n: '数字化运营', c: '#D2531A', q: '「看不清、决策慢」',
+                    chk: ['经营与运营指标能否自动出', '异常能否主动发现', '决策到执行的链路'],
+                    d: '运营与决策机制重构。指标看数据时效、预警准确率',
+                },
+                {
+                    n: '数字化办公', c: '#C43A17', q: '「协同靠邮件、知识留不住」',
+                    chk: ['跨部门协同是否在线', '知识资产能否复用', '员工是否真在用'],
+                    d: '员工协同方式重构。指标看协同效率、人员留存',
+                },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column' }}>
+                    <Box style={{ height: 34, background: x.c, borderRadius: 3, marginTop: 6, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                    </Box>
+                    <Box style={{ height: 32, background: '#FFFFFF', borderRadius: 3, marginTop: 6, padding: '0 9px', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 11.5, color: '#C43A17', fontWeight: 'bold', flex: 1 }}>{x.q}</Text>
+                    </Box>
+                    <Box style={{ marginTop: 8, flex: 1, flexDirection: 'column' }}>
+                        {x.chk.map((y, i) => (
+                            <Box key={y} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 5, marginTop: i === 0 ? 0 : 7 }}>
+                                <Text style={{ fontSize: 11, color: x.c, fontWeight: 'bold' }}>□</Text>
+                                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{y}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Box style={{ height: 44, background: x.c, borderRadius: 3, marginBottom: 6, padding: '0 9px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.35 }}>{x.d}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部三条判断 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 120 }}>多数企业的顺序</Text>
+                <Text style={{ fontSize: 15, color: '#FFFFFF', flex: 1, lineHeight: 1.4 }}>
+                    先做<span style={{ color: '#FA4F24' }}>作业</span>（内部效率，见效快、风险低）→ 再做<span style={{ color: '#FA4F24' }}>交易</span>（对外体验，牵动客户）→ 同步补<span style={{ color: '#FA4F24' }}>运营</span>与<span style={{ color: '#FA4F24' }}>办公</span>作为底座
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+                {[
+                    { k: '跳到交易场景是最常见的坑', v: '客户体验的问题九成根在内部作业，先做交易等于给病根上妆' },
+                    { k: '运营不是最后一步', v: '运营能力是前两类的度量出口，没它就证明不了转型的价值' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, borderLeft: '4px solid #FBA15C', padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12, color: '#5A6070', lineHeight: 1.4, marginTop: 4 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>09 / 35</Text>
+    </Box>
+</Slide>

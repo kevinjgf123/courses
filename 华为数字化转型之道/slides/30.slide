@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            收口点：为什么是<span style={{ color: '#FA4F24' }}>业务对象</span>，不是流程也不是系统
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            流程会变、系统会换、业务对象不会——它是唯一一个能在四 A 之间稳定传递的锚点
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：三种候选收口点对比 */}
+        <Box style={{ height: 188, flexDirection: 'row', gap: 9 }}>
+            {[
+                { t: '流程', ok: false, d: '流程随组织调整频繁变动，架构图改一次就得跟着动一次', x: '不稳定，不能当锚' },
+                { t: '系统', ok: false, d: '系统是实现的载体，不是业务的本质——先有系统后有业务的路径会走偏', x: '本末倒置' },
+                { t: '业务对象', ok: true, d: '订单、设备、缺陷、批次——是业务里真实存在的东西，换系统换流程它还在', x: '稳定的锚', c: '#FA4F24' },
+            ].map((x) => (
+                <Box key={x.t} style={{ flex: 1, background: x.ok ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + (x.ok ? '#FA4F24' : '#8A8F99'), padding: '14px 16px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: x.ok ? '#FA4F24' : '#8A8F99' }}>{x.t}</Text>
+                        <Box style={{ height: 16, background: x.ok ? '#FA4F24' : '#8A8F99', borderRadius: 2, padding: '0 6px', flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={{ fontSize: 10, color: '#FFFFFF' }}>{x.ok ? '正确' : '错误'}</Text>
+                        </Box>
+                    </Box>
+                    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                    <Text style={{ fontSize: 11.5, color: x.ok ? '#C43A17' : '#8A8F99' }}>{x.x}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：三条收口路径 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>同一个业务对象，三条收口路径必须都对得上</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+                {[
+                    { p: 'AA →', t: '通过业务服务', d: '应用提供的是「业务服务」，不是一个孤立的接口——服务要按业务对象定义，而不是按技术组件定义', c: '#D2531A' },
+                    { p: 'IA/DA →', t: '通过数据实体', d: '一个业务对象对应一个逻辑实体，再落到具体表——概念、逻辑、物理三层必须一一对应得上', c: '#E0641E' },
+                    { p: 'BA →', t: '直接落在对象上', d: '价值流和能力的最终产物就是业务对象——拆不到对象这一层，说明价值流没梳理到底', c: '#FA4F24' },
+                ].map((x) => (
+                    <Box key={x.p} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, border: '1px solid #E8E8E8', borderLeft: '4px solid ' + x.c, padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: x.c }}>{x.p}</Text>
+                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 底部现场判据 */}
+        <Box style={{ height: 56, background: '#0F1423', borderRadius: 3, padding: '0 20px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 156 }}>现场一句话判据</Text>
+            <Text style={{ fontSize: 14, color: '#FFFFFF', flex: 1, lineHeight: 1.45 }}>
+                随便指一个业务对象，问「它在哪个系统里、叫什么、有几份、谁是权威」——<tspan style={{ color: '#FA4F24' }}>四个答案对不上，就是 Y 没画完</tspan>
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>30 / 35</Text>
+    </Box>
+</Slide>

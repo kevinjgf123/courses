@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            本册覆盖<span style={{ color: '#FA4F24' }}>五个部分</span>：华为的框架底座 → 三阶十二步 → 4A Y 模型
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            先立框架再谈步骤，先谈步骤再谈架构——顺序错了，后面的专册都无法落地
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 60% 五条 */}
+        <Box style={{ width: 700, flexDirection: 'column', gap: 12 }}>
+            {[
+                { n: '01', t: '认知与框架', d: '时代命题、1 套方法 4 类场景 3 平台、成熟度五级', tag: 'P05–13' },
+                { n: '02', t: '三阶十二步', d: '描绘愿景 / 设计蓝图 / 规划举措，每一步的产出物', tag: 'P14–27' },
+                { n: '03', t: '4A Y 模型', d: 'BA / IA(DA) / AA / TA 四面，收口点落在业务对象', tag: 'P28–34' },
+                { n: '04', t: 'IA 与 DA 的口径差', d: '原书写信息架构，数据之书写数据架构——同一层', tag: 'P31 / 35' },
+                { n: '05', t: '现场用法与收口', d: '怎么在客户现场用这一套，哪些话不能讲错', tag: 'P35' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px', gap: 16 }}>
+                    <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#FA4F24', width: 48 }}>{it.n}</Text>
+                    <Box style={{ width: 158 }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{it.d}</Text>
+                    <Text style={{ fontSize: 13, color: '#C43A17', width: 74, textAlign: 'right' }}>{it.tag}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 右 40% Approach + 收口 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Box style={{ height: 96, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>
+                    <tspan style={{ color: '#FA4F24' }}>P04</tspan>　Approach：三阶十二步全景
+                </Text>
+                <Text style={{ fontSize: 13.5, color: '#3A4050', lineHeight: 1.45, marginTop: 6 }}>
+                    十二步全部列出，标注哪三步可选，每个方框写的是这一步必须交出来的东西
+                </Text>
+            </Box>
+            {[
+                { t: '主线与可选要分清', d: '8、10、11 三步华为标注为可选，但跳过的项目一定接不住' },
+                { t: 'Y 模型的落点', d: '四 A 不落到业务对象，就各画各的，谁也接不住谁' },
+            ].map((x) => (
+                <Box key={x.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 8 }}>{x.d}</Text>
+                </Box>
+            ))}
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>全册一条主线</Text>
+                <Text style={{ fontSize: 14.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5, marginTop: 8 }}>
+                    陶景文：任何不涉及流程重构的数字化转型，都是在装样子
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>02 / 35</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            华为为什么推数字化转型：<span style={{ color: '#FA4F24' }}>四个时代命题</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            不是因为技术时髦，是因为这四件事同时压过来——每一件都能单独要了企业的命
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 18, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 四象限 */}
+        <Box style={{ height: 292, flexDirection: 'column', gap: 10 }}>
+            {[
+                {
+                    n: '01', t: '鲍莫尔成本病',
+                    d: '服务业成本随规模上升，服务越多越亏。传统解法是压人、压网点、压体验',
+                    s: '唯一出路是把服务成本结构改掉——把人的动作换成系统的动作',
+                    c: '#FA4F24', left: true,
+                },
+                {
+                    n: '02', t: 'To B 客户要 To C 体验',
+                    d: '企业客户的采购与使用体验，能不能做到消费级那样即开即用',
+                    s: '体验差距直接变成客诉成本和续约风险，不是体验部门的内部指标',
+                    c: '#E0641E', left: false,
+                },
+                {
+                    n: '03', t: '构筑产业链端到端优势',
+                    d: '单个环节做到极致没用，链条断一环，全链成本照样上不去',
+                    s: '端到端协同要靠数据打通和流程贯通，不靠各家自己努力',
+                    c: '#D2531A', left: true,
+                },
+                {
+                    n: '04', t: '数据成为生产要素',
+                    d: '数据不再只是记录业务，而是要参与决策、驱动智能、形成资产',
+                    s: '这是数据架构、指标、Ontology 这些专册存在的根本理由',
+                    c: '#C43A17', left: false,
+                },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 10 }}>
+                    <Box style={{ width: 6, background: x.c, borderRadius: 3 }} />
+                    <Box style={{ width: 46, background: x.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                    </Box>
+                    <Box style={{ width: 196, background: '#F7F7F8', borderRadius: 3, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 13.5, color: '#3A4050', lineHeight: 1.4 }}>{x.d}</Text>
+                    </Box>
+                    <Box style={{ width: 372, background: '#FFF3EE', borderRadius: 3, borderLeft: '4px solid ' + x.c, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12.5, color: '#C43A17', lineHeight: 1.4 }}>{x.s}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部结论条 */}
+        <Box style={{ height: 42, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>由此推出的第一条立场</Text>
+            <Text style={{ fontSize: 16, color: '#FFFFFF', flex: 1, lineHeight: 1.35 }}>
+                数字化转型必须由<span style={{ color: '#FA4F24' }}>企业自身主导</span>——交给乙方做，架构会长成供应商的能力，不是客户的能力
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>06 / 35</Text>
+    </Box>
+</Slide>

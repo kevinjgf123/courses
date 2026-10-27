@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            AA 应用架构：<span style={{ color: '#FA4F24' }}>三要素与两条设计路径</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            应用架构的任务是把业务能力变成可执行的软件能力——高内聚、低耦合，还要跟得上业务变化
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 16, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 三要素 */}
+        <Box style={{ height: 152, flexDirection: 'row', gap: 9 }}>
+            {[
+                { n: '1', t: '应用系统模块', d: '按业务能力划分模块与系统边界，避免重复建设', o: '系统边界与模块清单', c: '#D2531A' },
+                { n: '2', t: '应用服务识别', d: '把共性业务能力沉淀为可复用服务，支撑中台化', o: '公共/共享服务清单', c: '#C43A17' },
+                { n: '3', t: '应用系统集成', d: '确定集成方式与接口设计，让端到端流程真正贯通', o: '集成架构与接口设计', c: '#9E3410' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                        <Box style={{ width: 26, height: 26, background: x.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 16.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                    <Text style={{ fontSize: 11, color: x.c }}>产出：{x.o}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：两条路径 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 4, border: '1px solid #E8E8E8', borderLeft: '4px solid #D2531A', padding: '13px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#D2531A' }}>自上而下：从业务能力推导</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    企业价值流 → 应用域 → 应用组 → 功能模块，在每一层定义系统边界
+                </Text>
+                <Text style={{ fontSize: 11, color: '#8A8F99', lineHeight: 1.4 }}>优点：不漏掉战略需要的能力　风险：容易忽略存量系统的实际情况</Text>
+            </Box>
+            <Box style={{ width: 60, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FBA15C' }}>＋</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 4, border: '1px solid #E8E8E8', borderLeft: '4px solid #9E3410', padding: '13px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#9E3410' }}>自下而上：从现有系统整合</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    从已有系统出发，把共性能力聚合为服务，把重复功能合并掉
+                </Text>
+                <Text style={{ fontSize: 11, color: '#8A8F99', lineHeight: 1.4 }}>优点：见效快　风险：容易被历史包袱牵着走</Text>
+            </Box>
+            <Box style={{ width: 336, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>华为的立场：双路径收敛</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.86)', lineHeight: 1.5, marginTop: 8, flex: 1 }}>
+                    两条路径必须同时走并最终收敛。只自上而下会推倒重建，只自下而上会长出新的烟囱
+                </Text>
+                <Text style={{ fontSize: 11, color: '#FBA15C', lineHeight: 1.4 }}>收敛不成的标志：两套应用清单对不上</Text>
+            </Box>
+        </Box>
+
+        {/* 底部 */}
+        <Box style={{ height: 44, background: '#0F1423', borderRadius: 3, flexDirection: 'row', alignItems: 'center', padding: '0 20px', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 156 }}>AA 要交付的两张图</Text>
+            <Text style={{ fontSize: 15, color: '#FFFFFF', flex: 1 }}>功能项设计视图（做什么）＋<tspan style={{ color: '#FA4F24' }}>运行模型视图（怎么跑、怎么集成）</tspan></Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>33 / 35</Text>
+    </Box>
+</Slide>

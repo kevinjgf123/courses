@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            这不是信息化，<span style={{ color: '#FA4F24' }}>是一场全新变革</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            IT 部门的诉求是系统上线；变革的诉求是组织、流程、权责一起动——按老办法做IT，五个转变一个都落不了
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 18, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+
+        {/* 上：四个必须打破 */}
+        <Box style={{ height: 158, flexDirection: 'row', gap: 10 }}>
+            {[
+                { t: '打破组织层级', d: '数字化之后，信息的流动不该被层级拦住', tag: '层级≠信息通道' },
+                { t: '重定义甲乙方关系', d: '乙方不再只是接需求，要能改客户的东西', tag: '从交付到共建' },
+                { t: '融合业务与 IT 能力', d: '业务和 IT 不再是两个部门的两套语言', tag: '同语言、同目标' },
+                { t: '对准体验效率模式', d: '三个都要，不是二选一，也不是只谈体验', tag: '三维同时改进' },
+            ].map((x, i) => (
+                <Box key={x.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderTop: '3px solid ' + ['#FA4F24', '#E0641E', '#D2531A', '#C43A17'][i], padding: '13px 14px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.3 }}>{x.t}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.45, marginTop: 8, flex: 1 }}>{x.d}</Text>
+                    <Text style={{ fontSize: 11, color: '#C43A17' }}>{x.tag}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：5 个转变 */}
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>5 个转变保障变革成功（原书 1.2.5）</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 4 }}>
+                {[
+                    { f: '从', t: '信息化', g: '到', to: '数字化' },
+                    { f: '从', t: 'IT 支撑', g: '到', to: 'IT 驱动' },
+                    { f: '从', t: '流程驱动', g: '到', to: '数据驱动' },
+                    { f: '从', t: '部门内建设', g: '到', to: '端到端拉通' },
+                    { f: '从', t: '项目制交付', g: '到', to: '产品化运营' },
+                ].map((x, i) => (
+                    <Box key={x.to} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, border: '1px solid #E8E8E8', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+                        <Text style={{ fontSize: 11.5, color: '#8A8F99' }}>{x.f}</Text>
+                        <Text style={{ fontSize: 14.5, color: '#3A4050', fontWeight: 'bold' }}>{x.t}</Text>
+                        <Text style={{ fontSize: 12, color: '#FA4F24', fontWeight: 'bold' }}>{x.g}</Text>
+                        <Text style={{ fontSize: 15.5, color: '#FA4F24', fontWeight: 'bold' }}>{x.to}</Text>
+                        <Box style={{ width: 20, height: 2, background: ['#FA4F24', '#E0641E', '#D2531A', '#C43A17', '#9E3410'][i], marginTop: 2 }} />
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 底部红牌 */}
+        <Box style={{ height: 62, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 3, padding: '0 22px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+            <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)', width: 130 }}>华为 CIO 陶景文</Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF', flex: 1, lineHeight: 1.35 }}>
+                任何不涉及流程重构的数字化转型，都是在装样子
+            </Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', width: 216, lineHeight: 1.4 }}>这句话应当印在每一份转型规划的第一页</Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 华为数字化转型之道</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>07 / 35</Text>
+    </Box>
+</Slide>
