@@ -1,0 +1,95 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            失败现场二：<span style={{ color: '#FA4F24' }}>把咨询产出物当产品</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这是转型期最常见的自我污染：FDE 天天做交付，手上全是 PPT 模板，交付物不自觉就退化成了 PPT
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：五个退化症状 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+            {[
+                { k: '架构图画得极漂亮，但连不上一条真实数据通路', c: '#FA4F24' },
+                { k: '方案写完就归档，客户生产系统里什么都没变', c: '#E0641E' },
+                { k: '把「方案通过评审」当成交付完成，客户却从未登录过', c: '#C43A17' },
+                { k: '把客户签字当成上线，签字的人没打开过系统', c: '#A83310' },
+                { k: '认为「以后再补数据接入」，结果永远没补', c: '#8A2A0D' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 13, borderLeft: `4px solid ${x.c}` }}>
+                    <Box style={{ width: 22, height: 22, borderRadius: 11, background: x.c, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>!</Text>
+                    </Box>
+                    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.k}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：判据与替代物 */}
+        <Box style={{ height: 206, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>最硬的一条判据</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    把 PPT 的页数全删掉，问一句：客户生产环境里多了什么？如果答不上来，那么无论 PPT 多厚，都是零。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        前三种角色交付的是「关于系统的论述」。FDE 交付的是「系统本身」。这是不可混淆的边界。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>每一份产出物的唯一去向</Text>
+                    {[
+                        { k: '蓝图与架构图', v: '进本体设计文档，不单独交付' },
+                        { k: '方案与建议', v: '进代码注释与运维手册' },
+                        { k: '汇报材料', v: '进移交清单的口头讲解' },
+                        { k: '风险清单', v: '进告警规则与值班表' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 8, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 100 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 62, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 108 }}>交付物最小集</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>
+                        活的系统、本体定义、口径裁定、运维手册、回流提案、培训记录。少一件即视为未交付。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：自保机制 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>怎么防止退化</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>把评审口径从「好看」换成「上线」</Text>
+            </Box>
+            {[
+                { k: '代码进生产', v: '每周必须有合入客户环境的提交' },
+                { k: '现场天数', v: '每周至少两天在客户现场' },
+                { k: '手写代码量', v: '记录行数，不能只写代码不落地' },
+                { k: '交接必须发生', v: '没有客户方接手就不算完' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>34 / 60</Text>
+    </Box>
+</Slide>

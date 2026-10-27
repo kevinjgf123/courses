@@ -1,0 +1,100 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            规模化瓶颈：<span style={{ color: '#FA4F24' }}>FDE 模式会不会被铺量压垮</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这是外界最常质疑的一点：一个人一个项目地贴身，怎么规模化？答案是「先不规模化」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：三个瓶颈与三个机制 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>瓶颈一：人力线性增长</Text>
+                <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>
+                    每个客户都要 2–4 名 FDE 常驻，客户数翻倍，人力就翻倍。规模化的前提是「一个客户不需要这么多」。
+                </Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 9 }}>对策：抽象先行，让第二个客户更便宜</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>瓶颈二：知识不沉淀</Text>
+                <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>
+                    FDE 离职带走全部经验，下一个客户从零开始。表面看是人才流失，实质是知识没有资产化。
+                </Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 9 }}>对策：交付物强制回流为平台资产</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>瓶颈三：客户方接不住</Text>
+                <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>
+                    系统跑在客户环境，但运维靠 FDE。FDE 一撤，系统跟着停。这是客户最不敢接受的形态。
+                </Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 9 }}>对策：运营移交作为交付终点</Text>
+            </Box>
+        </Box>
+
+        {/* 中：官方配比 */}
+        <Box style={{ height: 182, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 456, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>规模化并不靠堆人</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    每 200–500 万美元企业管道配 1 名 FDE。2016 年起 FDE 数量超过传统软件工程师——说明这类岗位的产出密度高于按项目交付。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        规模化的分母不是人数，是「每个客户复用了多少上一次的东西」。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>降本的三条真实路径</Text>
+                    {[
+                        { k: '模板化', v: '管道、Agent、验收清单做成可填空模板' },
+                        { k: '参数化', v: 'B 档能力做成配置项，不改代码' },
+                        { k: '交接化', v: '运营移交给客户方，FDE 转下一个场景' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 8, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 62 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 64, background: '#FFF3EE', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 92 }}>时间杠杆</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>
+                        3–6 个月的传统交付被压到约 5 天，靠的不是加班，是砍掉等待与审批。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：判断标准 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>怎么判断是否具备复制性</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>看第二个客户，而不是看第一个</Text>
+            </Box>
+            {[
+                { k: '复用比', v: '第二客户复用上一次产物的比例' },
+                { k: '周期比', v: '第二客户上线周期 ÷ 第一客户' },
+                { k: '人力比', v: '第二客户投入人天 ÷ 第一客户' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>26 / 60</Text>
+    </Box>
+</Slide>

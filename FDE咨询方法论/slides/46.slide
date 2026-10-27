@@ -1,0 +1,89 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE × 数据治理：<span style={{ color: '#FA4F24' }}>最小可行治理，不是完美治理</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            FDE 在现场推不动三年规划。他只能推「够这一轮用的那部分治理」，并且立刻见效
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：最小可行治理 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '只治用到的', c: '#FA4F24', d: '这一轮场景用到哪几张表、几个字段，就只治这几个。其余明确挂起。' },
+                { k: '当场定责', c: '#E0641E', d: '每个字段谁负责、谁审批，当场写名字。不设「待定」。' },
+                { k: '先可逆再完美', c: '#C43A17', d: '合并、删除类操作先做可逆版本，再谈标准。' },
+                { k: '当场兑现', c: '#A83310', d: '治完立刻在场景里用出来，让治理方看到收益。' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：与传统治理的差别 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>与传统治理项目的四个差别</Text>
+                {[
+                    { k: '范围', v: '传统做全域，FDE 只做用得到的那一小块' },
+                    { k: '周期', v: '传统以年计，FDE 以周计' },
+                    { k: '证据', v: '传统交方案，FDE 交当场生效的规则' },
+                    { k: '兑现', v: '传统靠汇报，FDE 靠场景里真的用上了' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 46 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>为什么最小可行反而更容易成</Text>
+                {[
+                    '治一小块，业务方看得见好处，才愿意配合下一轮',
+                    '范围小，决策链短，一个负责人就能拍板',
+                    '两周能出结果，治理从「长期工程」变成「已证明的事」',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FA4F24', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    治到能用，比治到完美更有说服力。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：现场动作 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>现场四步</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>治完当场在场景里用出来</Text>
+            </Box>
+            {[
+                { k: '列清单', v: '只用到的字段列出来' },
+                { k: '定责人', v: '当场写名字，不留空' },
+                { k: '做可逆', v: '合并删除先留快照' },
+                { k: '当场验', v: '在场景里跑一遍看生效' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>46 / 60</Text>
+    </Box>
+</Slide>

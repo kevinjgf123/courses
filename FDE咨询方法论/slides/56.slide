@@ -1,0 +1,109 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 专用工作台（一）：<span style={{ color: '#FA4F24' }}>发现台与决策链画布</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            工具是角色的固化。顾问做访谈记录，PM 写需求文档，FDE 必须有一台能画出决策链的机器
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：发现台 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FA4F24' }}>
+                <Text style={{ fontSize: 12, color: '#FA4F24', letterSpacing: 2 }}>工作台 A · 客户现场发现台</Text>
+                {[
+                    '对话记录：五问结构化落库，强制记原话',
+                    '痛点量化：每条痛点绑定一个数字与损失口径',
+                    '角色分层：决策者 / 执行者 / 反对者 分别打标',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FA4F24', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+                <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>产出：现像报告 · 决策链路图 · 痛点优先级矩阵</Text>
+                </Box>
+            </Box>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>工作台 B · 决策链画布</Text>
+                {[
+                    '反向追溯：从报表往回追到签字那一层',
+                    '断点标注：标出「谁看 → 做什么决定 → 传给谁」',
+                    '空白检测：追不到的环节就是组织真空',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FBA15C', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 11px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 11.5, color: '#FBA15C', lineHeight: 1.4 }}>产出：决策链路图 · 真实流程图 · 断点清单</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 中：与传统工具的区别 */}
+        <Box style={{ height: 190, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>同样一件事，三种角色三种产出物</Text>
+                {[
+                    { k: '咨询顾问', v: '访谈纪要 + 诊断报告，交付物是文档' },
+                    { k: '产品经理', v: '需求清单 + 优先级表，交付物是计划' },
+                    { k: '开发经理', v: '排期表 + 上线计划，交付物是时间表' },
+                    { k: 'FDE', v: '决策链画布，交付物是要修的那条路的坐标' },
+                ].map((x, i) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: i === 3 ? '#FA4F24' : '#5A6070', width: 68 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>工具形态上的三个差异</Text>
+                {[
+                    { k: '强制留痕', v: '不记原话不许关闭对话条目' },
+                    { k: '就地连线', v: '画布上直接连决策链，不画漂亮架构图' },
+                    { k: '绑定数字', v: '没有数字的痛点条目不许进优先级' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 78 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 14, lineHeight: 1.4 }}>
+                    工具的作用是：让你没办法用旧角色的方式偷懒。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：使用纪律 */}
+        <Box style={{ height: 66, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>使用纪律</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>离开现场前必须填满</Text>
+            </Box>
+            {[
+                { k: '当天填', v: '对话当天录入，不过夜' },
+                { k: '原话存', v: '不用书面语改写' },
+                { k: '数字挂', v: '挂不上数字的进不了优先级' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>56 / 60</Text>
+    </Box>
+</Slide>

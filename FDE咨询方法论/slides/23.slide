@@ -1,0 +1,99 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            现场五日作战手册：<span style={{ color: '#FA4F24' }}>Bootcamp 的节奏</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            官方要求：第三天交出可运行的应用。五天不是压缩工期，是压缩「等审批」的时间
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：五天时间轴 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+            {[
+                { d: 'D1', k: '找准问题', c: '#FA4F24', t: ['见决策者', '看真数据', '定痛点数字'], out: '现像报告' },
+                { d: 'D2', k: '建对象', c: '#E0641E', t: ['定义核心对象', '定主键策略', '标密级'], out: '本体骨架 v0' },
+                { d: 'D3', k: '跑通链路', c: '#C43A17', t: ['接一条真数据', '写回一条动作', '出第一版结论'], out: '可运行应用' },
+                { d: 'D4', k: '贴到人', c: '#A83310', t: ['让作业员上手', '收集反对意见', '改口径'], out: '业务签认单' },
+                { d: 'D5', k: '固化', c: '#8A2A0D', t: ['补监控告警', '写运维手册', '定知识转移'], out: '移交清单' },
+            ].map((x) => (
+                <Box key={x.d} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: x.c }}>{x.d}</Text>
+                        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, marginTop: 9, justifyContent: 'center' }}>
+                        {x.t.map((y) => (
+                            <Box key={y} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start', marginTop: 7 }}>
+                                <Box style={{ width: 5, height: 5, borderRadius: 3, background: x.c, marginTop: 6 }} />
+                                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{y}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 10px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.88)', lineHeight: 1.35 }}>产出：{x.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：五天的三个铁律 */}
+        <Box style={{ height: 182, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>把工期从三个月压到五天，靠的是什么</Text>
+                {[
+                    { k: '不等审批', v: '当天提的方案当天拍板，负责人现场签字' },
+                    { k: '不追求完整', v: '只做一个场景的一条链路，其余全部砍掉' },
+                    { k: '不换环境', v: 'D1 就连生产，不另建干净环境做演示' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 72 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>五天里最容易被跳过、也最致命的三步</Text>
+                {[
+                    { k: 'D1 见决策者', v: '被「先做原型」哄住，见了执行层就开工' },
+                    { k: 'D3 真数据', v: '用清洗过的样例数据跑通，第三天的应用是假的' },
+                    { k: 'D4 贴到人', v: '没让作业员实际点开，导致上线即闲置' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 96 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：节奏参照 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>Bootcamp 之后</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>五天跑通 ≠ 项目结束</Text>
+            </Box>
+            {[
+                { k: 'D6–D14', v: '场景进入日常使用，问题暴露期' },
+                { k: 'W3–W6', v: '补齐本体与管道，扩展第二个场景' },
+                { k: 'W7–W8', v: '抽象回流，交给 Dev 变成平台能力' },
+                { k: 'W9+', v: '运营移交，FDE 退出或转入下一场景' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>23 / 60</Text>
+    </Box>
+</Slide>

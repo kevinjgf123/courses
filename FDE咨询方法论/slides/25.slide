@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            抽象回流：<span style={{ color: '#FA4F24' }}>碎石路机制的第二段</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            一个客户做出来的东西，只有变成平台能力，才算这一轮的投入没白花
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：三段机制 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { n: '1', k: '现场铺路', c: '#FA4F24', d: 'Delta 在客户现场写生产代码，为这一个客户解决它的问题。不考虑通用性。', key: '关键词：能跑' },
+                { n: '2', k: '总部找抽象', c: '#E0641E', d: '同一批 Delta 从各个现场带回经验，Dev 在总部找出「哪些能变成一项能力」。', key: '关键词：能不能抽象' },
+                { n: '3', k: '铺成高速公路', c: '#C43A17', d: '能力进平台，推广到 5–10 个客户。第二次做同类场景，成本降到十分之一。', key: '关键词：复用' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+                        <Box style={{ width: 26, height: 26, borderRadius: 13, background: x.c, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 10 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.key}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：抽象的判定 */}
+        <Box style={{ height: 180, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>抽象的判定标准</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    问一句：这次现场做的东西，把客户名换成另一个客户，还成立吗？成立，就是能力；不成立，就是定制。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        不要求全部抽象。抽象错了比不抽象更贵——会把客户的特殊需求塞进所有客户。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>四类典型可抽象物</Text>
+                {[
+                    { k: '本体骨架', v: '某类行业的标准对象与链接模型' },
+                    { k: '管道模板', v: '幂等、重试、批次号的成熟写法' },
+                    { k: 'Agent 装配', v: '工具白名单、出口策略、记忆边界' },
+                    { k: '验收清单', v: '十二项检查的同类改造版' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 9, alignItems: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 78 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：可复用度分档 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>可复用度四档</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>现场必须当场判定</Text>
+            </Box>
+            {[
+                { k: 'A档全通用', v: '客户名一换就成立' },
+                { k: 'B档可配置', v: '骨架通用，参数不同' },
+                { k: 'C档半定制', v: '需改流程与密级' },
+                { k: 'D档纯定制', v: '只服务这一个客户' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: x.k.startsWith('A') ? '#FA4F24' : x.k.startsWith('B') ? '#E0641E' : x.k.startsWith('C') ? '#5A6070' : '#8A8F99' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>25 / 60</Text>
+    </Box>
+</Slide>

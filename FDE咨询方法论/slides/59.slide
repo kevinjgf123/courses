@@ -1,0 +1,100 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 职业路径：<span style={{ color: '#FA4F24' }}>从工程师到对赌结果的人</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这不是一条晋升通道，是一次责任范围的重划。三个阶段的能力重心完全不同
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：三阶段 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: 'Dev', n: '01', cn: '平台侧', c: '#8A8F99', d: '把能力做成一项产品：一种能力服务多个客户。', kpi: '平台指标、采纳客户数', risk: '风险：平台很漂亮，客户一个也不用' },
+                { k: 'Delta', n: '02', cn: '现场侧', c: '#FA4F24', d: '在客户环境写生产代码，为这一个客户解决问题。', kpi: '上线场景数、使用量', risk: '风险：技术正确，运营无关' },
+                { k: 'Echo', n: '03', cn: '策略侧', c: '#E0641E', d: '找到最值得修的那条路，管采纳与客户关系。', kpi: '决策链命中、采纳率', risk: '风险：方向对，但拿不出东西' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12, color: '#8A8F99', marginLeft: 'auto' }}>{x.n}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>{x.cn}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>看：{x.kpi}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.35, marginTop: 7 }}>{x.risk}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：能力演进 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>五年三段的能力重心</Text>
+                {[
+                    { k: '第 1–2 年', v: '在脏环境里把东西跑通，建立工程手感' },
+                    { k: '第 2–4 年', v: '把业务问题转成对象与口径，建立判断力' },
+                    { k: '第 4 年以后', v: '说服资深负责人改流程，建立影响力' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 84 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 12 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        走不完第三段，天花板就是资深工程师。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>从交付到对赌结果</Text>
+                {[
+                    { k: '被追问', v: '从「进度如何」变成「上线了吗、管用吗」' },
+                    { k: '被考核', v: '从工时与排期变成使用量与采纳率' },
+                    { k: '被约束', v: '有权否决，但也要为停手负责' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 52 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    权力变大了，责任也变大了——这才叫职业路径。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：扩散 */}
+        <Box style={{ height: 66, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>行业扩散</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>不是 Palantir 独有</Text>
+            </Box>
+            {[
+                { k: '模型厂商', v: 'Anthropic / OpenAI' },
+                { k: '数据平台', v: 'Databricks' },
+                { k: '企业 AI', v: 'Cohere' },
+                { k: '云厂商', v: 'Google' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>59 / 60</Text>
+    </Box>
+</Slide>

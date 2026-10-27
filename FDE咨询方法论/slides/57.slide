@@ -1,0 +1,113 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 专用工作台（二）：<span style={{ color: '#FA4F24' }}>装配台与验收台</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            左边控制、右边就地预览；十二项检查逐项打勾。这两台机器的产物就是 FDE 的交付物
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：装配台与验收台 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FA4F24' }}>
+                <Text style={{ fontSize: 12, color: '#FA4F24', letterSpacing: 2 }}>工作台 C · Agent 装配与管道工作台</Text>
+                {[
+                    '工具白名单：勾选式授权，默认全关',
+                    '出口策略：写回目标逐条选，可设可撤回',
+                    '管道骨架：批次号 / 重试 / 对账三件套模板',
+                    '切片工艺：按语义边界切，标密级标签',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FA4F24', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+                <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                    <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>产出：可运行的生产环境 · 遥测日志</Text>
+                </Box>
+            </Box>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>工作台 D · 上线验收台</Text>
+                {[
+                    '十二项检查：逐项打勾，双方共同确认',
+                    '判档：12/12 退出、9–11 整改、≤8 未上线',
+                    '三个提问：谁用过、改变了什么决定、坏了谁知道',
+                    '移交清单：六件交付物签收',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FBA15C', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                    <Text style={{ fontSize: 11.5, color: '#FBA15C', lineHeight: 1.4 }}>产出：验收签字 · 移交清单 · FDE 退出凭证</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 中：可复用度矩阵与分支 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>工作台 E · 平台抽象与回流台</Text>
+                {[
+                    { k: '可复用度矩阵', v: '八领域逐项定档 A/B/C/D，当场判' },
+                    { k: '抽象提案', v: 'A 档进平台迭代，D 档写进不抽象清单' },
+                    { k: '坑位清单', v: '哪里踩雷、为什么、下次怎么避' },
+                    { k: '分支隔离', v: '客户现场环境独立分支，不污染主线' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 104 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>为什么必须有这些工作台</Text>
+                {[
+                    { k: '防退化', v: '照着 PPT 交付很容易，靠台子逼你交活的东西' },
+                    { k: '防遗漏', v: '十二项检查不填完，流程走不到下一步' },
+                    { k: '防私有', v: '回流提案不签字，项目不许关闭' },
+                    { k: '防越界', v: '默认全关的白名单，不勾选就没有权限' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 60 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    角色差异最终体现在交付物形态上，工具是形态的固化件。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：工作台清单 */}
+        <Box style={{ height: 66, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>六台工作台</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>覆盖 Approach 全五阶段</Text>
+            </Box>
+            {[
+                { k: 'A 发现台', v: 'Enter/Investigate' },
+                { k: 'B 决策链', v: 'Investigate' },
+                { k: 'C 装配台', v: 'Build' },
+                { k: 'E 验收台', v: 'Hand over' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>57 / 60</Text>
+    </Box>
+</Slide>

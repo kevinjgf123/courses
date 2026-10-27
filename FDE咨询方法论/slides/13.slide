@@ -1,0 +1,104 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            能力三角：<span style={{ color: '#FA4F24' }}>工程、业务、销售影响力</span>——缺一条就产不出东西
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            三条边分给三个人就是三次交接，每次交接掉一层信息；现场交付没时间交接三次
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 三条边 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                {
+                    k: '工程', en: 'ENGINEERING', c: '#FA4F24',
+                    t: '能在脏环境里跑通',
+                    d: '不是会写代码，是能在数据环境恶劣的地方把东西跑起来——管住 PT 级管道、调试客户集群。',
+                    miss: '缺这条 → 变成售前工程师',
+                },
+                {
+                    k: '业务', en: 'BUSINESS', c: '#E0641E',
+                    t: '把模糊需求变成模型',
+                    d: '把含糊的运营需求变成精确的数据模型和本体对象。核心是翻译：业务的话 → 系统里的规则。',
+                    miss: '缺这条 → 变成纯工程师',
+                },
+                {
+                    k: '影响力', en: 'INFLUENCE', c: '#C43A17',
+                    t: '说服资深负责人改流程',
+                    d: '要能跟 CTO 对话，说服资深负责人改掉自己发明的护身符指标。这是与高级工程师的分水岭。',
+                    miss: '缺这条 → 天花板是资深工程师',
+                },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
+                        <Text style={{ fontSize: 26, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                        <Text style={{ fontSize: 10, color: '#8A8F99', letterSpacing: 1, flex: 1 }}>{x.en}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginTop: 8 }}>{x.t}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 8, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '0 11px', marginTop: 8 }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17' }}>{x.miss}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：为什么 + 体检 */}
+        <Box style={{ height: 152, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 452, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>为什么三条边必须在一个人身上</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    现场交付没有时间交接三次。需求一变，系统就得跟着变，这个「变」的责任必须落在一个人头上，不能落在流程上。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        官方画像：Delta 是一个「像创业公司 CTO 的人」——技术够深、对模糊性自在。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>三条边的日常体检（每季度问一遍）</Text>
+                {[
+                    { k: '工程边', q: '上周我写了多少行进了生产环境的代码？' },
+                    { k: '业务边', q: '我能不能用客户的话复述他要什么？' },
+                    { k: '影响力边', q: '上一次让不肯改的人改了主意是什么时候？' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 58 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.q}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：现实 */}
+        <Box style={{ height: 62, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 214, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>现实</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>Echo 的工程边可以为零</Text>
+            </Box>
+            {[
+                { k: '1%', v: '候选人接受率' },
+                { k: '几千人', v: '全球可用池' },
+                { k: '2–4 人', v: '每客户标配' },
+                { k: '2016', v: 'FDE 数量超软件工程师' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>13 / 60</Text>
+    </Box>
+</Slide>

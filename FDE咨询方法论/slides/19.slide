@@ -1,0 +1,90 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            Enter：<span style={{ color: '#FA4F24' }}>进场第一天做什么</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            第一天不写一行代码。第一天只干三件事：拿到人、拿到权限、拿到真数据
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：当天时间轴 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+            {[
+                { t: '09:00', k: '见人', d: '见业务负责人，不见 IT。见的是签字的那个人，不是对接的那个人。', c: '#FA4F24' },
+                { t: '11:00', k: '要权限', d: '要生产环境只读权限、要测试账号、要日志查看权。拿不到就当场升级。', c: '#E0641E' },
+                { t: '14:00', k: '看真数据', d: '连上真实数据源，看真实脏数据。看样本、看空值、看重复，不看数据字典。', c: '#C43A17' },
+                { t: '16:00', k: '定人', d: '当场定一位客户侧陪同人。没有陪同人的项目一律不启动。', c: '#A83310' },
+                { t: '18:00', k: '写现像', d: '当天写出现像报告。只写事实与卡点，不写方案。', c: '#8A2A0D' },
+            ].map((x) => (
+                <Box key={x.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: x.c }}>{x.t}</Text>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45, marginTop: 8, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：当天必须完成 / 当天绝对不做 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>当天必须完成的三件事</Text>
+                {[
+                    { k: '配对到位', v: 'Delta 与 Echo 一对一配对，同时进场。不允许先派工程师、后补策略。' },
+                    { k: '准入打通', v: '生产环境准入、客户侧陪同人、保密边界，三件签完才叫进场。' },
+                    { k: '现像成文', v: '把听到的原话和看到的脏数据写成现像报告，不做加工、不加判断。' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 66 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.45, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>第一天绝对不做的四件事</Text>
+                {[
+                    '不演示产品，不讲平台架构，不比较竞品',
+                    '不承诺交付时间，不承诺指标提升幅度',
+                    '不要求客户先整理数据、先补字段、先做治理',
+                    '不写代码，不建模型，不碰生产写操作',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 6, height: 6, borderRadius: 3, background: '#FA4F24', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：准入清单 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#0F1423', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>进场准入四件套</Text>
+                <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C', marginTop: 6, lineHeight: 1.4 }}>拿不到任何一件，项目不启动</Text>
+            </Box>
+            {[
+                { k: '人', v: '客户侧陪同人' },
+                { k: '权', v: '生产只读权限' },
+                { k: '境', v: '可用的测试环境' },
+                { k: '密', v: '明确的保密边界' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                    <Box style={{ width: 30, height: 30, borderRadius: 15, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>{x.k}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12.5, color: '#0F1423', fontWeight: 'bold', flex: 1 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>19 / 60</Text>
+    </Box>
+</Slide>

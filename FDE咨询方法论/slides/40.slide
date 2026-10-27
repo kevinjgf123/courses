@@ -1,0 +1,95 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            运营移交：<span style={{ color: '#FA4F24' }}>FDE 什么时候可以走</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            不以「功能做完」为终点，以「客户能自己维护」为终点。走早了等于没交付
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：移交四步 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { n: '01', k: '运维接管', c: '#FA4F24', d: '客户方指定责任人，拿到账号、权限、告警配置。', chk: '能登录、能看告警、能重启' },
+                { n: '02', k: '口径接管', c: '#E0641E', d: '业务方接手口径裁定权，包括后续加指标的权限。', chk: '客户自己敢改口径' },
+                { n: '03', k: '知识接管', c: '#C43A17', d: '培训 + 考核，确保不是「看着会了」。', chk: '考核通过率 100%' },
+                { n: '04', k: '回流传管', c: '#A83310', d: '平台侧接手抽象提案，总部 Dev 跟进落地。', chk: '提案进入平台迭代' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
+                        <Text style={{ fontSize: 12, color: x.c }}>{x.n}</Text>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>过关：{x.chk}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：走与不走 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>可以走的四个条件</Text>
+                {[
+                    { k: '有人维护', v: '客户方责任人已上岗，不是「以后再说」' },
+                    { k: '能恢复', v: '出故障客户自己能处理，不依赖 FDE 在线' },
+                    { k: '敢改', v: '客户敢自己加指标、改口径，不需要请示' },
+                    { k: '留痕了', v: '本体定义、口径裁定、运维手册三样齐全' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 66 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>三种不该走的情形</Text>
+                {[
+                    { k: '还在催', v: '客户还天天问「这个怎么用」，说明没教会' },
+                    { k: '还在改', v: '每周都有口径变更，模型还没稳定' },
+                    { k: '还在救', v: '上线一个月内就在处理故障，运维没接住' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 66 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    早退是 FDE 最常见的人情债。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：移交后的关系 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>移交之后不是断绝</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>留一条按需回叫的通道</Text>
+            </Box>
+            {[
+                { k: '远程待命', v: '两周内可远程响应，不驻场' },
+                { k: '回访节奏', v: '第 1 周、第 1 月、第 3 月各一次' },
+                { k: '回访内容', v: '只看使用量与新增痛点' },
+                { k: '下一单入口', v: '第二个场景优先派原班人马' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>40 / 60</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,111 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            三种角色：<span style={{ color: '#FA4F24' }}>Dev</span> / <span style={{ color: '#FA4F24' }}>Delta</span> / <span style={{ color: '#FA4F24' }}>Echo</span>——不是三个层级，是三种目标
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            建平台的、修路的、指路的，缺任何一个 FDE 模型都不完整；少一个，交付就会偏到某一个方向上去
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {/* 三角色主卡 */}
+        <Box style={{ height: 249, flexDirection: 'row', gap: 11 }}>
+            {[
+                {
+                    k: 'Dev', en: 'Core Product Engineer', org: 'Core Platform / Product Development',
+                    goal: '一种能力服务多个客户',
+                    d: '在总部把路铺好。拥有某一项平台能力的完整生命周期，做通用件。',
+                    trap: '做出来的东西客户一个都用不上，但平台指标很漂亮',
+                    c: '#5A6070',
+                },
+                {
+                    k: 'Delta', en: 'Forward Deployed Engineer', org: 'Business Development',
+                    goal: '一个客户需要多种能力',
+                    d: 'FDE 本体。深入现场接数据、改流程、跑生产，修出那条碎石路。代码要能跑。',
+                    trap: '技术正确但运营无关——所以必须配 Echo',
+                    c: '#FA4F24', hot: true,
+                },
+                {
+                    k: 'Echo', en: 'Deployment Strategist', org: '客户侧，通常不是工程师',
+                    goal: '找到最值得修的那条路',
+                    d: '找真实痛点，管理客户关系与采纳。理想人选有行业背景：前军官、医疗老兵、金融老手。',
+                    trap: '变成「需求传声筒」，不去顶住错误的方向',
+                    c: '#E0641E',
+                },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.hot ? '#0F1423' : '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+                        <Text style={{ fontSize: 30, fontWeight: 'bold', color: x.hot ? '#FA4F24' : x.c }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: x.hot ? 'rgba(255,255,255,0.65)' : '#8A8F99', flex: 1 }}>{x.en}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11, color: x.hot ? 'rgba(255,255,255,0.5)' : '#8A8F99', marginTop: 6 }}>{x.org}</Text>
+                    <Box style={{ background: x.hot ? 'rgba(250,79,36,0.22)' : '#FFF3EE', borderRadius: 3, padding: '8px 11px', marginTop: 10 }}>
+                        <Text style={{ fontSize: 11, color: x.hot ? '#FBA15C' : '#8A8F99' }}>目标</Text>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: x.hot ? '#FFFFFF' : '#0F1423', marginTop: 4 }}>{x.goal}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: x.hot ? 'rgba(255,255,255,0.85)' : '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ borderTop: '1px solid ' + (x.hot ? 'rgba(255,255,255,0.16)' : '#E8E8E8'), paddingTop: 10 }}>
+                        <Text style={{ fontSize: 11, color: x.hot ? 'rgba(255,255,255,0.45)' : '#C9CBD1' }}>失败形态</Text>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: x.hot ? '#FBA15C' : '#C43A17', marginTop: 4, lineHeight: 1.4 }}>{x.trap}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：Delta / Echo 配对机制 */}
+        <Box style={{ height: 122, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 566, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>刻意制造的张力：Delta 一对一配 Echo</Text>
+                <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 8, flex: 1 }}>
+                    Delta 单独干，会做出技术正确但运营无关的东西——模型漂亮，没人用。Echo 的职责是把工作拽回真实客户问题上。
+                    这不是分工，是纠偏：Echo 不是派活的，是挑方向的。
+                </Text>
+                <Text style={{ fontSize: 11.5, color: '#8A8F99', marginTop: 6, lineHeight: 1.4 }}>
+                    实操规模：每客户 2–4 名 FDE，单项目 2–6 名，驻场常以年计。
+                </Text>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>一个反直觉的事实</Text>
+                <Box style={{ flex: 1, flexDirection: 'row', gap: 14, alignItems: 'center', marginTop: 10 }}>
+                    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>1%</Text>
+                    <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.55, flex: 1 }}>
+                        官方估算的 FDE 候选人接受率。全球池子几千人，而且大多已经被雇走。
+                        2016 年，Palantir 的 FDE 数量<b style={{ color: '#FBA15C' }}>超过了传统软件工程师</b>。
+                    </Text>
+                </Box>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.55)', marginTop: 6 }}>
+                    结论：这不是靠扩招能解决的岗位，是结构性稀缺资源。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：行业扩散 */}
+        <Box style={{ height: 66, flexDirection: 'row', gap: 10, alignItems: 'stretch' }}>
+            <Box style={{ width: 176, background: '#0F1423', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FFFFFF' }}>全行业在复制</Text>
+                <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', marginTop: 5, lineHeight: 1.35 }}>2024–2026 全面替换售前编制</Text>
+            </Box>
+            {[
+                { k: 'Anthropic', v: '前沿模型安全落地' },
+                { k: 'OpenAI', v: '企业微调与评测' },
+                { k: 'Databricks', v: '数据平台 + AI' },
+                { k: 'Cohere / Google', v: '企业模型交付' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>07 / 60</Text>
+    </Box>
+</Slide>

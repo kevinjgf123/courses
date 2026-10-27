@@ -1,0 +1,108 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            八大领域共通硬规则：<span style={{ color: '#FA4F24' }}>不管做哪个领域都成立</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这八条是从八个领域里抽出来的公约。记住它们，比记住某个领域的做法更有用
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：八条规则 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+                {[
+                    { n: '01', k: '真数据优先', d: '任何东西没连真数据就不许建' },
+                    { n: '02', k: '密级前置', d: '建之前先标密级，不许后补' },
+                    { n: '03', k: '当场签字', d: '客户负责人签字，不接受代签' },
+                    { n: '04', k: '可逆优先', d: '删除合并先留退路' },
+                ].map((x) => (
+                    <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                        <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
+                            <Text style={{ fontSize: 11, color: '#FA4F24' }}>{x.n}</Text>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 11, color: '#5A6070', lineHeight: 1.35, marginTop: 5 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+                {[
+                    { n: '05', k: '现场写码', d: '在客户环境写，不总部代写' },
+                    { n: '06', k: '写回路径', d: '无写回路径的场景不上线' },
+                    { n: '07', k: '当场定档', d: '可复用度现场判定，不留到总部' },
+                    { n: '08', k: '七成验收', d: '召回低于七成不上线' },
+                ].map((x) => (
+                    <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #C43A17' }}>
+                        <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
+                            <Text style={{ fontSize: 11, color: '#C43A17' }}>{x.n}</Text>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 11, color: '#5A6070', lineHeight: 1.35, marginTop: 5 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 中：为什么是这八条 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>这八条的共同结构</Text>
+                {[
+                    { k: '三条前置', v: '真数据、密级、签字——都在动手之前' },
+                    { k: '三条同步', v: '现场写码、写回路径、定档——都在过程之中' },
+                    { k: '两条收口', v: '可逆、验收——都在交付之前' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 66 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>违反哪条后果最重</Text>
+                {[
+                    { k: '02 密级前置', v: '数据泄露，无法挽回' },
+                    { k: '06 写回路径', v: '交付即闲置，前面白做' },
+                    { k: '07 当场定档', v: '经验流失，公司没长进' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 12, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 92 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 14, lineHeight: 1.4 }}>
+                    这三条建议直接写进现场工作守则。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：适用性 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>适用范围</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>八大领域、四个阶段，一个都不例外</Text>
+            </Box>
+            {[
+                { k: '四阶段', v: 'Enter / Investigate / Execute / 回流' },
+                { k: '八领域', v: '管道·本体·主数据·指标·知识库·治理·Agent·4A' },
+                { k: '两种项目', v: '新客户项目与平台迭代同样适用' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>52 / 60</Text>
+    </Box>
+</Slide>

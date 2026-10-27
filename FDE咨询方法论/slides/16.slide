@@ -1,0 +1,114 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 走过的路：<span style={{ color: '#FA4F24' }}>从非标准交付到标准行业实践</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这二十年走过的路，对应今天咨询公司与企业 IT 之间的那条鸿沟——也是 FDE 方法论可以借鉴的全部理由
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 四个阶段 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                {
+                    y: '2005', t: '非标准交付', c: '#FA4F24',
+                    d: '为情报客户定制，几乎每个项目都从零开始。产品是项目的一部分，不是项目的目标。',
+                    k: '关键词：项目制',
+                },
+                {
+                    y: '2010s', t: '平台化起步', c: '#E0641E',
+                    d: '把重复的部分收进 Gotham / Foundry，本体成为平台的中心。「一个客户定制」开始变成「平台的一次实例化」。',
+                    k: '关键词：可复用',
+                },
+                {
+                    y: '2016', t: '组织失衡与平衡', c: '#C43A17',
+                    d: 'FDE 数量超过传统软件工程师。极致贴近客户与平台化沉淀之间第一次正面碰撞，最后达成动态平衡。',
+                    k: '关键词：动态平衡',
+                },
+                {
+                    y: '2023+', t: '经验软件化', c: '#9E3410',
+                    d: 'AIP Bootcamp 把二十年经验做成模板，3–6 个月的交付压到 5 天。FDE 的角色从「铺路」转向「找新路」。',
+                    k: '关键词：软件化',
+                },
+            ].map((x) => (
+                <Box key={x.y} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.y}</Text>
+                        <Box style={{ width: 1, height: 14, background: '#E8E8E8' }} />
+                        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '0 11px', marginTop: 10 }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：给咨询公司的启示 */}
+        <Box style={{ height: 176, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 452, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>对今天的咨询公司意味着什么</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    这条路证明了：贴近客户与沉淀平台不矛盾，但需要一个明确的抽象动作。多数咨询公司卡住的地方不是不愿意贴现场，是没做过抽象这一步。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        这也是 FDE 与传统顾问最本质的分水岭：顾问交付完就走了，FDE 必须把经验带走。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>可以直接借用的三件事</Text>
+                    {[
+                        { k: '借一', v: '把「交付即上线」写进合同和考核' },
+                        { k: '借二', v: '设一个抽象回流的硬性交付物' },
+                        { k: '借三', v: '按 Echo / Delta 配对组队，不按专业分组' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 34 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 68, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 90 }}>别照抄的部分</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>
+                        保密资质与二十年行业积累无法复制，可复制的是交付结构与方法。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：下一部分预告 */}
+        <Box style={{ height: 62, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 214, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>下一部分</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>现场三动作</Text>
+            </Box>
+            {[
+                { k: 'Enter', v: '进场第一天做什么' },
+                { k: 'Investigate', v: '30–40% 时间挖真相' },
+                { k: 'Execute', v: '交付即上线' },
+                { k: '硬顺序', v: '先 Ontology 再 AI' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>16 / 60</Text>
+    </Box>
+</Slide>

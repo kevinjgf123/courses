@@ -1,0 +1,104 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            十二项上线检查：<span style={{ color: '#FA4F24' }}>逐项打勾，缺一不算上线</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这一页建议直接做成现场工作台的默认清单。空一项就是没上线，不接受「基本完成」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：十二项 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { g: '数据（4项）', c: '#FA4F24', items: ['真实数据源已接通', '批处理幂等可重放', '失败有告警', '历史可追溯'] },
+                { g: '本体（3项）', c: '#E0641E', items: ['对象定义客户签字', '基数关系已定', '密级继承已配置'] },
+                { g: '业务（3项）', c: '#C43A17', items: ['作业员实际登录过', '口径客户签字', '结论进真实流程'] },
+                { g: '运营（2项）', c: '#A83310', items: ['客户侧责任人指定', '运维手册已交接'] },
+            ].map((x) => (
+                <Box key={x.g} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: x.c }}>{x.g}</Text>
+                    <Box style={{ flex: 1, justifyContent: 'center' }}>
+                        {x.items.map((y) => (
+                            <Box key={y} style={{ flexDirection: 'row', gap: 8, marginTop: 9, alignItems: 'flex-start' }}>
+                                <Box style={{ width: 13, height: 13, borderRadius: 2, border: `1.5px solid ${x.c}`, marginTop: 3 }} />
+                                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{y}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：判定与整改 */}
+        <Box style={{ height: 190, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>判定规则</Text>
+                {[
+                    { k: '12/12', v: '可以移交，FDE 准备退出' },
+                    { k: '9–11', v: '限期整改，整改期不算交付完成' },
+                    { k: '≤8', v: '视为未上线，必须重走上线流程' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C', width: 58 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 12 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        不设「基本完成」这一档。这一档就是延期。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>最容易被跳过、代价最大的三项</Text>
+                    {[
+                        { k: '历史可追溯', v: '出事查不到原因，前面的努力全归零' },
+                        { k: '作业员登录过', v: '没登录就上线，等于交付给空气' },
+                        { k: '运维手册', v: 'FDE 一撤，客户没人会维护' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 9, alignItems: 'flex-start' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 88 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 62, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 108 }}>执行方式</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>
+                        客户方与 FDE 逐项共同确认，双方签字。不允许会后补签。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：与移交的关系 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>这份清单的作用</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>它是 FDE 退出与留下的分界线</Text>
+            </Box>
+            {[
+                { k: '不达标 = 留下', v: '继续驻场整改，不计交付' },
+                { k: '全达标 = 退出', v: '转入运营移交' },
+                { k: '复用 = 下单', v: '进入第二个客户' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>38 / 60</Text>
+    </Box>
+</Slide>

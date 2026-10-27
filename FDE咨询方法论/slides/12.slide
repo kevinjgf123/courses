@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 与传统三 roles 的<span style={{ color: '#FA4F24' }}>结构性差异</span>：不是能力清单不同，是交付物形态不同
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这一页是全册最有实用价值的判据——你可以拿它去判断一个人到底该叫什么角色
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {/* 对比表 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 0 }}>
+            <Box style={{ height: 42, flexDirection: 'row', background: '#0F1423', borderRadius: 4, alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', width: 160, paddingLeft: 16 }}>维度</Text>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C9CBD1', flex: 1, textAlign: 'center' }}>咨询顾问</Text>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C9CBD1', flex: 1, textAlign: 'center' }}>产品经理</Text>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C9CBD1', flex: 1, textAlign: 'center' }}>开发经理</Text>
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FA4F24', flex: 1, textAlign: 'center' }}>FDE</Text>
+            </Box>
+            {[
+                { k: '交付物形态', a: 'PPT / 蓝图', b: '需求文档 / 路线图', c: '排期 / 上线报告', d: '可运行的生产环境', hot: true },
+                { k: '是否写生产代码', a: '不写', b: '不写', c: '不写（管别人写）', d: '写，且在现场写' },
+                { k: '停留位置', a: '会议室 / 远程', b: '会议室', c: '内部', d: '客户生产环境' },
+                { k: '与客户数据的关系', a: '看 PPT', b: '看看板', c: '看工单', d: '直接读写生产数据' },
+                { k: '失败的代价', a: '客户不续约', b: '需求做错', c: '延期', d: '客户业务停摆' },
+                { k: '被追问的对象', a: '项目成果', b: '需求合理性', c: '交付质量', d: '上线了吗，管用吗' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, flexDirection: 'row', background: x.hot ? '#FFF3EE' : '#F7F7F8', borderRadius: 3, marginTop: 5, alignItems: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', width: 160, paddingLeft: 16 }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12, color: '#5A6070', flex: 1, textAlign: 'center' }}>{x.a}</Text>
+                    <Text style={{ fontSize: 12, color: '#5A6070', flex: 1, textAlign: 'center' }}>{x.b}</Text>
+                    <Text style={{ fontSize: 12, color: '#5A6070', flex: 1, textAlign: 'center' }}>{x.c}</Text>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17', flex: 1, textAlign: 'center' }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：两条判别式 */}
+        <Box style={{ height: 138, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>判别式一</Text>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF', marginTop: 9, lineHeight: 1.4 }}>
+                    他写的代码，客户生产环境在用吗？
+                </Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5, marginTop: 8 }}>
+                    这一条能把顾问、产品经理、开发经理和 FDE 全部分开。答案是「是」的，才叫 FDE。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>判别式二</Text>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF', marginTop: 9, lineHeight: 1.4 }}>
+                    业务负责人否掉他的方案，他怎么办？
+                </Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5, marginTop: 8 }}>
+                    这一条能把「驻场工程师」和「外包实施」分开。FDE 会在现场找证据，不是执行也不是放弃。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：一句结论 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 22px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', width: 132 }}>一句话结论</Text>
+                <Text style={{ fontSize: 16.5, color: '#FFFFFF', lineHeight: 1.45, flex: 1 }}>
+                    前三种角色交付的是<tspan style={{ fontWeight: 'bold' }}>关于系统的论述</tspan>，FDE 交付的是<tspan style={{ fontWeight: 'bold' }}>系统本身</tspan>
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>12 / 60</Text>
+    </Box>
+</Slide>

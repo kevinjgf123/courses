@@ -1,0 +1,87 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE × 知识库：<span style={{ color: '#FA4F24' }}>切片工艺与密级继承是现场活</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            知识库项目失败，八成不是模型不行，是切片切错了、密级漏了、反向索引没建
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：三个特有处理 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '切片工艺', c: '#FA4F24', d: '按语义边界切，不按字数切。表格、条款、图纸说明各有切法。' },
+                { k: '密级继承', c: '#E0641E', d: '一个文件里的段落可能不同密级，切片必须带密级标签。' },
+                { k: '反向索引', c: '#C43A17', d: '从答案反查来源段落。这既是可信手段，也是审计要求。' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 12, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：切片工艺现场判据 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>切片工艺的现场判据</Text>
+                {[
+                    { k: '看边界', v: '一个切片能不能独立读懂？读不懂就是切错了' },
+                    { k: '看归属', v: '每段能不能追到原始文件与页码？不能就是没留痕' },
+                    { k: '看召回', v: '拿十个真实问题测，答对几条？低于七条不上线' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 60 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>与本体、知识库、Agent 的关系</Text>
+                {[
+                    { k: '本体定范围', v: '知识库只管本体覆盖不到的文档部分' },
+                    { k: '知识库供语料', v: 'Agent 从知识库取依据，不凭空生成' },
+                    { k: 'Agent 出处', v: '每个结论必须带知识库切片链接' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 92 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    没有出处的答案，在客户处等于没有答案。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：现场动作 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>现场四步</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>手工活多，所以更依赖现场</Text>
+            </Box>
+            {[
+                { k: '抽样本', v: '亲手切一百条看效果' },
+                { k: '标密级', v: '逐段落标，不按文件一刀切' },
+                { k: '建反查', v: '答案能点回原文位置' },
+                { k: '实测问', v: '拿真实业务问题跑十遍' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>44 / 60</Text>
+    </Box>
+</Slide>

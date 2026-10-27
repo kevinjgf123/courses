@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            案例 C：<span style={{ color: '#FA4F24' }}>招标书生成 —— 长任务的增量交付范式</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这个场景最难的不是技术，是「等一整份文档出来」的客户耐心。FDE 用增量输出化解它
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：五段流水线 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+            {[
+                { n: '01', k: '招标书拆解', c: '#FA4F24', d: '把整本标书切成可应答的条款清单', out: '条款清单' },
+                { n: '02', k: '素材匹配', c: '#E0641E', d: '按条款去匹配历史投标素材与资质', out: '素材池命中表' },
+                { n: '03', k: '章节生成', c: '#C43A17', d: '按章节逐节生成，可中断可续跑', out: '章节草稿' },
+                { n: '04', k: '就地预览', c: '#A83310', d: '右侧直接看，不下载不等待', out: '评审意见' },
+                { n: '05', k: '版本固化', c: '#8A2A0D', d: '模板、样例、素材分版本管理', out: '版本快照' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
+                        <Text style={{ fontSize: 12, color: x.c }}>{x.n}</Text>
+                        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45, marginTop: 9, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 10px', marginTop: 8 }}>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.88)', lineHeight: 1.35 }}>产出：{x.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：FDE 怎么改 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>FDE 改掉的四件事</Text>
+                {[
+                    { k: '不整份出', v: '按章节增量输出，每章可当场评审' },
+                    { k: '不下载', v: '右侧就地预览，评审意见落在原文旁' },
+                    { k: '不重跑', v: '改一段只重生成这一段，不从头再来' },
+                    { k: '不定死', v: '模板与素材按版本管理，可逐版对比' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 62 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>这个场景验证了一条 FDE 铁律</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.55, marginTop: 10, flex: 1 }}>
+                    客户不是在等结果，是在等「敢不敢签字」。增量交付让客户在第一小时就介入，而不是第三天拿到一份成品再全部推翻。
+                </Text>
+                <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.45 }}>
+                        交付节奏的正确打开方式：让客户尽早犯错的，而不是让客户尽早惊喜。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：本体层的落点 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>在这个场景里</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>本体不是炫技，是省钱</Text>
+            </Box>
+            {[
+                { k: '条款', v: '唯一可应答单元，可复用到下一本标书' },
+                { k: '素材', v: '带版本与有效期，过期自动失效' },
+                { k: '资质', v: '有有效期，过期不参与生成' },
+                { k: '章节', v: '模板与生成解耦，可换模板不改逻辑' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>32 / 60</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,89 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE × 指标：<span style={{ color: '#FA4F24' }}>口径是策略，不是配置</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            指标体系失败，八成不是算错，是「谁说了算」没定。FDE 必须把这件事摆到桌面上裁定
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：口径四要素 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '定义', c: '#FA4F24', d: '这个指标要回答什么问题。不是「算什么」，是「回答什么」。' },
+                { k: '公式', c: '#E0641E', d: '分子分母、时间窗、过滤条件，逐条写死，不留给开发猜。' },
+                { k: '归属', c: '#C43A17', d: '这个口径谁签字、以后谁有权改。没有归属的口径必然漂移。' },
+                { k: '争议', c: '#A83310', d: '记录曾经有哪几种算法、各自理由，保留裁定痕迹。' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：现场裁定 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>现场裁定四步</Text>
+                {[
+                    { k: '摆出来', v: '把同一个指标的三套算法同时摆桌上' },
+                    { k: '问动机', v: '每套算法背后是谁在用、为什么这么算' },
+                    { k: '当场定', v: '由业务负责人签字，当场定一套' },
+                    { k: '留档', v: '另外几套写进争议记录，不删' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 58 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>口径不统一对 AI 的杀伤</Text>
+                {[
+                    '同一个问题，AI 每隔一段时间给不同答案，信任归零',
+                    '无法归因：说不清是模型不行还是口径变了',
+                    '驾驶舱、问数、报表三套数字，会上吵到无法决策',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FA4F24', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    指标不是技术问题，是一次组织决策。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：口径与本体、Agent 的关系 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>指标挂在哪</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>指标是本体的派生视图</Text>
+            </Box>
+            {[
+                { k: '依赖本体', v: '算指标只用本体里的对象与链接' },
+                { k: '不直连库', v: '指标不直接查原始表' },
+                { k: 'Agent 只读', v: '问数走指标层，不自行拼 SQL' },
+                { k: '变更走流程', v: '改口径要重新签字' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>48 / 60</Text>
+    </Box>
+</Slide>

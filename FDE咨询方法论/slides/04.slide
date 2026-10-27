@@ -1,0 +1,148 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            Approach：五阶段推进顺序与<span style={{ color: '#FA4F24' }}>每一步的产出物</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            箭头就是施工顺序，不能颠倒也不能跳步——每个方框里写的是这一步必须交出来的东西，交不出来就是空转
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+
+        {/* 顶部阶段箭头带 */}
+        <Box style={{ height: 38, flexDirection: 'row', gap: 3 }}>
+            <Box style={{ width: 66, background: '#5A6070', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>启动</Text>
+            </Box>
+            {[
+                { n: '第一阶段', t: 'Enter 进场', c: '#FA4F24' },
+                { n: '第二阶段', t: 'Investigate 诊断', c: '#E0641E' },
+                { n: '第三阶段', t: 'Model 建模', c: '#D2531A' },
+                { n: '第四阶段', t: 'Build 构建', c: '#C43A17' },
+                { n: '第五阶段', t: 'Hand over 回流移交', c: '#9E3410' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: x.c, borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                    <Box style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.45)' }} />
+                    <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.94)' }}>{x.t}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 任务区 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+
+            {/* 左侧竖条 */}
+            <Box style={{ width: 54, background: '#0F1423', borderRadius: 3, alignItems: 'center', justifyContent: 'center', padding: '8px 0' }}>
+                {['项目', '实施', '任务', '分解'].map((t) => (
+                    <Text key={t} style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', marginTop: 4 }}>{t}</Text>
+                ))}
+            </Box>
+
+            {/* 五行任务链 */}
+            <Box style={{ flex: 1, flexDirection: 'column' }}>
+                {[
+                    {
+                        n: '①', c: '#FA4F24',
+                        items: [
+                            { t: '配对组建', o: 'Echo + Delta 组队分工契约' },
+                            { t: '现场准入', o: '客户现场准入清单 · 安全与合规口径' },
+                            { t: '数据环境摸底', o: '数据环境画像 · 可用源与阻塞项台账' },
+                            { t: '痛点初筛', o: '现场问题清单 · 优先级初排' },
+                        ],
+                    },
+                    {
+                        n: '②', c: '#E0641E',
+                        items: [
+                            { t: '决策链梳理', o: '决策链路图 · 谁在什么会上做什么决定' },
+                            { t: '真实流程还原', o: '现场流程还原图 · 与制度文档的差异表' },
+                            { t: '痛点量化', o: '痛点优先级矩阵 · 耗时与错误成本' },
+                            { t: '场景定选', o: '首场景立项书 · 验收标准前置约定' },
+                        ],
+                    },
+                    {
+                        n: '③', c: '#D2531A',
+                        items: [
+                            { t: '对象与链接建模', o: '对象类型 / 链接类型 / 动作类型清单' },
+                            { t: '解析与写回策略', o: '主数据解析规则 · 可逆元数据设计' },
+                            { t: '最小可行治理', o: '密级标记目录 · 对象与属性级策略矩阵' },
+                            { t: '指标口径裁定', o: '口径注册表 · 五元组与唯一裁定记录' },
+                        ],
+                    },
+                    {
+                        n: '④', c: '#C43A17',
+                        items: [
+                            { t: '管道与切片', o: '幂等管道骨架 · 切片工艺与密级继承' },
+                            { t: 'Agent 装配', o: '工具白名单 · 出口策略 · 记忆边界 · 遥测' },
+                            { t: '生产环境跑通', o: '可运行的生产环境 · 并发与性能基线' },
+                            { t: '场景验收', o: '上线验收记录（12 项逐项打勾）' },
+                        ],
+                    },
+                    {
+                        n: '⑤', c: '#9E3410',
+                        items: [
+                            { t: '平台抽象', o: '平台抽象提案 · 通用 / 独有切分结论' },
+                            { t: '知识转移', o: '三层移交：操作手册 / 陪跑 / 自主' },
+                            { t: '运营移交', o: '运营手册 · 责任矩阵 · 问题闭环机制' },
+                            { t: '复盘与回流', o: '现场复盘报告 · 产品与平台反馈清单' },
+                        ],
+                    },
+                ].map((row, ri) => (
+                    <Box key={row.n} style={{ flex: 1, flexDirection: 'column' }}>
+                        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 4 }}>
+                            <Box style={{ width: 22, background: row.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{row.n}</Text>
+                            </Box>
+                            {row.items.map((x, i) => (
+                                <Box key={x.t} style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 3 }}>
+                                    <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, border: '1px solid ' + row.c, padding: '5px 8px', flexDirection: 'column', justifyContent: 'center' }}>
+                                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                                        <Text style={{ fontSize: 9, color: '#C43A17', marginTop: 3, lineHeight: 1.3 }}>产出：{x.o}</Text>
+                                    </Box>
+                                    {i < row.items.length - 1 && (
+                                        <Box style={{ width: 12, alignItems: 'center', justifyContent: 'center' }}>
+                                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: row.c }}>→</Text>
+                                        </Box>
+                                    )}
+                                </Box>
+                            ))}
+                        </Box>
+                        {ri < 4 && (
+                            <Box style={{ height: 11, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                                <Box style={{ width: 1, height: 11, background: '#FBA15C' }} />
+                                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', marginLeft: 2 }}>↓</Text>
+                            </Box>
+                        )}
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 底部贯穿条 */}
+        <Box style={{ flexDirection: 'row', gap: 8, height: 28 }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 80 }}>顺序铁律</Text>
+                <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.9)', flex: 1 }}>先诊断再建模，先建 Ontology 再上 AI，先跑生产再谈移交</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '4px solid #FA4F24', padding: '0 12px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', width: 80 }}>碎石路机制</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', flex: 1 }}>贯穿全程：每一步都要问「这部分能不能被下一个客户复用」，能就抽象进平台</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '4px solid #F87D2F', padding: '0 12px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', width: 80 }}>知识转移</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', flex: 1 }}>贯穿全程：Echo 管业务采纳，Delta 管系统运维，不做这两层的移交等于没交付</Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>04 / 60</Text>
+    </Box>
+</Slide>

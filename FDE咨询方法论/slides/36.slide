@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            现场五问：<span style={{ color: '#FA4F24' }}>Echo 每场对话的固定开场</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            不靠临场发挥，靠固定问题清单。每场对话都问一遍，30–40% 的时间就是这么花掉的
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：五问 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { n: 'Q1', k: '谁在做', q: '这件事现在是谁在做？做了多久？', p: '定位执行层，找到真正的信息源', c: '#FA4F24' },
+                { n: 'Q2', k: '出过事吗', q: '上一次出问题是哪一次？怎么发现的？', p: '检验问题是否真实存在', c: '#E0641E' },
+                { n: 'Q3', k: '数怎么来', q: '这个数字怎么算出来的？口径谁定的？', p: '暴露口径分歧，这是本体切入点', c: '#C43A17' },
+                { n: 'Q4', k: '谁会反对', q: '如果这个环节明天消失，谁会反对？', p: '找出变革阻力与关键人', c: '#A83310' },
+                { n: 'Q5', k: '要什么才改', q: '你需要什么样的东西才愿意改流程？', p: '拿到真实交付期待，不是想象的', c: '#8A2A0D' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.45, marginTop: 9, flex: 1 }}>{x.q}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.p}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：追问规则 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>三条追问纪律</Text>
+                {[
+                    { k: '问原话', v: '记客户的原话，不要转述、不要美化' },
+                    { k: '追问三次', v: '对方第一次给的答案通常是制度答案' },
+                    { k: '不当裁判', v: '不评价对方对错，只记录事实' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 72 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>对话对象要分层，不许只听一种声音</Text>
+                {[
+                    { k: '决策者', v: '签字的那个人，关心的是风险与收益' },
+                    { k: '执行者', v: '作业员，关心的是会不会增加工作量' },
+                    { k: '反对者', v: '会抵制的人，关心的是自己的位置' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 56 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    只听一种声音，就是 Delta 单干。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：硬指标 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>对话的硬指标</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>官方口径，不达标就是没做 Investigate</Text>
+            </Box>
+            {[
+                { k: '每周', v: '5–15 场客户对话' },
+                { k: '占工时', v: '30–40%' },
+                { k: '覆盖', v: '决策者 + 执行者 + 反对者' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24', width: 48 }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>36 / 60</Text>
+    </Box>
+</Slide>

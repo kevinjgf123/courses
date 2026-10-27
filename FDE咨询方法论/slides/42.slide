@@ -1,0 +1,88 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE × Ontology：<span style={{ color: '#FA4F24' }}>在建平台的第 N 次实例化</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            FDE 建的从来不是某个客户的项目本体，而是平台的又一次实例化。这决定了他建东西的顺序
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：四个特有处理 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '粒度试错', c: '#FA4F24', d: '对象怎么切，只能在真实数据上试。会议室里定的粒度在现场往往被推翻。' },
+                { k: '实例化', c: '#E0641E', d: '先照平台范式建，不自创一套。偏离越多，第二个客户越贵。' },
+                { k: '密级前置', c: '#C43A17', d: '密级与继承在建对象时就定，不许「先建后补」。' },
+                { k: '版本化', c: '#A83310', d: '本体有版本、有分支，schema 变更走流程，不现场改。' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：粒度试错的现场判据 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>粒度试错：现场判据</Text>
+                {[
+                    { k: '能不能挂', v: '这个对象能挂到一个动作上吗？挂不上就是粒度错' },
+                    { k: '是不是一对一', v: '若一对一，多半该合并；若一对多，多半该拆开' },
+                    { k: '换个人认吗', v: '换个资深员工还认这个定义吗？不认就是没对齐' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 96 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>FDE 与架构师的根本分工</Text>
+                {[
+                    { k: '架构师', v: '决定平台应该长什么样' },
+                    { k: 'FDE', v: '决定这一次的实例长什么样' },
+                    { k: '差异回流', v: '若这次实例比范式更优，提为新范式' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 72 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    偏离范式必须有理由，且理由必须被记录。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：产出与回流 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>FDE 在本领域的产出物</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>都是活的东西，不是文档</Text>
+            </Box>
+            {[
+                { k: '本体骨架', v: '跑在客户环境' },
+                { k: '密级矩阵', v: '逐链接生效' },
+                { k: '偏离说明', v: '含理由与代价' },
+                { k: '范式提案', v: '若更优则提' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>42 / 60</Text>
+    </Box>
+</Slide>

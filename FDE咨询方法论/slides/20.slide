@@ -1,0 +1,119 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            Investigate：<span style={{ color: '#FA4F24' }}>把 30–40% 的时间花在挖真相上</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这不是调研，这是找那个「值得派 Delta 去修」的问题。找错对象，后面全白干
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：四个动作 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                {
+                    k: '决策链', n: '01', c: '#FA4F24',
+                    d: '从报表往回追。谁看？看完了做什么决定？决定传给谁执行？追到签字那一层为止。',
+                    out: '产出：决策链路图',
+                    bad: '只听业务负责人的一面倒之词',
+                },
+                {
+                    k: '真流程', n: '02', c: '#E0641E',
+                    d: '跟着作业员走一遍完整流程。系统里的流程和纸上的流程都不是真流程。',
+                    out: '产出：现状流程图 · 断点清单',
+                    bad: '把制度文件当成流程真相',
+                },
+                {
+                    k: '量化', n: '03', c: '#C43A17',
+                    d: '把痛点变成数字。这个环节每月损失多少工时、出错代价多少、等待多少天。',
+                    out: '产出：痛点优先级矩阵',
+                    bad: '用形容词描述痛点',
+                },
+                {
+                    k: '定选', n: '04', c: '#A83310',
+                    d: '只选一个场景先做。第一个场景必须小到能在两周内上线，大到业务会天天用。',
+                    out: '产出：首个场景定义书',
+                    bad: '一次铺开五个场景全做',
+                },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12, color: '#8A8F99', marginLeft: 'auto' }}>{x.n}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 9, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.out}</Text>
+                    </Box>
+                    <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '0 11px', marginTop: 7 }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.35 }}>{x.bad}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：时间硬指标 + 追问清单 */}
+        <Box style={{ height: 178, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 424, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>时间分配的官方口径</Text>
+                <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 12, marginTop: 10 }}>
+                    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FA4F24' }}>30–40%</Text>
+                    <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.82)', flex: 1, lineHeight: 1.45 }}>
+                        的全部工时用于对话式客户发现。剩下 60–70% 才是建模与建设。
+                    </Text>
+                </Box>
+                <Box style={{ flexDirection: 'row', gap: 12, marginTop: 14 }}>
+                    {[
+                        { k: '每周', v: '5–15 场客户对话' },
+                        { k: '每次', v: '至少触及一位决策者' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flex: 1, background: 'rgba(250,79,36,0.2)', borderRadius: 3, padding: '0 12px' }}>
+                            <Text style={{ fontSize: 11, color: '#FBA15C' }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF', marginTop: 3 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>每场对话必须问到的五句</Text>
+                {[
+                    '这件事现在是谁在做？做多久了？',
+                    '上一次出问题是哪一次？怎么发现的？',
+                    '这个数字是怎么算出来的？口径谁定的？',
+                    '如果这个环节明天消失，谁会反对？',
+                    '你需要一个什么样的东西才愿意改流程？',
+                ].map((x) => (
+                    <Text key={x} style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, marginTop: 8 }}>{x}</Text>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：常见误判 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>最贵的三个误判</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>踩中任意一个，Execute 必然失败</Text>
+            </Box>
+            {[
+                { k: '痛点是假象', v: '业务负责人说的痛点，动手做的同事不认' },
+                { k: '对象是错的', v: '粒度切错，后面全错' },
+                { k: '决策人没找到', v: '干完了没人敢签字' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>20 / 60</Text>
+    </Box>
+</Slide>

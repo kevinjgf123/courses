@@ -1,0 +1,93 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 组织治理：<span style={{ color: '#FA4F24' }}>不给工单队列的三条制度设计</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            模式要落地，必须有制度护着。这三条不写进制度，FDE 就会退化成高级外包
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：三根支柱 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '不设工单队列', c: '#FA4F24', d: 'FDE 不接工单池。事情直接落到具体人，不排期、不等待、不被优先级排序。', key: '官方明文规定' },
+                { k: '不被隔绝于现场', c: '#E0641E', d: '不让 FDE 只在办公室看数据。必须被允许看到客户的混乱与后果。', key: '现场天数是硬要求' },
+                { k: '第一天就背责任', c: '#C43A17', d: '新人第一天就对接真实后果，而不是先做培训再看影子项目。', key: '没有观察期' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 15.5, fontWeight: 'bold', color: x.c, lineHeight: 1.3 }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 12, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 10 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.key}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：两条行为准则 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>两条行为准则（官方表述）</Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '10px 13px', marginTop: 11 }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.4 }}>
+                        对结果做彻底的承诺
+                    </Text>
+                    <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', lineHeight: 1.35, marginTop: 4 }}>
+                        radical commitment to the outcome
+                    </Text>
+                </Box>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '10px 13px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.4 }}>
+                        对追真相做无情的坚持
+                    </Text>
+                    <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', lineHeight: 1.35, marginTop: 4 }}>
+                        ruthless commitment to truth-seeking
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>外部对这个头衔的批评与回应</Text>
+                {[
+                    { k: '批评', v: 'a16z 创始人称其「头衔套利」——换了个名字干工程活' },
+                    { k: '回应', v: '大型企业与政府的深度软件集成，确实需要专属角色承担' },
+                    { k: '扩散', v: 'Anthropic、OpenAI、Databricks、Cohere、Google 都在建同类岗位' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 40 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：四条反模式 */}
+        <Box style={{ height: 68, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>四种组织反模式</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>出现即模式失效</Text>
+            </Box>
+            {[
+                { k: '驻场外包', v: '按人天结算，不承担后果' },
+                { k: '工单化', v: '所有事情进队列排期' },
+                { k: '双头汇报', v: '项目要审批才能动代码' },
+                { k: '经验私有', v: '离场不回流，个人带走路' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>55 / 60</Text>
+    </Box>
+</Slide>

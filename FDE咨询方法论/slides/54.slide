@@ -1,0 +1,87 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            团队配比：<span style={{ color: '#FA4F24' }}>怎么把人摆进一个项目</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            1% 接受率不是营销话术，是筛选强度。进来的人怎么配，直接决定这套模式能不能跑
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：三层配比 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '每客户配置', n: '2–4 人', d: 'Delta 与 Echo 一对一配对为基本单元，另加平台侧支持。', c: '#FA4F24' },
+                { k: '常驻现场', n: '2–6 人', d: '长期驻场的那部分，随项目阶段进出，不是全程不变。', c: '#E0641E' },
+                { k: '管道配比', n: '1 : 200–500万', d: '每 200–500 万美元企业管道配 1 名 FDE，按商机算。', c: '#C43A17' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#0F1423', marginTop: 10 }}>{x.n}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：能力三角与人选 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>三类能力缺一不可</Text>
+                {[
+                    { k: '工程', v: '能在客户脏环境里把东西跑通' },
+                    { k: '业务', v: '把模糊需求变成可建的模型' },
+                    { k: '影响力', v: '说服资深负责人改流程' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 62 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 12 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        只挑工程好的人，得到的是售前工程师；三种都好，才敢叫 FDE。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>Echo 的理想背景</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>
+                    通常不是软件工程师。军官、医疗老兵、金融老手——这类人见过真实的资源约束与组织政治，天然懂「怎么让事情在体系里跑起来」。
+                </Text>
+                <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.45 }}>
+                        招 Delta 找技术，招 Echo 找做过艰难交付的人。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：筛选机制 */}
+        <Box style={{ height: 68, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>筛选机制</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>候选人接受率约 1%</Text>
+            </Box>
+            {[
+                { k: '全天实战', v: '五天在客户现场' },
+                { k: '当场淘汰', v: '手不碰生产即淘汰' },
+                { k: '背责任', v: '新人第一天就背真实后果' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>54 / 60</Text>
+    </Box>
+</Slide>

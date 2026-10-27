@@ -1,0 +1,99 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            交付验收：<span style={{ color: '#FA4F24' }}>什么叫「真的上线了」</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            十二项检查。逐项打勾，全过才算交付。少一项就是「技术正确、运营无关」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：十二项检查 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { g: '环境真实', c: '#FA4F24', items: ['连客户真实数据源，非样例', '跑在客户环境，非总部演示机', '接真实写路径，不只读'] },
+                { g: '业务在用', c: '#E0641E', items: ['客户作业员每天登录', '使用量可查询、可截图', '业务方主动催过结果'] },
+                { g: '口径签字', c: '#C43A17', items: ['指标口径客户签字确认', '对象定义客户签字确认', '密级与权限客户签字确认'] },
+                { g: '责任落地', c: '#A83310', items: ['客户侧责任人已指定', '有告警、有值班、有响应人', 'FDE 退出后仍有人维护'] },
+            ].map((x) => (
+                <Box key={x.g} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 15.5, fontWeight: 'bold', color: x.c }}>{x.g}</Text>
+                    <Box style={{ flex: 1, justifyContent: 'center' }}>
+                        {x.items.map((y) => (
+                            <Box key={y} style={{ flexDirection: 'row', gap: 8, marginTop: 8, alignItems: 'flex-start' }}>
+                                <Text style={{ fontSize: 11, fontWeight: 'bold', color: x.c, width: 14 }}>✓</Text>
+                                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{y}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：交付物清单 + 反例 */}
+        <Box style={{ height: 194, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 456, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>FDE 离场时必须留下的六件</Text>
+                {[
+                    { k: '活的系统', v: '跑在客户生产环境的本体与 AI 应用' },
+                    { k: '本体定义', v: '对象、链接、基数、密级的书面定义' },
+                    { k: '口径裁定', v: '指标口径与计算逻辑，含争议记录' },
+                    { k: '运维手册', v: '日常操作、常见故障、升级路径' },
+                    { k: '回流提案', v: '提交平台的抽象能力与通用组件' },
+                    { k: '培训记录', v: '客户侧操作人培训与考核结果' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 8, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FBA15C', width: 68 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>三个「看起来交付了」的假象</Text>
+                {[
+                    { k: '演示通过', v: '给客户看的版本与生产跑的版本不是同一个' },
+                    { k: '文档齐全', v: '蓝图画得极漂亮，但没有一条连到生产数据' },
+                    { k: '验收签字', v: '签字的人没打开过系统，是被安排来签的' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ marginTop: 12 }}>
+                        <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+                            <Box style={{ width: 20, height: 20, borderRadius: 10, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>!</Text>
+                            </Box>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 5, marginLeft: 30 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：验收口径 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>验收的唯一提问方式</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>不问「做完了吗」，只问这三句</Text>
+            </Box>
+            {[
+                { k: '上周谁用过？', v: '要名字，要次数' },
+                { k: '上周靠它做了什么决定？', v: '要具体决定' },
+                { k: '它坏了谁会知道？', v: '要人名' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.3 }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>24 / 60</Text>
+    </Box>
+</Slide>

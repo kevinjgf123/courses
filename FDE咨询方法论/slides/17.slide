@@ -1,0 +1,36 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+  <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+  <Box style={{ position: 'absolute', right: 0, top: 0, width: 560, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.28) 0%, rgba(250,79,36,0) 70%)' }} />
+
+  <Box style={{ position: 'absolute', right: 70, top: 110 }}>
+    <Text style={{ fontSize: 300, fontWeight: 'bold', color: 'rgba(255,255,255,0.08)', lineHeight: 1.0 }}>02</Text>
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 240, width: 700, flexDirection: 'column' }}>
+    <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>PART 02</Text>
+    <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 22 }} />
+    <Text style={{ fontSize: 56, fontWeight: 'bold', color: '#FFFFFF', marginTop: 28, lineHeight: 1.15 }}>现场三动作</Text>
+    <Text style={{ fontSize: 17, color: 'rgba(255,255,255,0.62)', letterSpacing: 2, marginTop: 20 }}>ENTER · INVESTIGATE · EXECUTE</Text>
+    <Text style={{ fontSize: 19, color: 'rgba(255,255,255,0.85)', marginTop: 26, lineHeight: 1.6 }}>进场、挖真相、跑生产——以及 AIP 时代那条不可颠倒的硬顺序</Text>
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 520, flexDirection: 'row', gap: 34 }}>
+    {[
+      { k: 'Enter', v: '进场摸底' },
+      { k: 'Investigate', v: '30–40% 时间挖真相' },
+      { k: 'Execute', v: '交付即上线' },
+      { k: '先 Ontology', v: '再建 AI 应用' }
+    ].map((x, i) => (
+      <Box key={x.k} style={{ opacity: 0.72 }}>
+        <Text style={{ fontSize: 12.5, color: '#FBA15C', fontWeight: 'bold' }}>{x.k}</Text>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>{x.v}</Text>
+      </Box>
+    ))}
+  </Box>
+
+  <Box style={{ position: 'absolute', right: 88, bottom: 64, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · FDE咨询方法论</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>17 / 60</Text>
+  </Box>
+</Slide>

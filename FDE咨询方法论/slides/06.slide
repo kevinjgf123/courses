@@ -1,0 +1,103 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 不是一个<span style={{ color: '#FA4F24' }}>职级</span>，而是一种<span style={{ color: '#FA4F24' }}>交付模型</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            衡量它的指标是客户现场生产环境的改变程度——不是工时、不是交付物数量、不是项目结项
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {/* 上：三种衡量口径对比 */}
+        <Box style={{ height: 170, flexDirection: 'row', gap: 10 }}>
+            {[
+                {
+                    t: '按交付物衡量', s: 'false', d: 'FDE 交的是可运行的生产环境，不是 PPT、不是需求文档、不是排期表。',
+                    e: '结项那天问「系统上线了吗」，不是「报告交了吗」',
+                },
+                {
+                    t: '按工时衡量', s: 'false', d: '驻场 8–16 周甚至以年计，工时和产出不成比例，这是它最难被财务接受的地方。',
+                    e: '把 FDE 当人天计费，这个团队永远不赚钱',
+                },
+                {
+                    t: '按现场改变衡量', s: 'true', d: '客户上线了新的作业方式、新的决策依据、新的数据口径，并且有人在用。',
+                    e: '这是唯一能同时对客户和平台负责的口径',
+                },
+            ].map((x) => (
+                <Box key={x.t} style={{ flex: 1, background: x.s === 'true' ? '#0F1423' : '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                        <Box style={{ width: 8, height: 8, borderRadius: 4, background: x.s === 'true' ? '#FA4F24' : '#C9CBD1' }} />
+                        <Text style={{ fontSize: 16.5, fontWeight: 'bold', color: x.s === 'true' ? '#FFFFFF' : '#0F1423' }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 13, color: x.s === 'true' ? 'rgba(255,255,255,0.85)' : '#3A4050', lineHeight: 1.55, marginTop: 12, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: x.s === 'true' ? 'rgba(250,79,36,0.22)' : '#FFF3EE', borderRadius: 3, padding: '8px 10px' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: x.s === 'true' ? '#FBA15C' : '#C43A17', lineHeight: 1.4 }}>{x.e}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：为什么必须是交付模型 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 470, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '14px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24' }}>为什么不能是「招一批顾问」</Text>
+                <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.6, marginTop: 10, flex: 1 }}>
+                    AI 时代的交付难点已经从「设计得对不对」变成「能不能在客户那台跑起来」。这个转变是不可逆的：
+                </Text>
+                {[
+                    '客户现场的脏数据只有进去才能看清，会议室里看不到',
+                    '本体的粒度只能连着真实数据边试边定',
+                    '失败的代价从「方案被否」变成「客户业务停摆」',
+                ].map((t, i) => (
+                    <Box key={i} style={{ flexDirection: 'row', gap: 8, marginTop: 8, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>{t}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ height: 96, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'row', gap: 18, alignItems: 'center' }}>
+                    <Box style={{ width: 116, flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>官方原话</Text>
+                        <Text style={{ fontSize: 13.5, color: '#FFFFFF', marginTop: 6, lineHeight: 1.4 }}>radical commitment<br />to the outcome</Text>
+                    </Box>
+                    <Box style={{ width: 1, height: 66, background: 'rgba(255,255,255,0.18)' }} />
+                    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', lineHeight: 1.6, flex: 1 }}>
+                        对结果的极端承诺。这句话的重点不是「承诺」，是「极端」——它把 FDE 和所有交付岗在责任性质上分开了：
+                        不是对过程负责，是对客户那套流程的运行结果负责。
+                    </Text>
+                </Box>
+                <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+                    {[
+                        { k: '新人第一天', v: '直接背责任，不给工单队列' },
+                        { k: '不被隔离', v: '不挡住客户、混乱与后果' },
+                        { k: '走出去', v: '要走很多路，穿客户的鞋' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：一句判据 */}
+        <Box style={{ height: 62, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 22px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', width: 132 }}>一句话判据</Text>
+            <Text style={{ fontSize: 17, color: '#FFFFFF', lineHeight: 1.5, flex: 1 }}>
+                前三种角色交付的是<tspan style={{ fontWeight: 'bold' }}>关于系统的论述</tspan>，FDE 交付的是<tspan style={{ fontWeight: 'bold' }}>系统本身</tspan>
+            </Text>
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>06 / 60</Text>
+    </Box>
+</Slide>

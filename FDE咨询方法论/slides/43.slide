@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE × Agent：<span style={{ color: '#FA4F24' }}>把 Agent 当成有权限的员工来管</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            Agent 不是模型封装。它带工具、带权限、带记忆、带出口。每一项都是现场的责任边界
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：四件必须现场定义的事 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '工具白名单', c: '#FA4F24', d: '这个 Agent 能调什么、不能调什么。不允许「顺手」访问其他数据源。' },
+                { k: '出口策略', c: '#E0641E', d: '结论写到哪里、谁能看、写错了怎么撤。写路径必须可回滚。' },
+                { k: '记忆边界', c: '#C43A17', d: '什么能记住、记多久、跨场景能不能用。默认不记住。' },
+                { k: '遥测日志', c: '#A83310', d: '每次调用留痕：谁问的、调了什么、依据什么、答了什么。' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 15.5, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：现场红线 */}
+        <Box style={{ height: 206, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>Agent 上线的六条现场红线</Text>
+                {[
+                    '默认只读，写操作必须显式授权',
+                    '无写回路径的场景不许上线',
+                    '无遥测日志不许上线',
+                    '无密级校验不许连真实数据',
+                    '无兜底话术不许面向客户',
+                    '无人工确认不许触发批量动作',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FBA15C', width: 16 }}>✕</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>与传统 AI 项目的差别</Text>
+                {[
+                    { k: 'Dify 式拼装', v: '关注提示词调得好不好，看 demo 效果' },
+                    { k: 'FDE 式装配', v: '关注权限边界清不清，看出事能不能追' },
+                    { k: '验收指标', v: '前者看好答案，后者看权限与日志' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ marginTop: 11 }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 4, marginLeft: 12 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    一个能干的 Agent，不是一个聪明的 Agent。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：现场动作 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>现场四步</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>与传统 AI 项目最不一样的地方</Text>
+            </Box>
+            {[
+                { k: '列工具', v: '先列工具，再写提示词' },
+                { k: '划权限', v: '当场划定每条链接的可见性' },
+                { k: '造兜底', v: '编不出答案时它说什么，要写死' },
+                { k: '跑一次失败', v: '故意让它失败，看能不能兜住' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>43 / 60</Text>
+    </Box>
+</Slide>

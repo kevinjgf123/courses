@@ -1,0 +1,113 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            硬顺序：<span style={{ color: '#FA4F24' }}>先建本体，再上任何 AI 应用</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这是 AIP 时代唯一的强约束。顺序颠倒的项目，AI 应用一定建在流沙上
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：正确 vs 错误 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 13 }}>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>错误顺序：先做 AI 应用</Text>
+                {[
+                    '接一个大模型，做一个问答机器人',
+                    '接上几张报表和几个系统',
+                    '上线后没人用——因为它不知道「设备」到底是什么',
+                    '于是加规则、加提示词、加知识条目',
+                    '半年后维护成本超过开发成本',
+                ].map((x, i) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17', width: 16 }}>{'✕'}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #0F1423' }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>正确顺序：先做本体</Text>
+                {[
+                    '把对象、链接、动作、密级先在真实数据上建出来',
+                    '让对象和关系成为唯一事实来源',
+                    '在此之上接 AI 应用：Agent、知识库、问数',
+                    'AI 只做推理与表达，不承担定义职责',
+                    '新增场景只是本体的第 N 次实例化',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 16 }}>{'✓'}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 中：为什么不能颠倒 */}
+        <Box style={{ height: 190, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 456, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>为什么不能颠倒</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    本体是「业务事实的落点」，AI 应用是「对事实的推理与表达」。推理建立在流沙上，误差无法归因——你分不清是模型不行，还是事实定义本身就有歧义。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        归因不了，就没法优化；没法优化，AI 应用就永远是「演示好看、上线失败」。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>本体的三个不可替代职责</Text>
+                    {[
+                        { k: '命名', v: '一个对象只有一个名字，全公司通用' },
+                        { k: '基数', v: '「设备」和「测点」的关系一次定死' },
+                        { k: '密级', v: '哪条链接可被谁看见，本体层统一管' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 8, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 44 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 66, background: '#FFF3EE', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 92 }}>FDE 的动作</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>
+                        现场第一周不做 AI 应用，只做对象与链接。客户会问「什么时候上机器人」，答案是「第二周」。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：四层与本体的关系 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>落点顺序</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>后一层只能建在前一层之上</Text>
+            </Box>
+            {[
+                { k: '1', v: '管道：数据先能进来' },
+                { k: '2', v: '本体：事实先能对齐' },
+                { k: '3', v: '知识库：语料先能检索' },
+                { k: '4', v: 'Agent：推理最后才上' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                    <Box style={{ width: 26, height: 26, borderRadius: 13, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.k}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12.5, color: '#0F1423', fontWeight: 'bold', flex: 1, lineHeight: 1.3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>22 / 60</Text>
+    </Box>
+</Slide>

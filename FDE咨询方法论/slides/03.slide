@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            前十一册都假设「有一支能建平台的团队」——<span style={{ color: '#FA4F24' }}>这个假设刚刚失效</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            AI 时代的交付难点从「设计得对不对」变成「能不能在客户那台跑起来」，这是 FDE 存在的全部理由
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 14 }}>
+
+        {/* 上：三段失效 */}
+        <Box style={{ height: 206, flexDirection: 'row', gap: 10 }}>
+            {[
+                {
+                    n: '01', t: '客户现场的数据是碎的',
+                    d: '不是「缺一个模块」，是所有东西都要在客户环境重写一遍。表结构不统一、主键对不上、历史脏数据没人敢删。',
+                    k: '设计院图纸直接变成工程量',
+                },
+                {
+                    n: '02', t: '交付周期被压缩到天级',
+                    d: 'AIP Bootcamp 把 3–6 个月、多人参与的交付压到约 5 天，第 3 天交出可运行的 LLM 应用。',
+                    k: '压缩的代价是经验从人搬到了平台',
+                },
+                {
+                    n: '03', t: '现有两类人都不够用',
+                    d: '顾问会写蓝图不会写生产代码；开发经理会写代码但不敢进客户现场替他们做决策。',
+                    k: '两边各缺一半，谁都补不齐',
+                },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '16px 18px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+                        <Text style={{ fontSize: 15.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.55, marginTop: 12, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '8px 10px', borderLeft: '3px solid #FBA15C' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.4 }}>{x.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：FDE 的定义 */}
+        <Box style={{ height: 132, background: '#0F1423', borderRadius: 4, padding: '16px 22px', flexDirection: 'row', gap: 24, alignItems: 'center' }}>
+            <Box style={{ width: 300, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 13, color: '#FBA15C', letterSpacing: 2 }}>FORWARD DEPLOYED ENGINEER</Text>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF', marginTop: 8, lineHeight: 1.3 }}>
+                    带着<span style={{ color: '#FA4F24' }}>现有产品</span>和<span style={{ color: '#FA4F24' }}>生产代码</span>进现场的人
+                </Text>
+            </Box>
+            <Box style={{ width: 1, height: 92, background: 'rgba(255,255,255,0.18)' }} />
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+                {[
+                    { k: '不是', v: '一个职级 —— 它衡量的是客户现场生产环境的改变程度，不是工时' },
+                    { k: '而是', v: '一种交付模型 —— 前十一年册讲的都是方法，这一册讲的是谁把这些方法送进现场' },
+                    { k: '关键', v: '个人知识必须回流成平台能力，否则 FDE 团队就是一个规模化不可解的咨询公司' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FBA15C', width: 32 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', lineHeight: 1.5, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：铺开一行 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10, alignItems: 'stretch' }}>
+            {[
+                { t: '起源不是 AI 时代', d: '2005 年卖 Gotham 给情报机构时就已成型，比这个词被行业广泛使用早二十年' },
+                { t: '核心机制是碎石路', d: '先为一个客户修一条碎石路，总部把它抽象成铺好的高速公路' },
+                { t: '今天全行业都在复制', d: 'Anthropic、OpenAI、Databricks、Cohere、Google 在 2024–2026 全面替换原有售前编制' },
+            ].map((x, i) => (
+                <Box key={x.t} style={{ flex: 1, background: i === 1 ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, borderLeft: '3px solid ' + (i === 1 ? '#FA4F24' : '#E8E8E8'), padding: '12px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>03 / 60</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,105 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            八类高危动作：<span style={{ color: '#FA4F24' }}>在现场绝对不能做的八件事</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这些动作在总部没人会犯错，但到了客户生产环境，每一条都可能造成不可逆后果
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：八类 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+                {[
+                    { n: '01', k: '直连生产库读全表', w: '一个 select * 打满IO，影响客户业务' },
+                    { n: '02', k: '无幂等直接重跑', w: '重复写入，客户账目对不上' },
+                    { n: '03', k: '改客户既有代码', w: '绕过客户 IT，事故无人负责' },
+                    { n: '04', k: '绕过密级取数', w: '为了跑通演示拉越权数据' },
+                ].map((x) => (
+                    <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                        <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
+                            <Text style={{ fontSize: 11, color: '#FA4F24' }}>{x.n}</Text>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 11, color: '#5A6070', lineHeight: 1.35, marginTop: 5 }}>{x.w}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+                {[
+                    { n: '05', k: '承诺做不到的日期', w: '为了留住客户乱报工期' },
+                    { n: '06', k: '把客户数据带出环境', w: '为调试方便拷到本地' },
+                    { n: '07', k: '不备份就做批量写', w: '删除、合并、拆分前不快照' },
+                    { n: '08', k: '越过客户 IT 直连设备', w: '绕过网络隔离，连厂区网闸' },
+                ].map((x) => (
+                    <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #C43A17' }}>
+                        <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
+                            <Text style={{ fontSize: 11, color: '#C43A17' }}>{x.n}</Text>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 11, color: '#5A6070', lineHeight: 1.35, marginTop: 5 }}>{x.w}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 中：替代动作 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>每条高危动作的合规替代</Text>
+                {[
+                    { k: '限流只读', v: '走只读副本，限制时间窗与扫描行数' },
+                    { k: '批次幂等', v: '每批带批次号，可重放可回滚' },
+                    { k: '变更走单', v: '客户 IT 审批后才动既有代码' },
+                    { k: '密级前置', v: '按密级申请，不因演示破例' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 72 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>为什么这八条是高危</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.55, marginTop: 10, flex: 1 }}>
+                    它们有一个共同点：后果落在客户身上，而你在现场。这不是能力问题，是位置问题——所以必须靠流程与清单约束自己，不能靠自觉。
+                </Text>
+                <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.45 }}>
+                        判据：如果这个动作出事了，客户能不能在半小时内自己恢复？能，就做；不能，就不要做。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：现场红线 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>进场第一天就写进工作守则</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>红线四条，客户签字确认</Text>
+            </Box>
+            {[
+                { k: '不越权', v: '不取无授权数据' },
+                { k: '不带走', v: '不把数据拷出环境' },
+                { k: '不擅动', v: '不改客户既有系统' },
+                { k: '不留痕', v: '不留下无法回滚的改动' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>37 / 60</Text>
+    </Box>
+</Slide>

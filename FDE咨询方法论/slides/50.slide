@@ -1,0 +1,101 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            八大领域可复用度矩阵：<span style={{ color: '#FA4F24' }}>哪些能力能变成平台</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这一页决定公司是在「积累能力」还是在「重复劳动」。矩阵必须逐项判，不许打太极
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：八行矩阵 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 5 }}>
+            {[
+                { d: '管道处理', g: 'A', r: '幂等重试对账模板', w: '各网闸差异大' },
+                { d: 'Ontology', g: 'B', r: '行业骨架（批次/设备/缺陷）', w: '粒度需现场试错' },
+                { d: '主数据', g: 'B', r: '合并拆分可逆流程', w: '实体规则强行业相关' },
+                { d: '指标', g: 'B', r: '口径裁定流程与模板', w: '指标定义完全本地化' },
+                { d: '知识库', g: 'A', r: '切片工艺与反查机制', w: '密级规则要本地配' },
+                { d: '数据治理', g: 'A', r: '最小可行治理清单', w: '责任划分需现场定' },
+                { d: 'Agent', g: 'B', r: '工具白名单与出口策略', w: '工具集强场景相关' },
+                { d: '4A 架构', g: 'C', r: '四层串接顺序', w: '本质是一次性方法论' },
+            ].map((x) => (
+                <Box key={x.d} style={{ flex: 1, flexDirection: 'row', gap: 10, alignItems: 'stretch' }}>
+                    <Box style={{ width: 124, background: '#F7F7F8', borderRadius: 4, padding: '0 12px', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.d}</Text>
+                        <Box style={{ width: 21, height: 21, borderRadius: 3, background: x.g === 'A' ? '#FA4F24' : x.g === 'B' ? '#E0641E' : '#C43A17', alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{x.g}</Text>
+                        </Box>
+                    </Box>
+                    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                        <Text style={{ fontSize: 11, color: '#3A4050', flex: 1 }}>可复用：{x.r}</Text>
+                        <Box style={{ width: 1, height: 12, background: '#E8E8E8' }} />
+                        <Text style={{ fontSize: 10.5, color: '#8A8F99', flex: 1, textAlign: 'right' }}>不可复用：{x.w}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：结论 */}
+        <Box style={{ height: 150, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>这张矩阵读出来的三件事</Text>
+                {[
+                    { k: 'A 档最值', v: '管道、知识库、治理三块最该沉淀成平台' },
+                    { k: 'B 档最多', v: '五块都是「骨架通用、参数本地」，做成配置项即可' },
+                    { k: 'C 档别硬抽', v: '4A 方法论做成模板，不要做成工具' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 76 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>判定纪律</Text>
+                {[
+                    '由 Delta 提草案、Echo 复核，当场定档，不许留到总部再定',
+                    'A 档必须进平台迭代，否则视为流失',
+                    'D 档要写进「不值得抽象」清单，避免下次重复讨论',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FA4F24', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    定档拖延，等于默认全档 D。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：投入去向 */}
+        <Box style={{ height: 68, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>矩阵的真正用途</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>决定研发资源投在哪一档</Text>
+            </Box>
+            {[
+                { k: 'A 档', v: '做进平台，人人可用' },
+                { k: 'B 档', v: '做成配置项，不写死' },
+                { k: 'C 档', v: '做成方法论模板' },
+                { k: 'D 档', v: '承认定制，不投研发' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>50 / 60</Text>
+    </Box>
+</Slide>

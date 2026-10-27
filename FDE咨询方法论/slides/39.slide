@@ -1,0 +1,110 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            Echo 与 Delta 的分工契约：<span style={{ color: '#FA4F24' }}>一对配对，刻意制造张力</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这不是团队配置技巧，而是模式设计。少了任何一侧，交付都会偏向一边彻底跑偏
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：双栏对照 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 13 }}>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FA4F24' }}>
+                <Text style={{ fontSize: 12, color: '#FA4F24', letterSpacing: 2 }}>DELTA · FORWARD DEPLOYED ENGINEER</Text>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginTop: 8 }}>把事情做成</Text>
+                {[
+                    '归属：业务拓展方向，但工作在客户现场',
+                    '目标：一个客户需要多种能力',
+                    '动作：在客户环境直接写生产代码',
+                    '判断：技术上对不对',
+                    '失败形态：技术正确，运营无关',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FA4F24', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>ECHO · DEPLOYMENT STRATEGIST</Text>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FFFFFF', marginTop: 8 }}>把方向拽回来</Text>
+                {[
+                    '通常不是软件工程师',
+                    '目标：找到最值得修的那条路',
+                    '动作：管客户关系、管采纳、管现场政治',
+                    '判断：这是不是真问题',
+                    '失败形态：方向找对了，但没人实现',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Box style={{ width: 5, height: 5, borderRadius: 3, background: '#FBA15C', marginTop: 6 }} />
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 中：张力与配对 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>为什么必须配对，这是刻意制造的张力</Text>
+                {[
+                    'Delta 单独干，很容易做出技术正确但运营无关的东西',
+                    'Echo 单独干，很容易找出真问题但拿不出可运行的东西',
+                    '两者相向而立，一个推快、一个踩刹车，项目才不会跑偏',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17', width: 16 }}>·</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>现场冲突的正确处理</Text>
+                {[
+                    { k: 'Delta 说做', v: 'Echo 问：谁用？改变了什么动作？' },
+                    { k: 'Echo 说停', v: 'Delta 问：不做会损失多少？' },
+                    { k: '两人僵持', v: '拉客户业务负责人当场裁决' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 82 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    冲突不是坏事，说明两边都在认真工作。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：配比与背景 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>配比与背景偏好</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>Echo 常来自非技术岗</Text>
+            </Box>
+            {[
+                { k: '1 : 1', v: 'Delta 与 Echo 一对一配对' },
+                { k: '2–4 人', v: '每客户配置总数' },
+                { k: '2–6 人', v: '常驻现场人数' },
+                { k: '理想背景', v: '军官、医疗老兵、金融老手' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>39 / 60</Text>
+    </Box>
+</Slide>

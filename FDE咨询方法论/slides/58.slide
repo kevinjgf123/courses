@@ -1,0 +1,86 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            交付验收台：<span style={{ color: '#FA4F24' }}>把「上线了」变成可验证的事实</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这台机器唯一的作用：让「交付完成」不再是一个形容词，而是一组客户与 FDE 共同确认的数字
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：可验证指标 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '使用量', v: '日活用户数与名单，可截图可查询', kpi: '目标：客户业务人员每天登录', c: '#FA4F24' },
+                { k: '写回量', v: '结论回写进客户真实动作的条数', kpi: '目标：写回路径日均不为零', c: '#E0641E' },
+                { k: '口径唯一', v: '该指标在系统内只有一种算法', kpi: '目标：三套报表数字一致', c: '#C43A17' },
+                { k: '可恢复', v: '客户自己能处理一次真实故障', kpi: '目标：不依赖 FDE 在线', c: '#A83310' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.v}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.kpi}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：与验收会的区别 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>传统验收会 vs 验收台</Text>
+                {[
+                    { k: '看演示', v: 'PPT + 演示，演得通就过' },
+                    { k: '看数字', v: '打开后台，日活写回当场可查' },
+                    { k: '听汇报', v: '项目组说「已具备推广条件」' },
+                    { k: '做抽查', v: '随机挑一个用户，问他上周用它做了什么' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 62 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>最有效的一条：随机抽一个真实用户</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>
+                    从系统里随机挑一个用户，当面问他：上周你用它做过哪个决定？这一步能瞬间打掉所有自欺欺人的验收。
+                </Text>
+                <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.45 }}>
+                        答不上来的用户，说明系统是给验收会看的，不是给业务用的。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：验收台输出 */}
+        <Box style={{ height: 66, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>验收台输出</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5 }}>不是一份报告，是三份签收</Text>
+            </Box>
+            {[
+                { k: '检查表', v: '12 项逐项，双方签字' },
+                { k: '用户抽查记录', v: '随机用户与他的真实回答' },
+                { k: '移交清单', v: '六件交付物签收' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>58 / 60</Text>
+    </Box>
+</Slide>

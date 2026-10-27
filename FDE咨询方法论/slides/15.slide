@@ -1,0 +1,102 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            反面画像：<span style={{ color: '#FA4F24' }}>四种典型失败现场</span>——都不是能力不够，是站错了位置
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            每一种失败都有明确的现场特征，可以用来在项目中期止损，而不是等到结项才发现
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 四种失败 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                {
+                    n: '失败一', t: '会议室里的 FDE', c: '#FA4F24',
+                    d: '人在客户现场办公，但一周开三次视频会跟总部对齐，没有一次跟一线用户坐在一起。',
+                    sign: '现场特征：所有输入都来自业务负责人一个人',
+                    fix: '本周内安排 5 场一线对话，不接受替代',
+                },
+                {
+                    n: '失败二', t: '保守的 FDE', c: '#E0641E',
+                    d: '把客户现状当既定条件做优化，交付了一个「更快的旧流程」，还写进复盘说客户很满意。',
+                    sign: '现场特征：系统上线了，业务流程一张纸都没改',
+                    fix: '立一个「改变一件事」的硬指标，只做一件也行',
+                },
+                {
+                    n: '失败三', t: '不回流的经验', c: '#C43A17',
+                    d: '现场踩过的坑写在自己笔记本里，项目结束就带走。下一个客户来了，从头再来一遍。',
+                    sign: '现场特征：交付物里找不到任何「为什么这么做」',
+                    fix: '当场把坑写成模板或平台需求，带进迭代清单',
+                },
+                {
+                    n: '失败四', t: '交付即结束', c: '#9E3410',
+                    d: '上线那天办完验收就撤，留下一个没人懂的系统和一群不知道该问谁的用户。',
+                    sign: '现场特征：上线后两周活跃用户数掉到个位数',
+                    fix: '移交必须三层：手册、陪跑、自主，三层缺一不算完成',
+                },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 11.5, color: x.c, fontWeight: 'bold', letterSpacing: 1 }}>{x.n}</Text>
+                    <Text style={{ fontSize: 15.5, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>{x.t}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 9, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 10px', marginTop: 8 }}>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', lineHeight: 1.35 }}>{x.sign}</Text>
+                    </Box>
+                    <Box style={{ borderTop: '1px solid #E8E8E8', marginTop: 9, paddingTop: 8 }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.35 }}>{x.fix}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：中期止损信号 */}
+        <Box style={{ height: 158, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 452, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>中期止损：四个可观测信号</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    FDE 的失败是静默的——不会有人来投诉。所以必须靠可观测的信号主动发现，而不是等结项。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        原则：任何一条连续两周成立，就停下来重做方案，不要继续往前推。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>四个信号（每周过一遍）</Text>
+                {[
+                    { k: '对话数', v: '本周一线对话是否少于 5 场？' },
+                    { k: '输入面', v: '需求是否全部来自同一个人？' },
+                    { k: '变更', v: '业务流程是否一张纸都没改？' },
+                    { k: '回流', v: '本周有没有产出可复用的模板？' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 48 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：一句提醒 */}
+        <Box style={{ height: 62, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '0 22px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', width: 148 }}>四种失败的共同点</Text>
+                <Text style={{ fontSize: 16, color: '#FFFFFF', lineHeight: 1.45, flex: 1 }}>
+                    都把「交付完成」当成了终点——而 FDE 的终点是<tspan style={{ fontWeight: 'bold' }}>客户现场的行为真的变了</tspan>
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>15 / 60</Text>
+    </Box>
+</Slide>

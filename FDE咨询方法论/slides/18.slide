@@ -1,0 +1,116 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            三个行动：<span style={{ color: '#FA4F24' }}>Enter → Investigate → Execute</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            顺序不可颠倒。跳过 Investigate 直接 Execute，是 FDE 最常见也最致命的失误
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 三步 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                {
+                    k: 'Enter', n: '01', c: '#FA4F24', cn: '进场',
+                    d: '把人和环境一起进场。组建配对小队、拿到现场准入、把客户的数据环境摸一遍底。',
+                    out: '产出：现场问题清单 · 数据环境画像',
+                    trap: '最常见的偷懒：不带 Echo 去，只派一个工程师',
+                },
+                {
+                    k: 'Investigate', n: '02', c: '#E0641E', cn: '挖真相',
+                    d: '把决策链还原出来，把痛点量化。30–40% 的时间花在这，每周 5–15 场对话是硬指标。',
+                    out: '产出：决策链路图 · 痛点优先级矩阵',
+                    trap: '最常见的偷懒：只听业务负责人一个人的',
+                },
+                {
+                    k: 'Execute', n: '03', c: '#C43A17', cn: '跑生产',
+                    d: '在客户真实环境里跑起来，不是演示、不是沙盒。同时把经验抽象回流到平台。',
+                    out: '产出：可运行的生产环境 · 平台抽象提案',
+                    trap: '最常见的偷懒：演示跑通了就算上线',
+                },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 9 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                        <Text style={{ fontSize: 13, color: '#0F1423', flex: 1 }}>{x.cn}</Text>
+                        <Text style={{ fontSize: 12, color: '#8A8F99' }}>{x.n}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 10 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.out}</Text>
+                    </Box>
+                    <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '0 11px', marginTop: 8 }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.35 }}>{x.trap}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：为什么顺序不可颠倒 */}
+        <Box style={{ height: 182, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 452, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>为什么不能跳过 Investigate</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    本体的粒度只能在真实数据上试出来。你没法在会议室里决定「设备」这个对象该怎么切分——只有连着 SCADA 的实时数据看，才知道「设备」和「测点」到底是不是一回事。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        跳过它做出来的东西，技术上跑得通，业务上没人用——这是 Delta 最典型的失败形态。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>进入 Execute 前的四个前置条件</Text>
+                    {[
+                        { k: '决策链', v: '至少还原出 1 条完整的决策链路' },
+                        { k: '对象', v: '核心对象类型与主键策略已经定下来' },
+                        { k: '密级', v: '要进系统的数据，密级与权限已标' },
+                        { k: '验收', v: '客户业务负责人已经签字确认口径' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 46 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 68, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 90 }}>时间分配</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>
+                        30–40% 挖真相，剩下才是建。这条比例是官方口径。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：节奏 */}
+        <Box style={{ height: 62, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 214, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>节奏参照</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>嵌入 8–16 周</Text>
+            </Box>
+            {[
+                { k: 'D1', v: '配对组建与准入' },
+                { k: 'W1–W2', v: '摸底与初步对话' },
+                { k: 'W3–W6', v: '决策链与建模' },
+                { k: 'W7+', v: '跑生产与回流' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>18 / 60</Text>
+    </Box>
+</Slide>

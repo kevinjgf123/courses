@@ -1,0 +1,108 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            「不惜代价逼近真相」：<span style={{ color: '#FA4F24' }}>这是 FDE 的行为准则</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            ruthless commitment to truth-seeking —— 重点不是「承诺」，是「不惜代价」这四个字
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {/* 官方三句 */}
+        <Box style={{ height: 116, background: '#0F1423', borderRadius: 4, padding: '15px 22px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>官方岗位描述原文（三句）</Text>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 20, marginTop: 12, alignItems: 'center' }}>
+                {[
+                    { q: '「入职第一天就被托付责任」', d: '不会给你一个工单队列' },
+                    { q: '「不被隔绝于客户、混乱与后果之外」', d: '出事你就在现场' },
+                    { q: '「走到客户那边去，穿上他们的鞋」', d: '走出会议室，走很多路' },
+                ].map((x, i) => (
+                    <Box key={x.q} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                        <Box style={{ width: 24, height: 24, borderRadius: 12, background: 'rgba(250,79,36,0.25)', alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}</Text>
+                        </Box>
+                        <Box style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.35 }}>{x.q}</Text>
+                            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.6)', marginTop: 4 }}>{x.d}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 中：四条行为准则 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 424, flexDirection: 'column', gap: 10 }}>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>「逼近真相」在现场的四个具体动作</Text>
+                {[
+                    { n: '01', t: '找到真正的决策点', d: '不问「要什么功能」，问「上次这个决定是怎么做出来的」' },
+                    { n: '02', t: '让数字对不上', d: '主动去验证口径，越对不上越要当场挖到根因' },
+                    { n: '03', t: '看一线怎么绕过系统', d: '员工怎么用 Excel 救火，那里就是真实流程' },
+                    { n: '04', t: '写下不利于自己的事实', d: '做不成的原因要写清楚，不写成「客户配合度不足」' },
+                ].map((x) => (
+                    <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 13 }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', width: 26 }}>{x.n}</Text>
+                        <Box style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                            <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 3 }}>{x.d}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 18px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>这条准则的反面：现场常见的三种自我欺骗</Text>
+                    {[
+                        { k: '把「客户说想要」当成「客户需要」', v: '需求访谈里的第一句话最不可信' },
+                        { k: '把「跑通了」当成「有人用了」', v: '演示成功和上线运营是两件事' },
+                        { k: '把「技术做不到」当成「做不了」', v: '十次里有九次是需求没问清' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                            <Box style={{ width: 6, height: 6, borderRadius: 3, background: '#FA4F24' }} />
+                            <Box style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                                <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 2 }}>{x.v}</Text>
+                            </Box>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 92, background: '#0F1423', borderRadius: 4, padding: '11px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 96 }}>为什么必须这样</Text>
+                    <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, flex: 1 }}>
+                        FDE 的失败是静默的：系统上线了，没人用；交付完成了，业务照旧。
+                        没有审计日志能告诉你这件事——所以真相必须靠现场的人主动挖。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：现场代价 */}
+        <Box style={{ height: 74, flexDirection: 'row', gap: 10, alignItems: 'stretch' }}>
+            <Box style={{ width: 250, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#8A8F99' }}>这份工作的代价</Text>
+                <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>高密度人才 + 低弹性</Text>
+            </Box>
+            {[
+                { k: '一半时间在听', v: '每周 5–15 场客户对话是硬指标' },
+                { k: '入职即实战', v: '现场没有缓冲期，错了就是错了' },
+                { k: '出差是常态', v: '官方岗位普遍要求 25%–75% 出差' },
+                { k: '规模有限', v: '每客户 2–4 人，人力就是交付上限' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderLeft: '3px solid #C9CBD1' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 4 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>11 / 60</Text>
+    </Box>
+</Slide>

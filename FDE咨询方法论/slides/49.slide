@@ -1,0 +1,93 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE × 4A 架构：<span style={{ color: '#FA4F24' }}>横切四层，但落点各不相同</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            FDE 不是一个只管某层的角色。它把四层横着串起来，让每一层的产出物在下一层立刻可用
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：四层落点 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '数据架构层', c: '#FA4F24', d: '管道与本体', focus: '落点：现场写管道、建本体、定主键', pit: '坑：不接真数据就建本体' },
+                { k: '应用架构层', c: '#E0641E', d: 'Agent 与场景', focus: '落点：把 Agent 装到真实作业动作上', pit: '坑：只做演示不做写回' },
+                { k: '数据治理层', c: '#C43A17', d: '口径与密级', focus: '落点：最小可行治理，当场裁定口径', pit: '坑：治理范围铺太大' },
+                { k: '业务架构层', c: '#A83310', d: '决策与流程', focus: '落点：追到签字的人，改到流程上', pit: '坑：只跟执行层对话' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12, color: '#8A8F99', marginTop: 4 }}>{x.d}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 10, flex: 1 }}>{x.focus}</Text>
+                    <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '0 10px', marginTop: 8 }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.35 }}>{x.pit}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：串联方式 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>四层怎么被串成一条</Text>
+                {[
+                    { k: '业务先动', v: '从业务决策链倒推需要什么数据' },
+                    { k: '数据跟上', v: '管道 + 本体让数据可对齐' },
+                    { k: '治理兜底', v: '口径与密级当场定，不留后患' },
+                    { k: '应用收口', v: 'Agent 把结论送回业务动作里' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 76 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>与架构师的分工</Text>
+                {[
+                    { k: '架构师定四层', v: '分层标准、边界、规范、成熟度模型' },
+                    { k: 'FDE 落四层', v: '在一个客户现场把四层串通一次' },
+                    { k: 'FDE 反哺', v: '串不通的地方，就是架构缺陷，要报上去' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 84 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 13, lineHeight: 1.4 }}>
+                    FDE 是架构师的「现场压力测试」。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下：成熟度自评 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>四层成熟度自评</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>只问四句，不做打分表</Text>
+            </Box>
+            {[
+                { k: '管道通吗', v: '每天自动跑通且可重放吗' },
+                { k: '本体定吗', v: '对象与基数客户签字了吗' },
+                { k: '口径一吗', v: '同一指标只有一个算法吗' },
+                { k: '流程改吗', v: '有没有一个动作真的变了' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>49 / 60</Text>
+    </Box>
+</Slide>

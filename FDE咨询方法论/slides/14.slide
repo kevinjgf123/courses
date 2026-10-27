@@ -1,0 +1,119 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            人才画像：1% 接受率<span style={{ color: '#FA4F24' }}>意味着你不能靠「招人」解决 FDE</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            只能靠两条路：内部养（把资深工程师放回现场）或改工作设计（让现场这件事本身变得可复制）
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：三条来源 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                {
+                    k: '路径一', t: '从行业里捞', c: '#FA4F24', best: '成功率最高',
+                    who: ['前军官 / 医疗从业者 / 金融从业者', '懂行业，但工程能力弱', '必须配一个能带他的 Delta'],
+                    note: 'Echo 的来源。这类人最难招，也最难被替代。',
+                },
+                {
+                    k: '路径二', t: '从工程里放出去', c: '#E0641E', best: '规模最稳',
+                    who: ['资深平台工程师', '工程能力强，但没进过现场', '要让他愿意承认「我不懂业务」'],
+                    note: 'Dev 转 Delta。好处是懂平台，坏处是要重建行业观。',
+                },
+                {
+                    k: '路径三', t: '从咨询里转过来', c: '#C43A17', best: '上手最快',
+                    who: ['懂业务与流程，但写不动生产代码', '常被误认为「已经会了」', '最难的是补上工程这一边'],
+                    note: '顾问转型。最容易被低估，也最容易被高估。',
+                },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                        <Text style={{ fontSize: 15.5, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                        <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '3px 8px' }}>
+                            <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#C43A17' }}>{x.best}</Text>
+                        </Box>
+                    </Box>
+                    <Box style={{ marginTop: 12, gap: 6 }}>
+                        {x.who.map((w) => (
+                            <Box key={w} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
+                                <Text style={{ fontSize: 11, fontWeight: 'bold', color: x.c }}>·</Text>
+                                <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{w}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 12 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>{x.note}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：改工作设计比招人更现实 */}
+        <Box style={{ height: 166, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 452, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>更现实的一条路：改工作设计</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    招不到全三角的人，就把它拆成两人小队——一个偏工程、一个偏业务，共享同一个交付责任。
+                    这样做的代价是队里必须有一个人愿意做「翻译」，通常就是 Echo。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        这就是 Delta 与 Echo 一对一配对的现实理由——不是因为组织设计好看，是因为一个人确实干不完。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>面试怎么考（三道题定生死）</Text>
+                    {[
+                    { k: '题一', v: '现场画一张本体：给你一个真实但未脱敏的业务场景' },
+                    { k: '题二', v: '追问：你怎么知道这个数是对的？——看他反问还是自己猜' },
+                    { k: '题三', v: '让步测试：否掉他的方案，看他是找证据还是执行' },
+                    ].map((x) => (
+                        <Box key={x.k} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 32 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 70, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', width: 78 }}>常见误判</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.42, flex: 1 }}>
+                        「技术面试通过 = 能做 FDE」。技术只验证了三条边里的一条，另两条要靠真实项目验证。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：投入产出 */}
+        <Box style={{ height: 62, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 214, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>投入产出</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>算的是复利，不是人天</Text>
+            </Box>
+            {[
+                { k: '8–16 周', v: '一次嵌入的典型周期' },
+                { k: '5–10 个', v: '一条路的目标客户数' },
+                { k: '20 年', v: '知识沉淀到平台的周期' },
+                { k: '5 天', v: '平台化后的新客户周期' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderTop: '3px solid #FBA15C' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>14 / 60</Text>
+    </Box>
+</Slide>

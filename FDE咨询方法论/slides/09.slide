@@ -1,0 +1,107 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            起源是 2005 年的情报机构，<span style={{ color: '#FA4F24' }}>不是 AI 时代的事</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            当年那批客户：需求说不清、数据不能公开分享、不同机构工作流差异极大——顾问与售前工程师都接不住
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {/* 时间轴 */}
+        <Box style={{ height: 76, flexDirection: 'row', gap: 10 }}>
+            {[
+                { y: '2005', t: '问题出现', d: '卖 Gotham 给 CIA / NSA / 陆军情报单位。顾问不会写生产代码，售前工程师不敢改产品。' },
+                { y: '2005', t: '决策', d: 'Karp 与 Cohen 决定：把员工派驻现场，带着现有产品进场，先铺一条碎石路。' },
+                { y: '2016', t: '规模化', d: 'FDE 数量超过传统软件工程师。产品线扩到 Foundry（2016）与 AIP（2023）。' },
+                { y: '2023+', t: '行业扩散', d: 'Anthropic / OpenAI / Databricks / Google 全面复制，成为默认的企业交付形态。' },
+            ].map((x, i) => (
+                <Box key={x.y + x.t} style={{ flex: 1, background: i === 1 ? '#0F1423' : '#F7F7F8', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: i === 1 ? '#FA4F24' : '#FA4F24' }}>{x.y}</Text>
+                        <Text style={{ fontSize: 12.5, color: i === 1 ? '#FBA15C' : '#0F1423', fontWeight: 'bold' }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11, color: i === 1 ? 'rgba(255,255,255,0.82)' : '#3A4050', lineHeight: 1.38, marginTop: 5 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 核心：为什么这类客户逼出了 FDE */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 470, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ height: 58, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>当年的三个死结</Text>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>
+                        客户需求难以清晰表述 · 数据不能公开分享 · 相似项目工作流程差异极大
+                    </Text>
+                </Box>
+                <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 16px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>为什么标准交付模式必然失效</Text>
+                    {[
+                        { k: '需求不清', v: '写不出需求文档，只能进现场用真实数据问出来' },
+                        { k: '数据不外流', v: '不进现场就碰不到数据，进不去就什么都做不了' },
+                        { k: '流程各异', v: '一个客户的做法搬到另一个客户必然失效' },
+                    ].map((x, i) => (
+                        <Box key={x.k} style={{ flex: 1, flexDirection: 'row', gap: 11, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17', width: 62 }}>{x.k}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{x.v}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>THE GRAVEL ROAD</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF', marginTop: 8, lineHeight: 1.3 }}>
+                    先铺一条<span style={{ color: '#FA4F24' }}>碎石路</span>，<br />
+                    再把它变成铺好的高速公路
+                </Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 8, marginTop: 10, justifyContent: 'center' }}>
+                    {[
+                        { n: '1', t: '现场铺路', d: '一个客户一个客户地手铺，慢，但一定贴合这个客户' },
+                        { n: '2', t: '想清楚抽象', d: '总部产品团队想清楚这条路里哪一段是通用的' },
+                        { n: '3', t: '铺成高速公路', d: '推广到 5–10 个客户，这一段不用现场支持也能走' },
+                    ].map((x) => (
+                        <Box key={x.n} style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                            <Box style={{ width: 22, height: 22, borderRadius: 11, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                            </Box>
+                            <Box style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+                                <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', lineHeight: 1.45, marginTop: 3 }}>{x.d}</Text>
+                            </Box>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ borderTop: '1px solid rgba(255,255,255,0.16)', paddingTop: 9 }}>
+                    <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.8)', lineHeight: 1.5 }}>
+                        这条机制是 FDE 商业模式的全部：<b style={{ color: '#FBA15C' }}>一个客户定制 → 抽象成平台能力 → 规模化</b>。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：为什么这条路只有 Palantir 走通了 */}
+        <Box style={{ height: 70, flexDirection: 'row', gap: 10 }}>
+            {[
+                { k: '技术栈可复制', v: 'Spark / Neo4j / LangChain 拼得出来' },
+                { k: '本体积累不可复制', v: '二十年规则在 FDE 经验里，不在论文里' },
+                { k: '资质与时间不可复制', v: '政府资质 + 二十年不盈利的投入' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.ok ? '#F7F7F8' : '#FFF3EE', borderRadius: 4, padding: '0 13px', flexDirection: 'column', justifyContent: 'center', borderLeft: '3px solid ' + (x.ok ? '#C9CBD1' : '#FA4F24') }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>09 / 60</Text>
+    </Box>
+</Slide>

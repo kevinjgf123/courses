@@ -1,0 +1,88 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            案例 A：<span style={{ color: '#FA4F24' }}>制造质检 —— 本体先行，反模式样本</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            这是一个「顺序做对了」的正向样本。同一场景，先建本体与先上 AI，结果差三个月
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：本体四层 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { k: '批次', c: '#FA4F24', d: '一次投料、一次产出、一次检验，构成最小追溯单元', key: '主键：批次号 + 工序号' },
+                { k: '设备', c: '#E0641E', d: '产线设备台账，含型号、能力范围、校准有效期', key: '关键链接：跑哪个批次' },
+                { k: '测点', c: '#C43A17', d: '设备的可测量位置，含量程、精度、检定周期', key: '易错：设备 ≠ 测点' },
+                { k: '缺陷', c: '#A83310', d: '检验判定的结果对象，含分类、严重度、责任归属', key: '关键：缺陷码要统一' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 10, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.key}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：正反对照 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #0F1423' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>先建本体：第 2 周就能上线</Text>
+                {[
+                    'W1 定批次、设备、测点、缺陷四类对象与链接',
+                    'W1 末上线缺陷归因，当天质检组长开始用',
+                    'W2 补缺陷码统一规则，追溯链完整',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', width: 16 }}>✓</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>先上 AI：三个月还在对齐词</Text>
+                {[
+                    '第 1 个月：做缺陷识别 Demo，效果不错',
+                    '第 2 个月：业务发现缺陷码有七套含义，AI 判断全错',
+                    '第 3 个月：回头做对象与码表，AI 全部重调',
+                ].map((x) => (
+                    <Box key={x} style={{ flexDirection: 'row', gap: 10, marginTop: 9, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17', width: 16 }}>✕</Text>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：FDE 特有动作 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#0F1423', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>FDE 在此场景的特有动作</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FBA15C', marginTop: 6, lineHeight: 1.4 }}>传统顾问不会做的四件事</Text>
+            </Box>
+            {[
+                { k: '驻线一周', v: '跟质检员一起上工位' },
+                { k: '现场建码表', v: '当场裁定缺陷码统一' },
+                { k: '直接写管道', v: '现场写幂等与批次号' },
+                { k: '当场回写', v: '让结论进质检单' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>30 / 60</Text>
+    </Box>
+</Slide>

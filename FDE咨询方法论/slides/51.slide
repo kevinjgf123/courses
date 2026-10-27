@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            FDE 的四道一票否决：<span style={{ color: '#FA4F24' }}>什么情况下必须停手</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            传统咨询没有否决权。FDE 有——因为他在现场，他能看到后果。这四道闸必须写进流程
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：四道闸 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 11 }}>
+            {[
+                { n: '1', k: '密级否决', c: '#FA4F24', d: '要进系统的数据，密级与继承没标清楚——停。', why: '一旦泄露，无法挽回' },
+                { n: '2', k: '生产否决', c: '#E0641E', d: '在客户生产环境做无回滚的批量写——停。', why: '事故由客户承担' },
+                { n: '3', k: '口径否决', c: '#C43A17', d: '客户业务负责人没签字就往下建——停。', why: '后返工全链路' },
+                { n: '4', k: '使用否决', c: '#A83310', d: '场景没法进客户真实作业流程——换场景。', why: '交付即闲置' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                        <Box style={{ width: 24, height: 24, borderRadius: 12, background: x.c, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 15.5, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.5, marginTop: 11, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#0F1423', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>理由：{x.why}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：谁有权否决 */}
+        <Box style={{ height: 186, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>否决权的归属</Text>
+                {[
+                    { k: '密级', v: '客户安全负责人 + FDE 双签，缺一即停' },
+                    { k: '生产', v: 'FDE 可单方叫停，事后再谈' },
+                    { k: '口径', v: '客户业务负责人签字，缺签即停' },
+                    { k: '使用', v: 'Echo 提出，Delta 与客户共同确认' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 10, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 48 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#C43A17' }}>为什么必须有否决权</Text>
+                <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.55, marginTop: 10, flex: 1 }}>
+                    现场交付的压力天然是「往前走」。进度、客户期待、合同节点都在推着人往前走。密级、签字、可逆性这三件事，只有 FDE 自己会踩刹车。
+                </Text>
+                <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', lineHeight: 1.45 }}>
+                        有否决权才敢停手。只会推进的人，不是 FDE，是执行。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：否决记录 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>否决之后怎么办</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>停手不等于放弃</Text>
+            </Box>
+            {[
+                { k: '补齐再走', v: '把前置条件补上，重新判定' },
+                { k: '换路径', v: '同样的问题换一条更安全的路' },
+                { k: '换场景', v: '这一条走不通，换一条痛点' },
+                { k: '留记录', v: '写进坑位清单，别再犯第二次' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>51 / 60</Text>
+    </Box>
+</Slide>

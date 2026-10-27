@@ -1,0 +1,98 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            单场景两周：<span style={{ color: '#FA4F24' }}>从现像到上线的最小完整周期</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            Bootcamp 之后才是真正的项目。两周切一个场景，是效率与风险的最优平衡点
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：两周排期 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+            {[
+                { w: 'W1 前半', k: '现像期', c: '#FA4F24', items: ['决策链还原', '痛点量化', '场景定选'], out: '现像报告 + 场景定义书' },
+                { w: 'W1 后半', k: '建模期', c: '#E0641E', items: ['核心对象与链接', '主键与基数', '密级与权限'], out: '本体骨架 + 密级矩阵' },
+                { w: 'W2 前半', k: '建设期', c: '#C43A17', items: ['管道接通', '切片工艺', 'Agent 装配'], out: '可运行场景 v1' },
+                { w: 'W2 后半', k: '上线期', c: '#A83310', items: ['业务试用', '口径裁定', '验收十二项'], out: '验收签字 + 移交清单' },
+            ].map((x) => (
+                <Box key={x.w} style={{ flex: 1, flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+                    <Box style={{ width: 118, background: '#0F1423', borderRadius: 4, alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>{x.w}</Text>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', marginTop: 4 }}>{x.k}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: `4px solid ${x.c}`, padding: '0 15px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+                        <Box style={{ flexDirection: 'row', gap: 9, flex: 1 }}>
+                            {x.items.map((y) => (
+                                <Box key={y} style={{ flexDirection: 'row', gap: 7, alignItems: 'flex-start', flex: 1 }}>
+                                    <Box style={{ width: 5, height: 5, borderRadius: 3, background: x.c, marginTop: 6 }} />
+                                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{y}</Text>
+                                </Box>
+                            ))}
+                        </Box>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', width: 216, textAlign: 'right' }}>产出：{x.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：单场景的取舍 */}
+        <Box style={{ height: 182, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 456, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>单场景的取舍标准</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, marginTop: 9, flex: 1 }}>
+                    场景要同时满足两条：小到两周能上线，大到业务天天用。太大则两周做不完，太小则上线即闲置。
+                </Text>
+                <Box style={{ background: 'rgba(250,79,36,0.22)', borderRadius: 3, padding: '0 12px', marginTop: 10 }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', lineHeight: 1.45 }}>
+                        判断法：问「这个场景今天不做，会有人难受吗？」没人难受的场景，不值得两周。
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>两周里必须发生的三次签字</Text>
+                {[
+                    { k: 'W1 前', v: '场景与口径签字——不做这单就停在这里' },
+                    { k: 'W1 后', v: '对象与密级签字——错一次后面全错' },
+                    { k: 'W2 后', v: '验收与移交签字——决定 FDE 能否退出' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 11, alignItems: 'center' }}>
+                        <Box style={{ width: 54, height: 22, borderRadius: 3, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{x.k}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 12.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：常见拖期原因 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#8A8F99' }}>拖期的四个真实原因</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 5, lineHeight: 1.4 }}>都不是技术问题</Text>
+            </Box>
+            {[
+                { k: '审批排队', v: '等主管签字' },
+                { k: '口径反复', v: '同一指标三套算法' },
+                { k: '数据没到位', v: '要等上游给数' },
+                { k: '陪同人离职', v: '对接人换了' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>29 / 60</Text>
+    </Box>
+</Slide>

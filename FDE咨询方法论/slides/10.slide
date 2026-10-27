@@ -1,0 +1,119 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            碎石路 → 超级高速公路：<span style={{ color: '#FA4F24' }}>这是 FDE 唯一的规模化机制</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            不做这件事，FDE 团队就是一个规模化不可解的咨询公司——收入增长被人力弹性锁死
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 12 }}>
+
+        {/* 核心三步 */}
+        <Box style={{ height: 138, flexDirection: 'row', gap: 11, alignItems: 'stretch' }}>
+            {[
+                {
+                    n: '1', t: '现场铺路', c: '#FA4F24', en: 'BUILD THE GRAVEL ROAD',
+                    d: '一个客户一个客户地手铺。慢，但一定贴合这个客户。',
+                    k: '这一步不许省，也不许并行',
+                },
+                {
+                    n: '2', t: '想清楚抽象', c: '#E0641E', en: 'FIND THE ABSTRACTION',
+                    d: '总部复盘：哪一段是通用的，哪一段只是客户的特例。',
+                    k: '这一步是全场最难的能力',
+                },
+                {
+                    n: '3', t: '铺成高速公路', c: '#C43A17', en: 'PROMOTE TO THE PLATFORM',
+                    d: '推广到 5–10 个客户，不用现场支持也能走。',
+                    k: '这一步决定能不能规模化',
+                },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                        <Box style={{ width: 30, height: 30, borderRadius: 15, background: x.c, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Box style={{ flex: 1 }}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                            <Text style={{ fontSize: 9.5, color: '#8A8F99', letterSpacing: 1, marginTop: 2 }}>{x.en}</Text>
+                        </Box>
+                    </Box>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 8, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ borderTop: '1px solid #E8E8E8', paddingTop: 7 }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：可复用度判断 + 现场证据 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 456, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>第二步的判据：可复用度</Text>
+                <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', marginTop: 8, lineHeight: 1.45, flex: 1 }}>
+                    现场每建一块，FDE 都要当场问一句：这块能不能被下一个客户直接用？答案是「不能」的时候，要在现场记录它为什么不能——那是平台的缺口清单，不是客户的定制需求。
+                </Text>
+                {[
+                    { k: '可复用（进平台）', v: '行业通用规则、标准接法、常见对象建模' },
+                    { k: '半复用（进模板）', v: '骨架通用参数不同，做成可配置模板' },
+                    { k: '不可复用（留客户）', v: '客户特有组织结构、历史遗留字段' },
+                ].map((x, i) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 10, marginTop: 7, alignItems: 'flex-start', flex: 1 }}>
+                        <Box style={{ width: 6, height: 6, borderRadius: 3, background: ['#FA4F24', '#FBA15C', '#C9CBD1'][i], marginTop: 6 }} />
+                        <Box style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.k}</Text>
+                            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', lineHeight: 1.32, marginTop: 2 }}>{x.v}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '10px 16px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>不回流会怎样</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.48, marginTop: 7, flex: 1 }}>
+                        FDE 的经验只留在个人脑子里。下一个客户来了，还是要派同样多的人、做同样多的活。
+                        收入增长受制于 FDE 人力弹性——和咨询公司受制于高级合伙人数量，是同一个瓶颈。
+                    </Text>
+                    <Text style={{ fontSize: 12, color: '#8A8F99', marginTop: 6 }}>
+                        所以「抽象」不是研发部门的事，是 FDE 现场交付物的一部分。
+                    </Text>
+                </Box>
+                <Box style={{ height: 84, background: '#0F1423', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>AIP 的本质就是这个机制的软件化</Text>
+                    <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', lineHeight: 1.45, marginTop: 6 }}>
+                        把二十年 FDE 经验里的重复步骤——数据接入、本体构建、规则编码、Agent 部署——做成模板。
+                        效率提升来自「用软件替代稀缺的人类经验」，不是来自算法突破。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：资源杠杆 */}
+        <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'stretch' }}>
+            <Box style={{ width: 214, background: '#0F1423', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: '#FBA15C' }}>资源杠杆</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF', marginTop: 4 }}>FDE 是管道，不是销售成本</Text>
+            </Box>
+            {[
+                { k: '1 : 200–500 万', v: '企业管道配 1 名 FDE' },
+                { k: '8–16 周', v: '单客户嵌入时长' },
+                { k: '5–10 个', v: '一条路的目标客户数' },
+                { k: '第 3 天', v: 'Bootcamp 交可运行应用' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10.5, color: '#3A4050', marginTop: 3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>10 / 60</Text>
+    </Box>
+</Slide>

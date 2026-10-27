@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            Execute：<span style={{ color: '#FA4F24' }}>交付即上线，上线即作战</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            在客户生产环境里跑起来，不是演示、不是沙盒、不是 PoC。差别只在四个字：谁的数据
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 14, height: 479, flexDirection: 'column', gap: 13 }}>
+
+        {/* 上：四层递进 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+            {[
+                { k: '沙盒演示', c: '#B8BCC4', d: '用样例数据，在自己环境', r: '最常见的假上线', dead: '客户业务从不使用' },
+                { k: 'PoC 验证', c: '#8A8F99', d: '用客户脱敏数据，在隔离环境', r: '技术上跑通', dead: '业务不认账、不接管' },
+                { k: '准生产', c: '#FBA15C', d: '用客户真实数据，在客户环境预发', r: '性能与权限已验证', dead: '差最后一步交接' },
+                { k: '生产上线', c: '#FA4F24', d: '用客户真实数据，接客户真实写路径', r: '业务天天在上面干活', dead: 'FDE 的交付终点' },
+            ].map((x, i) => (
+                <Box key={x.k} style={{ flex: 1, background: i === 3 ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center', borderTop: `3px solid ${x.c}` }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: i === 3 ? '#C43A17' : '#5A6070' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.45, marginTop: 9, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '0 11px', marginTop: 9 }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.4 }}>{x.r}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11, color: '#8A8F99', lineHeight: 1.35, marginTop: 7 }}>{x.dead}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：Execute 阶段的四条纪律 */}
+        <Box style={{ height: 182, flexDirection: 'row', gap: 12 }}>
+            <Box style={{ width: 468, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>Execute 阶段的四条纪律</Text>
+                {[
+                    { k: '写生产码', v: '在客户环境写代码，不是回总部写完再部署' },
+                    { k: '每天现场', v: '有客户侧的人在旁边，一起看当天结果' },
+                    { k: '不建工单', v: '不给 FDE 设工单队列，事情不过夜' },
+                    { k: '背后果', v: '上线出问题，FDE 留在现场处理' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 12, marginTop: 11, alignItems: 'flex-start' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C', width: 62 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 17px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423' }}>「上线」的三条判定，全部满足才算</Text>
+                {[
+                    { k: '有人在用', v: '客户业务人员每天登录，且使用量可查' },
+                    { k: '写路径通了', v: '系统产生的结论会回到客户真实作业流程里' },
+                    { k: '出事有人管', v: '有值班、有告警、有客户侧的责任人' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flexDirection: 'row', gap: 11, marginTop: 10, alignItems: 'center' }}>
+                        <Box style={{ width: 20, height: 20, borderRadius: 10, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>✓</Text>
+                        </Box>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', width: 88 }}>{x.k}</Text>
+                        <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：FDE 与传统交付的差别 */}
+        <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'stretch' }}>
+            <Box style={{ width: 208, background: '#0F1423', borderRadius: 4, padding: '0 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>与传统交付的根本差别</Text>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FBA15C', marginTop: 6, lineHeight: 1.4 }}>失败代价从「延期」变成「停摆」</Text>
+            </Box>
+            {[
+                { k: '延期', v: '顾问交付延期，被骂一顿，重签合同' },
+                { k: '做错需求', v: '产品交付做错需求，返工排期' },
+                { k: '停摆', v: 'FDE 交付出问题，客户业务当场停摆' },
+            ].map((x, i) => (
+                <Box key={x.k} style={{ flex: 1, background: i === 2 ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: i === 2 ? '4px solid #FA4F24' : 'none' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: i === 2 ? '#C43A17' : '#5A6070' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.35, marginTop: 5 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · FDE咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: '#8A8F99', marginLeft: 'auto' }}>21 / 60</Text>
+    </Box>
+</Slide>

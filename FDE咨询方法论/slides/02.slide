@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            本册覆盖<span style={{ color: '#FA4F24' }}>五个部分</span>，把 FDE 从「岗位介绍」讲到「可复制的手艺」
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            角色本体论 → 现场三动作 → 场景实战 → 八大领域落法 → 组织与工具，每部分均含「方法 · 内容 · 模板」三段式
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 24, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+
+        {/* 左 60% 五条 */}
+        <Box style={{ width: 700, flexDirection: 'column', gap: 12 }}>
+            {[
+                { n: '01', t: '角色本体论', d: 'FDE 是什么、三种角色分工、2005 年起源与规模化机制', tag: 'P05–16' },
+                { n: '02', t: '现场三动作', d: 'Enter / Investigate / Execute，先建 Ontology 再上 AI', tag: 'P17–26' },
+                { n: '03', t: '场景实战', d: 'Bootcamp 五天节奏、三个真实现场、三类失败复盘', tag: 'P27–40' },
+                { n: '04', t: '× 八大领域', d: 'Ontology / Agent / 知识库 / 管道 / 治理 / 主数据 / 指标 / 4A', tag: 'P41–52' },
+                { n: '05', t: '组织与工具', d: '团队配比、组织治理、现场工作台、职业路径与结语', tag: 'P53–60' },
+            ].map((it, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px', gap: 16 }}>
+                    <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#FA4F24', width: 48 }}>{it.n}</Text>
+                    <Box style={{ width: 150 }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{it.d}</Text>
+                    <Text style={{ fontSize: 13, color: '#C43A17', width: 70, textAlign: 'right' }}>{it.tag}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 右 40% Approach + 收口 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Box style={{ height: 84, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>
+                    <tspan style={{ color: '#FA4F24' }}>P04</tspan>　Approach：五阶段推进与产出物
+                </Text>
+                <Text style={{ fontSize: 13.5, color: '#3A4050', lineHeight: 1.45, marginTop: 6 }}>
+                    进场 → 诊断 → 建模 → 构建 → 回流移交，每一步写明必须交出来的东西
+                </Text>
+            </Box>
+            {[
+                { t: '碎石路机制', d: '一个客户定制 → 抽象成平台能力 → 下 5–10 个客户不用现场支持也能用' },
+                { t: 'Echo 与 Delta 一对', d: '一个指路，一个修路；单独任一个都会产出错误的东西' },
+            ].map((x) => (
+                <Box key={x.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    <Text style={{ fontSize: 14, color: '#3A4050', lineHeight: 1.5, marginTop: 8 }}>{x.d}</Text>
+                </Box>
+            ))}
+            <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>全册一条主线</Text>
+                <Text style={{ fontSize: 14.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5, marginTop: 8 }}>
+                    FDE 交付的不是关于系统的论述，是系统本身
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · FDE咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>02 / 60</Text>
+    </Box>
+</Slide>
