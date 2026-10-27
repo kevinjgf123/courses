@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        AA：管道<span style={{ color: '#FA4F24' }}>拓扑</span>与调用编排
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        应用数量增长会带来技术债，管道数量增长带来的是「数据不一致的技术债」，后者更难发现
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 拓扑 */}
+      <Box style={{ height: 244, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>管道的五类节点与四种边</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 14, marginTop: 10 }}>
+          <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+            {[
+              { n: '源节点', t: '外部业务系统，只读为主', c: '#8A8F99' },
+              { n: '接入节点', t: '连接器与同步任务', c: '#FA4F24' },
+              { n: '加工节点', t: '清洗、join、富化、映射', c: '#F87D2F' },
+              { n: '发布节点', t: '映射进本体、生成新事务', c: '#E0651A' },
+              { n: '出口节点', t: '数据、逻辑、动作、回调', c: '#C43A17' },
+            ].map((it, i) => (
+              <Box key={it.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + it.c, padding: '0 11px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+                <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>{it.t}</Text>
+              </Box>
+            ))}
+          </Box>
+          <Box style={{ width: 320, flexDirection: 'column', gap: 6 }}>
+            {[
+              { n: '数据依赖边', d: '上游产出是下游输入' },
+              { n: '口径依赖边', d: '同一口径的不同实现，必须标为冲突' },
+              { n: '权限依赖边', d: '下游权限不得宽于上游' },
+              { n: '发布依赖边', d: '一次发布涉及的一组节点' },
+            ].map((it, i) => (
+              <Box key={it.n} style={{ flex: 1, background: 'rgba(250,79,36,0.14)', borderRadius: 3, padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+                <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.68)', marginTop: 2 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 9, lineHeight: 1.45 }}>
+          拓扑图上必须能一键圈出「这次发布影响哪些节点」，以及「这两条口径互相冲突」——做不到这两点，拓扑就只是一张装饰图。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>调用编排的三条规则</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 8 }}>
+            {[
+              { t: '调度分层', d: '接入按小时或按天，加工按依赖拓扑排序，出口按事件触发；三层不要混在一张调度表里' },
+              { t: '并发与幂等', d: '同一条数据可能被两个任务同时处理，必须有幂等键与去重机制，否则重复处理不可查' },
+              { t: '失败隔离', d: '一条管道挂掉不能拖垮同批次的其他管道；失败要能单独重跑而不影响已成功的部分' },
+            ].map((it, i) => (
+              <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>管道型技术债的三个征兆</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            一、同一张源表有三条以上互不知情的管道在各自加工；二、同一个指标在三个报表里有三个数；三、找不到任何一个能说清「这个数从哪来」的人。这三条一旦凑齐，就不是优化问题，而是要重建管道域。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>25 / 30</Text>
+    </Box>
+</Slide>

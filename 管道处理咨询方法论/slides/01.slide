@@ -1,0 +1,49 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+  <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+  <Box style={{ position: 'absolute', right: 0, top: 0, width: 620, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.26) 0%, rgba(250,79,36,0) 70%)' }} />
+
+  <Box style={{ position: 'absolute', left: 88, top: 92, width: 1104 }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>EA 企业架构咨询方法论 · 第八册</Text>
+    </Box>
+    <Text style={{ fontSize: 58, fontWeight: 'bold', color: '#FFFFFF', marginTop: 26, lineHeight: 1.15 }}>
+      管道处理<span style={{ color: '#FA4F24' }}>咨询方法论</span>
+    </Text>
+    <Text style={{ fontSize: 19, color: 'rgba(255,255,255,0.72)', marginTop: 22, lineHeight: 1.6, width: 820 }}>
+      管道处理是 4A 架构的第八个实践点，它要回答的不是「怎么搬」，而是「哪一版数据、什么口径、由谁批的、从哪进、往哪出、能不能退回去」
+    </Text>
+    <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 30 }} />
+
+    <Box style={{ flexDirection: 'row', gap: 10, marginTop: 34 }}>
+      {['30 页', '四个部分', '含 Approach 八阶段', '含管道 × 知识库 × Agent × Ontology 四者关系'].map((t, i) => (
+        <Box key={t} style={{ height: 32, borderRadius: 16, border: '1px solid rgba(255,255,255,0.22)', padding: '0 15px', flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.78)' }}>{t}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 566, flexDirection: 'row', gap: 36 }}>
+    {[
+      { b: 'DA', t: '数据架构' },
+      { b: 'BA', t: '业务架构' },
+      { b: 'AA', t: '应用架构' },
+      { b: 'TA', t: '技术架构' },
+      { b: 'ONT', t: 'Ontology' },
+      { b: 'AGT', t: 'Agent' },
+      { b: 'KB', t: '知识库' },
+      { b: 'PIPE', t: '管道处理', c: '#FA4F24' },
+    ].map((x, i) => (
+      <Box key={x.b} style={{ opacity: i === 7 ? 1 : 0.42 }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: x.c || '#FFFFFF' }}>{x.b}</Text>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginTop: 3 }}>{x.t}</Text>
+      </Box>
+    ))}
+  </Box>
+
+  <Box style={{ position: 'absolute', right: 88, bottom: 46, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · 管道处理咨询方法论</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>01 / 30</Text>
+  </Box>
+</Slide>

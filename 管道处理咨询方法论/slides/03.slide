@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        序论：为什么 4A 之后还要谈<span style={{ color: '#FA4F24' }}>管道处理</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        因为四层架构都是「静态设计」，而本体、Agent、知识库都是「活系统」，它们之间唯一稳定的东西是管道
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      <Box style={{ width: 400, background: '#0F1423', borderRadius: 4, padding: '18px 20px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FBA15C' }}>四层架构解决不了的三件事</Text>
+        <Box style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginTop: 12, marginBottom: 12 }} />
+        {[
+          { t: '一、静态与活的落差', d: 'DA 画的表结构、AA 画的模块图，都是某一时刻的快照；三个月后它们和真实系统已经有偏差，而偏差没人负责' },
+          { t: '二、责任无处安放', d: '口径错、数据晚到、重复处理，这些问题既不属于数据架构，也不属于应用架构，最后落在 nobody 头上' },
+          { t: '三、可退能力缺失', d: '出了错只能改代码补救，改完谁也不知道影响了哪些下游——血缘断了，就等于没有架构' },
+        ].map((it, i) => (
+          <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Box style={{ width: 20, height: 20, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{String(i + 1)}</Text>
+              </Box>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+            </Box>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', marginTop: 6, lineHeight: 1.55 }}>{it.d}</Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 168, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 10 }}>管道处理补上的三块责任</Text>
+          {[
+            { b: '时序责任', t: '什么时候进来、多久一次、延迟多少、断了怎么补', c: '#FA4F24' },
+            { b: '版本责任', t: '哪一版数据、由哪次同步产生、从哪个分支发布、怎么回滚', c: '#F87D2F' },
+            { b: '边界责任', t: '哪些字段能进本体、哪些能出本体、哪些只允许读不允许写', c: '#E0651A' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 84 }}>{it.b}</Text>
+              <Text style={{ fontSize: 12, color: '#3A4050', flex: 1 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ height: 132, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 18px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>它为什么算一个业务应用</Text>
+          <Text style={{ fontSize: 12.5, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            因为它有业务责任人（口径由谁定）、有业务产出物（映射表、血缘矩阵、发布记录）、有生命周期（从批到增到流再退役）、有服务对象（本体与所有调用方）。这三样齐全，就不是一个 ETL 作业，而是一个可以立项、可以验收、可以被审计的应用。
+          </Text>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>本册的一句话主张</Text>
+          <Text style={{ fontSize: 15, color: '#FFFFFF', marginTop: 8, lineHeight: 1.5 }}>
+            数据进出本体，必须<span style={{ color: '#FA4F24' }}>可管、可追、可退</span>。做不到这三条，Ontology 只是一张漂亮的关系图。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>03 / 30</Text>
+    </Box>
+</Slide>

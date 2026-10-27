@@ -1,0 +1,64 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道处理的 <span style={{ color: '#FA4F24' }}>4A 映射总览</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        把管道当成一个业务应用来立项，它在四层架构里各变成什么
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 映射总览 */}
+      <Box style={{ height: 302, flexDirection: 'row', gap: 9 }}>
+        {[
+          { a: 'BA', t: '业务架构', q: '管什么、谁负责、什么时候停', r: '能力与责任', c: '#FA4F24' },
+          { a: 'DA', t: '数据架构', q: '三层数据与必建模元数据', r: '分层与口径', c: '#F87D2F' },
+          { a: 'AA', t: '应用架构', q: '管道拓扑与调用编排', r: '节点与依赖', c: '#E0651A' },
+          { a: 'TA', t: '技术架构', q: '运行时、调度与非功能', r: '底座与指标', c: '#C43A17' },
+        ].map((it, i) => (
+          <Box key={it.a} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', overflow: 'hidden' }}>
+            <Box style={{ height: 70, background: it.c, padding: '0 14px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 26, fontWeight: 'bold', color: 'rgba(255,255,255,0.9)' }}>{it.a}</Text>
+            </Box>
+            <Box style={{ flex: 1, padding: '11px 13px' }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+              <Text style={{ fontSize: 11.5, color: '#5A6072', marginTop: 5, lineHeight: 1.45 }}>{it.q}</Text>
+              <Box style={{ height: 1, background: '#E8E8E8', marginTop: 10, marginBottom: 9 }} />
+              <Text style={{ fontSize: 10, color: '#8A8F99' }}>在管道里变成</Text>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, marginTop: 4 }}>{it.r}</Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>管道的三个特殊之处</Text>
+          {[
+            { b: '它是唯一有版本的', t: '其他应用发版是换代码，管道发版是产生新的数据版本，影响面通过血缘可算' },
+            { b: '它同时握有入口和出口', t: '别的架构只管调用链的一端，管道两端都在自己手里，风险集中' },
+            { b: '它的失效是静默的', t: '代码报错会停，管道错了只会算出一个看起来合理的数，必须靠健康检查兜' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FA4F24', width: 148 }}>{it.b}</Text>
+              <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>立项时容易被漏掉的三件事</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            一、口径责任人不进组织图，导致口径无人裁定；二、值班与告警没有承接方，管道上线三周后就没人管；三、退役机制缺失，旧管道永远不下线，新旧两套口径并存，最后没人说得清哪个是权威。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>22 / 30</Text>
+    </Box>
+</Slide>

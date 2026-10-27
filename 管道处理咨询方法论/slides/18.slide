@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道 <span style={{ color: '#FA4F24' }}>×</span> Agent：上下文供给与终止控制
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        Agent 的一切判断都建立在管道供给的数据之上；管道延迟一次，Agent 的结论就错一次
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 供给链路 */}
+      <Box style={{ height: 122, background: '#F7F7F8', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一次 Agent 判定的数据供给链路</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 9 }}>
+          {[
+            { t: '本体对象', d: '主键与身份', c: '#0F1423' },
+            { t: '结构化事实', d: '管道进来的表数据', c: '#FA4F24' },
+            { t: '知识片段', d: '检索得到，带引用', c: '#F87D2F' },
+            { t: '上下文规格', d: '来源、预算、时效、压缩、不可信标记', c: '#E0651A' },
+            { t: '工具调用', d: '在发起人权限内执行', c: '#C43A17' },
+          ].map((it, i) => (
+            <Box key={it.t} style={{ flex: 1, background: it.c, borderRadius: 3, padding: '0 10px', height: 56, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', marginTop: 3 }}>{it.d}</Text>
+              {i < 4 ? <Text style={{ fontSize: 14, color: '#C9CDD6', marginTop: 4 }}>›</Text> : null}
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>管道必须为 Agent 保证的四件事</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 8 }}>
+            {[
+              { t: '时效可承诺', d: '给 Agent 的每个对象类型都要有数据时效承诺，比如「不超过 15 分钟」，做不到就别让它做实时判断' },
+              { t: '口径可追溯', d: 'Agent 回答里出现的数字，必须能点回口径定义与源版本，否则模型会自己编' },
+              { t: '权限可传递', d: '调用者的权限必须一路传到管道出口，不能因为是 Agent 在问就放行' },
+              { t: '缺失可识别', d: '数据没到要能被识别成「缺失」，而不是零值；零值会被 Agent 当成事实' },
+            ].map((it, i) => (
+              <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24' }}>{it.t}</Text>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>终止控制：管道也管「什么时候不许再给」</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            Agent 册讲终止条件主要由 Agent 侧负责，但有三种终止信号只能由管道发出，它们不能等到 Agent 自己发现：
+          </Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 8 }}>
+            {[
+              { b: '陈旧熔断', t: '关键对象的数据超过时效承诺，自动标记为不可用于判定' },
+              { b: '溯源失败', t: '要引用的数据找不到完整血缘，直接失败，不允许降级成猜测' },
+              { b: '权限不足', t: '调用链上任何一环权限不够，直接失败，不允许截取可见部分继续算' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+                <Box style={{ width: 72, height: 24, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{it.b}</Text>
+                </Box>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{it.t}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>18 / 30</Text>
+    </Box>
+</Slide>

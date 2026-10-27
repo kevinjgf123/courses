@@ -1,0 +1,75 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道分支与发布：<span style={{ color: '#FA4F24' }}>一次都不许直接改生产</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        官方把「分支与发布流程」列为管道建设的增强项，因为在有 Agent 和本体的世界里，管道变更就是业务变更
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 分支流 */}
+      <Box style={{ height: 168, background: '#F7F7F8', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一次管道变更的完整路径</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 10 }}>
+          {[
+            { n: '生产', t: 'main 分支上的稳定版本', c: '#0F1423' },
+            { n: '开分支', t: '一条改动独立开分支，互不干扰', c: '#F87D2F' },
+            { n: '沙箱验证', t: '沙箱分支跑通数据与规则', c: '#E0651A' },
+            { n: '评审', t: '口径影响 + 血缘影响面评估', c: '#E0651A' },
+            { n: '合并发布', t: '合并并生成新事务版本', c: '#FA4F24' },
+            { n: '可回滚', t: '保留上一版，随时切回', c: '#C43A17' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: it.c, borderRadius: 3, padding: '0 10px', height: 76, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', marginTop: 4, lineHeight: 1.4 }}>{it.t}</Text>
+              {i < 5 ? <Text style={{ fontSize: 15, color: '#C9CDD6', marginTop: 6 }}>›</Text> : null}
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>为什么管道变更要按业务变更管</Text>
+          {[
+            { t: '它会改口径', d: '改一个清洗表达式，本体里所有引用这个对象类型的 Agent 结论都会跟着变' },
+            { t: '它会改数字', d: '指标变了但没人通知，下游报表对不上，重新建立信任的成本极高' },
+            { t: '它会改权限', d: '同步范围扩大，可能带进来原本不该被这一类用户看到的字段' },
+          ].map((it, i) => (
+            <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 4, lineHeight: 1.5 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>发布检查表（六项）</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 8 }}>
+            {[
+              '本次改动影响哪些对象类型与链接类型',
+              '口径是否有变化，是否需要同步字典',
+              '血缘影响面是否已评估，下游是否已通知',
+              '是否新增敏感字段，权限是否同步调整',
+              '沙箱分支的产出与生产基线的差异清单',
+              '回滚路径是否可执行，回滚耗时多久',
+            ].map((it, i) => (
+              <Box key={it} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Box style={{ width: 15, height: 15, border: '1px solid #FBA15C', alignItems: 'center', justifyContent: 'center' }} />
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', flex: 1 }}>{it}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>14 / 30</Text>
+    </Box>
+</Slide>

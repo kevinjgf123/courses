@@ -1,0 +1,84 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        HyperAuto / SDDI：<span style={{ color: '#FA4F24' }}>让元数据生成管道</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        软件定义数据集成——自动生成不是为了省事，而是为了让「从源到本体」全链路有一份可评审的代码
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 三组件 */}
+      <Box style={{ height: 88, flexDirection: 'row', gap: 10 }}>
+        {[
+          { b: 'Connectors', t: '与源系统双向、安全、优化地传输大规模数据', c: '#FA4F24' },
+          { b: 'Source exploration', t: '引导式数据发现 + 购物车式批量创建同步', c: '#F87D2F' },
+          { b: 'Automatic pipeline generation', t: '把原始数据变成精选数据集与本体对象类型', c: '#E0651A' },
+        ].map((it, i) => (
+          <Box key={it.b} style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '10px 14px', borderLeft: '3px solid ' + it.c }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{it.b}</Text>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.66)', marginTop: 5, lineHeight: 1.45 }}>{it.t}</Text>
+          </Box>
+        ))}
+      </Box>
+
+      {/* 四步生成 */}
+      <Box style={{ height: 172, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>自动生成管道的四个步骤</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 10 }}>
+          {[
+            { n: '1', t: '源特定预处理', d: '产出固定 schema 的元数据集，先把源的结构固定下来', c: '#FA4F24' },
+            { n: '2', t: '标准清洗库', d: '套用标准化清洗步骤，把口径差异在入口就抹平', c: '#F87D2F' },
+            { n: '3', t: '核心生成', d: '数据富化、列重命名、去重、union', c: '#E0651A' },
+            { n: '4', t: '派生元素', d: 'join 表、时序数据集、富化列等高级加工支撑', c: '#C43A17' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 3, padding: '10px 12px', flexDirection: 'column' }}>
+              <Box style={{ width: 22, height: 22, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+              </Box>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', marginTop: 7 }}>{it.t}</Text>
+              <Text style={{ fontSize: 11.5, color: '#5A6072', marginTop: 5, lineHeight: 1.5 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>为什么咨询时要盯住这两条</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 8 }}>
+            {[
+              { t: '产出是人类可读代码', d: '生成结果是像 Spark 这样的可读代码，可以 review、修改、测试、做版本控制，能 check-in 到 git——这意味着管道第一次变成了可审计资产' },
+              { t: '可从源自动生成本体', d: '基于源系统元数据推导同步方案、转换逻辑与本体设计，甚至能反规范化 ERP 的密集命名空间，把技术字段重构成业务对象' },
+            ].map((it, i) => (
+              <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 4, lineHeight: 1.55 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ width: 400, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>现实提醒</Text>
+          {[
+            { t: '版本状态', d: 'HyperAuto 第一代已进入退役，第二代已发布，SAP 侧在强推第二代——架构图上写哪个版本要问清楚' },
+            { t: '覆盖范围', d: '内置 SAP、Salesforce、NetSuite、HubSpot 等连接器；对象存储、流、JDBC、REST、NoSQL 也能接，但质量感受连接器成熟度影响很大' },
+          ].map((it, i) => (
+            <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#E0651A' }}>{it.t}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 4, lineHeight: 1.55 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>09 / 30</Text>
+    </Box>
+</Slide>

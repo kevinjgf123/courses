@@ -1,0 +1,83 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        DA：管道处理的<span style={{ color: '#FA4F24' }}>三层数据</span>与十二项必建模元数据
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        数据架构在管道里的作用不是画图，而是规定哪一层的数据可以被谁碰
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 三层 */}
+      <Box style={{ height: 158, flexDirection: 'row', gap: 10 }}>
+        {[
+          { n: '贴源层', s: 'Raw / Staging', d: '从源系统搬过来的原始形态，尽量不加工。唯一动作是落地与记录事务。', r: '谁能改：任何人不许改，只能新增版本', c: '#8A8F99' },
+          { n: '明细层', s: 'Curated', d: '清洗、标准化、去重、映射后的中间数据集，是本体映射的直接输入。', r: '谁能改：管道维护者，改动必须过发布流程', c: '#F87D2F' },
+          { n: '语义层', s: 'Semantic', d: '已映射成对象类型与链接类型的数据，带着业务语义、血缘与密级。', r: '谁能改：仅逻辑函数，且必须审批与留版本', c: '#FA4F24' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '12px 15px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+            <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 3 }}>{it.s}</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.5 }}>{it.d}</Text>
+            <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '6px 9px', marginTop: 8, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 11, color: '#0F1423', lineHeight: 1.4 }}>{it.r}</Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      {/* 十二项元数据 */}
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>管道上生产的十二项必建模元数据</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 10 }}>
+          <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+            {[
+              { n: '01', t: '业务唯一标识', d: '对象的主键来自哪个字段' },
+              { n: '02', t: '口径定义', d: '指标的算法与统计范围' },
+              { n: '03', t: '更新时间戳', d: '事件时间与加载时间分开记' },
+              { n: '04', t: '事务边界', d: '哪一次同步、哪一个版本' },
+              { n: '05', t: '来源标识', d: '源系统、源表、源字段' },
+              { n: '06', t: '血缘关系', d: '表级、字段级、任务级三层' },
+            ].map((it, i) => (
+              <Box key={it.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '0 10px', flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 20 }}>{it.n}</Text>
+                <Box style={{ flex: 1, flexDirection: 'column' }}>
+                  <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{it.t}</Text>
+                  <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.55)', marginTop: 1 }}>{it.d}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+          <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+            {[
+              { n: '07', t: '密级与访问策略', d: '字段级分类级控制标记' },
+              { n: '08', t: '时效承诺', d: '多久算过期，可否用于判定' },
+              { n: '09', t: '质量检查结果', d: '五类健康检查的最近结论' },
+              { n: '10', t: '计算模式', d: '快照还是增量，事务类型' },
+              { n: '11', t: '依赖与影响面', d: '上游是谁、下游受谁影响' },
+              { n: '12', t: '退役标记', d: '是否已废弃、替代者是谁' },
+            ].map((it, i) => (
+              <Box key={it.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '0 10px', flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 20 }}>{it.n}</Text>
+                <Box style={{ flex: 1, flexDirection: 'column' }}>
+                  <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{it.t}</Text>
+                  <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.55)', marginTop: 1 }}>{it.d}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 9, lineHeight: 1.45 }}>
+          这十二项必须由管道自动产出，不允许人工维护。第10 项计算模式与第 12 项退役标记是管道独有的两项，其他应用架构里找不到对应物。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>24 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,65 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        Snapshot vs Incremental：<span style={{ color: '#FA4F24' }}>一条决定整条管道命运的选择</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        官方原文：只有当输入数据集通过追加事务，或通过不修改既有文件的更新事务变更时，增量才会生效
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      {/* 左：两种模式对比 */}
+      <Box style={{ width: 424, flexDirection: 'column', gap: 10 }}>
+        <Box style={{ height: 152, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid #8A8F99', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#5A6072' }}>快照式计算</Text>
+          <Text style={{ fontSize: 12.5, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            对整个输入执行变换，输出每次被完全替换。简单、可重放、易理解，是新管道的正确起点。代价是数据量大时一次跑不完、延迟随数据量线性增长。
+          </Text>
+        </Box>
+        <Box style={{ height: 152, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>增量式计算</Text>
+          <Text style={{ fontSize: 12.5, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            只对上一次构建之后追加进来的新数据执行变换，输出只追加不覆盖。性能与延迟都好，代价是所有依赖都必须满足事务前提，且一旦退化会静默出错。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>把快照输入标成增量，不会报错，也不会有任何效果</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', marginTop: 6, lineHeight: 1.55 }}>
+            这是最危险的一种失败：不报警、不中断，只是默默按全量跑，等到数据涨上去才发现延迟已经到天。
+          </Text>
+        </Box>
+      </Box>
+
+      {/* 右：五类限制 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>增量模式的五类硬限制（官方明确）</Text>
+        {[
+          { n: 'Join', d: '增量数据集必须放在 join 的左侧，快照数据集放右侧；两个增量数据集互相 join 目前不支持' },
+          { n: 'Union', d: '所有输入必须处于同一种计算模式，不能一半增量一半快照' },
+          { n: 'Transforms', d: '窗口函数、聚合、透视只作用于当前事务，看不到之前的输出——跨事务的窗口没有意义' },
+          { n: 'Replay', d: '重放只支持全量输入，不支持对增量状态做部分重放' },
+          { n: 'Fail-fast', d: '可以开启「要求增量执行」，一旦非增量就让作业直接失败，防止悄悄退化成快照' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#E0651A', width: 72 }}>{it.n}</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.5 }}>{it.d}</Text>
+          </Box>
+        ))}
+
+        <Box style={{ height: 92, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '11px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>咨询上的取舍：批 → 增 → 流</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 6, lineHeight: 1.55 }}>
+            多数情况先做批量，之后再引入增量提升性能、降低延迟。已知新数据规模极大时，可以从一开始设计成增量，但复杂度显著更高。延迟要求极低才用流式，而且流式管道只会和它最慢的组件一样快，所以必须在设计之初就确认目标延迟与吞吐能达成。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>10 / 30</Text>
+    </Box>
+</Slide>

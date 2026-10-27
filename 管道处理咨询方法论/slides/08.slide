@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        Data Connection：<span style={{ color: '#FA4F24' }}>把源系统管起来</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        它不是一个连接器，而是一套「以事务管理数据随时间变化」的框架——这是管道可追溯的根
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 92, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>官方定义（原文要点）</Text>
+        <Text style={{ fontSize: 14, color: '#FFFFFF', marginTop: 8, lineHeight: 1.55 }}>
+          这一框架用于「随时间管理数据」，方式是使用数据集事务来管理离散版本，并由此提供跨时间的完整数据版本血缘——能追溯哪个同步任务产生了哪个版本的哪一个数据集。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>六件必须落到设计里的事</Text>
+          {[
+            { n: '01', t: '事务即版本', d: '每一次同步是一个事务，数据集是事务序列的结果，不是「一张不断被覆盖的表」' },
+            { n: '02', t: '全时间血缘', d: '能回答某天某刻的某个数值，来自哪次同步、哪个源、哪个版本' },
+            { n: '03', t: '增量优先', d: '只同步需要的数据，避免每次全量；全量是例外不是常态' },
+            { n: '04', t: '细粒度安全', d: '同步集合甚至单个同步，都可以按角色或分类级做访问控制' },
+            { n: '05', t: '元数据分离', d: '同步的元数据与同步定义分开管，配置才有版本可谈' },
+            { n: '06', t: '分支可测', d: '支持完整分支，新配置先在沙箱分支里跑，跑通再合并' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', width: 26 }}>{it.n}</Text>
+              <Box style={{ flex: 1, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 2 }}>{it.d}</Text>
+              </Box>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ width: 420, flexDirection: 'column', gap: 8 }}>
+          <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>支持的四类接入方式</Text>
+            {[
+              { b: '批量同步', t: '定时全量或按窗口抽取，最常用' },
+              { b: '流式接入', t: '持续增量，要求端到端延迟达标' },
+              { b: 'CDC 同步', t: '只取变更，天然适合增量管道' },
+              { b: '虚拟表', t: '不复制数据，直接引用外部已有资产' },
+              { b: '媒体数据', t: '非结构化文件的接入与加工' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24', width: 78 }}>{it.b}</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1 }}>{it.t}</Text>
+              </Box>
+            ))}
+          </Box>
+          <Box style={{ height: 138, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>咨询切入点</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+              客户最常见的问题是「我们的同步是覆盖式的，没有版本」，于是三个月后没人能解释报表里的数字从哪来。诊断动作很直接：抽查一张核心表，问「昨天上午十点这个字段是什么值」，答不上来就是没做事务化。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>08 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        上线评审 12 项 + 从批到增再到流的<span style={{ color: '#FA4F24' }}>三步演进</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        左边是准入清单，右边是演进路径；两条线都要求同一件事——每一步都有明确的判断依据
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      {/* 12 项 */}
+      <Box style={{ width: 552, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>上线评审十二项（逐项打勾，不允许「基本满足」）</Text>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 5, marginTop: 10 }}>
+          {[
+            { n: '01', t: '源清单已登记，敏感字段已分级', g: '治理' },
+            { n: '02', t: '口径字典已发布，冲突台账为空', g: '治理' },
+            { n: '03', t: '本体映射表已评审，覆盖率与链接有效率达标', g: '设计' },
+            { n: '04', t: '事务边界与幂等键规则已确定', g: '设计' },
+            { n: '05', t: '计算模式已明确（快照或增量），已开启强制增量校验', g: '设计' },
+            { n: '06', t: '三层血缘齐备且自动产出', g: '治理' },
+            { n: '07', t: '分支沙箱已跑通，差异清单已确认', g: '工程' },
+            { n: '08', t: '发布检查表签字齐全，回滚路径已验证', g: '工程' },
+            { n: '09', t: '五类健康检查已配置，告警接收人明确', g: '工程' },
+            { n: '10', t: '时效承诺已给出，并已在实测中达标', g: '工程' },
+            { n: '11', t: '权限与密级在出口处已二次校验', g: '治理' },
+            { n: '12', t: '退役条件与替代者已写明', g: '运营' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '0 10px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <Box style={{ width: 14, height: 14, border: '1px solid #C9CDD6', alignItems: 'center', justifyContent: 'center' }} />
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 18 }}>{it.n}</Text>
+              <Text style={{ fontSize: 11.5, color: '#0F1423', flex: 1 }}>{it.t}</Text>
+              <Box style={{ height: 17, background: it.g === '治理' ? '#FFF3EE' : it.g === '设计' ? '#F7F7F8' : '#0F1423', padding: '0 7px', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 9.5, color: it.g === '工程' ? '#FBA15C' : '#C43A17' }}>{it.g}</Text>
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      {/* 三步演进 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+        {[
+          { n: '第一步', t: '批处理', s: '先把跑通放在第一位', d: '全量或按窗口抽取，实现简单、可重放、易理解。目标是把口径与映射做对，不是快。', k: '进入下一步的判断依据：口径稳定、映射覆盖率达标、血缘完整', c: '#8A8F99' },
+          { n: '第二步', t: '增量', s: '把成本与延迟降下来', d: '只处理追加事务。前提是所有输入都通过追加或不修改既有文件的更新事务变更。', k: '进入下一步的判断依据：单次全量已跑不动，或时效承诺无法满足', c: '#F87D2F' },
+          { n: '第三步', t: '流式', s: '只为极致延迟而做', d: '端到端持续计算。记住流式只会和最慢组件一样快，设计之初就要确认目标延迟与吞吐。', k: '进入下一步的判断依据：业务确实要求分钟级以内，且增量已无法满足', c: '#FA4F24' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: i === 2 ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '12px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+              <Text style={{ fontSize: 11, color: it.c }}>{it.n}</Text>
+              <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+              <Text style={{ fontSize: 11, color: '#8A8F99' }}>{it.s}</Text>
+            </Box>
+            <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.5 }}>{it.d}</Text>
+            <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '6px 9px', marginTop: 8 }}>
+              <Text style={{ fontSize: 11, color: '#0F1423', lineHeight: 1.4 }}>{it.k}</Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+    </Box>
+</Slide>

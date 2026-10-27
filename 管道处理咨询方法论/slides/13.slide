@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        dataset transactions 与<span style={{ color: '#FA4F24' }}>版本血缘</span>：可追溯的根
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        「某个时点的某个数字」这个问题答不上来，就说明整条链路没有版本概念
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      {/* 时间轴 */}
+      <Box style={{ width: 700, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>一个数据集的版本时间轴：每段事务都是一版</Text>
+        <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', marginTop: 12 }}>
+          {[
+            { v: 'v3', s: '事务 03 · 2026-10-10 06:00', d: '增量同步 1.2 万行', k: '被本次管道消费' },
+            { v: 'v2', s: '事务 02 · 2026-10-09 06:00', d: '增量同步 0.8 万行', k: '已被 v3 取代' },
+            { v: 'v1', s: '事务 01 · 2026-10-08 06:00', d: '全量快照 120 万行', k: '可随时回退到这一版' },
+          ].map((it, i) => (
+            <Box key={it.v} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+              <Box style={{ width: 44, height: 30, background: i === 0 ? '#FA4F24' : 'rgba(255,255,255,0.1)', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 13, fontWeight: 'bold', color: i === 0 ? '#FFFFFF' : 'rgba(255,255,255,0.7)' }}>{it.v}</Text>
+              </Box>
+              <Box style={{ flex: 1, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{it.s}</Text>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 2 }}>{it.d}</Text>
+              </Box>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', width: 168, textAlign: 'right' }}>{it.k}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ height: 1, background: 'rgba(255,255,255,0.14)', marginTop: 6 }} />
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.72)', marginTop: 10, lineHeight: 1.5 }}>
+          血缘要能双向回答：正向「v3 是哪次同步产生的」，反向「v1 之后有多少个下游对象受影响」。前者是审计要求，后者是止损要求。
+        </Text>
+      </Box>
+
+      {/* 三层血缘 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>血缘必须做三层，只做一层不够</Text>
+        {[
+          { n: '表级血缘', d: '源表 → 中间数据集 → 本体对象类型', c: '#FA4F24' },
+          { n: '字段级血缘', d: '目标字段由哪些源字段经过什么表达式算出来', c: '#F87D2F' },
+          { n: '任务级血缘', d: '哪一次同步任务、哪一次运行产生了这一版', c: '#E0651A' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ height: 66, background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid ' + it.c, padding: '0 14px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 3, lineHeight: 1.4 }}>{it.d}</Text>
+          </Box>
+        ))}
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '11px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>两条设计原则</Text>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 6, lineHeight: 1.55 }}>
+            一、血缘由管道自动产生，不允许人工维护——人工维护的血缘三个月内必然失真。二、元数据与治理体系双向连接，与企业既有数据目录、主数据管理对齐，不另起一套。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+    </Box>
+</Slide>

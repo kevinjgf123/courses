@@ -1,0 +1,57 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道处理的<span style={{ color: '#FA4F24' }}>五道门</span>：从立项到退役
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        五道门是准入门槛，不是走完就结束的流程；每道门都要有明确的退回条件
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 五门 */}
+      {[
+        { n: '门一', t: '口径门', q: '口径字典写完了吗？冲突台账清了吗？谁有权裁决？', b: '不清就退回，不进下一道', c: '#FA4F24' },
+        { n: '门二', t: '映射门', q: '对象类型、链接类型、字段密级都定了吗？覆盖率算出来了吗？', b: '覆盖率不达标退回设计', c: '#F87D2F' },
+        { n: '门三', t: '血缘门', q: '三层血缘齐吗？能算出这次改动的影响面吗？', b: '算不出影响面不许发布', c: '#E0651A' },
+        { n: '门四', t: '健康门', q: '五类检查配了吗？告警发给谁？熔断阈值是多少？', b: '没告警接收人退回运维', c: '#C43A17' },
+        { n: '门五', t: '退役门', q: '旧管道下线条件是什么？替代者是谁？谁来确认？', b: '没有退役条件退回立项', c: '#0F1423' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <Box style={{ width: 60, height: 42, background: it.c, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+          </Box>
+          <Box style={{ width: 96 }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+          </Box>
+          <Text style={{ fontSize: 12.5, color: '#0F1423', flex: 1, lineHeight: 1.45 }}>{it.q}</Text>
+          <Box style={{ width: 196, background: '#FFFFFF', borderRadius: 3, padding: '7px 11px', borderLeft: '2px solid ' + it.c }}>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{it.b}</Text>
+          </Box>
+        </Box>
+      ))}
+
+      {/* 退回机制 */}
+      <Box style={{ height: 116, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>五类健康检查（官方维度）</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 8, lineHeight: 1.55 }}>
+            状态、时间、规模、内容、模式——每一类都要能配严重级别和告警。诊断动作：把客户现有的告警规则对照这五类列一遍，通常会发现「内容」和「模式」两类是空的，也就是脏数据和漂移从来没人管。
+          </Text>
+        </Box>
+        <Box style={{ width: 400, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>门的真正作用是「让退回变得体面」</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            没有门的时候，退回是靠个人坚持，扛不住进度压力；有了门，退回是执行流程，扛的是制度而不是个人。所以门必须写清退回条件，而不是写清「应关注」。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+    </Box>
+</Slide>

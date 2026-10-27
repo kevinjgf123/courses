@@ -1,0 +1,63 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道 × 知识库 × Agent × Ontology：<span style={{ color: '#FA4F24' }}>四者关系与三条硬边界</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        四者不是并列关系，而是一条链上的四段；每两段之间都有一个必须守住的边界
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 链条 */}
+      <Box style={{ height: 164, background: '#F7F7F8', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>四者在一条链上的位置与交付物</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10 }}>
+          {[
+            { b: '管道处理', t: '把源变成可用的数据与知识', o: '数据集版本 + 血缘 + 映射表', c: '#FA4F24' },
+            { b: 'Ontology', t: '给数据一个业务身份和关系', o: '对象类型 + 链接类型 + 函数', c: '#F87D2F' },
+            { b: '知识库', t: '给本体补上非结构化依据', o: '知识单元 + 引用 + 时效 + 密级', c: '#E0651A' },
+            { b: 'Agent', t: '在权限内做判断和发起动作', o: '判定 + 动作 + 可回溯结论', c: '#C43A17' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, background: '#FFFFFF', borderTop: '3px solid ' + it.c, borderRadius: 3, padding: '9px 12px', height: 92, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c }}>{it.b}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 4, lineHeight: 1.4 }}>{it.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 4, lineHeight: 1.4 }}>{it.o}</Text>
+              {i < 3 ? <Text style={{ fontSize: 15, color: '#C9CDD6', marginTop: 5 }}>›</Text> : null}
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 11.5, color: '#5A6072', marginTop: 9, lineHeight: 1.45 }}>
+          管道同时服务两端：向下为本体供数、向上为知识库与 Agent 供给上下文。它是这条链上唯一贯穿始终的构件，也是唯一同时握有「原始数据」和「出口」两项风险的角色。
+        </Text>
+      </Box>
+
+      {/* 三条硬边界 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        {[
+          { n: '边界一', t: '管道 → Ontology：进得来也要退得回去', l: '映射表必须同时写明「什么条件下的这一版可以被换掉」，否则本体永远只能追加、不能修正。发布失败时要能整体退回上一版，而不是停在半成品状态。', c: '#FA4F24' },
+          { n: '边界二', t: '管道 → 知识库：密级随数据走，不能只标一次', l: '密级必须在每个切片入库时校验一次、出库时再校验一次；只信入库时的标记，权限体系迟早会被绕过。冲突与过期必须在管道里就标记，不能等到 Agent 撞上。', c: '#F87D2F' },
+          { n: '边界三', t: '管道 → Agent：缺失必须显式，不能用零值顶替', l: '数据没到、版本不对、口径不一致，这三种情况都必须以失败或明确的缺失状态传给 Agent，绝不能折算成零或空字符串——模型会把它们当成事实。', c: '#E0651A' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: i === 0 ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '12px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>{it.l}</Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ height: 62, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 152 }}>一句话讲给客户</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.5 }}>
+          本体管的是「什么是真的」，知识库管的是「依据是什么」，Agent 管的是「谁来做决定」，管道管的是「这四件事靠不靠得住」。管道不做判断，但判断的一切前提都由它提供。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>20 / 30</Text>
+    </Box>
+</Slide>

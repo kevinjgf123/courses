@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道 <span style={{ color: '#FA4F24' }}>×</span> Ontology：映射规则与写回边界
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        数据集映射成对象类型与链接类型，是管道最关键的一次翻译，翻译错了后面全错
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 238, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>映射要写清的五件事</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 9 }}>
+            {[
+              { n: '1', t: '一个数据集拆成几个对象类型', d: '通常是主对象加若干从对象，拆的依据是业务身份，不是表结构' },
+              { n: '2', t: '每个对象的业务唯一标识', d: '来自源系统哪个字段；没有业务主键的，必须补一个代理键并写清生成规则' },
+              { n: '3', t: '链接类型从哪来', d: '外键、规则匹配还是本体推导；规则匹配的匹配率要先算出来' },
+              { n: '4', t: '字段的属性与密级', d: '每个字段的语义、是否敏感、是否参与检索、是否允许出向' },
+              { n: '5', t: '空值与缺失的表达', d: '「没有这条记录」和「有记录但值为空」在本体里必须能区分' },
+            ].map((it, i) => (
+              <Box key={it.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+                <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FA4F24', width: 16 }}>{it.n}</Text>
+                <Box style={{ flex: 1, flexDirection: 'column' }}>
+                  <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                  <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 2, lineHeight: 1.4 }}>{it.d}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ width: 400, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>写回本体的四条边界</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 9 }}>
+            {[
+              { t: '必须由逻辑执行', d: '本体的编辑只能通过在动作里执行逻辑函数生效，模型不能直接改本体' },
+              { t: '必须审批', d: '改变对象类型、链接类型、属性语义的写回，等同于改本体契约，需要业务与技术双签' },
+              { t: '必须留版本', d: '写回本身要有版本记录，能回答「这个对象类型是什么时候被谁改成的」' },
+              { t: '必须可回退', d: '写回出错要能退回上一版结构，不能靠人工记忆修回去' },
+            ].map((it, i) => (
+              <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24' }}>{it.t}</Text>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.82)', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>映射质量的三条验收线</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            一、对象覆盖率：源里有多少比例的记录能落进某个对象类型，落不进去的要给出理由。二、链接有效率：推导出来的链接有多少比例指向真实存在的对象。三、口径一致率：同一指标在本体里和源系统里能对上多少。三个数都要写在映射表首页，作为上线依据。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>管道在这一层的角色</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            管道不只是搬运工，它是「本体契约的执行者」。本体上写的每一个对象类型，背后都必须有一条管道负责把它按约定喂饱；没有管道兜底的对象类型，本体上就不该先写上去。所以本体设计与管道设计必须同时做、互为约束。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>19 / 30</Text>
+    </Box>
+</Slide>

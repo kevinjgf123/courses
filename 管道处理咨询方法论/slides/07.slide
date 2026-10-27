@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        Palantir 管道体系全景：<span style={{ color: '#FA4F24' }}>源到本体、本体到应用</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        咨询时先认清楚五个部件的名字与位置，客户的架构图上往往只画了其中一两个
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 五段流水线 */}
+      <Box style={{ height: 186, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>进向五段：连接 → 探索 → 加工 → 映射 → 调度</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 10 }}>
+          {[
+            { n: 'Connectors', t: '批量 / 流 / CDC / 虚拟表', d: '建立连接与增量同步' },
+            { n: 'Source exploration', t: '引导式发现 + 批量入篮', d: '先看清源里有什么' },
+            { n: 'HyperAuto / SDDI', t: '自动生成四步管道', d: '元数据推导转换逻辑' },
+            { n: 'Pipeline Builder', t: '图形化与代码双模', d: '清洗过滤 join 富化' },
+            { n: 'Ontology mapping', t: '映射对象类型与链接类型', d: '数据集成为本体的一部分' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '8px 10px', borderLeft: '3px solid #FA4F24' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{it.n}</Text>
+              <Text style={{ fontSize: 10.5, color: '#FBA15C', marginTop: 4 }}>{it.t}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', marginTop: 4, lineHeight: 1.45 }}>{it.d}</Text>
+              {i < 4 ? <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>›</Text> : null}
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 9 }}>
+          官方开发流程：先建 Project 结构 → 写 batch pipeline 产出高质量数据集 → 映射成 object / link types → 设置调度 → 再补单测、分支发布、健康检查
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ width: 424, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>出向三出口 + 两个运维面</Text>
+          {[
+            { b: 'Data', t: '查询与取数，按行级列级权限过滤' },
+            { b: 'Logic', t: '函数与逻辑，只有它能真正改本体' },
+            { b: 'Action', t: '写回与外发，必须由 Logic 执行' },
+            { b: 'Data Health', t: '状态 / 时间 / 规模 / 内容 / 模式五维检查' },
+            { b: 'Data Lineage', t: '一处问题如何影响下游，看得见' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 96 }}>{it.b}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>互操作：不复制别人已有的数据</Text>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            官方明确要求：所有数据保持原始格式（CSV / Iceberg / Parquet），通过 REST、JDBC、S3 兼容接口访问；通过多模态数据平面与虚拟表框架，直接对接 Databricks、Snowflake、BigQuery 中已有的数据资产，避免无谓的数据复制。
+          </Text>
+          <Box style={{ flex: 1, flexDirection: 'row', gap: 8, marginTop: 10 }}>
+            {[
+              { b: 'Metadata', t: '与既有数据目录、主数据双向连接' },
+              { b: 'Code', t: 'Python / Java / SparkSQL，多引擎可换' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 3, padding: '8px 11px' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.b}</Text>
+                <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 4, lineHeight: 1.45 }}>{it.t}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+    </Box>
+</Slide>

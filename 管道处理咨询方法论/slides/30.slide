@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        结语：<span style={{ color: '#FA4F24' }}>八册一条线</span>，管道是最后一块拼图
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        四层架构打底，本体汇流，知识库供依据，Agent 做判断，管道保证这一切靠得住
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 八册主线 */}
+      <Box style={{ height: 176, background: '#0F1423', borderRadius: 4, padding: '16px 20px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>八册的推进顺序与各自回答的问题</Text>
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 12 }}>
+          {[
+            { b: 'DA', t: '先有治，才有存', c: '#5A6072' },
+            { b: 'BA', t: '能力与组织解耦', c: '#5A6072' },
+            { b: 'AA', t: '数量增长带技术债', c: '#5A6072' },
+            { b: 'TA', t: '不押注单点技术', c: '#5A6072' },
+            { b: 'ONT', t: '语义与动力学合一', c: '#F87D2F' },
+            { b: 'KB', t: '知识要被治理', c: '#F87D2F' },
+            { b: 'AGT', t: '谁判断、何时停', c: '#FA4F24' },
+            { b: 'PIPE', t: '可管、可追、可退', c: '#FA4F24' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '0 9px', height: 72, justifyContent: 'center', borderTop: '3px solid ' + it.c }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c === '#5A6072' ? 'rgba(255,255,255,0.7)' : it.c }}>{it.b}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.65)', marginTop: 5, lineHeight: 1.4 }}>{it.t}</Text>
+              {i < 7 ? <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)', marginTop: 5 }}>›</Text> : null}
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 17px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>本册要留下的一句话</Text>
+          <Text style={{ fontSize: 15, color: '#0F1423', marginTop: 9, lineHeight: 1.55 }}>
+            本体画的是「世界应该长什么样」，管道要保证的是「它现在真的长这样」。前者靠设计，后者只能靠一版一版的验证、一次一次的可回退、以及一份永远可信的血缘。
+          </Text>
+          <Text style={{ fontSize: 13, color: '#5A6072', marginTop: 9, lineHeight: 1.5 }}>
+            如果这三样东西都没有，那么再漂亮的本体图、再聪明的 Agent，都只是在一个没人验证过的假设上做判断。
+          </Text>
+        </Box>
+
+        <Box style={{ width: 400, background: '#F7F7F8', borderRadius: 4, padding: '13px 17px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>下一步可以接着做的三件事</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 9 }}>
+            {[
+              { t: '管道域现状体检', d: '用五道门与五类失效做一轮扫描，出问题优先级清单' },
+              { t: 'Approach 八阶段落地', d: '按八个阶段做一次完整交付，形成第一版管道资产集' },
+              { t: '与 Agent 册联合出方案', d: '把上下文规格与终止条件，和管道时效承诺对齐成一份契约' },
+            ].map((it, i) => (
+              <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                <Text style={{ fontSize: 11.5, color: '#5A6072', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>30 / 30</Text>
+    </Box>
+</Slide>

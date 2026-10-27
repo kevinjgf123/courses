@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道处理的<span style={{ color: '#FA4F24' }}>五类失败模式</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        五类失效都不会报错，只会安静地算出一个看起来合理的数——所以要按症状而不是按报错来排查
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+        {[
+          { n: '失效一', t: '静默漏数', s: '少了一部分记录，但总数看起来合理', r: '根因：源侧过滤条件变更未通知、增量事务漏提交、重试把失败当成成功跳过', f: '处方：贴源层做行数与金额双校验，缺一即熔断，不允许只对行数', c: '#FA4F24' },
+          { n: '失效二', t: '口径漂移', s: '同一个指标每个月都在小幅变化', r: '根因：多条管道各自实现同一口径、修数逻辑越加越多、没有基准口径', f: '处方：一个指标只允许一处实现，其余引用；发现冲突标红而不是取最新', c: '#F87D2F' },
+          { n: '失效三', t: '延迟累积', s: '单条管道不慢，整体越来越晚', r: '根因：串行环节增多、窗口计算重叠、补数与常规任务抢资源', f: '处方：为端到端时效设承诺并逐段打点，超时自动告警而不是等业务来投诉', c: '#E0651A' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', overflow: 'hidden' }}>
+            <Box style={{ height: 60, background: it.c, padding: '0 14px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)' }}>{it.n}</Text>
+              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', marginTop: 3 }}>{it.t}</Text>
+            </Box>
+            <Box style={{ flex: 1, padding: '10px 14px' }}>
+              <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '6px 9px' }}>
+                <Text style={{ fontSize: 10, color: '#8A8F99' }}>症状</Text>
+                <Text style={{ fontSize: 11.5, color: '#0F1423', marginTop: 2, lineHeight: 1.4 }}>{it.s}</Text>
+              </Box>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.5 }}>{it.r}</Text>
+              <Box style={{ flex: 1, background: '#FFF3EE', borderLeft: '2px solid ' + it.c, padding: '7px 9px', marginTop: 8, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11.5, color: '#0F1423', lineHeight: 1.5 }}>{it.f}</Text>
+              </Box>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+        {[
+          { n: '失效四', t: '重复处理', s: '同一批数据算了两遍，结果翻倍', r: '根因：重试没有幂等键、两个任务同时消费同一事务、补数与常规任务重叠', f: '处方：以业务主键加事务号做幂等键，重复写入由唯一约束拦住而不是靠代码判断', c: '#C43A17' },
+          { n: '失效五', t: '血缘断裂', s: '改一个字段，不知道谁在用', r: '根因：血缘靠人工维护、临时表绕过了管道、私下直连库查询', f: '处方：血缘必须自动产出；禁止绕过管道直连；临时表必须挂在管道节点上', c: '#0F1423' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '12px 16px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 10.5, color: '#8A8F99' }}>{it.n}</Text>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c, marginTop: 3 }}>{it.t}</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 7, lineHeight: 1.5 }}>{it.r}</Text>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, padding: '8px 11px', marginTop: 8, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 11.5, color: '#0F1423', lineHeight: 1.5 }}>{it.f}</Text>
+            </Box>
+          </Box>
+        ))}
+        <Box style={{ width: 320, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>排查的切入顺序</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 8, lineHeight: 1.55 }}>
+            先看事务序列是否连续（查漏数与重复），再看指标历史曲线是否平滑（查口径漂移），再看端到端时效趋势（查延迟累积），最后看血缘覆盖度（查断裂）。这个顺序的好处是前两步几分钟就能排除一半可能。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+    </Box>
+</Slide>

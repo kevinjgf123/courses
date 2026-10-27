@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        管道 <span style={{ color: '#FA4F24' }}>×</span> 知识库：知识抽取管道的特殊性
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        非结构化数据进本体，要过的不只是清洗关，还有切片、嵌入、实体对齐、时效四道额外关口
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      <Box style={{ width: 400, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>知识抽取管道：七步</Text>
+        <Box style={{ flex: 1, flexDirection: 'column', marginTop: 10 }}>
+          {[
+            { n: '1', t: '接入原始文档', d: '保留原件，不覆盖' },
+            { n: '2', t: '解析与切片', d: '切成可引用的最小单元' },
+            { n: '3', t: '嵌入', d: '向量化，同时保留原文字段' },
+            { n: '4', t: '实体对齐', d: '把文中的对象连到本体对象类型' },
+            { n: '5', t: '权限打标', d: '切片级打分类标记，随权限传播' },
+            { n: '6', t: '时效与冲突处理', d: '同义不同说要有裁决规则' },
+            { n: '7', t: '引用锚点', d: '保留位置，指回原件某页某段' },
+          ].map((it, i) => (
+            <Box key={it.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24', width: 16 }}>{it.n}</Text>
+              <Text style={{ fontSize: 12, color: '#FFFFFF', width: 88 }}>{it.t}</Text>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', flex: 1 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+        <Box style={{ height: 196, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>四道额外关口，是结构化数据没有的</Text>
+          {[
+            { t: '切片级版本', d: '文档改一段，整篇的切片都变；必须有文档级与切片级两套版本，否则引用会指错' },
+            { t: '权限随切片走', d: '权限标在切片上，不能只在文档上；一份文档不同章节可见性不同是常态' },
+            { t: '实体对齐要人工兜底', d: '自动对齐会错，错一次就是 Agent 拿着错的身份做决策，必须有低置信度转人工队列' },
+            { t: '时效要有失效链', d: '文档过期后，引用了它的所有结论都应标记为待复核，而不是继续可信' },
+          ].map((it, i) => (
+            <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+              <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>管道在这里承担的三个额外职责</Text>
+          {[
+            { b: '建链', t: '把抽取出的事实挂到本体对象上，让文档能回答「这条说的是谁」' },
+            { b: '守密', t: '权限与密级沿管道内传，出库时必须再校验一次，不能只信入库时打的标' },
+            { b: '可回溯', t: '任何一句结论都要能一键回到原始文档的具体位置，否则就是引用幻觉' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+              <Box style={{ width: 46, height: 24, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{it.b}</Text>
+              </Box>
+              <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>17 / 30</Text>
+    </Box>
+</Slide>

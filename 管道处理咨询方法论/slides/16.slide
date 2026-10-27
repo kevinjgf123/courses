@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        方向二：Ontology <span style={{ color: '#FA4F24' }}>→</span> 调用的<span style={{ color: '#FA4F24' }}>三条出口</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        官方原文：大模型不能直接访问工具，只能请求使用工具，工具调用由逻辑层在发起用户的权限内执行
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 240, flexDirection: 'row', gap: 10 }}>
+        {[
+          { n: '出口一', t: 'Data · 数据出口', s: '只读', d: '按对象类型与链接类型取数，返回结构化结果。行列级权限在这一层生效，只过滤读进提示词的数据。', lim: '不覆盖输出，也不覆盖 Apply 动作；要管住输出必须再配分类级访问控制。', c: '#FA4F24' },
+          { n: '出口二', t: 'Logic · 逻辑出口', s: '可改本体', d: '函数与业务逻辑，是唯一能真正修改本体定义的东西；本体的编辑也必须通过执行逻辑函数才生效。', lim: '谁能定义函数、谁审批函数、函数出错怎么回退，都要有机制。', c: '#F87D2F' },
+          { n: '出口三', t: 'Action · 动作出口', s: '写与外发', d: '写回源系统、发消息、调外部接口；从本体发起业务动作，或把事件推给 Webhook。', lim: '必须在逻辑层里执行，且在发起人权限范围内，绝不允许模型自己直接触发。', c: '#E0651A' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', overflow: 'hidden' }}>
+            <Box style={{ height: 62, background: it.c, padding: '0 14px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.82)' }}>{it.n}</Text>
+              <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 3 }}>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+                <Box style={{ height: 18, background: 'rgba(255,255,255,0.22)', padding: '0 8px', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 10, color: '#FFFFFF' }}>{it.s}</Text>
+                </Box>
+              </Box>
+            </Box>
+            <Box style={{ flex: 1, padding: '10px 14px' }}>
+              <Text style={{ fontSize: 12, color: '#0F1423', lineHeight: 1.55 }}>{it.d}</Text>
+              <Box style={{ background: '#FFF3EE', borderLeft: '2px solid #FBA15C', padding: '7px 9px', marginTop: 10 }}>
+                <Text style={{ fontSize: 10, color: '#C43A17' }}>边界</Text>
+                <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 2, lineHeight: 1.45 }}>{it.lim}</Text>
+              </Box>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>出向管道的三项建设内容</Text>
+          {[
+            { b: '发布面', t: '本体 SDK / REST 接口 / JSON 驱动编制 / Webhook / 模型上下文协议，五种对外形态要有版本与弃用策略' },
+            { b: '权限面', t: '调用方的身份要能一路传到源系统，不允许出现「到了出向就放行」的缺口' },
+            { b: '留痕面', t: '谁在什么时候通过哪个出口取了什么、改了什么，全部可审计' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 62 }}>{it.b}</Text>
+              <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ width: 400, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>一句必须讲给客户的话</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.6 }}>
+            出了本体的数据，不再有对象类型和链接类型替你兜着。进向管住的是「进来的是不是对的」，出向管住的是「出去的有没有越权」。所以出向必须单独做一轮安全设计，不能因为「它来自本体」就默认安全。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>16 / 30</Text>
+    </Box>
+</Slide>

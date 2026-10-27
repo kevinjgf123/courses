@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        本册<span style={{ color: '#FA4F24' }}>结构</span>：四部分，一条主线
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        前两部分讲管道本身与四方关系，第三部分回到 4A，第四部分讲门、失效与演进
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 10, height: 479, flexDirection: 'row', gap: 12 }}>
+      <Box style={{ width: 632, flexDirection: 'column', gap: 8 }}>
+        {[
+          { n: '序论 + 方法', p: '03-04', t: '为什么 4A 之后还要谈管道处理；Approach 八阶段与每步产出物', c: '#0F1423' },
+          { n: 'PART 01', p: '05-10', t: '管道处理是什么：双向两个方向、Palantir 管道全景、Data Connection、SDDI、快照与增量', c: '#FA4F24' },
+          { n: 'PART 02', p: '11-14', t: '方向一：源系统 → Ontology 的六道关口、版本血缘、分支与发布', c: '#F87D2F' },
+          { n: 'PART 03', p: '15-20', t: '方向二：本体 → 调用三条出口，以及与知识库、Agent 的关系和三条硬边界', c: '#E0651A' },
+          { n: 'PART 04', p: '21-30', t: '回到 4A：BA / DA / AA / TA、五道门、五类失效、上线评审与三步演进', c: '#C43A17' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Box style={{ width: 128 }}>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+              <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 2 }}>{it.p}</Text>
+            </Box>
+            <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.t}</Text>
+          </Box>
+        ))}
+        <Box style={{ height: 66, background: '#0F1423', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C', width: 168 }}>本册要回答的核心问题</Text>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+            一条数据从源系统进到本体、再从本体被调出去，中间要经过什么；为什么管道不是 ETL；为什么出了本体的数据反而更容易失控。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 214, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', marginBottom: 8 }}>八册的关系：一条链路，不是八本独立册子</Text>
+          {[
+            { b: 'DA / BA / AA / TA', t: '四层架构，方法底座', c: '#8A8F99' },
+            { b: 'Ontology', t: '语义与动力学合一，汇流点', c: '#F87D2F' },
+            { b: '知识库 / Agent', t: '非结构化供给与有职权的角色', c: '#FA4F24' },
+            { b: '管道处理', t: '把前面三者接进接出', c: '#0F1423' },
+          ].map((it, i) => (
+            <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 152 }}>{it.b}</Text>
+              <Text style={{ fontSize: 12, color: '#5A6072', flex: 1 }}>{it.t}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>与前四册的关系</Text>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', marginTop: 8, lineHeight: 1.6 }}>
+            DA 讲数据分层与元数据，本册讲这些数据怎么持续流过来；AA 讲应用拓扑，本册讲管道就是其中一类应用；TA 讲底座能力，本册讲管道对底座的真实要求。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>02 / 30</Text>
+    </Box>
+</Slide>

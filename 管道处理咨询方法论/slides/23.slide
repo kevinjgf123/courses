@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        BA：管道处理管什么、<span style={{ color: '#FA4F24' }}>谁负责、什么时候停</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        管道一旦成为应用，就必须有业务责任人，否则口径争议永远无法收敛
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 三个问题 */}
+      <Box style={{ height: 150, flexDirection: 'row', gap: 10 }}>
+        {[
+          { n: '管什么', t: '三件东西必须被明确托管', d: '口径：某个指标按哪个定义算。边界：哪些数据允许进、允许出。时效：多久算过期，承诺几个小时。', c: '#FA4F24' },
+          { n: '谁负责', t: '四类角色，缺一不可', d: '口径责任人、业务数据责任人、管道运维责任人、上线审批人。四个人的签字不能由一个人代。', c: '#F87D2F' },
+          { n: '什么时候停', t: '三类必须停的硬条件', d: '健康检查连续失败、映射质量不达标、下游出现口径争议且无法裁决。停的条件要写在发布检查表里。', c: '#E0651A' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + it.c, padding: '11px 14px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>{it.t}</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 6, lineHeight: 1.55 }}>{it.d}</Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>能力与组织解耦：四个角色不等于四个人</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.78)', marginTop: 7, lineHeight: 1.5 }}>
+            大多数企业里这四个角色会压在两三个人身上。咨询要做的不是增编，而是让责任在组织图上显式存在——写进岗位说明、写进发布检查表的签字栏、写进值班表。
+          </Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 10 }}>
+            {[
+              { b: '口径责任人', t: '业务侧，决定定义并裁决冲突' },
+              { b: '业务数据责任人', t: '业务侧，确认数据符合业务现实' },
+              { b: '管道运维责任人', t: '技术侧，负责运行、值班、回滚' },
+              { b: '上线审批人', t: '双方联合，对发布与停用负责' },
+            ].map((it, i) => (
+              <Box key={it.b} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 116 }}>{it.b}</Text>
+                <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', flex: 1 }}>{it.t}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>管道作为业务应用的三个标志</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 10 }}>
+            {[
+              { t: '有业务产出物', d: '映射表、血缘矩阵、发布记录都是业务与技术共用的资产，不是运维日志' },
+              { t: '有生命周期', d: '设计、建设、运行、演进、退役五个阶段，每个阶段有进入条件和退出条件' },
+              { t: '有服务对象', d: '服务本体、知识库、Agent 三类内部客户，各自的需求和验收标准不同' },
+              { t: '可被审计', d: '谁来过、谁批的、谁停的、谁退役的，全部留痕，可复盘' },
+            ].map((it, i) => (
+              <Box key={it.t} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', borderTop: i === 0 ? 'none' : '1px solid #FBA15C' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 3, lineHeight: 1.45 }}>{it.d}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>23 / 30</Text>
+    </Box>
+</Slide>

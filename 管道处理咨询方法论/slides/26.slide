@@ -1,0 +1,64 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        TA：<span style={{ color: '#FA4F24' }}>运行时、调度与非功能</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        技术架构在这里要回答的不是买什么，而是管道的真实非功能指标是什么
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ height: 92, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>官方给出的两条硬约束</Text>
+        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.9)', marginTop: 8, lineHeight: 1.55 }}>
+          一、管道支持 Iceberg、Parquet 等开放格式，但必须启用服务端加密，客户端加密只是可选项；二、流式管道只会和它最慢的组件一样快，所以目标延迟与吞吐必须在设计之初确认，而不是上线后调优。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>五类非功能指标（每条都要有数字）</Text>
+          <Box style={{ flex: 1, flexDirection: 'column', marginTop: 9 }}>
+            {[
+              { t: '数据时效', d: '从源系统发生变更到本体可查，端到端多少分钟', c: '#FA4F24' },
+              { t: '任务成功率', d: '按月统计，连续失败多久触发熔断', c: '#F87D2F' },
+              { t: '资源与成本', d: '单次全量、单次增量的算力开销，保留周期', c: '#E0651A' },
+              { t: '可恢复性', d: '从最近一次成功事务重放需要多久', c: '#C43A17' },
+              { t: '存储与加密', d: '加密方式、密钥轮换周期、跨域访问策略', c: '#0F1423' },
+            ].map((it, i) => (
+              <Box key={it.t} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 11, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+                <Box style={{ width: 5, height: 26, background: it.c }} />
+                <Box style={{ flex: 1, flexDirection: 'column' }}>
+                  <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+                  <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 2, lineHeight: 1.4 }}>{it.d}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Box style={{ width: 420, flexDirection: 'column', gap: 10 }}>
+          <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>运行时：能力可换，契约不可换</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 8, lineHeight: 1.55 }}>
+              官方支持 Python、Java、SparkSQL，可搭配 Spark、Flink、DataFusion、Polars，并允许自带容器运行时。咨询建议：把「引擎选择」留成可替换项，把「事务语义、幂等、血粒度」写死成不可协商的契约。
+            </Text>
+          </Box>
+          <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>调度：三类节奏，三套保障</Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 7, lineHeight: 1.5 }}>
+              接入节奏看业务窗口，加工节奏看依赖关系，出口节奏看事件。每类节奏都要有独立的重试策略、超时阈值和补数预案，不能共用一套默认配置。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,61 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+        方向一：数据源 <span style={{ color: '#FA4F24' }}>→</span> Ontology 的<span style={{ color: '#FA4F24' }}>六道关口</span>
+      </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        每过一道关，都要留下一份可查的产出物；过不去就停在原地，不要靠下游兜底
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 六道关口 */}
+      <Box style={{ height: 306, flexDirection: 'row', gap: 8 }}>
+        {[
+          { n: '关1', t: '来源合法', q: '这个源系统谁批准接的？含不含个人敏感与商业敏感字段？', o: '源清单 + 敏感分级', f: '管', c: '#FA4F24' },
+          { n: '关2', t: '口径统一', q: '同一个指标在三个系统里三个算法，进入本体前按哪个算？', o: '口径字典 + 冲突台账', f: '治', c: '#F87D2F' },
+          { n: '关3', t: '结构固定', q: '源结构变了怎么办？schema 漂移谁先发现？', o: 'schema 契约 + 漂移告警', f: '技', c: '#E0651A' },
+          { n: '关4', t: '数据可重放', q: '能不能从某个事务重跑一遍，结果完全一致？', o: '事务边界定义 + 幂等键规则', f: '技', c: '#E0651A' },
+          { n: '关5', t: '映射成对象', q: '这张表要变成几个对象类型？对象之间的链接从哪来？', o: '本体映射表 + 链接规则', f: '治', c: '#F87D2F' },
+          { n: '关6', t: '质量有闸', q: '五类健康检查谁在看？告警发给谁？停了谁来拍板？', o: '健康检查清单 + 告警矩阵', f: '运', c: '#C43A17' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, flexDirection: 'column', overflow: 'hidden' }}>
+            <Box style={{ height: 54, background: it.c, padding: '0 10px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>{it.n} · {it.f}</Text>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', marginTop: 3 }}>{it.t}</Text>
+            </Box>
+            <Box style={{ flex: 1, padding: '9px 10px', justifyContent: 'space-between' }}>
+              <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.5 }}>{it.q}</Text>
+              <Box style={{ background: '#FFFFFF', borderLeft: '2px solid ' + it.c, padding: '5px 7px' }}>
+                <Text style={{ fontSize: 10, color: '#8A8F99' }}>产出物</Text>
+                <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#0F1423', marginTop: 2, lineHeight: 1.35 }}>{it.o}</Text>
+              </Box>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      {/* 三条说明 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>六道关的性质只有三种</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 7, lineHeight: 1.55 }}>
+            「治」是治理动作，需要业务参与、「技」是工程约束、可以靠平台默认、「运」是运营动作，靠值班和预案。三种性质的推进节奏不一样，硬要一起推，结果就是治理被工程拖住、工程被治理卡死。
+          </Text>
+        </Box>
+        <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>最常被跳过的是关2 和关5</Text>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 7, lineHeight: 1.55 }}>
+            客户往往愿意花钱做接入和监控，却不愿意定口径、不愿意画映射。结果是数据全进来了，本体里的对象类型却对不上业务，最后所有人绕过本体直接查表——这是最贵的返工。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 管道处理咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>12 / 30</Text>
+    </Box>
+</Slide>
