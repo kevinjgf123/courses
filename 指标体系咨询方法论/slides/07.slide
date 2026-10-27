@@ -1,0 +1,89 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      同一个指标，两个定义位置：<span style={{ color: '#FA4F24' }}>本体定义</span>与<span style={{ color: '#F87D2F' }}>运行时定义</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>选错位置，指标就只在一个人的屏幕上是对的——这是指标体系最常见的一种失败</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 15px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>本体定义</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 3 }}>ontology-defined · Beta</Text>
+        <Box style={{ marginTop: 10, gap: 5, flex: 1 }}>
+          {[
+            { k: '配置位置', v: 'Ontology Manager' },
+            { k: '存在哪', v: '本体定义里' },
+            { k: '谁能看到', v: '该对象类型的每一个消费者' },
+            { k: '最大链接遍历', v: '3 跳' },
+            { k: '表达式', v: '不支持' },
+          ].map((x) => (
+            <Box key={x.k} style={{ flexDirection: 'row', gap: 8, background: '#FFFFFF', borderRadius: 3, padding: '5px 9px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', width: 66 }}>{x.k}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', flex: 1 }}>{x.v}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #F87D2F', padding: '12px 15px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#F87D2F' }}>运行时定义</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 3 }}>runtime-defined · GA</Text>
+        <Box style={{ marginTop: 10, gap: 5, flex: 1 }}>
+          {[
+            { k: '配置位置', v: 'Workshop 模块 / Insight 工作簿 / SDK 请求' },
+            { k: '存在哪', v: '对象集定义里，不进本体' },
+            { k: '谁能看到', v: '声明它的那个请求或模块，以及能访问它所保存对象集的人' },
+            { k: '最大链接遍历', v: 'Workshop / Insight 仅 1 跳；SDK 无固定上限' },
+            { k: '表达式', v: '支持' },
+          ].map((x) => (
+            <Box key={x.k} style={{ flexDirection: 'row', gap: 8, background: '#FFFFFF', borderRadius: 3, padding: '5px 9px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', width: 66 }}>{x.k}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', flex: 1 }}>{x.v}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#FBA15C' }}>官方选用规则</Text>
+        <Box style={{ marginTop: 10, gap: 7, flex: 1 }}>
+          <Box style={{ background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 10px', flex: 1, justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.4 }}>→ 用本体定义</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', marginTop: 4, lineHeight: 1.45 }}>这个计算是组织对该对象类型的建模方式的一部分，每个消费者都应该看到同一个值。</Text>
+          </Box>
+          <Box style={{ background: 'rgba(248,125,47,0.18)', borderRadius: 3, padding: '8px 10px', flex: 1, justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.4 }}>→ 用运行时定义</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', marginTop: 4, lineHeight: 1.45 }}>这个计算只属于某一个应用或某一次分析，或者你确实需要算术与日期表达式。</Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 128, background: '#FFF3EE', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>六条硬限制：违反任何一条，模型就不成立</Text>
+      <Box style={{ flexDirection: 'row', gap: 9, marginTop: 9, flex: 1 }}>
+        {[
+          '一个计算属性不能引用同一次 withProperties 操作里声明的另一个计算属性，必须拆到后续操作',
+          '链接选择与聚合不能嵌套另一个派生属性的定义；但属性选择器可以引用已在作用域里的属性',
+          '表达式只能引用更早声明的派生属性，同一次操作内不行',
+          '表达式当前不支持静态字面量',
+          '不能用于文本搜索或关键词过滤；用 OSv1 索引的对象类型不能出现在含派生属性的查询里',
+          '不能标记为必填、不能有属性类型约束、不能挂规则集绑定或基础格式化器',
+        ].map((t, i) => (
+          <Box key={i} style={{ width: '32.6%', background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '6px 9px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 10, color: '#3A4050', lineHeight: 1.4 }}>{t}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+  </Box>
+</Slide>

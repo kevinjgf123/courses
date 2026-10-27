@@ -1,0 +1,65 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      五类最常见的口径失效：<span style={{ color: '#FA4F24' }}>数字照常出来，只是和昨天说的不是一回事</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>指标体系的失败是静默的——没有报错，只有一个永远在吵的数字</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      {[
+        { n: '一', t: '同名不同义', s: '三个部门都叫「销售额」', d: '销售部：订单成交额；财务部：到账金额；商务部：签约金额。三张表三个数，汇报时各执一词。',
+          f: '对策：指标名全局唯一，同名必须拆名并各给唯一标识' },
+        { n: '二', t: '同义不同名', s: '「营收」「收入」「销售额」', d: '一个口径三个名字，三个看板三种趋势线。合并时没人知道该保留哪个名。',
+          f: '对策：建立同义词表，一个口径指定一个正式名与若干别名' },
+        { n: '三', t: '粒度错配', s: '把明细当汇总', d: '把日粒度的订单行直接加总当月度量；把订单粒度的均价按数量加权；跨粒度相除得到无意义的比率。',
+          f: '对策：五元组里的粒度是必填项，不允许留空或写「不限」' },
+        { n: '四', t: '时间口径错配', s: '自然月 / 财年 / 滚动 30 天', d: '财务按财年、业务按自然月、运营看滚动 30 天；再加上时区与「是否含当日未结算」的差异。',
+          f: '对策：时间口径必须写明时区与截止时点，跨系统对不上先查这一项' },
+        { n: '五', t: '聚合方式错配', s: '去重当计数、空值当零', d: '去重计数当普通计数用；用平均值算总额；null 被忽略与被当 0 处理，算出来的分母不一样。',
+          f: '对策：聚合方式进字典；null 策略单列一项，不允许隐式处理' },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 13px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Box style={{ width: 22, height: 22, borderRadius: 11, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+            </Box>
+            <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+          </Box>
+          <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#C43A17', marginTop: 8 }}>{x.s}</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 7, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+          <Box style={{ background: '#0F1423', borderRadius: 3, padding: '6px 9px', marginTop: 8 }}>
+            <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{x.f}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 0.82, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', gap: 18 }}>
+      <Box style={{ width: 158, flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>为什么静默最危险</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 5, lineHeight: 1.4 }}>与第九册数据治理同源</Text>
+      </Box>
+      <Box style={{ width: 1, background: '#FBA15C' }} />
+      <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
+        {[
+          '数据错误会报错，口径错误不会——系统认为它算对了，因为它确实按你写的算了。',
+          '人遇到荒谬数字会怀疑，Agent 不会。AI 时代这个静默失效第一次获得了行动能力。',
+          '所以检出手段不能靠「大家觉得这个数怪」，必须靠规则：同名检测、粒度检测、时间口径差异检测、同环比突变告警。',
+        ].map((t, i) => (
+          <Text key={i} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            <tspan style={{ color: '#FA4F24', fontWeight: 'bold' }}>· </tspan>{t}
+          </Text>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>14 / 30</Text>
+  </Box>
+</Slide>

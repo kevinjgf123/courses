@@ -1,0 +1,58 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标体系的 4A 映射总览：<span style={{ color: '#FA4F24' }}>作为一个业务应用，它在四层上的样子</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>指标体系不是一个纯技术对象——它的第一性问题在业务架构层，不在技术架构层</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1.15, flexDirection: 'row', gap: 10 }}>
+      {[
+        { a: 'BA', n: '业务架构', t: '谁裁定口径', d: '口径的唯一解释权与裁定机制', p: '27' },
+        { a: 'DA', n: '数据架构', t: '口径怎么被建模', d: '指标元数据模型与依赖关系', p: '27' },
+        { a: 'AA', n: '应用架构', t: '口径怎么被消费', d: '问数、驾驶舱、场景化指标集', p: '28' },
+        { a: 'TA', n: '技术架构', t: '口径怎么被算出来', d: '计算引擎、缓存与审计存储', p: '28' },
+      ].map((x) => (
+        <Box key={x.a} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '14px 16px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FA4F24' }}>{x.a}</Text>
+            <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.n}</Text>
+            <Text style={{ fontSize: 10, color: '#8A8F99' }}>P{x.p}</Text>
+          </Box>
+          <Box style={{ width: 40, height: 3, background: '#FBA15C', marginTop: 11 }} />
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginTop: 12, lineHeight: 1.4 }}>{x.t}</Text>
+          <Text style={{ fontSize: 11.5, color: '#5A6070', marginTop: 9, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 0.62, background: '#0F1423', borderRadius: 4, padding: '11px 20px', flexDirection: 'row', gap: 18 }}>
+      <Box style={{ width: 132, flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#FBA15C' }}>四个特有之处</Text>
+        <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', marginTop: 5, lineHeight: 1.4 }}>别的 4A 管功能<br />指标管「怎么理解」</Text>
+      </Box>
+      <Box style={{ width: 1, background: 'rgba(255,255,255,0.15)' }} />
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        {[
+          { t: '口径即产品', d: '指标体系的产出物是「唯一解释」，不是一个功能' },
+          { t: '失败是静默的', d: '数字照常出来，只是和昨天说的不是一回事' },
+          { t: '权限即口径的一部分', d: '不同权限下的两个值都是对的，必须都写明' },
+          { t: 'AI 让错误获得行动力', d: '口径错的代价从「不可信」变成「做错事」' },
+        ].map((x) => (
+          <Box key={x.t} style={{ flex: 1, justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.75)', marginTop: 5, lineHeight: 1.45 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,102 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标 × 管道处理：<span style={{ color: '#FA4F24' }}>预计算还是运行时算</span>，这是五条取舍
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>官方专门有一篇文档指导这个选择——说明它不是二选一，而是按用途分工</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>运行时派生属性</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 3 }}>不存储、不索引，查询时算</Text>
+        <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+          {[
+            '底层数据一变，指标自动就对了，不用重跑管道',
+            '不用维护任何更新逻辑，也就不存在「忘了刷新」',
+            '口径改了立刻生效，全局一致',
+            '平台可把过滤下推到对象索引，减少实际计算量',
+            '代价：按派生值过滤或排序，通常要为剩余候选对象逐个算出该值',
+          ].map((t, i) => (
+            <Box key={i} style={{ flexDirection: 'row', gap: 7, flex: 1, alignItems: 'flex-start' }}>
+              <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: i === 4 ? '#C43A17' : '#FA4F24' }}>{i === 4 ? '!' : '+'}</Text>
+              <Text style={{ fontSize: 10.5, color: i === 4 ? '#C43A17' : '#5A6070', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #F87D2F', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#F87D2F' }}>管道内预计算</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 3 }}>落成物化结果，有明确的刷新与版本</Text>
+        <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+          {[
+            '结果已算好，查询延迟稳定，不受候选集大小影响',
+            '适合高频、超大结果集的固定口径',
+            '可用于时间序列对比：跨期间口径变了，历史值仍在',
+            '代价：口径改了要重跑，且必须处理双版本并存',
+            '代价：多了一份副本，就多了一处可能与本体不一致的地方',
+          ].map((t, i) => (
+            <Box key={i} style={{ flexDirection: 'row', gap: 7, flex: 1, alignItems: 'flex-start' }}>
+              <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: i >= 3 ? '#C43A17' : '#F87D2F' }}>{i >= 3 ? '!' : '+'}</Text>
+              <Text style={{ fontSize: 10.5, color: i >= 3 ? '#C43A17' : '#5A6070', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.9, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.2, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>官方给的两个硬规模数字</Text>
+        <Box style={{ flexDirection: 'row', gap: 10, marginTop: 10, flex: 1 }}>
+          <Box style={{ flex: 1, background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '10px 14px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FBA15C' }}>200 行</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.82)', marginTop: 5, lineHeight: 1.45 }}>
+              Workshop 里用派生属性排序时的对象集上限。超过就要改成函数列或走预计算。
+            </Text>
+          </Box>
+          <Box style={{ flex: 1, background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '10px 14px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FBA15C' }}>10,000 行</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.82)', marginTop: 5, lineHeight: 1.45 }}>
+              函数列支持端用户排序的上限。再往上端用户不能排序，默认排序只对每页生效。
+            </Text>
+          </Box>
+          <Box style={{ flex: 1, background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '10px 14px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FBA15C' }}>3 跳 / 1 跳</Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.82)', marginTop: 5, lineHeight: 1.45 }}>
+              本体定义最多 3 跳链接；Workshop 与 Insight 的运行时定义只有 1 跳。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>给管道的三条判定规则</Text>
+        <Box style={{ marginTop: 9, gap: 7, flex: 1 }}>
+          {[
+            { n: '一', t: '口径会频繁变 → 运行时', d: '少一次重跑，少一份不一致' },
+            { n: '二', t: '口径稳定且高频高频查 → 预计算', d: '用确定的延迟换维护成本' },
+            { n: '三', t: '两者都要 → 预计算必须挂版本号', d: '写清它是从哪套口径、哪个时点算出来的' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', gap: 9, background: '#FFFFFF', borderRadius: 3, padding: '6px 11px', alignItems: 'center' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+              <Box style={{ flex: 1, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 2, lineHeight: 1.4 }}>{x.d}</Text>
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>21 / 30</Text>
+  </Box>
+</Slide>

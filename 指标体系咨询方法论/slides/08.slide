@@ -1,0 +1,86 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      十种聚合类型，以及 <span style={{ color: '#FA4F24' }}>Sum 会悄悄改变你的数字类型</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>指标能力的上限由聚合类型决定；口径事故的一半藏在类型、null 与顺序里</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1.5, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>官方聚合类型全表（十种，其中一种不可用）</Text>
+      <Box style={{ flexDirection: 'row', gap: 4, marginTop: 9 }}>
+        <Text style={{ fontSize: 10, color: '#8A8F99', width: 152 }}>名称（Ontology Manager）</Text>
+        <Text style={{ fontSize: 10, color: '#8A8F99', width: 118 }}>SDK 方法</Text>
+        <Text style={{ fontSize: 10, color: '#8A8F99', flex: 1 }}>入参类型</Text>
+        <Text style={{ fontSize: 10, color: '#8A8F99', width: 148 }}>结果类型</Text>
+      </Box>
+      {[
+        { n: 'Count', m: '$count', i: '不适用', o: 'Long', c: true },
+        { n: 'Average', m: 'avg', i: '数值', o: 'Double', c: true },
+        { n: 'Sum', m: 'sum', i: '数值', o: '数值（加宽）', c: true },
+        { n: 'Minimum', m: 'min', i: '数值/字符串/布尔/日期时间', o: '同源', c: true },
+        { n: 'Maximum', m: 'max', i: '数值/字符串/布尔/日期时间', o: '同源', c: true },
+        { n: 'Approximate cardinality', m: 'approximateDistinct', i: '数值/字符串/布尔/日期时间', o: 'Long', c: true },
+        { n: 'Exact cardinality', m: 'exactDistinct', i: '数值/字符串/布尔/日期时间', o: 'Long', c: true },
+        { n: 'Collect list', m: 'collectList', i: '除向量外任意类型', o: '源类型数组', c: true },
+        { n: 'Collect set', m: 'collectSet', i: '除向量外任意类型', o: '源类型数组', c: true },
+        { n: '（不可用）', m: 'approximatePercentile', i: '数值', o: '同源', c: false },
+      ].map((x) => (
+        <Box key={x.m} style={{ flexDirection: 'row', gap: 4, marginTop: 3, background: '#FFFFFF', borderRadius: 2, padding: '3px 7px', opacity: x.c ? 1 : 0.55 }}>
+          <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#0F1423', width: 152 }}>{x.n}</Text>
+          <Text style={{ fontSize: 10, color: '#C43A17', width: 118 }}>{x.m}</Text>
+          <Text style={{ fontSize: 10, color: '#5A6070', flex: 1 }}>{x.i}</Text>
+          <Text style={{ fontSize: 10, color: '#5A6070', width: 148 }}>{x.o}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.1, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>Sum 的类型加宽：口径事故的隐形来源</Text>
+        <Box style={{ flexDirection: 'row', gap: 6, marginTop: 9 }}>
+          {[
+            { a: 'short / integer', b: 'long' },
+            { a: 'long', b: 'long' },
+            { a: 'float', b: 'double' },
+            { a: 'double', b: 'double' },
+            { a: 'decimal', b: 'decimal（提精度、降标度）' },
+          ].map((x) => (
+            <Box key={x.a} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '6px 5px', alignItems: 'center' }}>
+              <Text style={{ fontSize: 9.5, color: 'rgba(255,255,255,0.6)' }}>{x.a}</Text>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FBA15C', marginTop: 3 }}>{x.b}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', marginTop: 9, lineHeight: 1.45, flex: 1 }}>
+          加宽是为了避免溢出，但<tspan style={{ color: '#FBA15C', fontWeight: 'bold' }}>float 求和升级成 double 会把「精度够了」的假设推翻</tspan>——同一个指标，源系统用浮点、管线用十进制、报表用双精度，三处对不上，根因就在这一行。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>Collect 家族的四个陷阱</Text>
+        <Box style={{ marginTop: 9, gap: 6, flex: 1 }}>
+          {[
+            '没有值的对象被跳过 → 结果数组永不含 null → 「列表里 5 条」不等于「5 条都有值」',
+            '收集值默认无序；只有定义了属性归约器时才会排序，且无论是否真的应用都会按它排',
+            'Collect set 先去重再套 limit；limit 默认 10、最大 100',
+            'limit 只决定返回给你多少值，不决定平台算了多少值——依赖它做过滤前必须先搞清楚',
+          ].map((t, i) => (
+            <Box key={i} style={{ flexDirection: 'row', gap: 7, flex: 1, alignItems: 'flex-start' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}</Text>
+              <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>08 / 30</Text>
+  </Box>
+</Slide>

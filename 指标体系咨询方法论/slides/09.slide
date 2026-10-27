@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      什么时候必须聚合、什么时候可以直接取：一张判定表，<span style={{ color: '#FA4F24' }}>判错就是错数</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>官方给出的四条链路规则，以及聚合接口里那个会静默丢数据的参数</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1.05, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>四条链路规则：唯一能直接取属性的情形，只有第一种</Text>
+      <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+        {[
+          { l: '每次遍历最多只到一个对象', r: '可以直接取属性，也可以聚合', ok: true, e: '如「我的经理姓名」' },
+          { l: '任一次遍历可能到多个对象', r: '必须聚合', ok: false, e: '如「我下属的平均薪资」' },
+          { l: '链里含多对多链接', r: '必须聚合，绝不允许直接取', ok: false, e: '多对多链路没有任何单值语义' },
+          { l: '一对多链接且外键是数组', r: '必须聚合', ok: false, e: '数组外键天然对应多行' },
+        ].map((x) => (
+          <Box key={x.l} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 14, background: '#FFFFFF', borderRadius: 3, borderLeft: '4px solid ' + (x.ok ? '#FA4F24' : '#C43A17'), padding: '0 13px' }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', width: 224 }}>{x.l}</Text>
+            <Box style={{ width: 1, height: 22, background: '#E8E8E8' }} />
+            <Text style={{ fontSize: 12, color: x.ok ? '#3A4050' : '#C43A17', fontWeight: x.ok ? 'normal' : 'bold', width: 216 }}>{x.r}</Text>
+            <Text style={{ fontSize: 10.5, color: '#8A8F99', flex: 1 }}>{x.e}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>excludedItems：接口成功、图表照常、只是少了一批</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', marginTop: 9, lineHeight: 1.5, flex: 1 }}>
+          聚合接口用 <tspan style={{ color: '#FBA15C' }}>maxGroupCount</tspan> 限制分组数。超出部分不报错，而是被计数进
+          <tspan style={{ color: '#FBA15C' }}> excludedItems</tspan> 然后<tspan style={{ fontWeight: 'bold' }}>悄悄丢掉</tspan>。分母少了一截，环比、同比、占比全部失真，而看板一片正常。
+        </Text>
+        <Box style={{ background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px', marginTop: 9 }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+            对策：把 <tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>accuracy</tspan> 显式设为 REQUIRE_ACCURATE，让它宁可失败；并且把 excludedItems 做成告警项而不是日志里的一行。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>聚合接口的其他四个默认值陷阱</Text>
+        <Box style={{ marginTop: 9, gap: 6, flex: 1 }}>
+          {[
+            { t: '默认允许近似', d: 'accuracy 默认 ALLOW_APPROXIMATE；要求精确要显式声明，否则失败时报 AggregationAccuracyNotSupported' },
+            { t: 'null 一律被忽略', d: '不是当 0，是不当它存在——「有值的平均」和「全部平均」是两个数' },
+            { t: '多个分组按数组顺序算', d: 'groupBy 的先后顺序会影响计算，改顺序要重新验证结果' },
+            { t: '分组类型只有四种', d: 'exact 精确值 / fixedWidth 固定宽度 / ranges 区间 / duration 时间间隔' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '6px 10px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10, color: '#5A6070', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>09 / 30</Text>
+  </Box>
+</Slide>

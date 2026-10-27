@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      官方文档里找不到「指标模块」——这不是产品缺项，是<span style={{ color: '#FA4F24' }}>设计选择</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>指标在 Palantir 里的正式身份是：对象类型上的派生属性（Derived Property）</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.35, background: '#0F1423', borderRadius: 4, padding: '14px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#FBA15C' }}>官方定义：派生属性是什么</Text>
+        <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.9)', marginTop: 10, lineHeight: 1.55, flex: 1 }}>
+          值在<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>查询时</tspan>从其他属性或链接对象算出来，而不是存下来。它描述的是「怎么算」，不是「是多少」。
+        </Text>
+        <Box style={{ background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px', marginTop: 10 }}>
+          <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+            正因为不存储，底层数据一变它自动就对了——<tspan style={{ fontWeight: 'bold' }}>不需要重跑管道，也不需要维护任何更新逻辑</tspan>。
+          </Text>
+        </Box>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 9, lineHeight: 1.45 }}>
+          另有一条硬规则：<tspan style={{ color: '#FBA15C', fontWeight: 'bold' }}>主键属性不能是派生属性</tspan>；派生属性是只读的，不能被动作或函数编辑。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 2, flexDirection: 'column', gap: 9 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>它只有三种算法，全部来自「沿链接类型走过去」</Text>
+        {[
+          { n: '①', t: '跨链接对象聚合', d: 'Department 暴露「我下属员工的平均薪资」——沿员工链接聚合薪资', e: 'count / avg / sum / min / max / 去重计数 / collect' },
+          { n: '②', t: '从链接对象选取', d: 'Employee 暴露「我的经理是谁」——沿唯一的经理链接取一个属性', e: '前提：这条链每次遍历最多只到一个对象' },
+          { n: '③', t: '算术表达式运算', d: 'Employee 暴露「总薪酬」——把薪资本身加奖金', e: '只对运行时定义的派生属性开放' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '10px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+              <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+            </Box>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 5, lineHeight: 1.45 }}>{x.d}</Text>
+            <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 4, lineHeight: 1.4 }}>{x.e}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.92, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', gap: 18 }}>
+      <Box style={{ width: 152, flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>这一页的判断</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 5, lineHeight: 1.4 }}>与第十册主数据同源</Text>
+      </Box>
+      <Box style={{ width: 1, background: '#FBA15C' }} />
+      <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', gap: 5 }}>
+        {[
+          '如果指标是报表里的一列，那么口径写在 SQL 里、值在报表里，两样东西各自漂移。',
+          '指标做成对象上的属性之后，口径和值在同一个模型里——口径改动的影响面，靠链接关系就能推出来。',
+          '这就是「指标不是报表，是对象上的派生属性」的全部含义，也是这一册所有方法的地基。',
+        ].map((t, i) => (
+          <Text key={i} style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5 }}>
+            <tspan style={{ color: '#FA4F24', fontWeight: 'bold' }}>· </tspan>{t}
+          </Text>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>06 / 30</Text>
+  </Box>
+</Slide>

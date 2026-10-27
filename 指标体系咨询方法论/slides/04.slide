@@ -1,0 +1,99 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      Approach：三阶段推进图与<span style={{ color: '#FA4F24' }}>每一步的产出物</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>先做什么、后做什么、按什么顺序——每个方框下面写的就是它必须交出来的东西，没有产出物的框就是空转</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 12, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 9 }}>
+    <Box style={{ height: 42, flexDirection: 'row', gap: 3 }}>
+      <Box style={{ width: 74, background: '#5A6070', borderRadius: 3, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>启动</Text>
+      </Box>
+      {[
+        { n: '第一阶段', t: '指标现状盘点与诊断', c: '#FA4F24' },
+        { n: '第二阶段', t: '指标体系设计与治理', c: '#E0641E' },
+        { n: '第三阶段', t: '场景化落地与持续运营', c: '#C43A17' },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: x.c, borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+          <Box style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.45)' }} />
+          <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.94)' }}>{x.t}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+      <Box style={{ width: 58, background: '#0F1423', borderRadius: 3, alignItems: 'center', justifyContent: 'center', padding: '8px 0' }}>
+        {['项目', '实施', '任务', '分解'].map((t) => (
+          <Text key={t} style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', marginTop: 4 }}>{t}</Text>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 5 }}>
+          {[
+            { t: '项目准备', o: '指标治理章程 · 范围清单' },
+            { t: '业务战略解读', o: '战略解码 → 指标意图映射' },
+            { t: '指标资产盘点', o: '指标资产清单 · 分布热力图' },
+            { t: '口径冲突扫描', o: '口径冲突台账（同名/同义优先）' },
+            { t: '可信度诊断', o: '指标可信度诊断报告 · 分级结论' },
+          ].map((x, i) => (
+            <Box key={x.t} style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, border: '1px solid #FBA15C', padding: '8px 9px', flexDirection: 'column', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10, color: '#C43A17', marginTop: 5, lineHeight: 1.35 }}>产出：{x.o}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 5 }}>
+          {[
+            { t: '指标字典与五元组规范', o: '指标字典模板 · 五元组规范' },
+            { t: '原子 / 派生 / 复合分解', o: '三层指标分解图 · 依赖 DAG' },
+            { t: '口径唯一性裁定', o: '唯一口径裁定表 · 映射与废止清单' },
+            { t: '权限与版本设计', o: '口径权限矩阵 · 版本与回滚方案' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, border: '1px solid #F87D2F', padding: '8px 9px', flexDirection: 'column', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10, color: '#C43A17', marginTop: 5, lineHeight: 1.35 }}>产出：{x.o}</Text>
+            </Box>
+          ))}
+        </Box>
+
+        <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 5 }}>
+          {[
+            { t: '问数场景清单', o: '高频问数场景清单 · 优先级' },
+            { t: '场景化指标集', o: '每场景最小可用指标集' },
+            { t: '静默失效检出', o: '口径漂移检测规则 · 告警矩阵' },
+            { t: '指标健康看板', o: '指标健康度看板 · 责任到人' },
+            { t: '演进路线图', o: '分季演进路线图 · 退役计划' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, border: '1px solid #C43A17', padding: '8px 9px', flexDirection: 'column', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10, color: '#C43A17', marginTop: 5, lineHeight: 1.35 }}>产出：{x.o}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flexDirection: 'row', gap: 9, height: 32 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '4px solid #FA4F24', padding: '0 14px', flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', width: 82 }}>口径治理</Text>
+        <Text style={{ fontSize: 11, color: '#5A6070', flex: 1 }}>贯穿三阶段：每个指标从被提出到被废止，口径全程有人负责、有唯一解释、有变更留痕</Text>
+      </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '4px solid #F87D2F', padding: '0 14px', flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423', width: 82 }}>变更管理</Text>
+        <Text style={{ fontSize: 11, color: '#5A6070', flex: 1 }}>贯穿三阶段：口径变更按数据治理的提案流程走，附影响面清单与回滚预案，不允许脚本直连</Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>04 / 30</Text>
+  </Box>
+</Slide>

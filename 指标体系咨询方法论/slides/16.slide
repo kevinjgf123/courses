@@ -1,0 +1,93 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      同一个指标，<span style={{ color: '#FA4F24' }}>两个用户看到两个值</span>——这不是 bug，是设计
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>派生属性继承计算中每个对象的安全性，包括多跳遍历里的中间对象</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.2, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>官方三条安全规则</Text>
+        <Box style={{ marginTop: 10, gap: 7, flex: 1 }}>
+          {[
+            { n: '01', t: '继承每一个对象的安全上下文', d: '派生属性从计算中用到的每一个对象继承安全性，不是只继承起点那一个' },
+            { n: '02', t: '多跳遍历逐跳校验', d: '访问检查在计算的每个对象上执行，包括中间的链接对象，然后值才被组合' },
+            { n: '03', t: '集合保留每个值自己的标记', d: '收集成列表或集合时，每个被收集的值保留它自己的安全标记' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '8px 12px', justifyContent: 'center' }}>
+              <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FBA15C' }}>{x.n}</Text>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              </Box>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.78)', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.25, background: '#F7F7F8', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>一个具体场景：华东区平均订单额</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 4 }}>口径：华东区全部订单的订单金额求平均，跨「区域 → 客户 → 订单」两跳</Text>
+        <Box style={{ flexDirection: 'row', gap: 10, marginTop: 10, flex: 1 }}>
+          <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>销售总监</Text>
+            <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 3 }}>可见全部客户与订单</Text>
+            <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FA4F24', marginTop: 8 }}>¥ 12,400</Text>
+            <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 8, lineHeight: 1.45, flex: 1 }}>
+              分子含 500 笔涉密订单，分母含全部 3,200 笔。
+            </Text>
+          </Box>
+          <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid #8A8F99', padding: '10px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>区域运营</Text>
+            <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 3 }}>看不到涉密客户及其订单</Text>
+            <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#3A4050', marginTop: 8 }}>¥ 9,850</Text>
+            <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 8, lineHeight: 1.45, flex: 1 }}>
+              涉密订单被整条剔除，不是当 0，是不存在。
+            </Text>
+          </Box>
+        </Box>
+        <Text style={{ fontSize: 10.5, color: '#C43A17', marginTop: 9, lineHeight: 1.45 }}>
+          两个人问的是同一个指标、同一个口径，答案不同，而且<tspan style={{ fontWeight: 'bold' }}>都对</tspan>。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.9, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>带来的两个必须接受的事实</Text>
+        <Box style={{ marginTop: 9, gap: 6, flex: 1 }}>
+          {[
+            '横向对比必须先对齐权限：对两个人的数做差之前，先确认他们看的是不是同一批对象',
+            '对外汇报的数必须注明权限基线：说清这个数是在「谁能看到什么」的哪一档下算出来的',
+          ].map((t, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 8, background: '#FFFFFF', borderRadius: 3, padding: '7px 11px', alignItems: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{i + 1}</Text>
+              <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.3, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>最危险的一种分叉：口径写在文档里，值从本体里算</Text>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', marginTop: 9, lineHeight: 1.5, flex: 1 }}>
+          如果口径定义是一个 Word 文档，而指标值是本体的派生属性，那么两者<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>各自独立演进</tspan>。改了公式没改文档，Agent 读到的是旧口径、算出的是新值；改了文档没改公式，人按新口径理解、机器按旧公式算。
+        </Text>
+        <Box style={{ background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px', marginTop: 8 }}>
+          <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+            对应第九册那句话：策略必须是数据，不是配置。放到指标上就是——<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>口径必须是可执行的定义，不是描述性的文档</tspan>。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>16 / 30</Text>
+  </Box>
+</Slide>

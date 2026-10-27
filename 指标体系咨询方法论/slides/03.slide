@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      序论：AI 时代，指标被赋予了<span style={{ color: '#FA4F24' }}>三层新含义</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>指标一直是企业最普及的资产。变的是：谁在消费它、错了会怎样、生命周期有多长</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      {[
+        { n: '01', t: '消费者变了', c: '#FA4F24',
+          d: '指标的第一消费者从人变成 Agent。人看到荒谬的数字会停下来怀疑，Agent 不会——它会把它当既定事实，直接写进报告、下发动作。',
+          k: '人 → Agent' },
+        { n: '02', t: '容错变了', c: '#C43A17',
+          d: '过去口径错了，代价是「报表不可信」，最多没人看。现在口径错了，代价是 Agent 按错的口径去调资源、排产、催款——指标错误第一次获得了行动能力。',
+          k: '不可信 → 有行动力' },
+        { n: '03', t: '生命周期变了', c: '#FA4F24',
+          d: '传统 BI 指标上线即固化，靠人维护文档。AI 时代指标要能被机器发现、解析、组合、调用，于是口径必须结构化到能被程序读懂，而不是躺在 Wiki 里。',
+          k: '文档 → 可执行定义' },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + x.c, padding: '13px 16px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+          </Box>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 10, lineHeight: 1.55, flex: 1 }}>{x.d}</Text>
+          <Box style={{ marginTop: 9, background: '#FFF3EE', borderRadius: 3, padding: '6px 10px' }}>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1.25, background: '#0F1423', borderRadius: 4, padding: '14px 20px', flexDirection: 'row', gap: 20 }}>
+      <Box style={{ width: 172, flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>六条核心主张</Text>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 6, lineHeight: 1.45 }}>这一册要反复用到的话</Text>
+      </Box>
+      <Box style={{ width: 1, background: 'rgba(255,255,255,0.15)' }} />
+      <Box style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 7 }}>
+        {[
+          '指标不是报表，是对象上的派生属性',
+          '口径即定义，定义即代码',
+          '最小单位是五元组，不是指标名',
+          '指标的失败是静默的',
+          '指标从给人看变成给 Agent 调',
+          '第一性问题是有多少，不是多统一',
+        ].map((t, i) => (
+          <Box key={t} style={{ width: '48.6%', background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '6px 10px' }}>
+            <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.9)' }}>
+              <tspan style={{ color: '#FBA15C', fontWeight: 'bold' }}>{i + 1}. </tspan>{t}
+            </Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>03 / 30</Text>
+  </Box>
+</Slide>

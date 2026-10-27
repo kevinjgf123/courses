@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      AA 怎么消费口径，TA 怎么把口径<span style={{ color: '#FA4F24' }}>算出来</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>问数、驾驶舱、场景化指标集是三档不同的应用形态；计算侧要给出可解释、可回放、可回滚</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+          <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FA4F24' }}>AA</Text>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>应用架构：三档消费形态</Text>
+        </Box>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            { t: '场景化指标集（推荐起点）', d: '一个问数场景配一组最小可用指标，口径从注册表取，不允许现场写公式' },
+            { t: '管理驾驶舱', d: '面向固定决策视图，每个卡片标注口径版本与权限基线；口径变更要能提示到卡片' },
+            { t: '问数 / ChatBI', d: '自然语言入口，但必须走「按口径取数」的接口，返回值附口径标识与版本' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '6px 11px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '6px 11px', marginTop: 8 }}>
+          <Text style={{ fontSize: 10.5, color: '#C43A17', lineHeight: 1.45 }}>
+            推进顺序建议：先做场景化指标集，因为它验证的是「口径能不能被消费方正确取用」，这件事验证不过，做驾驶舱也没意义。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+          <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FBA15C' }}>TA</Text>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>技术架构：计算三要求</Text>
+        </Box>
+        <Box style={{ marginTop: 10, gap: 7, flex: 1 }}>
+          {[
+            { n: '01', t: '可解释', d: '每个返回值能展开成计算链路：走了哪些对象、哪些链接跳、用的哪版公式' },
+            { n: '02', t: '可回放', d: '给定口径版本与时点，能重放历史结果，验证「昨天和今天为什么不一样」' },
+            { n: '03', t: '可回滚', d: '口径版本切换是开关操作，不依赖重跑历史数据，分钟级可退' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '7px 12px', justifyContent: 'center' }}>
+              <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FBA15C' }}>{x.n}</Text>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              </Box>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.78)', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '7px 11px', marginTop: 8 }}>
+          <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45 }}>
+            附加要求：<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>excludedItems 与近似标志必须落库</tspan>。被丢弃的分组数与准确性标志，是指标静默失真的两个直接证据。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.72, background: '#FFF3EE', borderRadius: 4, padding: '10px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 122 }}>与第十册的不同</Text>
+      <Box style={{ width: 1, height: 30, background: '#FBA15C' }} />
+      <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>
+        主数据的技术关键是<tspan style={{ fontWeight: 'bold' }}>撤销</tspan>（合并不覆盖）；指标的技术关键是<tspan style={{ fontWeight: 'bold' }}>版本</tspan>（口径不改历史）。前者管的是「错了怎么退」，后者管的是「变了怎么讲清楚」——但两者都必须先有血缘与版本，才谈得上退与讲。
+      </Text>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+  </Box>
+</Slide>

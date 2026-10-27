@@ -1,0 +1,73 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      成熟度五级 · 五类失效 · 十二项评审
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>用这一页给现状定位：先看落在哪一级，再对照五类失效，最后用十二项评审打分</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 0.92, flexDirection: 'row', gap: 9 }}>
+      {[
+        { lv: 'L1', t: '无序', c: '#8A8F99', d: '每个报表自己写公式，指标名靠约定', k: '无注册表' },
+        { lv: 'L2', t: '登记', c: '#F87D2F', d: '有指标字典，但只在文档里，值各算各的', k: '文档与实现分叉' },
+        { lv: 'L3', t: '可查', c: '#FA4F24', d: '口径进模型，值由派生属性算，口径与值同源', k: '进入本体' },
+        { lv: 'L4', t: '受管', c: '#C43A17', d: '变更走提案、有版本、可回滚，权限基线写明', k: '有裁定会有回滚' },
+        { lv: 'L5', t: '自愈', c: '#0F1423', d: '静默失效自动检出并告警，Agent 用的是受管口径接口', k: '规则先于人发现' },
+      ].map((x) => (
+        <Box key={x.lv} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + x.c, padding: '11px 13px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.lv}</Text>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+          </Box>
+          <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 8, lineHeight: 1.45, flex: 1 }}>{x.d}</Text>
+          <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '4px 8px', marginTop: 7 }}>
+            <Text style={{ fontSize: 10, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 0.8, background: '#0F1423', borderRadius: 4, padding: '11px 20px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>五类典型失效：出现哪一类，就往回退一级</Text>
+      <Box style={{ flexDirection: 'row', gap: 9, marginTop: 9, flex: 1 }}>
+        {[
+          { t: '同名不同义仍在发生', d: 'L1 / L2 的典型标志，说明登记没落到约束上' },
+          { t: '口径与值不同源', d: 'L2 / L3 之间的裂缝，文档还在更新、模型没动' },
+          { t: '静默丢数无人知晓', d: 'excludedItems 与近似标志没落库，或落库了没人看' },
+          { t: '变更无版本无回滚', d: '出事只能靠人记忆复原，这是 L4 的门槛' },
+          { t: 'Agent 读的是过期口径', d: 'L4 / L5 之间的裂缝，知识库切片版本没跟上' },
+        ].map((x, i) => (
+          <Box key={i} style={{ flex: 1, background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '8px 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{i + 1}. {x.t}</Text>
+            <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.75)', marginTop: 4, lineHeight: 1.4 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '11px 20px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>十二项评审清单：每项只能答「是」或「否」，答不出即不合格</Text>
+      <Box style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 9, flex: 1 }}>
+        {[
+          '指标名全公司唯一？', '五元组是否完整无留空？', '时区与截止时点写明？',
+          '空值处理策略明确？', '上游依赖已登记可查？', '口径是可执行定义而非文档？',
+          '口径与值在同一模型？', '权限基线写明？', '版本号与变更历史完整？',
+          '变更附影响面清单？', '静默失效有检出规则？', 'Agent 只调受管口径接口？',
+        ].map((t, i) => (
+          <Box key={t} style={{ width: '24.3%', background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '6px 9px', flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+            <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1).padStart(2, '0')}</Text>
+            <Text style={{ fontSize: 10.5, color: '#3A4050' }}>{t}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+  </Box>
+</Slide>

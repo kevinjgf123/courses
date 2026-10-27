@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      一套口径，六个落法，<span style={{ color: '#FA4F24' }}>四条硬边界</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>六个方向共享同一份定义；四条边界一旦松动，指标就会退回到「谁建谁负责」的老状态</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 9 }}>
+      {[
+        { d: '主数据', k: '维度挂规范 ID', v: '维度成员以主数据对象集为准，合并触发重算', p: '19' },
+        { d: '数据治理', k: '口径是策略', v: '变更走提案，聚合取严，用途受限于 approved use', p: '20' },
+        { d: '管道处理', k: '算哪儿有取舍', v: '口径常变走运行时，稳定高频走预计算且挂版本号', p: '21' },
+        { d: '知识库', k: '口径可检索', v: '切片带五元组与版本，密级随值继承', p: '22' },
+        { d: 'Agent', k: '给接口不给记录', v: '返回值含口径标识与版本，记忆只存口径不存数值', p: '22' },
+        { d: 'Ontology', k: '原生组成', v: '指标即派生属性，不另建指标引擎', p: '23' },
+      ].map((x) => (
+        <Box key={x.d} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 12px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.d}</Text>
+            <Text style={{ fontSize: 10, color: '#8A8F99' }}>P{x.p}</Text>
+          </Box>
+          <Box style={{ background: '#0F1423', borderRadius: 3, padding: '5px 8px', marginTop: 9 }}>
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FBA15C' }}>{x.k}</Text>
+          </Box>
+          <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 10, lineHeight: 1.5, flex: 1 }}>{x.v}</Text>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1.1, background: '#0F1423', borderRadius: 4, padding: '13px 20px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>四条硬边界：违反任何一条，指标体系就开始退化</Text>
+      <Box style={{ flexDirection: 'row', gap: 10, marginTop: 11, flex: 1 }}>
+        {[
+          { n: '一', t: '口径唯一，同词唯一解释', d: '全公司同一个词只能有一个解释。允许有别名，不允许有两个口径。破这条，后面三条都守不住。' },
+          { n: '二', t: '口径可执行，不只是可读', d: '口径必须是能被引擎执行的结构化定义。写在文档里的口径，早晚和算出来的那一套分叉。' },
+          { n: '三', t: '口径与值同源同权', d: '口径和值必须在同一个模型里，并继承同一套权限基线。两处维护就意味着两套真相。' },
+          { n: '四', t: '口径变更按动作管', d: '变更是受管动作：要提案、要影响面、要双版本比对、要能回滚。改配置不算改口径。' },
+        ].map((x) => (
+          <Box key={x.n} style={{ flex: 1, background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '10px 14px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>
+              <tspan style={{ color: '#FBA15C' }}>{x.n} · </tspan>{x.t}
+            </Text>
+            <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.8)', marginTop: 6, lineHeight: 1.5 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.6, background: '#FFF3EE', borderRadius: 4, padding: '10px 18px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 122 }}>一句话收口</Text>
+      <Box style={{ width: 1, height: 30, background: '#FBA15C' }} />
+      <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, flex: 1 }}>
+        指标的六个方向不是六套工程，而是同一份口径的六种落法。所以推进顺序永远是<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>先把那一份定义立住</tspan>，再谈六个方向的落地。
+      </Text>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>24 / 30</Text>
+  </Box>
+</Slide>

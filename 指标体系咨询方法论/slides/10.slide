@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标的最小单位不是指标名，是<span style={{ color: '#FA4F24' }}>五元组</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>只写「销售额 = 1,240 万」这种口径，等于什么都没写——五项缺一项，这个数就不可复现</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      {[
+        { n: '①', t: '指标名', q: '叫什么', d: '必须唯一。同名不同义是最常见的事故，所以名字的唯一性本身需要被治理。', e: '销售额' },
+        { n: '②', t: '粒度', q: '在什么颗粒上算', d: '订单粒度、客户粒度、订单行粒度。粒度错配是第二大事故来源——把日明细直接加总当月度量。', e: '订单行' },
+        { n: '③', t: '时间口径', q: '算哪段时间', d: '自然月 / 财年 / 滚动 30 天；用哪个时区；截止时点是否含当日未结算。', e: '自然月，Asia/Shanghai，含当日' },
+        { n: '④', t: '聚合方式', q: '怎么聚', d: '求和、去重计数、平均、最小最大。用平均值算总额、把去重计数当计数，都在这一项上错。', e: 'SUM' },
+        { n: '⑤', t: '过滤条件', q: '排除了什么', d: '取消的订单算不算、测试客户排不排、内部交易去不去。没写这一项，五元组就不完整。', e: '排除已取消与测试单' },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 13px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>{x.t}</Text>
+          <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 4 }}>{x.q}</Text>
+          <Text style={{ fontSize: 11, color: '#3A4050', marginTop: 9, lineHeight: 1.5, flex: 1 }}>{x.d}</Text>
+          <Box style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '5px 8px', marginTop: 8 }}>
+            <Text style={{ fontSize: 10.5, color: '#C43A17', lineHeight: 1.35 }}>例：{x.e}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.35, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>同一个词，缺一项就变成另一个指标</Text>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            { a: '订单口径 · 自然月 · SUM · 含取消', b: '1,240 万' },
+            { a: '到账口径 · 自然月 · SUM · 含取消', b: '1,186 万' },
+            { a: '签约口径 · 财年首季 · SUM · 含取消', b: '3,402 万' },
+            { a: '订单口径 · 滚动 30 天 · 去重客户数', b: '894 家' },
+          ].map((x, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '0 11px' }}>
+              <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', flex: 1 }}>{x.a}</Text>
+              <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>{x.b}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.55)', marginTop: 9, lineHeight: 1.45 }}>
+          四行都叫「销售额」。争议不发生在数据层，发生在会议室——而根因在第一层就没写清。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>交付要求</Text>
+        <Box style={{ marginTop: 10, gap: 7, flex: 1 }}>
+          {[
+            '五元组是指标进入指标字典的准入门槛，缺项不予登记',
+            '指标名与五元组一起构成唯一键：同名不同义要拆名，同义不同名要合并',
+            '第③项必须写明时区与截止时点——这是跨系统对不上最常见的隐藏差异',
+            '第⑤项要写明排除清单，并说明每条排除的理由与批准人',
+          ].map((t, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'center' }}>
+              <Box style={{ width: 18, height: 18, borderRadius: 9, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#FFFFFF' }}>{i + 1}</Text>
+              </Box>
+              <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>10 / 30</Text>
+  </Box>
+</Slide>

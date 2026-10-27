@@ -1,0 +1,97 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标 × 知识库 × Agent：口径要能被<span style={{ color: '#FA4F24' }}>检索到</span>，也要能被<span style={{ color: '#F87D2F' }}>机器读懂</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>Agent 不会问「你说的是什么意思」——它只会照着读到的定义算，然后把它当事实用下去</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24' }}>× 知识库：口径要可检索</Text>
+        <Box style={{ marginTop: 9, gap: 6, flex: 1 }}>
+          {[
+            '每条口径切片带上：指标标识、五元组、治理等级、权限基线、版本号',
+            '切片密级随指标值继承同一套标记，检索层按权限过滤后再排序',
+            '除了向量索引，还要有一份「指标 → 口径卡片」的精确映射，支持按名称直查',
+            '废止指标的口径卡片保留并标注废止，否则 Agent 会去用旧口径',
+            '问「毛利率怎么算」必须能命中的第一条就是当前生效版本',
+          ].map((t, i) => (
+            <Box key={i} style={{ flexDirection: 'row', gap: 7, flex: 1, alignItems: 'flex-start' }}>
+              <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FA4F24' }}>·</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FBA15C' }}>× Agent：要接口，不要记录</Text>
+        <Box style={{ marginTop: 9, gap: 6, flex: 1 }}>
+          {[
+            'Agent 调的是「按口径取数」的接口，不是「去表里查」的接口',
+            '返回值必须连同口径标识、版本、权限基线一起返回，不只是数字',
+            '同一问题在不同权限下答案不同，这个差异必须显式告知 Agent，否则它会当成矛盾',
+            'Agent 的记忆里要存口径，不要存某个时点的数值——存数值必然过期',
+            '遥测日志记的是「调了哪个指标的哪个口径」，这本身就是治理对象',
+          ].map((t, i) => (
+            <Box key={i} style={{ flexDirection: 'row', gap: 7, flex: 1, alignItems: 'flex-start' }}>
+              <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FBA15C' }}>·</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.82)', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.95, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.25, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>Text-to-SQL 与本体路线的分岔，就在指标这一层</Text>
+        <Box style={{ marginTop: 10, gap: 5, flex: 1 }}>
+          {[
+            { k: '准确性瓶颈', a: 'SQL 准确率与数据清洗程度', b: '初期本体建模的工程量', ok: true },
+            { k: '回答能力', a: '擅长回答「是什么」', b: '多因素归因与情景推演', ok: true },
+            { k: '权限位置', a: '多在 SQL 层，AI 可能绕过前端碰到敏感字段', b: '绑在对象级，无权限则 AI 调不出来', ok: true },
+          ].map((x) => (
+            <Box key={x.k} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, background: '#FFFFFF', borderRadius: 3, padding: '0 12px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', width: 84 }}>{x.k}</Text>
+              <Text style={{ fontSize: 10.5, color: '#8A8F99', width: 226 }}>{x.a}</Text>
+              <Text style={{ fontSize: 11, color: '#C43A17' }}>→</Text>
+              <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#0F1423', flex: 1, lineHeight: 1.35 }}>{x.b}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 8, lineHeight: 1.45 }}>
+          三行右边的共同前提是同一个：口径已经作为对象属性被建模过了。没有这一步，右边全部做不到。
+        </Text>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>给 Agent 的三条硬约束</Text>
+        <Box style={{ marginTop: 9, gap: 7, flex: 1 }}>
+          {[
+            { n: '一', t: '未注册口径不暴露给 Agent', d: '不进注册表的指标，不能成为 Agent 可调用的工具' },
+            { n: '二', t: '口径版本与代码一起发布', d: 'Agent 记录的是口径版本号，不是「当时是这么算的」' },
+            { n: '三', t: '口径与数值分离存储', d: '数值随时变，口径定义相对稳定，两者生命周期不同' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '6px 11px', justifyContent: 'center' }}>
+              <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              </Box>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>22 / 30</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,100 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标字典：<span style={{ color: '#FA4F24' }}>十二项</span>缺一项，这个指标就不该上线
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>前五项是五元组，后七项是治理属性——缺后七项，指标能用但管不住</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24' }}>一、定义类（五元组）</Text>
+        <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+          {[
+            { n: '01', t: '指标名与唯一标识', d: '名字在全公司唯一；拆同名、合同义' },
+            { n: '02', t: '业务定义（一句话）', d: '用业务语言写，不用字段名拼' },
+            { n: '03', t: '计算口径与公式', d: '写成可执行表达式，不写自然语言描述' },
+            { n: '04', t: '粒度', d: '订单行 / 订单 / 客户 / 组织，明确唯一' },
+            { n: '05', t: '时间口径', d: '自然月或财年、时区、截止时点' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, background: '#FFFFFF', borderRadius: 3, padding: '0 10px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 20 }}>{x.n}</Text>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', width: 122 }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', flex: 1, lineHeight: 1.35 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #F87D2F', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#F87D2F' }}>二、来源与依赖类</Text>
+        <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+          {[
+            { n: '06', t: '数据来源与对象类型', d: '挂在哪个对象类型的哪个属性上' },
+            { n: '07', t: '过滤与排除清单', d: '排除什么、为什么、谁批的' },
+            { n: '08', t: '上游依赖', d: '依赖哪些原子指标与外部数据' },
+            { n: '09', t: '刷新方式与时效', d: '实时 / 小时 / 日；延迟多少可接受' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, background: '#FFFFFF', borderRadius: 3, padding: '0 10px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#F87D2F', width: 20 }}>{x.n}</Text>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', width: 122 }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', flex: 1, lineHeight: 1.35 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Box style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #F87D2F', padding: '7px 11px', marginTop: 8 }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.45 }}>
+            第 08 项是变更影响面分析的<tspan style={{ fontWeight: 'bold' }}>唯一数据来源</tspan>。没有它，改一个原子指标就只能靠人回忆影响范围。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #C43A17', padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>三、治理类</Text>
+        <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+          {[
+            { n: '10', t: '业务定义责任人', d: '对口径正确性负责的人，不是开发的人' },
+            { n: '11', t: '数据 steward 与维护人', d: '日常巡检、异常处置、答疑' },
+            { n: '12', t: '版本号与变更历史', d: '每次口径变更留痕，含影响面与回滚预案' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, background: '#FFFFFF', borderRadius: 3, padding: '0 10px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17', width: 20 }}>{x.n}</Text>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', width: 122 }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', flex: 1, lineHeight: 1.35 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.25, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>三档治理等级：不是所有指标都值得同等投入</Text>
+        <Box style={{ flexDirection: 'row', gap: 9, marginTop: 10, flex: 1 }}>
+          {[
+            { lv: 'A 决策级', d: '进驾驶舱、进 Agent 工具集、进对外汇报', r: '十二项全填，季度复核，口径变更必须走裁定会', c: '#FA4F24' },
+            { lv: 'B 运营级', d: '业务日常自查与过程管理使用', r: '前九项必填，责任人明确，半年复核', c: '#F87D2F' },
+            { lv: 'C 分析级', d: '一次性分析、探索性使用', r: '登记名称与口径即可，不进字典主表，禁止对外引用', c: '#8A8F99' },
+          ].map((x) => (
+            <Box key={x.lv} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid ' + x.c, padding: '9px 12px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: x.c }}>{x.lv}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.85)', marginTop: 5, lineHeight: 1.45 }}>{x.d}</Text>
+              <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.55)', marginTop: 5, lineHeight: 1.4 }}>{x.r}</Text>
+            </Box>
+          ))}
+        </Box>
+        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', marginTop: 9, lineHeight: 1.45 }}>
+          不分档就会走向两个极端：要么全部指标都当成核心，治理投入被稀释；要么都不当核心，最后 A 级指标没人负责。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+  </Box>
+</Slide>

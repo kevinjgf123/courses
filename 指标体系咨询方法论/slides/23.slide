@@ -1,0 +1,95 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标 × Ontology：指标是本体的<span style={{ color: '#FA4F24' }}>原生组成</span>，不是外挂报表
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>和主数据一样——它在本体里本来就是那回事，不需要额外建一个「指标模块」来管它</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.15, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>为什么说它是原生组成</Text>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            '指标的值就是链接关系上的聚合结果——本体本来就有链接，不需要新机制',
+            '指标的维度就是对象类型与链接类型——不需要另建维度模型',
+            '指标的权限就是对象的权限——不需要另建权限体系',
+            '指标的口径就是派生属性的定义——不需要另建计算引擎',
+            '因此「指标平台」相对本体做的事只有一件：<tspan style={{ fontWeight: \'bold\' }}>把口径从文档搬进模型</tspan>',
+          ].map((t, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 8, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '6px 11px', alignItems: 'center' }}>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>指标建模的四步与对应产出</Text>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            { n: '1', t: '定对象类型与粒度', d: '先问「这个数长在哪个对象上」——订单行、客户、设备' },
+            { n: '2', t: '定链接路径', d: '从哪个对象沿哪几条链接能到聚合对象，超过一跳必须聚合' },
+            { n: '3', t: '定聚合类型', d: '求和、去重计数、平均、收集列表；选定后类型加宽规则跟着定' },
+            { n: '4', t: '定定义位置', d: '进本体（全员一致）还是留在模块里（单场景用）——这是最难的一次决定' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', gap: 10, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '0 11px', alignItems: 'center' }}>
+              <Box style={{ width: 20, height: 20, borderRadius: 10, background: '#FA4F24', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+              </Box>
+              <Box style={{ flex: 1, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 2, lineHeight: 1.4 }}>{x.d}</Text>
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.9, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>与第十册主数据的对照：两件事的答案完全一样</Text>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            { k: '主数据', q: '是什么', a: '不是一个模块，是一种建模方式' },
+            { k: '指标', q: '是什么', a: '不是一个报表，是一个派生属性' },
+            { k: '共同点', q: '落地第一问', a: '先问「这个数/这个实体长在哪个对象上」，答不出来就别建模' },
+          ].map((x) => (
+            <Box key={x.k} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, background: '#FFFFFF', borderRadius: 3, padding: '0 12px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 56 }}>{x.k}</Text>
+              <Text style={{ fontSize: 10.5, color: '#8A8F99', width: 58 }}>{x.q}</Text>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.a}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1.1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>本体建模评审必答的六个问题</Text>
+        <Box style={{ flexDirection: 'row', gap: 9, marginTop: 10, flex: 1 }}>
+          {[
+            '这个指标挂在哪个对象类型上，粒度是什么？',
+            '聚合要沿哪几条链接，每条跳数多少？',
+            '聚合类型是什么，结果类型加宽后是什么？',
+            '空值是被忽略还是当零，两种结果差多少？',
+            '这个计算是全员口径还是单场景口径？',
+            '不同权限的人会看到不同的值吗，差异说明写在哪？',
+          ].map((t, i) => (
+            <Box key={i} style={{ width: '32.6%', background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '2px solid #FBA15C', padding: '8px 10px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.45 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>23 / 30</Text>
+  </Box>
+</Slide>

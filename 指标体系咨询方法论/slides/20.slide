@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标 × 数据治理：口径是<span style={{ color: '#FA4F24' }}>策略</span>，不是配置
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>能改一个指标的定义，就等于改了整个公司对这件事的认知——它的风险等级和改数据完全不是一回事</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      {[
+        { n: '01', t: '口径变更走提案流程', c: '#FA4F24',
+          d: '对应第九册的治理对象扩展：指标口径变更从「配置修改」升级为「受管动作」。',
+          r: ['谁提的、依据什么规则、影响哪些下游，全部进动作日志', '影响面清单是审批必要附件，不附不予受理', '禁止脚本直连修改口径定义'] },
+        { n: '02', t: '指标继承标记与密级', c: '#F87D2F',
+          d: '指标的分母来自哪批对象，它就受那批对象的安全标记管辖。',
+          r: ['派生属性从每个计算对象继承安全性，含中间对象', '跨密级聚合必须先取严，不能取宽', '对外发布的指标值本身也要打标记'] },
+        { n: '03', t: 'approved use：用途受限', c: '#C43A17',
+          d: '同一个口径，董事会汇报与对外披露能取不同的值，两个值都有据可依。',
+          r: ['口径定义里写明允许的用途集合', '超出用途集合的取数走单独审批', '用途变更与口径变更同等对待'] },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + x.c, padding: '13px 16px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+            <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+          </Box>
+          <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 9, lineHeight: 1.5 }}>{x.d}</Text>
+          <Box style={{ marginTop: 9, gap: 6, flex: 1 }}>
+            {x.r.map((t, i) => (
+              <Box key={i} style={{ flexDirection: 'row', gap: 7, flex: 1, alignItems: 'flex-start' }}>
+                <Text style={{ fontSize: 10.5, color: x.c, fontWeight: 'bold' }}>·</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.25, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>跨密级聚合的规则：取严，且必须说清分母是谁</Text>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)', marginTop: 9, lineHeight: 1.5, flex: 1 }}>
+          一个「集团总收入」指标，如果分母里混了涉密订单而当前用户看不到那些订单，官方机制是<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>整条剔除</tspan>——不是当 0，也不是照算。这会同时改变分子与分母。
+        </Text>
+        <Box style={{ background: 'rgba(250,79,36,0.18)', borderRadius: 3, padding: '8px 11px', marginTop: 8 }}>
+          <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+            因此指标口径卡必须加一项：<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>权限基线</tspan>——这个数在「默认哪一档权限」下算出来。换一档权限就是一个不同的数，要写明。
+          </Text>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>口径与治理的六条对应</Text>
+        <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+          {[
+            '指标定义 → 受管数据资产，不是散落的配置',
+            '口径变更 → 受管动作，走提案与审批',
+            '指标密级 → 继承源对象标记，聚合取严',
+            '口径可见性 → 对象级权限，无权限则 AI 也调不出来',
+            '口径历史 → 进元数据血缘，可回溯到哪次变更',
+            '异常检出 → 进治理审计，静默失效靠规则不靠自觉',
+          ].map((t, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'center', background: '#FFFFFF', borderRadius: 3, padding: '0 10px' }}>
+              <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FA4F24', width: 14 }}>{i + 1}</Text>
+              <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>20 / 30</Text>
+  </Box>
+</Slide>

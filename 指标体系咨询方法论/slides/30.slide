@@ -1,0 +1,57 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+  <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+  <Box style={{ position: 'absolute', right: 0, top: 0, width: 620, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.24) 0%, rgba(250,79,36,0) 70%)' }} />
+
+  <Box style={{ position: 'absolute', left: 88, top: 74, width: 1104 }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>结语 · 第十一册</Text>
+    </Box>
+    <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#FFFFFF', marginTop: 24, lineHeight: 1.25 }}>
+      十一册走完，4A 的六个新实践点<span style={{ color: '#FA4F24' }}>都落到了同一件事上</span>
+    </Text>
+    <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 26 }} />
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 262, width: 1104, flexDirection: 'row', gap: 12 }}>
+    {[
+      { n: 'Ontology', t: '语义与动力学合一', d: '本体是 4A 的汇流点' },
+      { n: 'Agent', t: '明确谁来判断', d: '权限多大、何时停手' },
+      { n: '知识库', t: '知识要被治理', d: '不只是被存起来' },
+      { n: '管道处理', t: '进出本体可管可追可退', d: '一条链路的三个要求' },
+      { n: '数据治理', t: '治理对象扩展到动作', d: '策略、记忆、日志都受管' },
+      { n: '主数据', t: '不是模块，是建模方式', d: '先定主键再谈匹配' },
+      { n: '指标体系', t: '不是报表，是派生属性', d: '先把那一份口径立住', c: '#FA4F24' },
+    ].map((x) => (
+      <Box key={x.n} style={{ flex: 1, background: x.c ? 'rgba(250,79,36,0.22)' : 'rgba(255,255,255,0.06)', borderRadius: 4, borderTop: x.c ? '3px solid #FA4F24' : '3px solid rgba(255,255,255,0.16)', padding: '13px 14px' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: x.c || '#FFFFFF' }}>{x.n}</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.85)', marginTop: 7, lineHeight: 1.4 }}>{x.t}</Text>
+        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', marginTop: 6, lineHeight: 1.4 }}>{x.d}</Text>
+      </Box>
+    ))}
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 466, width: 1104, background: 'rgba(250,79,36,0.16)', borderRadius: 4, padding: '16px 22px', flexDirection: 'row', gap: 22 }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C', width: 118 }}>串起来是一句话</Text>
+    <Box style={{ width: 1, background: 'rgba(255,255,255,0.2)' }} />
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+      <Text style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.55 }}>
+        六个新实践点做的是同一件事：<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>把原本靠人记住的东西，变成模型里可查询、可继承、可审计、可退回的东西</tspan>。
+      </Text>
+      <Text style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.92)', lineHeight: 1.55 }}>
+        实体、语义、知识、链路、动作、口径——凡是过去「大家都知道但没人说得清」的东西，这一轮都要变成可执行的定义。
+      </Text>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 3 }}>
+        <Box style={{ width: 4, height: 22, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>
+          所以第一件事永远是同一句：先定义，再建模，最后才谈智能。
+        </Text>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ position: 'absolute', right: 88, bottom: 46, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>30 / 30</Text>
+  </Box>
+</Slide>

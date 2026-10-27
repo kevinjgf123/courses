@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      语义层：把指标拆成<span style={{ color: '#FA4F24' }}>原子 → 派生 → 复合</span>三层
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>不分解就登记，改一个原子指标要找三十张报表；分解对了，影响面自己会浮出来</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      {[
+        { n: '第一层', t: '原子指标', c: '#FA4F24', d: '最小不可再分的业务度量：订单金额、商品数量、到账金额、开票数量。',
+          r: ['不可再拆，拆了就不是原来那个业务事实', '必须直接挂在对象类型的一个属性上', '粒度唯一，多粒度就拆成多个原子指标'], k: '例：订单行金额 = 单价 × 数量' },
+        { n: '第二层', t: '派生指标', c: '#F87D2F', d: '由原子指标按运算规则组合：客单价 = 订单金额 / 订单数；毛利率 =（收入 − 成本）/ 收入。',
+          r: ['每个派生指标只能由原子与更低层派生组成', '依赖关系必须显式登记，不能靠命名猜', '改原子自动同步所有派生——这是拆分的全部价值'], k: '例：毛利率 =（收入 − 成本）/ 收入' },
+        { n: '第三层', t: '复合指标', c: '#C43A17', d: '把多个派生指标再组合，常带判断与阈值：达成率、同比环比、加权综合评分、结构占比。',
+          r: ['最容易失控：一处错、全链路错', '往往找不到单一责任人', '必须有唯一出处，禁止在报表里现写'], k: '例：销售达成率 = 实际 / 目标，按财年累计' },
+      ].map((x) => (
+        <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + x.c, padding: '13px 16px', flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+          </Box>
+          <Text style={{ fontSize: 12, color: '#3A4050', marginTop: 9, lineHeight: 1.5 }}>{x.d}</Text>
+          <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+            {x.r.map((t, i) => (
+              <Box key={i} style={{ flexDirection: 'row', gap: 6, flex: 1, alignItems: 'flex-start' }}>
+                <Text style={{ fontSize: 10.5, color: x.c, fontWeight: 'bold' }}>·</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.45, flex: 1 }}>{t}</Text>
+              </Box>
+            ))}
+          </Box>
+          <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '6px 10px', marginTop: 9 }}>
+            <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#C43A17' }}>{x.k}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+
+    <Box style={{ flex: 0.88, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.25, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>分解带来的三个确定收益</Text>
+        <Box style={{ flexDirection: 'row', gap: 9, marginTop: 10, flex: 1 }}>
+          {[
+            { t: '避免重复计算', d: '所有指标共享同一批原子来源，不用每张报表各算一遍' },
+            { t: '变更影响可控', d: '改原子指标的定义，所有派生自动跟随，影响面能从依赖关系直接读出' },
+            { t: '查询性能可优化', d: '系统可以挑最优计算路径，而不是把中间结果全物化' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, background: 'rgba(250,79,36,0.16)', borderRadius: 3, padding: '9px 12px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.78)', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>规模参考与工程形态</Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 9, lineHeight: 1.5, flex: 1 }}>
+          一个中等规模企业的语义层通常包含 <tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>300 到 500 个</tspan>核心指标定义。这个量级既不该用 Excel 管，也不该用一堆脚本管。
+        </Text>
+        <Text style={{ fontSize: 11.5, color: '#3A4050', marginTop: 8, lineHeight: 1.5, flex: 1 }}>
+          定义要<tspan style={{ fontWeight: 'bold', color: '#C43A17' }}>以结构化配置形式管理</tspan>（如 YAML），而不是写在 Wiki 里——因为 Agent 要读它、管道要执行它、人要审它。
+        </Text>
+        <Box style={{ background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #C43A17', padding: '7px 11px', marginTop: 8 }}>
+          <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.45 }}>
+            判断标准：语义层不是数据字典，是<tspan style={{ fontWeight: 'bold' }}>指标计算图谱</tspan>——它要知道毛利率等于什么，也知道它依赖哪几个字段。
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>12 / 30</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,50 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>目录</Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>四个部分：从指标本体论，到口径治理机制，到六方关系，最后回到 4A</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 18, paddingBottom: 10, height: 479, flexDirection: 'column', gap: 11 }}>
+    {[
+      { n: '01', t: '指标本体论', s: '05 – 10', d: '官方没有指标模块。指标是对象类型上的派生属性——三种算法、两种定义位置、十个聚合类型、一张五元组最小单位表。', k: '指标是什么' },
+      { n: '02', t: '口径治理机制', s: '11 – 17', d: '原子 / 派生 / 复合三层分解；指标字典十二项；五类典型口径失效；口径唯一性裁定；口径与值继承同一套安全；口径版本与回滚。', k: '口径怎么管' },
+      { n: '03', t: '指标 × 六方关系', s: '18 – 24', d: '指标 × 主数据 × 数据治理 × 管道处理 × 知识库 × Agent × Ontology：一条口径在六个方向上各自的落法与四条硬边界。', k: '指标怎么落地' },
+      { n: '04', t: '回到 4A', s: '25 – 30', d: '业务架构裁定口径、数据架构建元数据、应用架构做问数与驾驶舱、技术架构做计算与缓存；四个特有之处 + 成熟度五级 + 十二项评审。', k: '指标在哪一层' },
+    ].map((x) => (
+      <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid #FA4F24', padding: '13px 20px', flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+        <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FA4F24', width: 62 }}>{x.n}</Text>
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+            <Box style={{ height: 22, borderRadius: 11, background: '#FFF3EE', padding: '0 10px', flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ fontSize: 11, color: '#C43A17' }}>{x.k}</Text>
+            </Box>
+          </Box>
+          <Text style={{ fontSize: 12.5, color: '#5A6070', marginTop: 6, lineHeight: 1.5 }}>{x.d}</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99', width: 82, textAlign: 'right' }}>{x.s}</Text>
+      </Box>
+    ))}
+
+    <Box style={{ height: 74, background: '#0F1423', borderRadius: 4, padding: '11px 18px', flexDirection: 'row', alignItems: 'center', gap: 22 }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 118 }}>Approach · 第 04 页</Text>
+      {[
+        { t: '第一阶段', d: '指标资产盘点 → 口径冲突台账 → 可信度诊断' },
+        { t: '第二阶段', d: '指标字典与五元组 → 原子派生分解 → 唯一性裁定' },
+        { t: '第三阶段', d: '问数场景 → 场景化指标集 → 健康看板 → 演进路线' },
+      ].map((x) => (
+        <Box key={x.t} style={{ flex: 1, borderLeft: '2px solid #FBA15C', paddingLeft: 12 }}>
+          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+          <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.75)', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>02 / 30</Text>
+  </Box>
+</Slide>

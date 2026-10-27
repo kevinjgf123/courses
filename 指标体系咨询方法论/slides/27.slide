@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      BA 谁裁定口径，DA 怎么把口径<span style={{ color: '#FA4F24' }}>建成数据</span>
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>口径是业务决定，技术决定不了；指标是数据对象，靠文档管不住</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #FA4F24', padding: '12px 16px', flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+          <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FA4F24' }}>BA</Text>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>业务架构：谁裁定口径</Text>
+        </Box>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            { t: '口径定义责任人是业务，不是 IT', d: '财务口径由财务裁定，IT 只负责把它实现成可执行定义' },
+            { t: '指标必须挂到战略意图上', d: '每个 A 级指标要写清它支撑哪个决策、谁看、多久看一次；挂不上的降级' },
+            { t: '裁定会固定节奏与议程', d: '只议四类：新增、变更、废止、跨部门冲突；结论必须落成裁定表' },
+            { t: '跨部门冲突要有终裁机制', d: '两个部门口径不一致时，必须有人能拍板，否则口径永远统一不了' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '6px 11px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid #F87D2F', padding: '12px 16px', flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+          <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#F87D2F' }}>DA</Text>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>数据架构：口径建成数据</Text>
+        </Box>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            { t: '十二项元数据必须落库，不能只在文档', d: '指标定义就是数据资产，要能被查询、被血缘覆盖' },
+            { t: '三层分解与依赖 DAG 要显式存', d: '这是变更影响面分析的唯一数据来源' },
+            { t: '派生属性定义要与对象模型同源', d: '口径引用对象类型与链接类型，不另建维度模型' },
+            { t: '预计算结果必须挂口径版本', d: '任何一个数字都要能追到它是用哪版口径、哪个时点算出来的' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #F87D2F', padding: '6px 11px', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 3, lineHeight: 1.4 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.95, background: '#0F1423', borderRadius: 4, padding: '12px 20px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>DA 侧必建的十四项指标元数据</Text>
+      <Box style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 5, marginTop: 9, flex: 1 }}>
+        {[
+          '指标唯一标识', '指标名与别名', '业务定义文本', '计算表达式', '所属层级',
+          '粒度声明', '时间口径与时区', '截止时点', '聚合类型', '空值处理策略',
+          '过滤排除清单', '上游依赖关系', '版本号与变更记录', '权限基线与用途集合',
+        ].map((t, i) => (
+          <Box key={t} style={{ width: '24.3%', background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '5px 9px', flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+            <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#FBA15C' }}>{String(i + 1).padStart(2, '0')}</Text>
+            <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.88)' }}>{t}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', marginTop: 7, lineHeight: 1.4 }}>
+        第 14 项「权限基线与用途集合」是其他各册都没有的——它让同一个指标在不同场景下可以有多个有据可依的取值。
+      </Text>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      口径变更：它是一次<span style={{ color: '#FA4F24' }}>高风险动作</span>，不是一次数据修改
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>改公式不动历史、不留快照、不做双版本比对——三者缺一，就会出现「上个月的数被这个月的口径污染」</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>变更的五种类型：处置方式各不相同</Text>
+        <Box style={{ marginTop: 9, gap: 5, flex: 1 }}>
+          {[
+            { t: '口径扩展', d: '加一个新维度或新过滤项，原有数不变', r: '兼容发布，直接生效' },
+            { t: '口径收紧', d: '原本计入的某类单据现在排除', r: '历史值会变，必须双版本并行' },
+            { t: '口径重构', d: '公式或粒度整体改写', r: '视为新指标，旧指标废止并留映射' },
+            { t: '数据源切换', d: '主数据或管道换源，公式不变', r: '影响面最大，须全量回归比对' },
+            { t: '指标废止', d: '不再使用', r: '保留标识与映射，禁止物理删除' },
+          ].map((x) => (
+            <Box key={x.t} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '0 10px' }}>
+              <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423', width: 78 }}>{x.t}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', flex: 1, lineHeight: 1.35 }}>{x.d}</Text>
+              <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#C43A17', width: 118 }}>{x.r}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '12px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>变更提案必须附的五项</Text>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            '谁提的，依据什么业务理由',
+            '新旧口径的逐条差异说明',
+            '影响面清单：哪些看板、哪些报表、哪些 Agent 工具、哪些下游模型',
+            '双版本比对的样本区间与结论（差异必须可解释）',
+            '回滚预案：切回旧版本的判定条件与操作步骤',
+          ].map((t, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'center', background: 'rgba(255,255,255,0.07)', borderRadius: 3, padding: '0 11px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FBA15C' }}>{i + 1}</Text>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4, flex: 1 }}>{t}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#C43A17' }}>历史怎么处理：三条不能破的规则</Text>
+        <Box style={{ marginTop: 10, gap: 7, flex: 1 }}>
+          {[
+            { n: '一', t: '历史不重算', d: '口径变更不回头修改已发布期间的值。每个期间用当时生效的口径算，各存各的。' },
+            { n: '二', t: '版本可对照', d: '要能同时看到 v2.1 与 v2.2 的结果对比，差异逐条能解释，才能判断能不能切。' },
+            { n: '三', t: '切换可回退', d: '切换是一道开关，不是重跑。回退要能在分钟级完成，不依赖重新跑历史数据。' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '8px 11px', justifyContent: 'center' }}>
+              <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{x.n}</Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+              </Box>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 116, background: '#F7F7F8', borderRadius: 4, padding: '11px 18px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>静默失效的检出：四类规则，缺一不可</Text>
+      <Box style={{ flexDirection: 'row', gap: 9, marginTop: 9, flex: 1 }}>
+        {[
+          { t: '同名检测', d: '定期扫描注册表与实际使用中的指标名，检出同名不同义的新增', c: '#FA4F24' },
+          { t: '粒度与时间差异检测', d: '同一指标在不同消费方的粒度与时间口径比对，差异即告警', c: '#F87D2F' },
+          { t: '突变检测', d: '同环比超阈值告警；连续多期取整数值（说明中间被人工调整过）', c: '#C43A17' },
+          { t: '孤儿指标检测', d: '注册了但无人消费、长期无访问；或仍在消费但已废止', c: '#8A8F99' },
+        ].map((x) => (
+          <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid ' + x.c, padding: '8px 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+            <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>17 / 30</Text>
+  </Box>
+</Slide>

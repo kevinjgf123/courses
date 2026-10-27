@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+  <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      指标 × 主数据：维度要挂<span style={{ color: '#FA4F24' }}>规范 ID</span>，不是挂自由文本
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>「按客户统计」里的客户，必须是主数据里的那个实体，而不是某个系统里的一段公司名</Text>
+  </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 14, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 10 }}>
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+      <Box style={{ flex: 1.1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>一个真实断裂：按客户名分组的月度销售额</Text>
+        <Box style={{ marginTop: 10, gap: 6, flex: 1 }}>
+          {[
+            { s: 'ERP 客户主数据', v: '「杭州华信科技（Holdings）有限公���」', c: '#FA4F24' },
+            { s: 'CRM 客户主数据', v: '「华信科技」', c: '#C43A17' },
+            { s: '一个历史订单', v: '「杭州华信科技有限公司」', c: '#8A8F99' },
+          ].map((x) => (
+            <Box key={x.s} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid ' + x.c, padding: '0 11px' }}>
+              <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', width: 118 }}>{x.s}</Text>
+              <Text style={{ fontSize: 10.5, color: '#5A6070', flex: 1, lineHeight: 1.35 }}>{x.v}</Text>
+            </Box>
+          ))}
+          <Box style={{ background: '#0F1423', borderRadius: 3, padding: '8px 11px', flex: 1, justifyContent: 'center' }}>
+            <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+              三个名字，三个客户。指标没错，数据没错，<tspan style={{ fontWeight: 'bold', color: '#FBA15C' }}>维度碎了</tspan>——客户维度的占比永远算不准，总量也永远对不上主数据。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 18px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C' }}>与第十册的四条对齐规则</Text>
+        <Box style={{ marginTop: 10, gap: 7, flex: 1 }}>
+          {[
+            { n: '01', t: '维度挂规范主键，不挂名称', d: '指标分组用的客户、产品、组织维度，必须引用主数据的规范 ID，名称只是展示属性' },
+            { n: '02', t: '维度成员以主数据的对象集为准', d: '「有哪些客户」这个问题只有一个答案来源，就是主数据对象集' },
+            { n: '03', t: '主数据合并要能触发指标重算', d: '合并或拆分后，受影响的指标期间必须能定位并重算，靠的是主数据血缘' },
+            { n: '04', t: '外部系统来的自由文本先解析', d: '订单表里的公司名不直接当维度，先过实体解析，落到规范 ID 上再进指标' },
+          ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid #FBA15C', padding: '7px 12px', justifyContent: 'center' }}>
+              <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FBA15C' }}>{x.n}</Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+              </Box>
+              <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.78)', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ flex: 0.85, background: '#FFF3EE', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', gap: 18 }}>
+      <Box style={{ width: 158, flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>指标要用主数据的三个能力</Text>
+        <Text style={{ fontSize: 10.5, color: '#8A8F99', marginTop: 5, lineHeight: 1.4 }}>不是把主数据当维表用</Text>
+      </Box>
+      <Box style={{ width: 1, background: '#FBA15C' }} />
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        {[
+          { t: '黄金记录', d: '取当前可信值：客户名称、信用等级、所属集团，都从黄金记录读，不从源系统直取' },
+          { t: '解析元数据', d: '知道这个客户由哪几条源记录合并而来，指标异常时能一路回溯到源头单据' },
+          { t: '实体→下钻映射', d: '从指标的一个异常值，能反查到具体实体及其全部明细单据，而不是停在聚合结果' },
+        ].map((x) => (
+          <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '8px 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+            <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 4, lineHeight: 1.45 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · 指标体系咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>19 / 30</Text>
+  </Box>
+</Slide>
