@@ -1,0 +1,112 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            AI 应用场景识别 <span style={{ color: '#FA4F24' }}>与优先级评估</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.2(5) 单列的一条方法。场景从业务循环里长出来，不是从技术能力里想出来
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：四步识别法 */}
+        <Box style={{ height: 102, flexDirection: 'row', gap: 6 }}>
+            {[
+                { n: '1', t: '从痛点找场景', d: '逐条读 PAIN-ROOT 表，凡是「需要大量阅读、判断、重复录入、跨系统搬运」的痛点，都可能是 AI 落点', c: '#FA4F24' },
+                { n: '2', t: '从核心循环找场景', d: '沿四个核心业务循环逐环节扫一遍，标出「信息不全所以靠人补」的环节', c: '#E0641E' },
+                { n: '3', t: '从知识密集岗位找场景', d: '访谈中记录「这份材料我一般要翻三个系统才能查全」的岗位', c: '#C43A17' },
+                { n: '4', t: '合成并去重', d: '三类来源合并去重，同一动作在三处出现的合并为一条，只保留一次', c: '#9E3410' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.c, padding: '11px 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                        <Box style={{ width: 22, height: 22, borderRadius: 11, background: x.c, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4, marginTop: 6 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：三维打分模型 */}
+        <Box style={{ height: 156, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+            <Box style={{ width: 460, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>优先级 = 价值 × 可行性 × 风险系数</Text>
+                {[
+                    { d: '业务价值', w: '权重 45%', s: '量化：节省工时/减少损失/提升收益；不能量化的写清判断依据' },
+                    { d: '技术可行性', w: '权重 35%', s: '数据是否就绪、模型是否可得、集成难度、算力是否够' },
+                    { d: '风险与合规', w: '权重 20%', s: '密级与数据出域限制、决策是否可逆、错误的直接后果' },
+                ].map((x, i) => (
+                    <Box key={x.d} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1, marginTop: i === 0 ? 9 : 4 }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF', width: 62 }}>{x.d}</Text>
+                        <Text style={{ fontSize: 10.5, color: '#FBA15C', width: 58 }}>{x.w}</Text>
+                        <Text style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.84)', flex: 1, lineHeight: 1.3 }}>{x.s}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 10.5, color: '#FBA15C', lineHeight: 1.35, marginTop: 7 }}>
+                    每个场景三项各自打分并写明打分依据，不允许只给总分——评审一定会问「凭什么」。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 14px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>示例：能源侧初识场景与排序</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 4, marginTop: 7 }}>
+                    {[
+                        { r: 'P1', t: '设备缺陷智能判读与检修建议', b: 'E3', v: '高', f: '高', k: '中', c: '#FA4F24' },
+                        { r: 'P2', t: '检修与安全文档智能检索问答', b: 'E3', v: '高', f: '高', k: '低', c: '#FA4F24' },
+                        { r: 'P3', t: 'EBOM→MBOM 转换规则辅助生成', b: 'S2', v: '高', f: '中', k: '中', c: '#E0641E' },
+                        { r: 'P4', t: '交易报价策略与风险提示', b: 'E4', v: '高', f: '中', k: '高', c: '#E0641E' },
+                        { r: 'P5', t: '四算差异归因与算量辅助', b: 'E5', v: '中', f: '中', k: '中', c: '#C43A17' },
+                        { r: 'P6', t: '进度偏差预警（偏预测非生成）', b: 'E2', v: '中', f: '高', k: '低', c: '#C43A17' },
+                    ].map((x) => (
+                        <Box key={x.r} style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 0 }}>
+                            <Box style={{ width: 34, background: x.c, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{x.r}</Text>
+                            </Box>
+                            <Box style={{ flex: 1, background: '#FFFFFF', padding: '0 9px', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #E8E8E8', borderLeft: 'none' }}>
+                                <Text style={{ fontSize: 10.5, color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                                <Text style={{ fontSize: 9.5, color: '#8A8F99', width: 24 }}>{x.b}</Text>
+                            </Box>
+                            <Box style={{ width: 62, background: '#FFFFFF', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', border: '1px solid #E8E8E8', borderLeft: 'none' }}>
+                                <Text style={{ fontSize: 10, color: '#3A4050' }}>{x.v}/{x.f}/{x.k}</Text>
+                            </Box>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+            <Box style={{ width: 292, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>三条不做的红线</Text>
+                {[
+                    '不从技术出发找场景：先定「模型能做什么」再找业务的，一律不写进清单',
+                    '不做不可验证的场景：说不出效果评估指标的，降级或剔除',
+                    '不做高风险决策场景：涉及安全红线与资金审批的，AI 只做提示不做决策',
+                ].map((t, i) => (
+                    <Box key={t} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8, flex: 1, marginTop: i === 0 ? 6 : 3 }}>
+                        <Text style={{ fontSize: 10, color: '#FA4F24', fontWeight: 'bold' }}>✕</Text>
+                        <Text style={{ fontSize: 10.5, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{t}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下 */}
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid #C43A17', padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 148 }}>阶段二 / 阶段三的分工</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>
+                阶段二只出「初识清单 + 优先级」：场景是什么、解决哪条痛点、值不值得做。阶段三才做详细设计：输入数据、知识来源、智能体职责边界、人机协同方式、效果评估指标。同一个场景在两阶段的颗粒度不同，但编号一致。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>25 / 36</Text>
+    </Box>
+</Slide>

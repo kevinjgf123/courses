@@ -1,0 +1,113 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            业务蓝图设计：<span style={{ color: '#FA4F24' }}>流程领域架构 → 核心循环 → L4</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.3.2 三条业务蓝图要求：关键流程与核心循环、流程领域架构与职责建议、蓝图到 L4 子流程
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：流程领域架构（两层） */}
+        <Box style={{ height: 22, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Box style={{ width: 4, height: 16, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>① 流程领域架构：L1 价值流 → L2 流程域 → L3 流程组 → L4 子流程（覆盖业务全维度）</Text>
+        </Box>
+        <Box style={{ height: 212, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+            <Box style={{ width: 470, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 14px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24' }}>能源侧：三个价值流</Text>
+                {[
+                    { v: 'V1', d: '资产形成与交付价值流', g: '开发与投资 → 建设 → 投产移交' },
+                    { v: 'V2', d: '资产运营与价值实现价值流', g: '运营运维（含资产）→ 交易' },
+                    { v: 'V3', d: '投资价值度量价值流', g: '项目四算 → 指标体系' },
+                ].map((x, i) => (
+                    <Box key={x.v} style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 11px', marginTop: i === 0 ? 8 : 5, flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+                        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{x.v}</Text>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.d}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 3 }}>{x.g}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid #3A4050', padding: '12px 14px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#3A4050' }}>储能侧：一个价值流 + 与能源的交汇点</Text>
+                <Box style={{ background: '#FFFFFF', borderRadius: 3, padding: '8px 11px', marginTop: 8, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>V4　产品交付与制造履约价值流</Text>
+                    <Text style={{ fontSize: 10.5, color: '#5A6070', marginTop: 3, lineHeight: 1.35 }}>寻源 → 采购履行 → EBOM→MBOM 转化 → 制造交付 → 入库与项目对接</Text>
+                </Box>
+                <Box style={{ background: '#FFF3EE', borderRadius: 3, padding: '8px 11px', marginTop: 6, flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#C43A17' }}>与能源侧的交汇点（架构上必须显式画出）</Text>
+                    <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.4, marginTop: 4 }}>
+                        供应商准入、物料主数据、采购订单、到货检验 —— V4 与 V1 在这里共用。这四个对象如果两边各建一套，后面所有集成成本都要翻倍。
+                    </Text>
+                </Box>
+            </Box>
+            <Box style={{ width: 296, background: '#0F1423', borderRadius: 4, padding: '12px 14px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>L4 子流程：判定标准</Text>
+                {[
+                    '可独立指派责任岗位',
+                    '有明确触发条件与结束条件',
+                    '有可识别的输入与输出',
+                    '与其他 L4 之间有显式接口',
+                    '粒度过粗拆不动，过细没人用',
+                ].map((t, i) => (
+                    <Box key={t} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8, flex: 1, marginTop: i === 0 ? 9 : 4 }}>
+                        <Text style={{ fontSize: 10, color: '#FA4F24', fontWeight: 'bold' }}>✓</Text>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.88)', flex: 1, lineHeight: 1.35 }}>{t}</Text>
+                    </Box>
+                ))}
+                <Text style={{ fontSize: 10.5, color: '#FBA15C', lineHeight: 1.35, marginTop: 8 }}>
+                    五条全满足才算一条 L4。少一条就合并，凑不齐就拆开——不允许「先这么写着」。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 中：核心循环 + 接口数据流转 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+            <Box style={{ width: 700, background: '#F7F7F8', borderRadius: 4, padding: '11px 15px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>② 核心业务循环与接口关系（能源示例：资产运营循环）</Text>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 9, flex: 1 }}>
+                    {[
+                        { t: '监视与采集', d: '运行数据/台账' },
+                        { t: '缺陷识别', d: '告警/巡检' },
+                        { t: '工单派发', d: '缺陷记录' },
+                        { t: '检修执行', d: '工单/领料' },
+                        { t: '验收闭环', d: '完工/结算' },
+                        { t: '资产更新', d: '台账变更' },
+                    ].map((x, i) => (
+                        <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, border: '1px solid #E8E8E8', padding: '0 7px', height: 52, flexDirection: 'column', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.25 }}>{x.t}</Text>
+                            <Text style={{ fontSize: 9, color: '#8A8F99', marginTop: 3, lineHeight: 1.25 }}>{x.d}</Text>
+                        </Box>
+                    ))}
+                </Box>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4, marginTop: 7 }}>
+                    每一环之间的接口，必须标注传递的数据对象与传递方式（接口/文件/人工）。凡标注「人工」的，一律进弱集成债清单。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '11px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>③ 组织与职责适配建议</Text>
+                <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.45, marginTop: 6 }}>
+                    蓝图改的是流程，落地靠的是权责。每个流程域给出：主责部门、协同部门、决策层级、需要新建或合并的岗位。架构适配建议单独成节，不混在流程描述里。
+                </Text>
+                <Text style={{ fontSize: 10.5, color: '#C43A17', lineHeight: 1.4, marginTop: 6 }}>
+                    判据：流程域的每个 L4 都必须能落到唯一一个主责岗位，落不到就是权责空白。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>22 / 36</Text>
+    </Box>
+</Slide>

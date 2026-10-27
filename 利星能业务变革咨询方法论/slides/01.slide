@@ -1,0 +1,47 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+  <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+  <Box style={{ position: 'absolute', right: 0, top: 0, width: 620, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.26) 0%, rgba(250,79,36,0) 70%)' }} />
+
+  <Box style={{ position: 'absolute', left: 88, top: 78, width: 1104 }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>EA 企业架构咨询方法论 · 第十四册</Text>
+    </Box>
+    <Text style={{ fontSize: 50, fontWeight: 'bold', color: '#FFFFFF', marginTop: 24, lineHeight: 1.15 }}>
+      利星能业务变革<span style={{ color: '#FA4F24' }}>咨询方法论</span>
+    </Text>
+    <Text style={{ fontSize: 19, color: 'rgba(255,255,255,0.72)', marginTop: 18, lineHeight: 1.6, width: 960 }}>
+      4A 企业架构方法论的项目适配版——把通用架构方法论改装成能对着招标第 3 章逐条应答、逐项交付的施工方案
+    </Text>
+    <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 24 }} />
+
+    <Box style={{ flexDirection: 'row', gap: 10, marginTop: 28 }}>
+      {['36 页', '四阶段 Approach', '能源七块 + 储能两块', '九部门 × 4A', '九项交付物', '全链路可追溯'].map((t) => (
+        <Box key={t} style={{ height: 32, borderRadius: 16, border: '1px solid rgba(255,255,255,0.22)', padding: '0 15px', flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.78)' }}>{t}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 576, flexDirection: 'row', gap: 24 }}>
+    {[
+      { b: 'BA', t: '业务架构 · 到 L4/L6' },
+      { b: 'DA', t: '数据架构 · 到逻辑实体' },
+      { b: 'AA', t: '应用架构 · 到功能模块' },
+      { b: 'TA', t: '技术架构 · 含 AI 所需' },
+      { b: '4 阶段', t: '现状→蓝图→规格→路线', c: '#FA4F24' },
+      { b: '9 交付', t: '合同级清单', c: '#FA4F24' },
+    ].map((x) => (
+      <Box key={x.b} style={{ opacity: x.c ? 1 : 0.42 }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: x.c || '#FFFFFF' }}>{x.b}</Text>
+        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.7)', marginTop: 3 }}>{x.t}</Text>
+      </Box>
+    ))}
+  </Box>
+
+  <Box style={{ position: 'absolute', right: 88, bottom: 44, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>01 / 36</Text>
+  </Box>
+</Slide>

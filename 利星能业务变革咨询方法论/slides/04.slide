@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            Approach：<span style={{ color: '#FA4F24' }}>四阶段</span>全景与每一步的产出物
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            箭头不可颠倒，四个阶段每个阶段的收口交付物就是招标 3.4 里点名的那一份
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+
+        {/* 阶段色带 */}
+        <Box style={{ height: 28, flexDirection: 'row', gap: 4 }}>
+            {[
+                { n: '阶段一', t: '现状分析', c: '#FA4F24' },
+                { n: '阶段二', t: '变革蓝图设计', c: '#E0641E' },
+                { n: '阶段三', t: '需求规格化', c: '#C43A17' },
+                { n: '阶段四', t: '实施路线图', c: '#9E3410' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: x.c, borderRadius: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7 }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: 'rgba(255,255,255,0.92)' }}>{x.t}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 每阶段内部动作 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
+            {[
+                {
+                    c: '#FA4F24', steps: ['业务/数据/应用/技术\n四套现状扫描', '九部门访谈\n+ 关键岗位', '痛点清单\n+ 五问追根', '改进方向\n定优先级'],
+                    out: '① 现状分析报告', out2: '痛点↔根因逐项对应表',
+                },
+                {
+                    c: '#E0641E', steps: ['流程领域架构\n+ 核心业务循环', '业务蓝图到 L4\n子流程清单', '数据四维度\n到逻辑实体', '应用分域分层\n到功能模块'],
+                    out: '② 业务蓝图设计', out2: 'AI 场景初识清单 + 优先级',
+                },
+                {
+                    c: '#C43A17', steps: ['L5-L6 活动\n角色与绩效指标', '逻辑实体属性\n+ 数据标准代码', '应用服务/特性\n/ 子特性', 'AI 场景细化\n+ 需求基线冻结'],
+                    out: '③④ 架构详细设计', out2: '⑤⑥ 需求规格说明书/清单',
+                },
+                {
+                    c: '#9E3410', steps: ['按优先级与\n依赖关系分期', '关键路径\n与里程碑', '投入收益测算\n+ 假设条件', '组织与数据\n保障机制'],
+                    out: '⑦ 实施路线图', out2: '⑧⑨ 指标字典/考核数据清单',
+                },
+            ].map((g, gi) => (
+                <Box key={gi} style={{ flex: 1, borderRadius: 4, border: '1px solid #E8E8E8', borderTop: '3px solid ' + g.c, padding: '9px 10px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 11.5, color: '#8A8F99', marginBottom: 6 }}>阶段内动作</Text>
+                    {g.steps.map((s, si) => (
+                        <Box key={si} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 9px', flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+                            <Text style={{ fontSize: 10, color: g.c, fontWeight: 'bold', marginRight: 5 }}>{'0' + (si + 1)}</Text>
+                            <Text style={{ fontSize: 11, color: '#3A4050', flex: 1, lineHeight: 1.3 }}>{s}</Text>
+                        </Box>
+                    ))}
+                    <Box style={{ height: 34, background: g.c, borderRadius: 3, padding: '0 9px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>收口交付物</Text>
+                        <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.88)', marginTop: 2 }}>{g.out}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 10, color: '#5A6070', marginTop: 4, lineHeight: 1.3 }}>{g.out2}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底部四条铁律 */}
+        <Box style={{ height: 34, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '顺序不可颠倒', v: '没诊断就设计蓝图 = 照着痛点画系统', c: '#FA4F24', dark: true },
+                { k: '可追溯贯穿', v: '诊断→建议→需求，每条都必须能指向下一环', c: '#F87D2F', dark: false },
+                { k: '颗粒度写死', v: 'L4 / 逻辑实体 / 功能模块，不接受「基本覆盖」', c: '#FA4F24', dark: false },
+                { k: '基线即冻结', v: '评审通过后需求基线冻结，后续变更走变更流程', c: '#C43A17', dark: false },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.dark ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid ' + x.c, borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: x.dark ? '#FBA15C' : '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10, color: x.dark ? 'rgba(255,255,255,0.88)' : '#5A6070', flex: 1, lineHeight: 1.3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>04 / 36</Text>
+    </Box>
+</Slide>

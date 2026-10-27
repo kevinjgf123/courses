@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            招标 3.2 五条方法论要求 <span style={{ color: '#FA4F24' }}>→ 方法论逐条应答</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            每一行都能在评审时被指着念：这一条我们用哪个方法、在哪一页、交什么
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 表头 */}
+        <Box style={{ height: 30, flexDirection: 'row', gap: 6 }}>
+            <Box style={{ width: 208, background: '#0F1423', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>招标条款</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>对应 4A 域</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>我们用的方法</Text>
+            </Box>
+            <Box style={{ width: 244, background: '#0F1423', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>落到哪一页 / 交什么</Text>
+            </Box>
+        </Box>
+
+        {/* 五行 */}
+        {[
+            { c: '3.2(1)', d: '业务现状分析框架 · 含根因分析方法', a: 'BA', m: '五维现状扫描 + 五问追根法（连问五次到组织与规则层）', p: 'P15　痛点↔根因逐项对应表', col: '#FA4F24' },
+            { c: '3.2(1)', d: '业务流程优化 · 含目标流程设计方法', a: 'BA', m: '流程领域架构 → 核心业务循环 → L4 子流程（带接口与数据流转）', p: 'P22　流程领域架构图 + L4 清单', col: '#FA4F24' },
+            { c: '3.2(1)', d: '业务需求分析 · 须全链路可追溯', a: 'BA', m: '四段式追溯矩阵：痛点→根因→变革建议→系统需求，编号一一对应', p: 'P10 / P31　追溯矩阵 + 基线冻结', col: '#FA4F24' },
+            { c: '3.2(2)', d: '数据现状分析 · 含主数据与数据治理', a: 'DA', m: '数据四维现状（资产/模型/标准/分布）+ 主数据八类识别 + 最小可行治理', p: 'P16 / P30　实体属性与数据标准清单', col: '#E0641E' },
+            { c: '3.2(3)', d: '应用现状分析 · 含应用集成', a: 'AA', m: '应用资产盘点（系统数·功能·用户）+ 集成现状（方式·协议·调用）', p: 'P17 / P24　应用域划分与集成架构', col: '#C43A17' },
+            { c: '3.2(4)', d: '技术现状分析 · 含 AI 所需技术', a: 'TA', m: '基础设施四层盘点 + AI 五项就绪度（算力/模型/向量/编排/治理）', p: 'P18　AI 技术就绪度评估表', col: '#9E3410' },
+            { c: '3.2(5)', d: 'AI 场景识别与优先级评估方法', a: 'BA+AA', m: '价值×可行性×风险三维打分，蓝图阶段初识、规格阶段细化', p: 'P25 / P33　AI 应用场景清单（排序）', col: '#C43A17' },
+        ].map((r, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 6, alignItems: 'stretch' }}>
+                <Box style={{ width: 208, background: '#F7F7F8', borderRadius: 3, borderLeft: '3px solid ' + r.col, padding: '0 11px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 10.5, color: r.col, fontWeight: 'bold' }}>{r.c}</Text>
+                    <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.3, marginTop: 2 }}>{r.d}</Text>
+                </Box>
+                <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                    <Box style={{ height: 19, width: 40, borderRadius: 2, background: r.col, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{r.a}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 11, color: '#0F1423', lineHeight: 1.35, flex: 1 }}>{r.m}</Text>
+                </Box>
+                <Box style={{ width: 244, background: '#FFF3EE', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                    <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17' }}>{r.p}</Text>
+                </Box>
+            </Box>
+        ))}
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>06 / 36</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,77 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            项目风险与<span style={{ color: '#FA4F24' }}>前置条件</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            提前把话说在前面：这几个条件不满足，方法论再对也交付不出想要的结果
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：六项风险 */}
+        {[
+            { n: 'R1', t: '访谈排期与配合度', d: '九个部门的关键岗位骨干如果排不出时间，颗粒度一定做不到 L6——只能停在会议室层面', m: '对策：进场前锁定访谈窗口，管理层带头约人', c: '#FA4F24' },
+            { n: 'R2', t: '口径裁定人不明确', d: '指标与主数据的口径争议没有裁定人，方案写到一半就会卡住', m: '对策：进场首周要求指定各域数据裁定人，写进项目章程', c: '#FA4F24' },
+            { n: 'R3', t: 'HR 考核标的不及时', d: '交付物⑨《绩效考核业务数据清单》依赖 HR 提供考核标的、岗位、人员', m: '对策：约定提供时间；未提供则该交付物顺延并书面记录', c: '#E0641E' },
+            { n: 'R4', t: '单据台账拿不到实际样表', d: '只能拿到标准流程文档，写出来的现状与实际运行脱节', m: '对策：现场必看实物单据与真实系统截图，不接受文档描述', c: '#E0641E' },
+            { n: 'R5', t: 'AI 部署形态受合规限制', d: '数据出域与密级限制可能直接否掉部分 AI 场景', m: '对策：阶段一先划合规边界，边界内的场景优先评估', c: '#C43A17' },
+            { n: 'R6', t: '蓝图与现有系统改造冲突', d: '蓝图理想态与现有系统能力差距大，路线图容易被压成「先不建新系统」', m: '对策：阶段二就出演进路径与替换顺序，不回避改造', c: '#C43A17' },
+        ].map((x) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', gap: 10, alignItems: 'stretch', background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.c }}>
+                <Box style={{ width: 46, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+                </Box>
+                <Box style={{ width: 174, justifyContent: 'center', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', lineHeight: 1.25 }}>{x.t}</Text>
+                </Box>
+                <Box style={{ flex: 1, justifyContent: 'center', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.35 }}>{x.d}</Text>
+                </Box>
+                <Box style={{ width: 330, background: '#FFF3EE', borderRadius: 3, padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 10.5, color: '#C43A17', lineHeight: 1.35 }}>{x.m}</Text>
+                </Box>
+            </Box>
+        ))}
+
+        {/* 下：前置条件 + 我们的承诺 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>开工前需要客户确认的六项前置条件</Text>
+                {[
+                    '访谈窗口与关键岗位名单已确认',
+                    '各域数据口径裁定人已指定',
+                    'HR 考核标的提供时间已约定',
+                    '现场调研的实物单据与系统访问权限已开通',
+                    'AI 应用的合规边界已有初步共识',
+                    '阶段评审的客户侧评审人已明确',
+                ].map((t, i) => (
+                    <Box key={t} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, flex: 1, marginTop: i === 0 ? 8 : 2 }}>
+                        <Text style={{ fontSize: 10, color: '#FA4F24', fontWeight: 'bold' }}>□</Text>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', flex: 1 }}>{t}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>我们在方法论上的三条承诺</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.55, marginTop: 7 }}>
+                    一、颗粒度按第 09 页执行，不接受用「基本覆盖」这类表述模糊交付。<br />
+                    二、全链路按第 10 页执行，需求可反向追溯回痛点原话。<br />
+                    三、九项交付物按第 34 页逐项签收，验收要点写明，验收不过按列明的处理方式补，不整体返工。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>35 / 36</Text>
+    </Box>
+</Slide>

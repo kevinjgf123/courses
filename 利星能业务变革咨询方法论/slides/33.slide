@@ -1,0 +1,126 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            实施路线图：<span style={{ color: '#FA4F24' }}>分期 · 依赖 · 投入收益 · 保障</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.3.4 五条要求逐条给方法，最容易被做成「不分先后的一堆项目」的交付物就在这里
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：分期建议（三期） */}
+        <Box style={{ height: 22, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Box style={{ width: 4, height: 16, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>① 分期建议与各期范围边界（分期依据：先补底座，再补链路，最后补智能）</Text>
+        </Box>
+        <Box style={{ height: 146, flexDirection: 'row', gap: 7 }}>
+            {[
+                {
+                    t: '第一期　底座先行', c: '#FA4F24', m: '先立地基，否则后面全是返工',
+                    items: ['主数据治理：设备台账、供应商、项目编码三类统一口径', '指标字典与口径裁定机制', '数据集成通道：把人工挂接的接口打通'],
+                    why: '依据：这三项是 E3/E5/S1 的共同前置，不做后面三期都要返工',
+                },
+                {
+                    t: '第二期　核心链路贯通', c: '#E0641E', m: '把最影响经营的两条链打通',
+                    items: ['检修工单全链路（L4-L6 落地，关联资产自动挂接）', 'EBOM→MBOM 转换规则库建成', '四算主线贯通与口径统一'],
+                    why: '依据：这两条链的痛点条数最多、直接影响资产保值与制造效率',
+                },
+                {
+                    t: '第三期　智能与优化', c: '#C43A17', m: '数据到位了，AI 才有用',
+                    items: ['P1/P2 优先 AI 场景上线（缺陷判读、文档检索）', '指标看板与管理驾驶舱', '预测类场景（进度偏差预警）'],
+                    why: '依据：AI 依赖前两期的数据底座，提前做效果无法保证',
+                },
+            ].map((x) => (
+                <Box key={x.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + x.c, padding: '11px 13px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: x.c }}>{x.t}</Text>
+                    <Text style={{ fontSize: 10, color: '#8A8F99', marginTop: 2 }}>{x.m}</Text>
+                    <Box style={{ flex: 1, flexDirection: 'column', gap: 4, marginTop: 7 }}>
+                        {x.items.map((i) => (
+                            <Box key={i} style={{ background: '#FFFFFF', borderRadius: 3, padding: '0 9px', flex: 1, flexDirection: 'row', alignItems: 'center', border: '1px solid #E8E8E8' }}>
+                                <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.25 }}>{i}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Text style={{ fontSize: 10, color: x.c, lineHeight: 1.3, marginTop: 6 }}>{x.why}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：依赖关键路径 + 投入收益 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 560, background: '#FFFFFF', borderRadius: 4, border: '1px solid #E8E8E8', flexDirection: 'column' }}>
+                <Box style={{ height: 30, background: '#0F1423', borderRadius: 3, padding: '0 13px', flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>② 依赖关系与关键路径</Text>
+                </Box>
+                <Box style={{ flex: 1, padding: '10px 13px', flexDirection: 'column', gap: 5 }}>
+                    {[
+                        { k: '设备台账口径统一', d: '→', t: '工单自动挂接', t2: '→', t3: 'AI 缺陷判读', c: '#FA4F24' },
+                        { k: '转换规则沉淀', d: '→', t: 'MBOM 自动展开', t2: '→', t3: 'AI 规则辅助', c: '#E0641E' },
+                        { k: '指标口径裁定', d: '→', t: '四算贯通', t2: '→', t3: '驾驶舱上线', c: '#C43A17' },
+                    ].map((r) => (
+                        <Box key={r.k} style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 0 }}>
+                            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 9px', flexDirection: 'column', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 10, color: '#0F1423', fontWeight: 'bold', lineHeight: 1.25 }}>{r.k}</Text>
+                            </Box>
+                            <Text style={{ width: 18, fontSize: 12, color: r.c, fontWeight: 'bold', alignSelf: 'center', textAlign: 'center' }}>{r.d}</Text>
+                            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, padding: '0 9px', flexDirection: 'column', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 10, color: '#C43A17', lineHeight: 1.25 }}>{r.t}</Text>
+                            </Box>
+                            <Text style={{ width: 18, fontSize: 12, color: r.c, fontWeight: 'bold', alignSelf: 'center', textAlign: 'center' }}>{r.d}</Text>
+                            <Box style={{ flex: 1, background: r.c, borderRadius: 3, padding: '0 9px', flexDirection: 'column', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 10, color: '#FFFFFF', lineHeight: 1.25 }}>{r.t3}</Text>
+                            </Box>
+                        </Box>
+                    ))}
+                    <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4, marginTop: 3, flex: 1 }}>
+                        关键路径判定：每条链上最长的那条决定整体工期。上面三条链的关键节点分别是设备台账口径、转换规则沉淀、指标口径裁定——这三项都是治理动作，不是开发动作。
+                    </Text>
+                </Box>
+            </Box>
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>③ 投入与预期收益测算（必须附假设条件）</Text>
+                {[
+                    { t: '分三期测算', d: '每期列出人力投入、系统投入、数据治理投入三块' },
+                    { t: '收益可量化才写', d: '工时节约、停机减少、差错减少；不能量化的写定性判断依据' },
+                    { t: '假设条件单列', d: '测算依赖的前提逐条写清（数据质量到位、HR 配合、组织不调整）' },
+                    { t: '不做无依据的数', d: '没有基线数据支撑的收益，宁可写区间不写单点值' },
+                ].map((x, i) => (
+                    <Box key={x.t} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, flex: 1, marginTop: i === 0 ? 9 : 4 }}>
+                        <Text style={{ fontSize: 10, color: '#FA4F24', fontWeight: 'bold' }}>▪</Text>
+                        <Box style={{ flex: 1 }}>
+                            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+                            <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.82)', lineHeight: 1.3, marginTop: 2 }}>{x.d}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：保障机制 */}
+        <Box style={{ height: 42, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '④ 组织保障', v: '变革指导委员会 + 领域责任人 + 各部门数据 owner 三层机制，明确决策时限', c: '#FA4F24', dark: true },
+                { k: '④ 数据保障', v: '主数据认领到部门、指标口径裁定人到岗位、口径变更走流程', c: '#E0641E', dark: false },
+                { k: '④ 推进机制', v: '双周检查点 + 里程碑评审 + 阻塞项升级路径，写进路线图正文', c: '#C43A17', dark: false },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.dark ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid ' + x.c, borderRadius: 3, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: x.dark ? '#FBA15C' : '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10, color: x.dark ? 'rgba(255,255,255,0.86)' : '#5A6070', lineHeight: 1.3, marginTop: 2 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>33 / 36</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,84 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            序论：通用方法论<span style={{ color: '#FA4F24' }}>为什么不能直接照搬</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            方法论讲的是「架构怎么画」，招标要的是「你在这个项目里怎么一步步做出来、做到什么颗粒度」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 9 }}>
+        {/* 上：三句硬话 */}
+        <Box style={{ height: 68, flexDirection: 'row', gap: 10 }}>
+            {[
+                { n: '1', t: '照搬会做浅', d: '通用方法论说「分层分级」，本项目合同要求写到 L4 子流程——颗粒度不写死，交付验收时无法逐项核对' },
+                { n: '2', t: '照搬会做虚', d: '通用方法论不点业务域，本项目是能源七块 + 储能两块，每块的流程形态和数据特征完全不同' },
+                { n: '3', t: '照搬会漏项', d: '通用方法论里没有 AI 这一层，但招标单列两条硬要求，漏了就是废标项' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    <Text style={{ fontSize: 11.5, color: '#5A6070', lineHeight: 1.4, marginTop: 4 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：通用 vs 本项目 对照 */}
+        <Box style={{ height: 200, flexDirection: 'row', gap: 10 }}>
+            <Box style={{ width: 570, background: '#0F1423', borderRadius: 4, padding: '16px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 2 }}>通用 4A 方法论怎么说</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 7, marginTop: 11 }}>
+                    {[
+                        '业务架构：画到分层分级，识别价值流与能力',
+                        '数据架构：从数据资产目录到模型、标准、分布',
+                        '应用架构：分域分层的应用规划与集成关系',
+                        '技术架构：云平台、微服务、集成与安全底座',
+                        'AI：不在方法论主体内，作为应用的一种实现',
+                    ].map((x, i) => (
+                        <Box key={x} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8, flex: 1 }}>
+                            <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>{'0' + (i + 1)}</Text>
+                            <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.86)', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+            <Box style={{ width: 570, background: '#FFF3EE', borderRadius: 4, padding: '16px 18px', flexDirection: 'column', borderLeft: '4px solid #FA4F24' }}>
+                <Text style={{ fontSize: 12, color: '#C43A17', letterSpacing: 2 }}>本项目必须改成</Text>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 7, marginTop: 11 }}>
+                    {[
+                        '业务架构：流程领域架构 + 核心业务循环 + L4 子流程清单',
+                        '数据架构：四维度展开，颗粒度到业务逻辑实体及属性',
+                        '应用架构：应用域边界 + 集成方式/协议/服务调用，到功能模块',
+                        '技术架构：额外盘点 AI 所需技术（算力、模型、向量、编排）',
+                        'AI：单独成节做场景识别与优先级评估，蓝图与详设各一轮',
+                    ].map((x, i) => (
+                        <Box key={x} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8, flex: 1 }}>
+                            <Text style={{ fontSize: 11, color: '#FA4F24', fontWeight: 'bold' }}>{'0' + (i + 1)}</Text>
+                            <Text style={{ fontSize: 12.5, color: '#0F1423', lineHeight: 1.4, flex: 1 }}>{x}</Text>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：本册定位 */}
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '0 20px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#FBA15C', width: 156 }}>这一册的定位</Text>
+            <Text style={{ fontSize: 14.5, color: '#FFFFFF', flex: 1, lineHeight: 1.5 }}>
+                不是另一套方法论，是同一套方法论的<span style={{ color: '#FBA15C' }}>项目改装版</span>。通用册讲原理，本册讲在本项目里第一步做什么、交什么、谁签收
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>03 / 36</Text>
+    </Box>
+</Slide>

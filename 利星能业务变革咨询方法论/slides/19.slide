@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            交付物①《现状分析报告》<span style={{ color: '#FA4F24' }}>结构与自检清单</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.4 第 1 项。这一页就是交报告前最后一遍自查的清单
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 左：五章结构 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 620, flexDirection: 'column', gap: 6 }}>
+                {[
+                    { c: '01', t: '调研概况与访谈记录', d: '访谈对象、时间、议题逐条列出；参与部门与访谈覆盖率统计；未覆盖到的岗位单独说明原因', c: '#FA4F24' },
+                    { c: '02', t: '业务／数据／系统三维度现状诊断', d: '五维扫描 + 数据四维现状 + 应用集成盘点 + 技术四层与 AI 五项就绪度', c: '#E0641E' },
+                    { c: '03', t: '痛点与根因逐项对应分析', d: '编号 PAIN/ROOT 一一对应；追不到根因的标为「现象待观察」，不硬下结论', c: '#C43A17' },
+                    { c: '04', t: '现状数据盘点', d: '流程数量、单据台账、岗位角色、系统数据对象、关键指标口径与取数方式', c: '#D2531A' },
+                    { c: '05', t: '改进方向与优先级', d: '按业务价值与实现难度排序；标注跨块依赖；明确不建议碰的部分及原因', c: '#9E3410' },
+                ].map((x) => (
+                    <Box key={x.c} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.c, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                        <Text style={{ fontSize: 17, fontWeight: 'bold', color: x.c, width: 26 }}>{x.c}</Text>
+                        <Box style={{ flex: 1 }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                            <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.35, marginTop: 3 }}>{x.d}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+
+            {/* 右：自检清单 */}
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '15px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, color: '#FBA15C', letterSpacing: 1 }}>交报告前八条自检（逐条打勾）</Text>
+                {[
+                    '七个业务块 E1–E5 / S1–S2 是否每块都有流程清单，不是只扫了熟悉的块',
+                    '每条痛点是否都有编号，且能对应到至少一条根因',
+                    '每条根因是否追到了组织/规则/权责层，不是停在「沟通不畅」',
+                    '九个部门是否都有访谈记录，公司领导层是否单独成节',
+                    '单据台账是否收了实际样表，而不是标准流程文档里的描述',
+                    '指标口径是否逐个标了冲突项，而不是笼统写「口径不统一」',
+                    'AI 五项就绪度是否都挂到了具体场景上',
+                    '改进方向是否每条都有对应痛点编号（可上不可下）',
+                ].map((t, i) => (
+                    <Box key={t} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, flex: 1, marginTop: i === 0 ? 11 : 4 }}>
+                        <Box style={{ width: 16, height: 16, borderRadius: 2, border: '1px solid #FBA15C', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 1 }}>
+                            <Text style={{ fontSize: 10, color: '#FBA15C' }}>✓</Text>
+                        </Box>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', flex: 1, lineHeight: 1.35 }}>{t}</Text>
+                    </Box>
+                ))}
+                <Box style={{ height: 32, background: '#FA4F24', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', marginTop: 9 }}>
+                    <Text style={{ fontSize: 11.5, color: '#FFFFFF', lineHeight: 1.35 }}>
+                        八条全过才能交 —— 报告里任何一条不过，评审现场一定会被人指出来
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：形式要求 */}
+        <Box style={{ height: 34, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 118 }}>交付形式</Text>
+            <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>
+                文档 + 汇报（招标 3.4 第 1 项）。文档需含全部明细清单，汇报控制在管理层能听懂并当场决策的粒度；两者的数字必须完全一致，不允许汇报版另出一套数。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>19 / 36</Text>
+    </Box>
+</Slide>

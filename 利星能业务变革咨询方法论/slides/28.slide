@@ -1,0 +1,106 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            阶段三 Approach：<span style={{ color: '#FA4F24' }}>把蓝图压到 L6</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            这一阶段的产出物决定后面系统建设怎么验收——所以最后一定要有「基线冻结」这个动作
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：五个动作 */}
+        <Box style={{ height: 198, flexDirection: 'row', gap: 6 }}>
+            {[
+                { n: '01', t: 'BA 下探 L5-L6', c: '#FA4F24', pts: ['每条 L4 拆成 L5 业务活动，给到 L6 可执行任务', '每个 L5 标责任岗位、关键输入输出、流程绩效指标', '例外处理必须写，不能只写正常路径'], out: 'L5-L6 详细设计' },
+                { n: '02', t: 'DA 下探属性', c: '#E0641E', pts: ['逻辑实体逐个展开业务属性、主键、取值域', '每个属性标数据标准与代码标准引用', '向上标与 BA 的信息链、向下标与 AA 的数据流向'], out: '逻辑实体属性设计' },
+                { n: '03', t: 'AA 下探服务', c: '#C43A17', pts: ['功能模块 → 应用服务 → 应用特性 → 子特性', '每个特性标注对应的应用模块与集成接口', '技术选型在服务层定，不下到代码设计'], out: '应用服务/特性/子特性' },
+                { n: '04', t: 'AI 场景细化', c: '#9E3410', pts: ['场景目标、业务价值、输入数据、知识来源', '智能体职责边界与人机协同方式', '效果评估指标（必须可测）'], out: 'AI 应用场景清单' },
+                { n: '05', t: '编撰与冻结', c: '#3A4050', pts: ['转化为需求规格说明书：场景/角色/流程/规则/验收标准', '编制数据需求与指标清单、绩效考核数据清单', '组织需求评审，逐项确认后冻结为需求基线'], out: '需求基线（冻结）' },
+            ].map((g) => (
+                <Box key={g.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + g.c, padding: '10px 11px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: g.c }}>{g.n}</Text>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{g.t}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, flexDirection: 'column', gap: 6, marginTop: 8 }}>
+                        {g.pts.map((p) => (
+                            <Box key={p} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 6, flex: 1 }}>
+                                <Text style={{ fontSize: 9.5, color: g.c, fontWeight: 'bold' }}>▪</Text>
+                                <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{p}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Box style={{ height: 28, background: g.c, borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FFFFFF' }}>{g.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：四个产出物 + 冻结机制 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 600, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>阶段三一次性交付四份东西（招标 3.4 第 3–6、8–9 项）</Text>
+                {[
+                    { n: '③', t: '架构详细设计', d: 'L5-L6 + 实体属性设计 + 应用服务特性子特性', c: '#FA4F24' },
+                    { n: '④', t: '业务需求规格说明书', d: '含需求编号与追溯矩阵，逐条回应痛点与改进方向', c: '#E0641E' },
+                    { n: '⑤', t: '数据需求与指标清单', d: '数据需求条目 + 指标口径定义 + 取数来源与更新频率', c: '#C43A17' },
+                    { n: '⑥⑧⑨', t: 'AI 场景清单 / 指标字典 / 绩效考核业务数据清单', d: 'AI 按 HR 提供的考核标的、岗位、人员梳理数据源与传输方式', c: '#9E3410' },
+                ].map((x, i) => (
+                    <Box key={x.n} style={{ flexDirection: 'row', alignItems: 'center', gap: 11, flex: 1, marginTop: i === 0 ? 9 : 5 }}>
+                        <Box style={{ width: 52, height: 24, borderRadius: 3, background: x.c, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                            <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Box style={{ flex: 1 }}>
+                            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+                            <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)', lineHeight: 1.3, marginTop: 2 }}>{x.d}</Text>
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>需求基线冻结：为什么这一步不能省</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5, marginTop: 7 }}>
+                    蓝图是设计，需求规格说明书是承诺。没有冻结动作，建设期每个新增需求都能说「当初没写清楚」——最后所有变更都变成谈判，而不是工程问题。
+                </Text>
+                {[
+                    { t: '冻结动作', d: '组织需求评审，逐条确认签字，形成需求基线' },
+                    { t: '变更规则', d: '冻结后任何变更走变更流程，标影响范围与工作量' },
+                    { t: '验收依据', d: '基线即系统建设与后续验收的唯一依据' },
+                ].map((x) => (
+                    <Box key={x.t} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginTop: 7 }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 66 }}>{x.t}</Text>
+                        <Text style={{ fontSize: 10.5, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下 */}
+        <Box style={{ height: 34, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '下探有底线', v: '压到 L6 活动与任务为止，不做界面原型与代码设计', c: '#FA4F24', dark: true },
+                { k: '指标要能取数', v: '每个指标写清取哪张表、多久更新、谁维护，否则不进清单', c: '#E0641E', dark: false },
+                { k: '考核清单看 HR', v: '绩效数据清单以 HR 提供的考核标的为输入，不自行假设', c: '#C43A17', dark: false },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.dark ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid ' + x.c, borderRadius: 3, padding: '0 13px', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: x.dark ? '#FBA15C' : '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10, color: x.dark ? 'rgba(255,255,255,0.86)' : '#5A6070', flex: 1, lineHeight: 1.3 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>28 / 36</Text>
+    </Box>
+</Slide>

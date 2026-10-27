@@ -1,0 +1,108 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            数据蓝图：<span style={{ color: '#FA4F24' }}>四维度设计</span>，收口到业务逻辑实体
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.3.2 明文要求四个维度都要讲，且颗粒度到业务逻辑实体——不到物理表，也不停在概念层
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 四维度四列 */}
+        <Box style={{ height: 214, flexDirection: 'row', gap: 7 }}>
+            {[
+                {
+                    n: 'D1', t: '数据资产目录', c: '#FA4F24',
+                    sub: '目录要能回答「有什么、在哪、谁负责」',
+                    pts: ['按主题域 → 业务对象 → 逻辑实体 → 属性四层组织', '每个实体标注责任部门、数据owner、密级、更新频率', '能源与储能两条链的公共实体单独标出（共用不重复建）', '与指标字典关联：每个指标注明取自哪些实体'],
+                    out: '产出：数据资产目录（四层）',
+                },
+                {
+                    n: 'D2', t: '数据模型', c: '#E0641E',
+                    sub: '模型是对现状问题的正面回答',
+                    pts: ['概念模型：实体与关系，标注基数与可选性', '逻辑模型：实体属性、主键、引用关系，颗粒度到业务逻辑实体', '每个模型标注它回应哪条 PAIN 编号', '跨链一致性检查：同一实体在两条链的定义是否一致'],
+                    out: '产出：逻辑实体清单 + 关系模型',
+                },
+                {
+                    n: 'D3', t: '数据标准', c: '#D2531A',
+                    sub: '标准不写清，后面全是扯皮',
+                    pts: ['基础标准：编码规则、命名规则、值域规范', '核心标准：指标口径、主数据定义、代码标准', '每条标准标注适用业务域与生效范围', '冲突项单独列表，给裁定规则与裁定人'],
+                    out: '产出：数据标准集（含冲突裁定表）',
+                },
+                {
+                    n: 'D4', t: '数据分布', c: '#C43A17',
+                    sub: '回答「放在哪、怎么取、怎么同步」',
+                    pts: ['按应用域/系统标注实体落点，明确权威源唯一', '集成路径：来源系统 → 目标系统 → 同步方式与频率', '标注哪些是实时调用、哪些是批量、哪些仍是人工', '弱集成（人工/文件）逐条列出并给出目标态'],
+                    out: '产出：数据分布与集成路径图',
+                },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + x.c, padding: '11px 12px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+                        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 10, color: '#8A8F99', marginTop: 3, lineHeight: 1.3 }}>{x.sub}</Text>
+                    <Box style={{ flex: 1, flexDirection: 'column', gap: 5, marginTop: 8 }}>
+                        {x.pts.map((p) => (
+                            <Box key={p} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 6, flex: 1 }}>
+                                <Text style={{ fontSize: 9.5, color: x.c, fontWeight: 'bold' }}>▪</Text>
+                                <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{p}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Box style={{ height: 28, background: x.c, borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 下：颗粒度界定 + 与业务拉通 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 470, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>什么算「业务逻辑实体」（这一条最容易被做偏）</Text>
+                {[
+                    { t: '算', d: '业务上能独立描述清楚、有唯一标识、能被流程引用的事物（电站、设备、工单、合同、供应商、物料）' },
+                    { t: '不算', d: '数据库表、视图、接口报文的物理实现；也不停留在「资产」「项目」这类过粗的概念词' },
+                    { t: '标志', d: '实体名在业务部门之间能对上话——如果运营说不清「工单」和「缺陷单」的区别，这两个就该是两个实体' },
+                ].map((x, i) => (
+                    <Box key={x.t} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, flex: 1, marginTop: i === 0 ? 9 : 4 }}>
+                        <Box style={{ width: 34, height: 19, borderRadius: 2, background: x.t === '算' ? '#FA4F24' : x.t === '不算' ? '#5A6070' : '#FBA15C', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 1 }}>
+                            <Text style={{ fontSize: 10, fontWeight: 'bold', color: x.t === '标志' ? '#0F1423' : '#FFFFFF' }}>{x.t}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.88)', flex: 1, lineHeight: 1.35 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>数据架构不是孤立画的，必须两条线拉通</Text>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
+                    <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '8px 11px' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423' }}>向上拉通 BA</Text>
+                        <Text style={{ fontSize: 10, color: '#5A6070', lineHeight: 1.35, marginTop: 3 }}>每个实体标注它服务哪几个 L4 子流程；每条 L4 标注它需要哪些实体才能跑通</Text>
+                    </Box>
+                    <Box style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '8px 11px' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#0F1423' }}>向下拉通 AA</Text>
+                        <Text style={{ fontSize: 10, color: '#5A6070', lineHeight: 1.35, marginTop: 3 }}>每个实体标注落点系统与集成方式；数据分布不做，集成架构就是空的</Text>
+                    </Box>
+                </Box>
+                <Text style={{ fontSize: 10.5, color: '#C43A17', lineHeight: 1.4, marginTop: 8 }}>
+                    验收动作：随便抽一个 L4 子流程，问「它跑通需要哪几个实体、这几个实体分别在哪」。答不上来，说明数据架构没和业务架构拉通。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>23 / 36</Text>
+    </Box>
+</Slide>

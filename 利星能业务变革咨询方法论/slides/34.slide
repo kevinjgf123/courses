@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            九项交付物 <span style={{ color: '#FA4F24' }}>× 四阶段总账</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.4 逐项对应——每一行写清谁签收、拿什么验收、验收不过怎么办
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 7 }}>
+        {/* 表头 */}
+        <Box style={{ height: 26, flexDirection: 'row', gap: 5 }}>
+            <Box style={{ width: 30, background: '#0F1423', borderRadius: 3, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>序</Text>
+            </Box>
+            <Box style={{ width: 168, background: '#0F1423', borderRadius: 3, padding: '0 10px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>交付物</Text>
+            </Box>
+            <Box style={{ width: 70, background: '#0F1423', borderRadius: 3, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>阶段</Text>
+            </Box>
+            <Box style={{ width: 62, background: '#0F1423', borderRadius: 3, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>主责域</Text>
+            </Box>
+            <Box style={{ flex: 1.5, background: '#0F1423', borderRadius: 3, padding: '0 10px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>验收要点（评审现场拿什么核对）</Text>
+            </Box>
+            <Box style={{ width: 118, background: '#0F1423', borderRadius: 3, padding: '0 10px', flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>验收不过怎么办</Text>
+            </Box>
+        </Box>
+
+        {[
+            { n: '1', t: '现状分析报告', s: '一', d: 'BA+DA+AA', a: '九部门访谈覆盖率、痛点根因对应完整率、七个业务块均已覆盖', f: '补调研，不重做全篇', c: '#FA4F24' },
+            { n: '2', t: '业务蓝图设计', s: '二', d: 'BA+DA+AA', a: 'L4 子流程逐条有输入输出接口、逻辑实体逐条有属性方向、功能模块逐条有服务', f: '缺哪项补哪项，不整体返工', c: '#FA4F24' },
+            { n: '3', t: '架构详细设计', s: '三', d: 'BA+DA+AA', a: 'L5-L6 逐条有角色与绩效指标、实体属性逐条有标准引用、服务特性子特性齐全', f: '按域分别补，不推翻结构', c: '#E0641E' },
+            { n: '4', t: '业务需求规格说明书', s: '三', d: 'BA', a: '需求六要素齐全、追溯矩阵双向可查、抽查三条能倒推回痛点', f: '补齐要素，不重写条目', c: '#E0641E' },
+            { n: '5', t: '数据需求与指标清单', s: '三', d: 'DA', a: '每个指标有口径、取数来源、更新频率与责任人', f: '口径待定的移出清单', c: '#C43A17' },
+            { n: '6', t: 'AI 应用场景清单', s: '二+三', d: 'BA+AA', a: '每场景有目标、输入、知识来源、智能体边界、评估指标与打分依据', f: '不可验证的场景降级剔除', c: '#C43A17' },
+            { n: '7', t: '实施路线图', s: '四', d: '全部', a: '分期依据清晰、关键路径识别、投入收益附假设条件、保障机制可执行', f: '补测算依据与假设清单', c: '#9E3410' },
+            { n: '8', t: '指标字典', s: '三', d: 'DA', a: '八要素逐条齐全、无口径冲突项、责任落实到岗位', f: '缺项不发布，只进待办', c: '#9E3410' },
+            { n: '9', t: '绩效考核业务数据清单', s: '三', d: 'DA+BA', a: '以 HR 考核标的为输入，每项数据有源、类型、传输方式', f: 'HR 未提供的部分列明并顺延', c: '#9E3410' },
+        ].map((r) => (
+            <Box key={r.n} style={{ flex: 1, flexDirection: 'row', gap: 5, alignItems: 'stretch' }}>
+                <Box style={{ width: 30, background: r.c, borderRadius: 3, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{r.n}</Text>
+                </Box>
+                <Box style={{ width: 168, background: '#F7F7F8', borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{r.t}</Text>
+                </Box>
+                <Box style={{ width: 70, background: '#F7F7F8', borderRadius: 3, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                    <Text style={{ fontSize: 11, color: r.c, fontWeight: 'bold' }}>{r.s}</Text>
+                </Box>
+                <Box style={{ width: 62, background: '#F7F7F8', borderRadius: 3, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                    <Text style={{ fontSize: 10.5, color: '#5A6070' }}>{r.d}</Text>
+                </Box>
+                <Box style={{ flex: 1.5, background: '#FFF3EE', borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.3 }}>{r.a}</Text>
+                </Box>
+                <Box style={{ width: 118, background: '#F7F7F8', borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 10, color: '#5A6070', lineHeight: 1.3 }}>{r.f}</Text>
+                </Box>
+            </Box>
+        ))}
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>34 / 36</Text>
+    </Box>
+</Slide>

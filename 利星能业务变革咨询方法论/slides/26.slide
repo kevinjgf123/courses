@@ -1,0 +1,82 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            交付物②《业务蓝图设计》<span style={{ color: '#FA4F24' }}>结构与自检清单</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.4 第 2 项，一份交付物要装下 BA/DA/AA 三层加 AI 场景清单
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 左：四部分结构 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 640, flexDirection: 'column', gap: 6 }}>
+                {[
+                    { c: 'BA', t: '业务架构部分', d: '流程领域架构 / L4 子流程清单（含输入输出与接口）/ 核心业务循环及流程间接口与数据流转 / 组织与职责适配建议', o: '颗粒度：L4', col: '#FA4F24' },
+                    { c: 'DA', t: '数据架构部分', d: '数据资产目录 / 数据模型 / 数据标准 / 数据分布四维度，每维度到业务逻辑实体；含跨链一致性检查结论', o: '颗粒度：逻辑实体', col: '#E0641E' },
+                    { c: 'AA', t: '应用架构部分', d: '应用域划分与分层 / 应用边界与功能分布 / 应用集成架构（方式·协议·流转·调用）/ 功能模块清单 / 演进路径', o: '颗粒度：功能模块', col: '#C43A17' },
+                    { c: 'AI', t: 'AI 场景初步清单', d: '场景名称、所属业务块、解决的痛点编号、业务价值、技术可行性、风险等级、优先级排序与打分依据', o: '颗粒度：场景级', col: '#9E3410' },
+                ].map((x) => (
+                    <Box key={x.c} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.col, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                        <Box style={{ width: 42, height: 26, borderRadius: 3, background: x.col, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.c}</Text>
+                        </Box>
+                        <Box style={{ flex: 1 }}>
+                            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                            <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.35, marginTop: 3 }}>{x.d}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 10.5, color: x.col, fontWeight: 'bold', width: 88, textAlign: 'right' }}>{x.o}</Text>
+                    </Box>
+                ))}
+            </Box>
+
+            {/* 右：自检 */}
+            <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '15px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, color: '#FBA15C', letterSpacing: 1 }}>交蓝图前八条自检</Text>
+                {[
+                    '每条 L4 子流程是否都有输入、输出、接口与主责岗位',
+                    '每条 L4 是否能对应到阶段一的 PAIN 编号（无来源的不写）',
+                    '每个逻辑实体是否都标注了服务哪几条 L4、落点在哪个应用',
+                    '跨链公共实体（供应商/物料/项目编码）是否只建了一套定义',
+                    '每个功能模块是否都标注了支撑哪几条 L4、依赖哪些实体',
+                    '集成架构里是否还有「人工」方式？有的话目标态是什么',
+                    'AI 场景是否每条都有痛点编号与打分依据（不是凭感觉排的）',
+                    '数据标准里冲突项是否列出了裁定规则与裁定人',
+                ].map((t, i) => (
+                    <Box key={t} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, flex: 1, marginTop: i === 0 ? 11 : 4 }}>
+                        <Box style={{ width: 16, height: 16, borderRadius: 2, border: '1px solid #FBA15C', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 1 }}>
+                            <Text style={{ fontSize: 10, color: '#FBA15C' }}>✓</Text>
+                        </Box>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', flex: 1, lineHeight: 1.35 }}>{t}</Text>
+                    </Box>
+                ))}
+                <Box style={{ height: 32, background: '#FA4F24', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', marginTop: 9 }}>
+                    <Text style={{ fontSize: 11.5, color: '#FFFFFF', lineHeight: 1.35 }}>
+                        评审现场一定会抽查一条 L4 走完全链路——走不通就是不可交付
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下 */}
+        <Box style={{ height: 38, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 118 }}>交付形式与评审</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>
+                文档 + 汇报。评审要过一次「追溯抽查」：现场抽一条痛点，看它是否一路走到 L4、逻辑实体与功能模块。这条走通，整套蓝图就成立；走不通，说明某一层是凭想象画的。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>26 / 36</Text>
+    </Box>
+</Slide>

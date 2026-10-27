@@ -1,0 +1,49 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+  <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+  <Box style={{ position: 'absolute', right: 0, top: 0, width: 620, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.26) 0%, rgba(250,79,36,0) 70%)' }} />
+
+  <Box style={{ position: 'absolute', left: 88, top: 96, width: 1104 }}>
+    <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>结语</Text>
+    <Text style={{ fontSize: 46, fontWeight: 'bold', color: '#FFFFFF', marginTop: 22, lineHeight: 1.2 }}>
+      这一册的验收标准，<br />其实是<span style={{ color: '#FA4F24' }}>一句话</span>
+    </Text>
+    <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 26 }} />
+    <Text style={{ fontSize: 24, color: 'rgba(255,255,255,0.92)', marginTop: 28, lineHeight: 1.6, width: 1020 }}>
+      随便抽一条痛点，看它能不能一路走到一条带验收标准的需求编号。
+    </Text>
+    <Text style={{ fontSize: 15.5, color: 'rgba(255,255,255,0.62)', marginTop: 22, lineHeight: 1.7, width: 1020 }}>
+      走通了，说明四层之间没有断点，这份诊断和这套蓝图是同一个故事；走不通，说明某一层是凭想象画的，
+      后面系统建得再好，接的也是另一套需求。这一句话在现场五分钟就能验完，却能挡住整套交付物里最常见的那类问题。
+    </Text>
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, top: 468, width: 1104, flexDirection: 'row', gap: 9 }}>
+    {[
+      { k: '第一句承诺', t: '颗粒度写死', d: 'L4 子流程 / 业务逻辑实体 / 功能模块，L5-L6 / 实体属性 / 服务-特性-子特性', p: 'P09' },
+      { k: '第二句承诺', t: '全链路可追溯', d: 'PAIN → ROOT → BLD → REQ 四段编号，需求可反向三分钟倒推回痛点', p: 'P10' },
+      { k: '第三句承诺', t: '九项交付物签收', d: '每项绑定阶段、主责域与验收要点，验收不过按列明方式补', p: 'P34' },
+      { k: '第四句承诺', t: '不越界', d: '压到 L6 活动与任务为止，不做界面原型、不做代码设计', p: 'P29' },
+    ].map((x) => (
+      <Box key={x.k} style={{ flex: 1, background: 'rgba(255,255,255,0.06)', borderRadius: 4, borderLeft: '3px solid #FA4F24', padding: '12px 14px', flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+          <Text style={{ fontSize: 10.5, color: '#FBA15C', fontWeight: 'bold' }}>{x.k}</Text>
+          <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)' }}>{x.p}</Text>
+        </Box>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', marginTop: 6 }}>{x.t}</Text>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.72)', lineHeight: 1.45, marginTop: 6 }}>{x.d}</Text>
+      </Box>
+    ))}
+  </Box>
+
+  <Box style={{ position: 'absolute', left: 88, bottom: 60, flexDirection: 'row', gap: 26 }}>
+    <Text style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>
+      本册为《华为数字化转型之道》的项目适配分支，通用原理与 Y 模型口径以原册为准
+    </Text>
+  </Box>
+
+  <Box style={{ position: 'absolute', right: 88, bottom: 60, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>36 / 36</Text>
+  </Box>
+</Slide>

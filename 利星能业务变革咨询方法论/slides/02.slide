@@ -1,0 +1,45 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            目录：<span style={{ color: '#FA4F24' }}>五个部分</span>，从通用方法论到合同交付物
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            前面讲为什么必须改、中间讲怎么改、后面按四个阶段讲每一步做什么、交什么
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {[
+            { n: '01', t: '项目适配的六处改装', d: '招标逐条应答总表 · 业务域地图 · 九部门矩阵 · 颗粒度阶梯 · 可追溯矩阵', tag: 'P05–12' },
+            { n: '02', t: '阶段一：现状分析', d: '业务/数据/应用/技术四套现状框架 · 五问追根 · 现状分析报告结构', tag: 'P13–19' },
+            { n: '03', t: '阶段二：变革蓝图设计', d: '业务蓝图到 L4 · 数据蓝图到逻辑实体 · 应用蓝图到功能模块 · AI 场景优先级', tag: 'P20–26' },
+            { n: '04', t: '阶段三：需求规格化', d: 'L5-L6 详细设计 · 逻辑实体属性与指标字典 · 需求基线评审冻结', tag: 'P27–31' },
+            { n: '05', t: '阶段四：实施路线图与验收', d: '分期与关键路径 · 投入收益测算 · 九项交付物总账 · 风险与前置条件', tag: 'P32–36' },
+        ].map((x, i) => (
+            <Box key={x.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'stretch', gap: 10, background: i === 0 ? '#FFF3EE' : '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + (i === 0 ? '#FA4F24' : '#E8E8E8') }}>
+                <Box style={{ width: 82, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 30, fontWeight: 'bold', color: i === 0 ? '#FA4F24' : '#C8CCD4' }}>{x.n}</Text>
+                </Box>
+                <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                    <Text style={{ fontSize: 12.5, color: '#5A6070', marginTop: 4 }}>{x.d}</Text>
+                </Box>
+                <Box style={{ width: 92, alignItems: 'flex-end', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 13, color: '#8A8F99' }}>{x.tag}</Text>
+                </Box>
+            </Box>
+        ))}
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>02 / 36</Text>
+    </Box>
+</Slide>

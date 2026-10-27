@@ -1,0 +1,84 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            颗粒度阶梯：<span style={{ color: '#FA4F24' }}>从 L4 到 L6</span> 的三级下探
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标把颗粒度写进了合同，这页就是全册的硬约束——后面每一页的做法都受它管
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+
+        {/* 三层阶梯 */}
+        <Box style={{ height: 214, flexDirection: 'column', gap: 6 }}>
+            {[
+                {
+                    lv: 'L1–L3', t: '流程分层（阶段二）', col: '#FBA15C', h: 46,
+                    d: 'L1 价值流 / L2 流程域 / L3 流程组', ex: '例：电站资产全生命周期管理 → 资产运营 → 缺陷与检修管理',
+                },
+                {
+                    lv: 'L4', t: '子流程（阶段二收口，招标明文要求）', col: '#E0641E', h: 62,
+                    d: '可独立指派责任、可识别输入输出、有明确触发与结束的最小流程单元', ex: '例：缺陷工单生成 → 派工 → 处理 → 验收 → 归档 → 绩效取数',
+                },
+                {
+                    lv: 'L5–L6', t: '活动与任务（阶段三收口，招标明文要求）', col: '#C43A17', h: 94,
+                    d: 'L5 业务活动（带岗位角色、关键输入输出、绩效指标）　L6 可执行任务（系统功能与操作步骤的落点）',
+                    ex: '例：L5「缺陷判定」= 判断是否需停机 / 责任岗位：值长 / 输入：缺陷描述+设备画像 / 输出：处理结论+停机建议 / 绩效：误判率',
+                },
+            ].map((x) => (
+                <Box key={x.lv} style={{ height: x.h, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid ' + x.col, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                    <Box style={{ width: 62, alignItems: 'center' }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: x.col }}>{x.lv}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                        <Text style={{ fontSize: 11.5, color: '#5A6070', lineHeight: 1.4, marginTop: 3 }}>{x.d}</Text>
+                    </Box>
+                    <Box style={{ width: 336, background: '#FFF3EE', borderRadius: 3, padding: '0 11px' }}>
+                        <Text style={{ fontSize: 10.5, color: '#C43A17', lineHeight: 1.35 }}>{x.ex}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 三域颗粒度对照 + 铁律 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 370, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>三域的阶段二 / 阶段三落点</Text>
+                {[
+                    { a: 'BA', s2: 'L4 子流程清单', s3: 'L5-L6 活动与任务' },
+                    { a: 'DA', s2: '业务逻辑实体', s3: '实体属性 + 数据标准/代码标准' },
+                    { a: 'AA', s2: '功能模块', s3: '应用服务 / 特性 / 子特性' },
+                ].map((x) => (
+                    <Box key={x.a} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1, marginTop: 8 }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 26 }}>{x.a}</Text>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.9)', width: 122 }}>{x.s2}</Text>
+                        <Text style={{ fontSize: 11.5, color: '#FBA15C', flex: 1 }}>→ {x.s3}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>为什么不许「基本覆盖」这类交付语言</Text>
+                <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.5, marginTop: 7 }}>
+                    评审现场一定会有人问「差不多了吧」。到时候能救场的只有一个东西 —— 客观标尺。颗粒度就是这把尺：清单里逐行打勾，缺哪一行一目了然，不用争论。
+                </Text>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', marginTop: 8 }}>
+                    标尺写在这一页，评审时对着念：L4 子流程逐条有输入输出接口，L5-L6 逐条有角色与绩效指标，逻辑实体逐条有属性与标准，功能模块逐条有服务与特性。
+                </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>09 / 36</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,104 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            阶段一 Approach：<span style={{ color: '#FA4F24' }}>调研 → 诊断 → 追根 → 定方向</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            这一阶段最容易做成「一堆问题清单」，四个动作各有明确的产出物，防止跑偏
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+
+        {/* 四动作链条 */}
+        <Box style={{ height: 190, flexDirection: 'row', gap: 6 }}>
+            {[
+                {
+                    n: '01', t: '调研摸底', days: '方法动作', c: '#FA4F24',
+                    pts: ['九部门分层访谈：决策层问经营结果、管理层问权责、骨干层问例外', '现场收集单据台账、岗位说明书、系统清单、指标现有口径', '按 E1–E5 / S1–S2 七个业务块逐块走一遍，不跳块'],
+                    out: '调研记录（含对象/时间/议题）',                },
+                {
+                    n: '02', t: '三维度诊断', days: '方法动作', c: '#E0641E',
+                    pts: ['业务维度：流程数量、单据台账、岗位角色现状盘点', '数据维度：系统数据对象、主数据现状、指标口径与取数方式', '系统维度：应用清单、集成现状、基础设施与 AI 技术就绪度'],
+                    out: '痛点清单（编号 + 证据）',
+                },
+                {
+                    n: '03', t: '五问追根', days: '方法动作', c: '#C43A17',
+                    pts: ['每条痛点连续追问五次，直到落到组织、规则、权责层面', '追不到根因的痛点标记为「现象待观察」，不进变更建议', '跨部门痛点强制做归因，确认到底卡在谁的权责上'],
+                    out: '痛点↔根因逐项对应表',
+                },
+                {
+                    n: '04', t: '定改进方向', days: '方法动作', c: '#9E3410',
+                    pts: ['按业务价值与实现难度给每条方向排优先级', '标出跨块依赖：哪些方向不解决就白做', '明确本项目不建议碰的部分及原因'],
+                    out: '改进方向与优先级清单',
+                },
+            ].map((g) => (
+                <Box key={g.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + g.c, padding: '11px 12px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: g.c }}>{g.n}</Text>
+                        <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{g.t}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, flexDirection: 'column', gap: 6, marginTop: 8 }}>
+                        {g.pts.map((p) => (
+                            <Box key={p} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 6, flex: 1 }}>
+                                <Text style={{ fontSize: 10, color: g.c, fontWeight: 'bold' }}>▪</Text>
+                                <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{p}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Box style={{ height: 28, background: g.c, borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.85)' }}>产出</Text>
+                        <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FFFFFF' }}>{g.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：五问追根示意 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 570, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>五问追根：这页是本阶段最核心的动作</Text>
+                {[
+                    { q: '第 1 问', d: '这个痛点表现在哪里？（要具体到某张表、某个环节、某个数字）' },
+                    { q: '第 2 问', d: '为什么会这样？（追问到规则层面，不是「因为人不够」）' },
+                    { q: '第 3 问', d: '这条规则是谁定的？什么时候定的？还合用吗？' },
+                    { q: '第 4 问', d: '如果改这条规则，会动到谁的权责？（跨部门影响在这里暴露）' },
+                    { q: '第 5 问', d: '不改这条规则，后果由谁承担？（找到真正的压力来源）' },
+                ].map((x, i) => (
+                    <Box key={x.q} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, flex: 1, marginTop: i === 0 ? 9 : 4 }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24', width: 42 }}>{x.q}</Text>
+                        <Text style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.88)', flex: 1, lineHeight: 1.3 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '13px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>为什么必须追到第五层</Text>
+                <Text style={{ fontSize: 11.5, color: '#3A4050', lineHeight: 1.5, marginTop: 7 }}>
+                    只问到第二层，得到的是系统需求；问到第五层，得到的才是变革建议。能源项目里大量痛点最终落在「权责划分」上 —— 谁对投资回报负责、谁对资产保值负责，追不到这一层，补再多系统也没用。
+                </Text>
+                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#C43A17', marginTop: 8, lineHeight: 1.4 }}>
+                    追不到根因的痛点不是删掉，是标记为「现象待观察」——写进报告但不下结论，避免在评审时被迫二选一。
+                </Text>
+            </Box>
+        </Box>
+
+        {/* 下 */}
+        <Box style={{ height: 38, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17', width: 128 }}>阶段一收口</Text>
+            <Text style={{ fontSize: 11.5, color: '#0F1423', flex: 1, lineHeight: 1.3 }}>
+                《现状分析报告》= 调研概况与访谈记录 + 业务/数据/系统三维度诊断 + 痛点与根因逐项对应 + 现状数据盘点（流程数量、单据台账、岗位角色、系统数据对象、关键指标口径与取数方式）+ 改进方向与优先级            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>14 / 36</Text>
+    </Box>
+</Slide>

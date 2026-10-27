@@ -1,0 +1,117 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            阶段二 Approach：<span style={{ color: '#FA4F24' }}>BA 先定 · DA/AA 跟进 · TA 托底</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            为什么顺序不能换——业务对象是四层的交汇点，业务对象没定下来，另外三层的颗粒度都是虚的
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 串接四步 */}
+        <Box style={{ height: 174, flexDirection: 'row', gap: 6 }}>
+            {[
+                {
+                    n: 'BA', t: '业务架构定稿', c: '#FA4F24', when: '先做，先评审',
+                    pts: ['流程领域架构：把七个业务块归成 L1/L2 流程域', '核心业务循环：明确能源与储能各自的循环与接口', 'L4 子流程清单：每条带输入输出、接口与数据流转'],
+                    out: '流程领域架构图 + L4 子流程清单',
+                },
+                {
+                    n: 'DA', t: '数据架构跟进', c: '#E0641E', when: 'BA 定稿后',
+                    pts: ['业务对象 → 逻辑实体：BA 里的对象一个个落成实体', '四维度展开：资产目录、模型、标准、分布', '收口到业务逻辑实体，不下到物理表'],
+                    out: '逻辑实体清单 + 四维度设计',
+                },
+                {
+                    n: 'AA', t: '应用架构跟进', c: '#C43A17', when: 'DA 定稿后',
+                    pts: ['按业务域划分应用域，明确应用边界与职责', '功能模块级设计：到模块，不到页面', '集成架构：方式、协议、数据流转、服务调用'],
+                    out: '应用域划分 + 功能模块清单 + 集成架构',
+                },
+                {
+                    n: 'TA', t: '技术架构托底', c: '#9E3410', when: '前三层并行支撑',
+                    pts: ['承载前三层的运行底座与集成技术选型', '补齐 AI 五项就绪度对应的技术方案', '安全合规：密级继承与数据出域边界'],
+                    out: '技术架构方案 + AI 技术配套',
+                },
+            ].map((g) => (
+                <Box key={g.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + g.c, padding: '11px 12px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: g.c }}>{g.n}</Text>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{g.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 10, color: '#8A8F99', marginTop: 3 }}>{g.when}</Text>
+                    <Box style={{ flex: 1, flexDirection: 'column', gap: 6, marginTop: 8 }}>
+                        {g.pts.map((p) => (
+                            <Box key={p} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 6, flex: 1 }}>
+                                <Text style={{ fontSize: 10, color: g.c, fontWeight: 'bold' }}>▪</Text>
+                                <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.35, flex: 1 }}>{p}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    <Box style={{ height: 28, background: g.c, borderRadius: 3, padding: '0 10px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.85)' }}>产出</Text>
+                        <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FFFFFF' }}>{g.out}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：为什么顺序不能换 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 606, background: '#0F1423', borderRadius: 4, padding: '14px 17px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>交汇点是业务对象：BA 往下拆、DA 往上收，在这里合上</Text>
+                <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10 }}>
+                    <Box style={{ width: 158, background: '#FA4F24', borderRadius: 3, padding: '10px 11px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>BA 往下拆</Text>
+                        <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.88)', marginTop: 4, lineHeight: 1.35 }}>价值流 → 能力 → 活动 → 业务对象</Text>
+                    </Box>
+                    <Text style={{ fontSize: 18, color: '#FBA15C', fontWeight: 'bold' }}>→</Text>
+                    <Box style={{ width: 158, background: '#FFFFFF', borderRadius: 3, padding: '10px 11px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17' }}>业务对象</Text>
+                        <Text style={{ fontSize: 10, color: '#5A6070', marginTop: 4, lineHeight: 1.35 }}>电站、设备、工单、合同、供应商</Text>
+                    </Box>
+                    <Text style={{ fontSize: 18, color: '#FBA15C', fontWeight: 'bold' }}>←</Text>
+                    <Box style={{ width: 158, background: '#E0641E', borderRadius: 3, padding: '10px 11px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>DA 往上收</Text>
+                        <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.9)', marginTop: 4, lineHeight: 1.35 }}>逻辑实体 → 逻辑属性 → 物理分布</Text>
+                    </Box>
+                </Box>
+                <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.82)', lineHeight: 1.45, marginTop: 10, flex: 1 }}>
+                    业务对象是四层唯一稳定的交汇点：流程会变、组织会调、系统会换，但「一台设备」「一张工单」不会变。业务对象定不下来，DA 的实体就是自造的，AA 的功能就是凭空的，阶段三的需求基线也无从验收。
+                </Text>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+                {[
+                    { k: '并行不是同时开工', v: 'BA 未定稿前，DA 只能做存量摸底，不能定目标实体', c: '#FA4F24' },
+                    { k: '评审卡在 BA', v: 'BA 未过评审不启动 DA/AA 的目标设计，避免整体返工', c: '#E0641E' },
+                    { k: 'AI 必须在蓝图里定', v: 'AI 场景从 BA 的循环与活动里找落点，不允许先想 AI 用在哪', c: '#C43A17' },
+                    { k: '组织适配随 BA 出', v: '职责适配建议与流程域同时出，不放到最后补', c: '#9E3410' },
+                ].map((x) => (
+                    <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.c, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{x.k}</Text>
+                        <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.3, marginTop: 2 }}>{x.v}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下 */}
+        <Box style={{ height: 40, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 118 }}>阶段二收口</Text>
+            <Text style={{ fontSize: 11, color: '#3A4050', flex: 1, lineHeight: 1.3 }}>
+                《业务蓝图设计》= 流程领域架构 + L4 子流程清单 + 组织与职责适配建议 + 核心业务循环与接口数据流转 + 数据四维度设计（到逻辑实体）+ 应用域划分与集成架构（到功能模块）+ AI 场景初步清单及优先级
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>21 / 36</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,127 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            需求基线确认：<span style={{ color: '#FA4F24' }}>评审 → 冻结</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.3.3(3)：组织需求评审，逐项确认后冻结为需求基线，作为系统建设与后续验收的依据
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：评审四步 */}
+        <Box style={{ height: 130, flexDirection: 'row', gap: 6 }}>
+            {[
+                { n: '1', t: '预审（我们内部）', d: '四份交付物交叉自查：需求条目是否都有痛点来源、实体属性是否都有标准引用、AI 场景是否都有评估指标', c: '#FA4F24', o: '自查表全过' },
+                { n: '2', t: '分域评审（按部门）', d: '九个部门分别评审与自己相关的 L5-L6 与实体属性，现场逐条确认角色、规则与例外处理', c: '#E0641E', o: '部门确认意见' },
+                { n: '3', t: '追溯抽查（当场抽）', d: '评审现场随机抽三条需求，从需求倒推回痛点原话；走不通当场修改，不允许会后补', c: '#C43A17', o: '追溯链验证记录' },
+                { n: '4', t: '冻结签字', d: '逐条确认后签字冻结，形成需求基线；明确基线版本号与生效日期', c: '#9E3410', o: '需求基线（冻结版）' },
+            ].map((x) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + x.c, padding: '12px 13px', flexDirection: 'column' }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                        <Box style={{ width: 22, height: 22, borderRadius: 11, background: x.c, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', flex: 1 }}>{x.t}</Text>
+                    </Box>
+                    <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4, marginTop: 7, flex: 1 }}>{x.d}</Text>
+                    <Box style={{ height: 26, background: x.c, borderRadius: 3, padding: '0 10px', flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.o}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：追溯矩阵 + 需求条目结构 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 9, alignItems: 'stretch' }}>
+            <Box style={{ width: 640, background: '#FFFFFF', borderRadius: 4, border: '1px solid #E8E8E8', flexDirection: 'column' }}>
+                <Box style={{ height: 30, background: '#0F1423', borderRadius: 3, padding: '0 13px', flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FFFFFF' }}>需求追溯矩阵（招标 3.4 第 4 项明确要求）</Text>
+                </Box>
+                <Box style={{ flex: 1, padding: '10px 13px', flexDirection: 'column' }}>
+                    <Box style={{ height: 24, flexDirection: 'row', gap: 4 }}>
+                        {['需求编号', '需求条目', '对应痛点', '所属 L5', '验收标准', '状态'].map((h, i) => (
+                            <Box key={h} style={{ flex: i === 1 || i === 4 ? 2.4 : 1, background: '#F7F7F8', borderRadius: 3, padding: '0 8px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#0F1423' }}>{h}</Text>
+                            </Box>
+                        ))}
+                    </Box>
+                    {[
+                        { n: 'REQ-E3-118', t: '工单自动挂接设备资产', p: 'PAIN-E3-07', l: 'L5-1 方案编制', a: '建单时自动带出设备型号与历史工单', s: '已确认' },
+                        { n: 'REQ-E3-125', t: '备件库存不足时走紧急领用', p: 'ROOT-E3-03', l: 'L5-2 检修执行', a: '库存不足自动转紧急流程并留痕', s: '已确认' },
+                        { n: 'REQ-S2-041', t: 'EBOM→MBOM 规则版本管理', p: 'PAIN-S2-02', l: 'L5 转换执行', a: '规则可维护、可回溯到版本', s: '待确认' },
+                        { n: 'REQ-E5-073', t: '四算口径裁定流程', p: 'PAIN-E5-04', l: 'L5 决算编制', a: '争议口径有裁定记录可查', s: '已确认' },
+                        { n: 'REQ-E3-131', t: '台账更新及时率看板', p: 'BLD-E3-05', l: 'L5-3 验收结算', a: '超时未更新自动预警', s: '已确认' },
+                    ].map((r) => (
+                        <Box key={r.n} style={{ flex: 1, flexDirection: 'row', gap: 4, marginTop: 4 }}>
+                            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 3, padding: '0 8px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 9.5, color: '#C43A17', fontWeight: 'bold' }}>{r.n}</Text>
+                            </Box>
+                            <Box style={{ flex: 2.4, background: '#F7F7F8', borderRadius: 3, padding: '0 8px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 9.5, color: '#0F1423' }}>{r.t}</Text>
+                            </Box>
+                            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 8px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 9.5, color: '#5A6070' }}>{r.p}</Text>
+                            </Box>
+                            <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 8px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 9.5, color: '#5A6070' }}>{r.l}</Text>
+                            </Box>
+                            <Box style={{ flex: 2.4, background: '#F7F7F8', borderRadius: 3, padding: '0 8px', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ fontSize: 9.5, color: '#3A4050', lineHeight: 1.25 }}>{r.a}</Text>
+                            </Box>
+                            <Box style={{ flex: 1, borderRadius: 3, padding: '0 8px', flexDirection: 'row', alignItems: 'center', background: r.s === '已确认' ? '#FA4F24' : '#FBA15C' }}>
+                                <Text style={{ fontSize: 9.5, color: '#FFFFFF', fontWeight: 'bold' }}>{r.s}</Text>
+                            </Box>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+                <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '13px 16px', flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 12, color: '#FBA15C', letterSpacing: 1 }}>冻结之后：变更怎么走</Text>
+                    {[
+                        { t: '变更申请', d: '提出方写明变更原因、影响范围（哪条 L5/哪个实体/哪个接口）' },
+                        { t: '影响评估', d: '评估对已冻结内容的影响与工作量，不接受口头变更' },
+                        { t: '基线升版', d: '评估通过后基线升版并记录变更历史，原版本可追溯' },
+                        { t: '不进基线的', d: '无来源、无验收标准的需求一律不进基线，走新增流程另议' },
+                    ].map((x, i) => (
+                        <Box key={x.t} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, flex: 1, marginTop: i === 0 ? 9 : 4 }}>
+                            <Text style={{ fontSize: 10, color: '#FA4F24', fontWeight: 'bold' }}>▪</Text>
+                            <Box style={{ flex: 1 }}>
+                                <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+                                <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.82)', lineHeight: 1.3, marginTop: 2 }}>{x.d}</Text>
+                            </Box>
+                        </Box>
+                    ))}
+                </Box>
+                <Box style={{ height: 82, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '12px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#C43A17' }}>一条需求的完整结构（六要素）</Text>
+                    <Text style={{ fontSize: 10.5, color: '#3A4050', lineHeight: 1.5, marginTop: 6 }}>
+                        需求编号 · 业务场景与用户角色 · 操作流程 · 业务规则与例外处理 · 验收标准 · 对应痛点编号。少任何一项不进入基线——尤其「验收标准」和「例外处理」。
+                    </Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下 */}
+        <Box style={{ height: 34, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid #C43A17', padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 118 }}>经验之谈</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>
+                评审会上最容易被跳过的就是「追溯抽查」。建议把它放在最后、并且要求当场抽——一旦允许会后补，整个追溯矩阵就会退化成凑数的表。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>31 / 36</Text>
+    </Box>
+</Slide>

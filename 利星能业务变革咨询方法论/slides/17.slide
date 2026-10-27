@@ -1,0 +1,83 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            应用现状分析框架 <span style={{ color: '#FA4F24' }}>含应用集成</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            集成不是接口数量问题，是「谁在什么场景下、用什么方式、传的是什么口径」的问题
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：应用资产盘点四要素 */}
+        <Box style={{ height: 24, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Box style={{ width: 4, height: 16, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>第一步：应用资产盘点（每个系统四要素齐了才算盘清）</Text>
+        </Box>
+        <Box style={{ height: 84, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '系统清单', v: '名称、厂商、上线年份、当前版本、部署位置（本地/云）、承载业务块', c: '#FA4F24' },
+                { k: '功能清单', v: '主要功能模块（到二级即可）、实际使用率、闲置功能占比', c: '#E0641E' },
+                { k: '用户清单', v: '实名用户数、按部门分布、活跃度、外部用户范围', c: '#C43A17' },
+                { k: '数据对象清单', v: '该系统是哪些业务逻辑实体的权威来源？一份还是多份？', c: '#9E3410' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.c, padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.35, marginTop: 4 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：集成现状矩阵 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 6 }}>
+            <Box style={{ height: 24, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Box style={{ width: 4, height: 16, background: '#C43A17' }} />
+                <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>第二步：集成现状逐对盘点（集成方式 / 协议 / 数据流 / 服务调用 / 频率）</Text>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 5 }}>
+                {[
+                    { a: 'EAM / 资产', b: '财务核算', m: '定时文件交换', p: 'SFTP + Excel', d: '资产台账与价值口径', r: '差异月月有，靠人工对账' },
+                    { a: '项目管理系统', b: '财务系统', m: '接口同步', p: 'API / 数据库直连', d: '投资额与进度款', r: '两套口径，投资额版本不一' },
+                    { a: '运维工单', b: 'EAM 资产', m: '弱集成（人工挂接）', p: '人工录入', d: '缺陷↔设备主键', r: '全项目最脆的一环' },
+                    { a: 'PLM / EBOM', b: '制造 MES', m: '文件 + 人工确认', p: '文件传输', d: 'EBOM→MBOM 转换结果', r: '规则只在个人经验里' },
+                    { a: '采购系统', b: '供应商门户', m: '接口 + 门户', p: 'API + 邮件/门户', d: '订单与催交状态', r: '状态回传不及时' },
+                    { a: '交易系统', b: '计量系统', m: '实时调用', p: '消息队列', d: '上网电量与结算价', r: '口径不一致需人工修正' },
+                ].map((x) => (
+                    <Box key={x.a + x.b} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '9px 9px', flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 10.5, color: '#0F1423', fontWeight: 'bold', lineHeight: 1.3 }}>{x.a} → {x.b}</Text>
+                        <Text style={{ fontSize: 10, color: '#C43A17', marginTop: 4, lineHeight: 1.3 }}>{x.m}</Text>
+                        <Text style={{ fontSize: 9.5, color: '#8A8F99', marginTop: 2, lineHeight: 1.3 }}>{x.p}</Text>
+                        <Text style={{ fontSize: 9.5, color: '#3A4050', marginTop: 3, lineHeight: 1.3, flex: 1 }}>{x.d}</Text>
+                        <Text style={{ fontSize: 9.5, color: '#FA4F24', lineHeight: 1.3, marginTop: 3 }}>{x.r}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：三条诊断判据 */}
+        <Box style={{ height: 46, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '口径先于接口', v: '集成问题九成是口径问题，先对口径再谈接口，否则集成一次错一次', c: '#FA4F24', dark: true },
+                { k: '一个实体一个权威源', v: '同一逻辑实体有两份权威，系统越多越乱，诊断报告里要逐个点名', c: '#E0641E', dark: false },
+                { k: '弱集成必须记账', v: '人工挂接、人工对账的地方逐条列出，这是后续蓝图里必须消掉的债', c: '#C43A17', dark: false },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.dark ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid ' + x.c, borderRadius: 3, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: x.dark ? '#FBA15C' : '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10, color: x.dark ? 'rgba(255,255,255,0.86)' : '#5A6070', lineHeight: 1.3, marginTop: 2 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>17 / 36</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,97 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            L5-L6 详细设计：<span style={{ color: '#FA4F24' }}>活动 · 角色 · 绩效指标</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.3.3(1) 要求四条信息：业务活动、岗位角色、关键输入输出、流程绩效指标
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 上：下探示例 */}
+        <Box style={{ height: 22, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Box style={{ width: 4, height: 16, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 13.5, fontWeight: 'bold', color: '#0F1423' }}>下探示例：L4「检修工单执行」逐层拆到 L6</Text>
+        </Box>
+        <Box style={{ height: 214, flexDirection: 'row', gap: 6, alignItems: 'stretch' }}>
+            <Box style={{ width: 260, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid #FBA15C', padding: '11px 13px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C' }}>L4　检修工单执行</Text>
+                <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4, marginTop: 6, flex: 1 }}>
+                    触发：缺陷确认需检修。输入：缺陷记录、设备画像、备件库存。输出：完工记录、验收结论、结算依据。
+                </Text>
+                <Text style={{ fontSize: 10, color: '#8A8F99', lineHeight: 1.35, marginTop: 6 }}>主责：能源运营技术部　弱集成：工单与资产靠人工挂接</Text>
+            </Box>
+            <Text style={{ fontSize: 16, color: '#C8CCD4', alignSelf: 'center', fontWeight: 'bold' }}>›</Text>
+            <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderTop: '3px solid #FA4F24', padding: '11px 13px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#FA4F24' }}>L5 三个业务活动</Text>
+                {[
+                    { t: 'L5-1 检修方案编制', r: '检修工程师', i: '缺陷记录+设备画像', o: '方案+备件清单', k: '方案一次通过率' },
+                    { t: 'L5-2 现场检修执行', r: '检修班组/值长', i: '已审批方案+出库单', o: '完工记录+异常说明', k: '平均修复时长、一次修复率' },
+                    { t: 'L5-3 验收与结算', r: '技术负责人/资产管理员', i: '完工记录+备件消耗', o: '验收结论+台账更新', k: '验收一次通过率、台账更新及时率' },
+                ].map((x) => (
+                    <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '0 10px', marginTop: 5, flexDirection: 'column', justifyContent: 'center' }}>
+                        <Box style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                            <Text style={{ fontSize: 10, color: '#8A8F99' }}>{x.r}</Text>
+                        </Box>
+                        <Text style={{ fontSize: 10, color: '#5A6070', lineHeight: 1.3, marginTop: 2 }}>{x.i}　→　{x.o}</Text>
+                        <Text style={{ fontSize: 10, color: '#C43A17', lineHeight: 1.3 }}>{x.k}</Text>
+                    </Box>
+                ))}
+            </Box>
+            <Text style={{ fontSize: 16, color: '#C8CCD4', alignSelf: 'center', fontWeight: 'bold' }}>›</Text>
+            <Box style={{ width: 300, background: '#0F1423', borderRadius: 4, padding: '11px 13px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 12.5, color: '#FBA15C' }}>L6 可执行任务</Text>
+                <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.7)', lineHeight: 1.35, marginTop: 5, flex: 1 }}>
+                    L6 落到系统能做什么：L5-1 拆为读取画像、生成草稿、库存校验、提交审批四个任务。
+                </Text>
+                {[
+                    { t: '例外处理', d: '备件不足、带病运行、超预算，三条都要写' },
+                    { t: '角色映射', d: '每个 L6 标岗位、系统承载、是否审批' },
+                    { t: '不越界', d: '不做界面与代码设计，能估工作量、能验收即到位' },
+                ].map((x, i) => (
+                    <Box key={x.t} style={{ marginTop: i === 0 ? 8 : 5, flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>{x.t}</Text>
+                        <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.8)', lineHeight: 1.3, marginTop: 2 }}>{x.d}</Text>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+
+        {/* 下：四条设计要求 + 判据 */}
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+            {[
+                { k: '① 业务活动', d: '逐个 L5 写清做什么、谁做、和上下游的关系', c: '#FA4F24' },
+                { k: '② 岗位角色', d: '责任岗位 + 审批岗位 + 协同岗位，不写「相关部门」', c: '#E0641E' },
+                { k: '③ 关键输入输出', d: '输入输出必须能对应到逻辑实体，不能是「相关信息」', c: '#C43A17' },
+                { k: '④ 流程绩效指标', d: '每个 L5 至少一个可度量指标，进指标字典', c: '#9E3410' },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + x.c, padding: '0 13px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: x.c }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10.5, color: '#5A6070', lineHeight: 1.4, marginTop: 4 }}>{x.d}</Text>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 底 */}
+        <Box style={{ height: 32, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FA4F24', padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C43A17', width: 118 }}>现场检验法</Text>
+            <Text style={{ fontSize: 11.5, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>
+                随机抽一个 L5，让客户说出这个活动今天实际是怎么干的、耗时多久、上次出问题是什么时候。说不出来或对不上，说明设计脱离现场，要重做。
+            </Text>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>29 / 36</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,107 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+            全链路可追溯矩阵 <span style={{ color: '#FA4F24' }}>诊断 → 建议 → 需求</span>
+        </Text>
+        <Text style={{ fontSize: 19, color: '#8A8F99', marginTop: 7 }}>
+            招标 3.2(1) 明文要求，这是本册唯一一条不能打折扣的硬条款
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 10, paddingBottom: 6, height: 479, flexDirection: 'column', gap: 8 }}>
+
+        {/* 上：四段链条 */}
+        <Box style={{ height: 34, flexDirection: 'row', gap: 6, alignItems: 'stretch' }}>
+            {[
+                { n: 'P', t: '痛点', s: '现象与影响（业务/数据/系统三维度）', c: '#8A8F99' },
+                { n: 'R', t: '根因', s: '追到组织、规则、权责层（不是停在现象）', c: '#F87D2F' },
+                { n: 'B', t: '变革建议', s: '改哪条流程、建什么能力、谁负责', c: '#FA4F24' },
+                { n: 'S', t: '系统需求', s: '落到 L5-L6 / 实体属性 / 应用特性', c: '#C43A17' },
+            ].map((x, i) => (
+                <Box key={x.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + x.c, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <Box style={{ width: 24, height: 24, borderRadius: 12, background: x.c, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
+                        <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>{x.n}</Text>
+                    </Box>
+                    <Box style={{ flex: 1 }}>
+                        <Text style={{ fontSize: 12.5, fontWeight: 'bold', color: '#0F1423' }}>{x.t}</Text>
+                        <Text style={{ fontSize: 10, color: '#5A6070', marginTop: 1 }}>{x.s}</Text>
+                    </Box>
+                    {i < 3 && <Text style={{ fontSize: 15, color: '#C8CCD4', fontWeight: 'bold' }}>›</Text>}
+                </Box>
+            ))}
+        </Box>
+
+        {/* 中：编号规则 + 示例行 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 5 }}>
+            <Box style={{ height: 26, flexDirection: 'row', gap: 6 }}>
+                <Box style={{ width: 400, background: '#0F1423', borderRadius: 3, padding: '0 11px', flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>编号规则（四段各一段，不允许空号）</Text>
+                </Box>
+                <Box style={{ flex: 1, background: '#0F1423', borderRadius: 3, padding: '0 11px', flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FFFFFF' }}>示例行（真实诊断中会写成这样一条）</Text>
+                </Box>
+            </Box>
+            {[
+                {
+                    id: 'PAIN-E3-07　ROOT-E3-03　BLD-E3-05　REQ-E3-118',
+                    a: '运维缺陷闭环要跨 3 个系统，平均 6.5 天',
+                    b: '缺陷与设备资产未建立主键关联，工单只能手工挂接',
+                    c: '建「设备—缺陷—检修工单」主数据关联，缺陷在资产台账内闭环',
+                    d: 'REQ：设备资产主数据模型 / 工单自动挂接规则 / 缺陷闭环时限监控',
+                },
+                {
+                    id: 'PAIN-S2-02　ROOT-S2-01　BLD-S2-03　REQ-S2-041',
+                    a: '同一产品不同配置的 EBOM 差异靠人工比对',
+                    b: 'EBOM→MBOM 转换规则只存在工程师个人经验里，未沉淀',
+                    c: '把转换规则建成可维护的规则库，配置差异自动展开',
+                    d: 'REQ：转换规则模型 / 规则版本管理 / 差异审批流',
+                },
+                {
+                    id: 'PAIN-E5-04　ROOT-E5-02　BLD-E5-06　REQ-E5-073',
+                    a: '同一个投资额财务与项目管理各有一个版本',
+                    b: '概算/预算/决算口径分散在多系统，无统一裁定规则',
+                    c: '建立四算主数据与口径裁定机制，指标字典作为唯一出口',
+                    d: 'REQ：四算主数据模型 / 口径裁定流程 / 指标字典接口',
+                },
+            ].map((r, i) => (
+                <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 6, alignItems: 'stretch' }}>
+                    <Box style={{ width: 400, background: '#FFF3EE', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '0 11px', flexDirection: 'column', justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 10.5, color: '#C43A17', fontWeight: 'bold', lineHeight: 1.35 }}>{r.id}</Text>
+                    </Box>
+                    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, padding: '0 11px', flexDirection: 'column', justifyContent: 'center', gap: 2 }}>
+                        <Text style={{ fontSize: 10, color: '#5A6070', lineHeight: 1.3 }}>P：{r.a}</Text>
+                        <Text style={{ fontSize: 10, color: '#5A6070', lineHeight: 1.3 }}>R：{r.b}</Text>
+                        <Text style={{ fontSize: 10, color: '#3A4050', lineHeight: 1.3 }}>B：{r.c}</Text>
+                        <Text style={{ fontSize: 10, color: '#0F1423', lineHeight: 1.3 }}>S：{r.d}</Text>
+                    </Box>
+                </Box>
+            ))}
+        </Box>
+
+        {/* 下：三条规则 */}
+        <Box style={{ height: 44, flexDirection: 'row', gap: 7 }}>
+            {[
+                { k: '可上不可下', v: '每条根因必须至少有一条变革建议，每条建议必须至少有一条需求', c: '#FA4F24', dark: true },
+                { k: '空号即作废', v: '不写「待定」，写不出就删掉这条痛点，不进矩阵', c: '#F87D2F', dark: false },
+                { k: '反向可查', v: '评审时抽任意一条需求，能三分钟倒推回痛点原话', c: '#C43A17', dark: false },
+            ].map((x) => (
+                <Box key={x.k} style={{ flex: 1, background: x.dark ? '#0F1423' : '#F7F7F8', borderLeft: '4px solid ' + x.c, borderRadius: 3, padding: '0 12px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: x.dark ? '#FBA15C' : '#0F1423' }}>{x.k}</Text>
+                    <Text style={{ fontSize: 10, color: x.dark ? 'rgba(255,255,255,0.86)' : '#5A6070', lineHeight: 1.3, marginTop: 2 }}>{x.v}</Text>
+                </Box>
+            ))}
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+            <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · 利星能业务变革咨询方法论</Text>
+        </Box>
+        <Text style={{ fontSize: 14, color: '#8A8F99' }}>10 / 36</Text>
+    </Box>
+</Slide>
