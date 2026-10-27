@@ -1,0 +1,65 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    本册覆盖<span style={{ color: '#FA4F24' }}>五个部分</span>，把智能体从概念拆到可交付的治理体系
+  </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 总论 · 与本体的关系 · 自身 4A · 治理评测演进，每部分均含「方法 · 内容 · 模板」
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 26, paddingBottom: 14, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左 60% 三条 */}
+        <Box style={{ width: 680, flexDirection: 'column', gap: 13 }}>
+ {[
+          { n: '01', t: 'Agent 总论', d: '它是什么、六个组成部件、能力档位与上下文工程', tag: 'P05–10' },
+     { n: '02', t: 'Agent 与 Ontology', d: '三条硬边界、SOP 进本体、工具装配清单', tag: 'P11–16' },
+      { n: '03', t: 'Agent 自身的 4A', d: '岗位划分、数据边界、编排拓扑、运行时非功能', tag: 'P17–23' },
+        ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px', gap: 16 }}>
+          <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#FA4F24', width: 48 }}>{it.n}</Text>
+     <Box style={{ width: 208 }}>
+             <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+        </Box>
+    <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.4, flex: 1 }}>{it.d}</Text>
+   <Text style={{ fontSize: 13, color: '#C43A17', width: 64, textAlign: 'right' }}>{it.tag}</Text>
+   </Box>
+            ))}
+   </Box>
+
+        {/* 右 40% 两条 + 收口 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 13 }}>
+     {[
+    { n: '04', t: '治理、评测与演进', d: '五道门、五类失败模式、六层评测、四步演进', tag: 'P24–29' },
+      { n: '05', t: '收口与全书串联', d: '五个坑与六册主线收束', tag: 'P30' },
+            ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 20px' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 14 }}>
+         <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#FA4F24' }}>{it.n}</Text>
+     <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+     </Box>
+        <Text style={{ fontSize: 15, color: '#3A4050', lineHeight: 1.45, marginTop: 8 }}>{it.d}</Text>
+     <Text style={{ fontSize: 13, color: '#C43A17', marginTop: 6 }}>{it.tag}</Text>
+    </Box>
+    ))}
+      <Box style={{ flex: 1.4, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '18px 20px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>全册一条主线</Text>
+   <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5, marginTop: 8 }}>
+          Agent 不是「会聊天的模型」，而是「有职权的角色」—— 岗位、授权、停手条件，缺一不可
+    </Text>
+       </Box>
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+ <Text style={{ fontSize: 14, color: '#8A8F99' }}>硕磐机密 · Agent智能体咨询方法论</Text>
+    </Box>
+      <Text style={{ fontSize: 14, color: '#8A8F99' }}>02 / 30</Text>
+    </Box>
+</Slide>

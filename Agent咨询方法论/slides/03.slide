@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+   <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  序论：模型会思考之后，瓶颈<span style={{ color: '#FA4F24' }}>从能不能做变成谁来负责</span>
+    </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+            前五册把企业长什么样讲完了，这一册解决谁来替人跑这一段流程
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+ {/* 左：三次跃迁 */}
+        <Box style={{ width: 540, flexDirection: 'column', gap: 8 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>过去三年的三次跃迁</Text>
+ {[
+      { n: '第一次', t: '能回答', d: '模型能写邮件、能写代码。瓶颈是知识与算力', y: '2023–2024' },
+      { n: '第二次', t: '能调用', d: '模型能查系统、能填表单。瓶颈是工具与权限', y: '2024–2025' },
+        { n: '第三次', t: '能负责', d: '模型能承担一段有始有终的流程。瓶颈是职责与治理', y: '2025–现在' },
+  ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: i === 2 ? '#FA4F24' : '#0F1423', borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 18px', gap: 14 }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: i === 2 ? 'rgba(255,255,255,0.75)' : '#FBA15C', width: 56 }}>{it.n}</Text>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF', width: 78 }}>{it.t}</Text>
+            <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>{it.y}</Text>
+   </Box>
+       ))}
+            <Box style={{ height: 76, background: '#F7F7F8', borderRadius: 4, padding: '12px 18px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>★ 关键转折</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.45, marginTop: 4 }}>
+    前两次跃迁解决的是技术可行性，第三次跃迁撞上的是管理问题：谁授权、谁担责、错了怎么退。这三个问题没有技术答案，只有架构答案。
+          </Text>
+        </Box>
+      </Box>
+
+        {/* 右：四个撞墙处 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>企业现场最常听到的四句话</Text>
+ {[
+  { t: '「它答得挺像的，但不敢让它动」', d: '没有可被调用的受控动作，写回无门' },
+          { t: '「上了之后没人知道它干了什么」', d: '没有轨迹与决策日志，出事无法定位' },
+     { t: '「测试时挺好，上线就不一样」', d: '没有评测集，只有几次人工试用' },
+    { t: '「一个请求花掉几十块钱」', d: '成本黑箱，循环无终止条件' },
+   ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+       <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.4, marginTop: 3 }}>{it.d}</Text>
+        </Box>
+      ))}
+            <Box style={{ height: 66, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C' }}>这四句话都不是模型的问题</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45, marginTop: 4 }}>
+        它们分别是架构、治理、评测、成本四个层面的缺口 —— 正是这一册要补的四件事
+  </Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>03 / 30</Text>
+    </Box>
+</Slide>

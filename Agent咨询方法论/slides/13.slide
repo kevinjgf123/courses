@@ -1,0 +1,52 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之内容：<span style={{ color: '#FA4F24' }}>三条硬边界</span>，这是 Agent 架构的宪法三条
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     这三条守住了，Agent 就能过安全评审；破了一条，其他治理动作都白做
+        </Text>
+ </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 三条边界 */}
+      {[
+   { n: '边界一', t: 'Agent 的一切认知来自本体', r: '它自己不持有业务事实', bad: '把口径写在提示词里、把规则藏在代码注释里', why: '一旦脱离本体，同一个概念在两个 Agent 里就有两个解释', ok: '提示词里只写「怎么判断」，不写「事实是什么」', c: '#0F1423' },
+        { n: '边界二', t: 'Agent 的一切改变通过 Action', r: '它自己直连任何外部系统都算越权', bad: '自己拼 SQL 改数据、自己调外部接口写回', why: '绕过 Action 就绕过了校验、权限与审计', ok: '工具是 Action 的封装，不是新的数据入口', c: '#2A2F3D' },
+        { n: '边界三', t: 'Agent 以最终用户的身份执行', r: '它不是超级账号', bad: '用服务号统一高权，绕过个人权限', why: '一旦模型串味或被注入，个人数据就全暴露了', ok: '权限继承到最终用户，模型看不到的他也看不到', c: '#FA4F24' },
+      ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid ' + it.c }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: it.c, width: 54 }}>{it.n}</Text>
+       <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', width: 320 }}>{it.t}</Text>
+          <Text style={{ fontSize: 13, color: '#C43A17', flex: 1, lineHeight: 1.35 }}>{it.r}</Text>
+    </Box>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 8 }}>
+     <Text style={{ fontSize: 12, color: '#C43A17', width: 54 }}>✕</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', width: 320, lineHeight: 1.35 }}>{it.bad}</Text>
+        <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.why}</Text>
+   </Box>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 5 }}>
+            <Text style={{ fontSize: 12, color: '#FA4F24', width: 54 }}>✓</Text>
+      <Text style={{ fontSize: 13, color: '#5A6072', width: 320, lineHeight: 1.35 }}>{it.ok}</Text>
+     <Text style={{ fontSize: 13, color: '#0F1423', flex: 1, fontWeight: 'bold', lineHeight: 1.35 }}>{it.r}</Text>
+          </Box>
+        </Box>
+      ))}
+
+      {/* 边界三的特别说明 */}
+      <Box style={{ height: 66, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 148 }}>边界三为什么最要紧</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+      边界一错了是口径不一致，边界二错了是审计缺失，只有边界三错了会直接造成数据泄露。而且它平时不出事 —— 出事就是一次注入攻击。所以这条必须由架构强制，不靠开发自觉。
+   </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+    </Box>
+</Slide>

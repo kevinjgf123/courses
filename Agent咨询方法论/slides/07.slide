@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之内容：<span style={{ color: '#FA4F24' }}>六个组成部件</span>，少一个就退化成一个聊天框
+        </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     这六件在架构上分别对应六处设计，做方案时逐件问自己有没有
+   </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 六件两行三列 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        {[
+      { n: 'C1', t: '指令', d: '系统提示词：任务说明、步骤指引、输出格式', q: '写没写清「怎么算是做对了」', c: '#0F1423' },
+    { n: 'C2', t: '应用变量', d: '运行时注入的动态参数，控制它的行为', q: '参数来源是否都可追溯', c: '#0F1423' },
+    { n: 'C3', t: '检索上下文', d: '每轮对话动态取回的相关信息', q: '取的是事实还是文本碎片', c: '#2A2F3D' },
+        ].map((it, i) => (
+  <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FBA15C' }}>{it.n}</Text>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+     </Box>
+      <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4, marginTop: 8 }}>{it.d}</Text>
+       <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', lineHeight: 1.35, marginTop: 8 }}>{it.q}</Text>
+    </Box>
+    ))}
+      </Box>
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+  {[
+          { n: 'C4', t: '工具', d: '外部能力与接口，做它权限范围内的实际动作', q: '每个工具是否对应一个 Action', c: '#2A2F3D' },
+      { n: 'C5', t: '技能', d: '按需加载的专业能力包，用完即退不占上下文', q: '技能是否按需披露而非全量塞入', c: '#5A6072' },
+          { n: 'C6', t: '记忆', d: '会话内的连续状态，以及跨会话的长期记录', q: '长期记忆写在哪、谁能看', c: '#5A6072' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FBA15C' }}>{it.n}</Text>
+         <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+       </Box>
+      <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4, marginTop: 8 }}>{it.d}</Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', lineHeight: 1.35, marginTop: 8 }}>{it.q}</Text>
+          </Box>
+      ))}
+      </Box>
+
+      {/* 关键提示条 */}
+      <Box style={{ height: 84, background: '#FA4F24', borderRadius: 4, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 18 }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', width: 100 }}>最容易被忽略的 C5</Text>
+    <Box style={{ flex: 1 }}>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.96)', lineHeight: 1.5 }}>
+     技能（Skill）的价值是「按需披露」：启动时它只知道技能的名字和描述，等任务真的相关了才把完整内容读进来。全部能力一次性塞进上下文，是 Agent 上下文膨胀最常见的原因。
+    </Text>
+        </Box>
+        <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', width: 176, textAlign: 'right', lineHeight: 1.4 }}>
+    一个 Agent 挂 30 个技能没事，挂 300 个就会开始变笨
+        </Text>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+    </Box>
+</Slide>

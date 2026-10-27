@@ -1,0 +1,56 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+       之总览：Agent 落在 4A 的<span style={{ color: '#FA4F24' }}>哪一格、哪一层</span>
+     </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   Agent 不是第五个架构，它是四层架构在「有职权」这一维度上的重新投影
+        </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 8 }}>
+  {/* 表头 */}
+        <Box style={{ flexDirection: 'row', gap: 8 }}>
+    <Box style={{ width: 92, background: '#0F1423', padding: '6px 0', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>4A 层</Text></Box>
+          <Box style={{ flex: 1, background: '#0F1423', padding: '6px 0', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>传统应用里的对应物</Text></Box>
+     <Box style={{ flex: 1.35, background: '#0F1423', padding: '6px 0', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>Agent 场景下变成什么</Text></Box>
+  <Box style={{ width: 250, background: '#0F1423', padding: '6px 0', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>Agent 独有的那部分</Text></Box>
+        </Box>
+
+      {[
+   { a: 'BA', b: '岗位、流程、职责边界', c: '岗位被拆成「人做的部分 + Agent 做的部分 + 必须人做的部分」', d: '职权边界：读什么、改什么、决定什么', col: '#FA4F24' },
+    { a: 'DA', b: '数据模型、表结构、指标口径', c: '数据分层为本体事实 + 上下文 + 记忆，三层各有预算', d: '记忆分层与会话态隔离', col: '#F87D2F' },
+        { a: 'AA', b: '应用清单、集成关系、调用链',    c: '应用变成 Agent 拓扑：谁调度谁、谁交接给谁', d: '编排拓扑与身份传递', col: '#E0651A' },
+   { a: 'TA', b: '运行环境、中间件、非功能指标', c: '运行时多了模型服务、上下文窗口、工具网关、终止控制', d: '步数 / 成本 / 超时 / 熔断', col: '#C43A17' },
+      ].map((it, i) => (
+    <Box key={it.a} style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+        <Box style={{ width: 92, background: '#F7F7F8', borderLeft: '4px solid ' + it.col, alignItems: 'center', justifyContent: 'center' }}>
+ <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.col }}>{it.a}</Text>
+          </Box>
+  <Box style={{ flex: 1, background: '#F7F7F8', padding: '8px 12px', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 13, color: '#5A6072', lineHeight: 1.4 }}>{it.b}</Text>
+     </Box>
+     <Box style={{ flex: 1.35, background: '#F7F7F8', padding: '8px 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, color: '#0F1423', lineHeight: 1.4 }}>{it.c}</Text>
+       </Box>
+   <Box style={{ width: 250, background: '#FFF3EE', padding: '8px 12px', justifyContent: 'center', borderLeft: '1px solid #FBA15C' }}>
+   <Text style={{ fontSize: 13, color: '#C43A17', fontWeight: 'bold', lineHeight: 1.4 }}>{it.d}</Text>
+    </Box>
+        </Box>
+      ))}
+
+  <Box style={{ height: 62, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 168 }}>一句话总结这一页</Text>
+   <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+          传统应用里，架构决定「系统能做什么」；Agent 应用里，架构还要额外决定「它被允许做什么」。这多出来的一层，就是职权、编排、终止与留痕。管不好这层，Agent 就从自动化资产变成风险资产。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>18 / 30</Text>
+    </Box>
+</Slide>

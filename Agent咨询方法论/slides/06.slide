@@ -1,0 +1,71 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+   <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之方法：<span style={{ color: '#FA4F24' }}>Agent 是有职权的角色，不是会聊天的模型</span>
+  </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     定义清楚这四条，它才是一个可以被架构、被治理、被追责的东西
+        </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+     {/* 左：四要素 */}
+        <Box style={{ width: 560, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>四要素定义</Text>
+      {[
+    { n: 'E1', t: '岗位', d: '它替代的是组织里哪一个岗位的哪一部分职责', why: '说不出岗位，就无法评估它做得对不对' },
+         { n: 'E2', t: '职权', d: '它被授权到能读什么、能改什么、能决定什么', why: '职权不清，就无法做安全评审' },
+     { n: 'E3', t: '停手', d: '遇到什么情况它必须停下来交给人', why: '没有停手条件，就是一个失控的自动化' },
+            { n: 'E4', t: '留痕', d: '它每次判断依据什么、做了什么、结果如何', why: '不留痕，出事无法定位、无法优化' },
+        ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 13 }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', width: 30 }}>{it.n}</Text>
+     <Box style={{ width: 60 }}>
+    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+   </Box>
+  <Box style={{ flex: 1 }}>
+      <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.35 }}>{it.d}</Text>
+     </Box>
+    <Text style={{ fontSize: 12, color: '#8A8F99', width: 168, lineHeight: 1.3 }}>{it.why}</Text>
+  </Box>
+       ))}
+     <Box style={{ height: 74, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>四要素缺一，Agent 就退回成一个 Demo</Text>
+            <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 5 }}>
+    只给模型接了工具、没有职权边界，那是自动化脚本；没有停手条件，那是定时炸弹；没有留痕，那是黑盒。三个都不解决，上生产是不能批的。
+       </Text>
+ </Box>
+      </Box>
+
+        {/* 右：与近亲的区别 */}
+   <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>和三个近亲的区别</Text>
+  {[
+      { a: '大模型', b: '无岗位无职权，无状态，按输入输出', d: 'Agent 有岗位有职权，有连续会话与记忆' },
+        { a: 'RPA 机器人', b: '按人定的固定步骤走，路径确定', d: 'Agent 路径部分由模型判断，路径有不确定性' },
+     { a: '聊天机器人', b: '只在对话框里说话，说完就忘', d: 'Agent 会动手改真实系统，并留下决策链' },
+ ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', width: 96 }}>{it.a}</Text>
+     <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>{it.b}</Text>
+   </Box>
+        <Text style={{ fontSize: 13, color: '#8A5A20', lineHeight: 1.4, marginTop: 4 }}>Agent：{it.d}</Text>
+   </Box>
+      ))}
+     <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FA4F24' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 118 }}>★ 选型判断</Text>
+   <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>
+ 路径完全确定、输入结构化 —— 用 RPA；只需读与答 —— 用 RAG 加查询；要判断与承担 —— 才轮到 Agent
+     </Text>
+   </Box>
+    </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>06 / 30</Text>
+    </Box>
+</Slide>

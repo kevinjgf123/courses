@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之评审：<span style={{ color: '#FA4F24' }}>上线评审十二项</span>，一项不通过就不许上线
+  </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 与传统上线评审最大的不同：Agent 要评审它的失败路径，而不只是它的功能路径
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 四组 × 三项 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+        {[
+          { g: '岗位与授权', c: '#FA4F24', items: [
+        { n: '01', t: '岗位说明书是否已签署', d: '明确替代谁、哪部分职责、验收口径' },
+    { n: '02', t: '职权清单是否与授权矩阵一致', d: '每一个动作都能找到对应的岗位授权' },
+        { n: '03', t: '是否明确人类保留事项', d: '五类决定不允许交给 Agent' }] },
+          { g: '本体与数据', c: '#F87D2F', items: [
+      { n: '04', t: '是否无 Agent 私有事实', d: '口径、关系、权限全部来自本体' },
+        { n: '05', t: '上下文规格书是否完成', d: '来源、预算、时效、压缩、不可信标记' },
+            { n: '06', t: '记忆是否有 TTL 与清除入口', d: '错误不会被长期复现' }] },
+   ].map((grp, gi) => (
+          <Box key={grp.g} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + grp.c, padding: '9px 12px', flexDirection: 'column' }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: grp.c, marginBottom: 5 }}>{grp.g}</Text>
+     {grp.items.map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+     <Text style={{ fontSize: 11, fontWeight: 'bold', color: grp.c, width: 20 }}>{it.n}</Text>
+  <Box style={{ flex: 1 }}>
+  <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+  <Text style={{ fontSize: 10, color: '#8A8F99', marginTop: 1 }}>{it.d}</Text>
+    </Box>
+      </Box>
+         ))}
+   </Box>
+        ))}
+      </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+     {[
+    { g: '运行时与终止', c: '#E0651A', items: [
+      { n: '07', t: '五条终止条件是否已配置', d: '步数、成本、超时、重复、置信' },
+       { n: '08', t: '降级路径是否已演练', d: '超限或失败时能自动转人工' },
+            { n: '09', t: '成本归集是否可按任务下钻', d: '能说清钱花在哪一步' }] },
+          { g: '质量与留痕', c: '#C43A17', items: [
+       { n: '10', t: '六层评测是否跑通并留档', d: 'L5 越权防御必须 100%' },
+   { n: '11', t: '五道门是否逐项验证过', d: '含注入样本与停手样本' },
+      { n: '12', t: '退役预案是否写好', d: '一键停用后业务如何兜底' }] },
+      ].map((grp, gi) => (
+          <Box key={grp.g} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderTop: '3px solid ' + grp.c, padding: '9px 12px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: grp.c, marginBottom: 5 }}>{grp.g}</Text>
+       {grp.items.map((it, i) => (
+     <Box key={it.n} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+   <Text style={{ fontSize: 11, fontWeight: 'bold', color: grp.c, width: 20 }}>{it.n}</Text>
+      <Box style={{ flex: 1 }}>
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+  <Text style={{ fontSize: 10, color: '#8A8F99', marginTop: 1 }}>{it.d}</Text>
+     </Box>
+          </Box>
+      ))}
+      </Box>
+    ))}
+      </Box>
+
+      <Box style={{ height: 66, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 148 }}>评审的否决权</Text>
+   <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+ 第 03、06、09、12 项为一票否决项 —— 人类保留事项没写清、记忆无法清除、成本无法下钻、退役没有预案，任何一项缺失都意味着出事时无法止损。Agent 上线评审要拿到业务、架构、安全、法务四方签字，不是技术团队自己签个字就放行。
+     </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>28 / 30</Text>
+    </Box>
+</Slide>

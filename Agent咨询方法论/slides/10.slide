@@ -1,0 +1,69 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+     <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>上下文工程四问</span>，比调模型更影响结果
+        </Text>
+  <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     模型只看得见你给它的东西。这一页决定它看得见什么、看不见什么
+        </Text>
+ </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+      {/* 左四问 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   {[
+  { n: 'Q1', t: '塞什么', d: '只塞这一轮判断必需的事实，不塞「相关的一切」', c: '#0F1423' },
+    { n: 'Q2', t: '塞多少', d: '上下文窗口是有限资源，超出会报错或截断', c: '#2A2F3D' },
+            { n: 'Q3', t: '怎么压缩', d: '长历史要压成结构化摘要，压完要验没压掉关键条件', c: '#5A6072' },
+     { n: 'Q4', t: '怎么隔离', d: '不可信内容要明确标记，不能与指令混在一起', c: '#FA4F24' },
+        ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 13 }}>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FBA15C', width: 30 }}>{it.n}</Text>
+      <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FFFFFF', width: 84 }}>{it.t}</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+   </Box>
+       ))}
+      <Box style={{ height: 86, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>上下文窗口里到底装了什么</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 5 }}>
+          系统提示词与指令说明、对话历史、这一轮检索回来的上下文、应用变量，以及工具本身的描述。全都算。所以「工具多」和「技能多」都会直接吃掉预算。
+        </Text>
+      </Box>
+        </Box>
+
+      {/* 右：两种错误做法 + 规格书 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>两种最常见的错误做法</Text>
+          {[
+            { t: '把所有工具描述全量注入', d: '工具一多，模型选错工具的概率明显上升；正确做法是按岗位裁剪，只给这个岗位真正用得上的', fix: '工具按岗位做作用域，不是全量可见' },
+   { t: '把检索到的原文直接拼进提示', d: '一是不准，二是原文里的「忽略前面的话」这类内容会被当指令执行', fix: '不可信内容必须包在明确的边界标记里' },
+   ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '12px 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+            <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.4, marginTop: 4 }}>{it.d}</Text>
+    <Text style={{ fontSize: 12, color: '#8A5A20', lineHeight: 1.35, marginTop: 6 }}>正确做法：{it.fix}</Text>
+        </Box>
+       ))}
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>上下文规格书要写五项</Text>
+          {[
+        { k: '来源', v: '每一项来自哪个对象或数据集' },
+            { k: '预算', v: '单轮上限、整场会话上限' },
+            { k: '时效', v: '多久重取一次，过期如何标注' },
+      { k: '压缩规则', v: '什么条件下触发压缩，压成什么样' },
+            { k: '不可信标记', v: '哪些内容来自外部，必须隔离' },
+          ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 82 }}>{it.k}</Text>
+        <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.v}</Text>
+   </Box>
+       ))}
+    </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+  <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>10 / 30</Text>
+    </Box>
+</Slide>

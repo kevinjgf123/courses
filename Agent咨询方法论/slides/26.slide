@@ -1,0 +1,57 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+ <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之失效：<span style={{ color: '#FA4F24' }}>五类典型失败模式</span>，每一类都有对应的设计动作
+  </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+  这五类占了企业级 Agent 线上事故的绝大部分，且都能在设计阶段提前挡住
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+     <Box style={{ width: 150, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>失败模式</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>典型症状</Text></Box>
+    <Box style={{ flex: 1, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>根因</Text></Box>
+        <Box style={{ flex: 1, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>设计阶段的对策</Text></Box>
+      </Box>
+
+      {[
+      { n: '上下文膨胀', s: '越跑越慢、开始胡言乱语', r: '把所有相关资料一股脑塞进窗口', f: '上下文规格书 + 预算分配 + 分层压缩', c: '#FA4F24' },
+        { n: '级联错误', s: '第一步判断错，后面全错', r: '上游没有校验，下游无条件信任', f: 'Action 前置校验 + 关键节点交叉验证', c: '#F87D2F' },
+        { n: '循环烧钱', s: '同一个工具反复调用不停', r: '没有步数与重复检测的终止条件', f: '五条终止条件 + 熔断 + 预算硬上限', c: '#E0651A' },
+      { n: '成本黑箱', s: '账单突然上涨说不清在哪', r: '没有按任务、按 Agent 的成本归集', f: '成本埋点下沉到轨迹层，按任务出报表', c: '#C43A17' },
+    { n: '权限泄漏', s: '看到了本不该看到的内容', r: '用服务账号统一提权，绕过了个人权限', f: '权限继承最终用户 + 数据集级可见范围', c: '#0F1423' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+      <Box style={{ width: 150, background: '#F7F7F8', borderLeft: '4px solid ' + it.c, padding: '0 12px', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.n}</Text>
+  </Box>
+      <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4 }}>{it.s}</Text>
+        </Box>
+     <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 12, color: '#5A6072', lineHeight: 1.4 }}>{it.r}</Text>
+   </Box>
+       <Box style={{ flex: 1, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 12, color: '#C43A17', fontWeight: 'bold', lineHeight: 1.4 }}>{it.f}</Text>
+       </Box>
+      </Box>
+      ))}
+
+      <Box style={{ height: 74, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 148 }}>一个共同点</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.5 }}>
+    这五类里没有一类是「模型不够强」造成的 —— 全部是架构与配置问题。所以 Agent 项目失败的根因，通常不在模型选型，而在于没有人把上下文、校验、终止、成本、权限这五件事当成设计对象。
+     </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+    </Box>
+</Slide>

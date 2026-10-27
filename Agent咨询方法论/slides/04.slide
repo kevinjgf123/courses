@@ -1,0 +1,70 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+  <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之方法：<span style={{ color: '#FA4F24' }}>Agent Approach 七阶段</span>，先做什么后做什么，每步产出什么
+    </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   每一阶段都有明确交付物与退出条件，不允许「先搭出来再看看能干什么」
+   </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 20, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 8 }}>
+        {/* 表头 */}
+        <Box style={{ height: 26, flexDirection: 'row', gap: 6 }}>
+    {['阶段', '做什么', '产出物', '退出条件'].map((h, i) => (
+      <Box key={i} style={{ flex: i === 1 ? 2.1 : i === 2 ? 2.3 : 1.5, background: '#0F1423', padding: '0 12px', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', letterSpacing: 1 }}>{h}</Text>
+          </Box>
+   ))}
+    </Box>
+        {/* 七行 */}
+ {[
+ { n: 'S1', a: '场景与岗位定义', b: '找出真正可交出去的整段流程', c: '场景清单 + 岗位说明书', d: '说得清这个岗位替代的是谁的哪部分工作' },
+   { n: 'S2', a: '本体与动作就绪评估', b: '逐个核对认知与写入是否已具备', c: '就绪度报告 + 缺口清单', d: '关键认知与动作八成以上可用' },
+          { n: 'S3', a: '上下文设计', b: '定义塞什么、塞多少、怎么压缩', c: '上下文规格书', d: '上下文来源全部指向本体，无私有事实' },
+            { n: 'S4', a: '工具与技能装配', b: '把动作与查询接成可用工具', c: '工具装配表 + 技能目录', d: '每个工具都能追溯到一个 Action' },
+        { n: 'S5', a: '权限与终止条件', b: '定义谁授权、何时必须停手', c: '权限矩阵 + 停手条件表', d: '每类风险都有明确停手阈值' },
+   { n: 'S6', a: '评测集与试运行', b: '用历史真实案例建评测基线', c: '评测集 + 试运行报告', d: '关键指标达标且失败可解释' },
+            { n: 'S7', a: '上线与演进治理', b: '定退役预案与扩量节奏', c: '上线评审表 + 退役预案', d: '任一阶段可回退到人工作业' },
+        ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
+    <Box style={{ flex: 1.5, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 26 }}>{it.n}</Text>
+   <Text style={{ fontSize: 14, color: '#0F1423', fontWeight: 'bold' }}>{it.a}</Text>
+   </Box>
+     <Box style={{ flex: 2.1, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.35 }}>{it.b}</Text>
+      </Box>
+      <Box style={{ flex: 2.3, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, color: '#C43A17', lineHeight: 1.35 }}>{it.c}</Text>
+    </Box>
+        <Box style={{ flex: 1.5, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.35 }}>{it.d}</Text>
+  </Box>
+      </Box>
+  ))}
+        {/* 三条硬规则 */}
+        <Box style={{ height: 52, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 18px', gap: 16 }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', letterSpacing: 1 }}>三条硬规则</Text>
+            {['先单 Agent 后多 Agent', '先只读建议后受限自主', '先评估后扩量'].map((t, i) => (
+                <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+      <Box style={{ width: 5, height: 5, background: '#FFFFFF', borderRadius: 3 }} />
+                    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)' }}>{t}</Text>
+           </Box>
+            ))}
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', flex: 1, textAlign: 'right' }}>
+     多 Agent 不是更先进，是更贵、更难测、更难停 —— 没有单 Agent 跑不通就别上
+        </Text>
+   </Box>
+    </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>04 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,88 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  之 BA：<span style={{ color: '#FA4F24' }}>岗位划分</span>，Agent 落在组织图的哪一格
+     </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   Agent 架构师最常犯的错，是先想「Agent 要做什么」，而不是先想「人原来做什么」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+        {/* 左：职责三分法 */}
+   <Box style={{ width: 356, background: '#F7F7F8', borderRadius: 4, padding: '12px 14px', flexDirection: 'column' }}>
+    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>一岗三分的职责切分</Text>
+     <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 2, marginBottom: 8 }}>任何岗位引入 Agent 前都必须先做这一次切分</Text>
+   {[
+   { t: 'Agent 做', d: '高频、判断规则明确、出错可回滚', pct: '建议占比 60~70%', c: '#FA4F24', bg: '#FFF3EE' },
+      { t: 'Agent 建议、人做', d: '规则存在但例外多、需要担责', pct: '建议占比 20~30%', c: '#F87D2F', bg: '#FFF8F2' },
+     { t: '人做、Agent 辅助', d: '价值判断、跨组织协同、不可逆', pct: '必须保留', c: '#0F1423', bg: '#FFFFFF' },
+   ].map((it, i) => (
+       <Box key={it.t} style={{ flex: 1, background: it.bg, borderRadius: 3, padding: '8px 12px', marginBottom: i === 2 ? 0 : 7, borderLeft: '4px solid ' + it.c }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <Text style={{ fontSize: 16, fontWeight: 'bold', color: it.c, flex: 1 }}>{it.t}</Text>
+    <Text style={{ fontSize: 11, color: '#8A8F99' }}>{it.pct}</Text>
+   </Box>
+     <Text style={{ fontSize: 12, color: '#5A6072', marginTop: 3, lineHeight: 1.4 }}>{it.d}</Text>
+    </Box>
+       ))}
+   <Box style={{ height: 52, background: '#0F1423', borderRadius: 3, padding: '0 12px', justifyContent: 'center', marginTop: 8 }}>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45 }}>
+ 切口选错：把「需要担责的判断」交给 Agent，是企业级 Agent 事故的头号来源。
+    </Text>
+      </Box>
+      </Box>
+
+     {/* 右：人类保留清单 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   <Box style={{ height: 178, background: '#FFFFFF', border: '1px solid #E8E8E8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 6 }}>五类决定必须留在人手里</Text>
+        {[
+              '决定对人的处置：绩效、解聘、薪酬调整',
+    '决定资金与承诺：付款、报价、对外签署',
+   '决定合规与法律立场：定性、处罚、免责',
+     '决定不可逆操作：删除、停产、撤品种',
+ '决定冲突与例外：跨部门争议、合同例外',
+       ].map((t, i) => (
+     <Box key={t} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
+  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1).padStart(2, '0')}</Text>
+    <Text style={{ fontSize: 13, color: '#3A4050' }}>{t}</Text>
+      </Box>
+          ))}
+    </Box>
+
+     <Box style={{ height: 168, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 6 }}>岗位说明书的六个必填栏</Text>
+    <Box style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+    {[
+  { k: '岗位原名', v: '替代谁' },
+     { k: '职责范围', v: '哪部分' },
+          { k: '职权清单', v: '读 / 改 / 决' },
+          { k: '升级路径', v: '何时给人' },
+  { k: '验收口径', v: '怎么算做对' },
+    { k: '失败处置', v: '错了怎么办' },
+       ].map((it, i) => (
+ <Box key={it.k} style={{ width: 236, height: 46, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '6px 10px', marginBottom: 6 }}>
+   <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423' }}>{it.k}</Text>
+     <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 2 }}>{it.v}必须可验证，不能写「视情况」</Text>
+            </Box>
+      ))}
+            </Box>
+            </Box>
+
+  <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FBA15C', padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', width: 128 }}>组织侧的配套动作</Text>
+   <Text style={{ fontSize: 13, color: '#5A6072', flex: 1, lineHeight: 1.45 }}>
+    设Agent 责任人（对 Agent 的输出负责，不对代码负责）、建代理授权矩阵、把「Agent 建议采纳率」纳入团队指标。只有这三件事到位，Agent 才不会变成没人负责的灰色地带。
+   </Text>
+            </Box>
+   </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>19 / 30</Text>
+    </Box>
+</Slide>

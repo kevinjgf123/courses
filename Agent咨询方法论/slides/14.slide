@@ -1,0 +1,85 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+     <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之内容：<span style={{ color: '#FA4F24' }}>把 SOP 放进本体</span>，让 Agent 知道按什么规程办事
+        </Text>
+  <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 作业规程不进本体，Agent 就只能猜；进了本体，它就能被检索、被引用、被版本管理
+        </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+      {/* 左：SOP 语义化 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>SOP 语义化：从文档到对象</Text>
+            {[
+              { k: '拆条目', v: '把一份作业规程拆成一条条可独立触发的条目，不再是一整篇文档' },
+    { k: '挂对象', v: '每条挂到它管的对象类型上，标明适用场景与前置条件' },
+   { k: '标元数据', v: '给每条补上说明、适用场景、版本、生效日期、废止状态' },
+         { k: '连动作', v: '每条明确对应的动作类型与参数约束' },
+            ].map((it, i) => (
+       <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 13 }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 68 }}>{it.k}</Text>
+     <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{it.v}</Text>
+   </Box>
+      ))}
+            <Box style={{ height: 84, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>这一步为什么值得做</Text>
+    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 5 }}>
+      它带来的是「快速且准确的发现、解释与校验」：Agent 能检索到规程条目，也能理解这条在什么场景下用。规程改版时，只改一个对象的属性，不用重训、不用改提示词。
+       </Text>
+            </Box>
+   <Box style={{ height: 58, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FBA15C' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 116 }}>★ 反面做法</Text>
+            <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>
+   把整篇 SOP 塞进提示词。后果是：贵、慢，而且规程一改就得改提示词，版本必然对不上
+        </Text>
+            </Box>
+   </Box>
+
+      {/* 右：建议动作 Agent + 效果 */}
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>进阶：让另一个 Agent 来推荐动作</Text>
+    <Box style={{ height: 176, background: '#FA4F24', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center', gap: 9 }}>
+        {[
+        { n: '①', t: '检索规程条目', d: '按当前场景语义检索相关的 SOP 条目' },
+            { n: '②', t: '匹配可用动作', d: '同时从本体取回当前岗位被授权的动作清单' },
+   { n: '③', t: '生成动作序列', d: '输出为下游可确定的接口契约，而不是自由发挥' },
+       ].map((it, i) => (
+          <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
+        <Text style={{ fontSize: 17, fontWeight: 'bold', color: 'rgba(255,255,255,0.75)', width: 26 }}>{it.n}</Text>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', width: 104 }}>{it.t}</Text>
+   <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+            </Box>
+       ))}
+      </Box>
+   <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>为什么要把动作清单也取回来</Text>
+       {[
+     { t: '不让模型自由发挥动作名', d: '它编一个不存在的动作，下游必然报错' },
+      { t: '按岗位过滤可执行动作', d: '越权动作压根不出现在清单里' },
+    { t: '保证输出可被下游解析', d: '接口契约确定，编排层不用做兜底猜测' },
+   ].map((it, i) => (
+      <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, marginTop: i === 0 ? 0 : 7 }}>
+       <Box style={{ width: 5, height: 5, background: '#FA4F24', borderRadius: 3, marginTop: 6 }} />
+     <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>
+      <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>　{it.d}
+       </Text>
+         </Box>
+       ))}
+      </Box>
+   <Box style={{ height: 52, background: '#FFF3EE', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FBA15C' }}>
+   <Text style={{ fontSize: 12, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>
+   这个 Agent 的价值不在于更聪明，而在于它把「该做哪几步」这件事从模型判断变成了规程驱动
+        </Text>
+        </Box>
+   </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>14 / 30</Text>
+    </Box>
+</Slide>

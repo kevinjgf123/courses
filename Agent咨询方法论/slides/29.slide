@@ -1,0 +1,65 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之演进：<span style={{ color: '#FA4F24' }}>从单 Agent 到 Agent 网络</span>的四步与各自的门槛
+        </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 每一步都要用数据证明前一步已经稳定，才允许往上走 —— 不允许一次性铺开
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 四步阶梯 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 8, alignItems: 'stretch' }}>
+        {[
+   { n: 'Step 1', t: '单 Agent · 只读建议', d: '只做分析与建议，全部动作由人执行', g: '门槛：无', m: '评测集跑通 L1–L3', c: '#8A8F99' },
+  { n: 'Step 2', t: '单 Agent · 审批执行', d: 'Agent 调动作，人逐条确认后生效', g: '门槛：建议采纳率 ≥ 70%', m: '连续四周稳定', c: '#FBA15C' },
+          { n: 'Step 3', t: '单 Agent · 受限自主', d: '低风险动作自动执行，高风险仍转人工', g: '门槛：L4 通过率 ≥ 85%', m: 'L5 必须 100%', c: '#FA4F24' },
+    { n: 'Step 4', t: 'Agent 网络 · 多角色协作', d: '按业务域拆成多个专业 Agent 协同', g: '门槛：出现真实分工需求', m: '单 Agent 已无法承载', c: '#0F1423' },
+      ].map((it, i) => (
+     <Box key={it.n} style={{ flex: 1, marginTop: i * 14, background: '#F7F7F8', borderRadius: 4, borderTop: '4px solid ' + it.c, padding: '10px 14px', flexDirection: 'column' }}>
+       <Text style={{ fontSize: 12, fontWeight: 'bold', color: it.c, letterSpacing: 1 }}>{it.n}</Text>
+   <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>{it.t}</Text>
+    <Text style={{ fontSize: 12, color: '#5A6072', marginTop: 6, lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+       <Box style={{ height: 40, background: '#FFFFFF', borderRadius: 3, padding: '5px 9px', marginTop: 6 }}>
+      <Text style={{ fontSize: 11, color: '#C43A17', fontWeight: 'bold' }}>{it.g}</Text>
+    <Text style={{ fontSize: 10, color: '#8A8F99', marginTop: 2 }}>{it.m}</Text>
+     </Box>
+          </Box>
+      ))}
+      </Box>
+
+      <Box style={{ height: 90, background: '#FFF3EE', borderRadius: 4, borderLeft: '5px solid #FBA15C', padding: '10px 16px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', marginBottom: 6 }}>三条不可跳步的硬规则</Text>
+    <Box style={{ flexDirection: 'row', gap: 10, flex: 1 }}>
+     {[
+   { n: '先单后多', d: '没有出现容量、分工、并行三类阈值中的任何一类，就不许拆多 Agent' },
+      { n: '先读后写', d: '只读建议稳定之前不开放任何写操作权限' },
+            { n: '先评估后扩量', d: '评测通过率不达标就不许扩场景、扩人数、扩数据范围' },
+     ].map((it, i) => (
+       <Box key={it.n} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '7px 10px' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+    <Text style={{ fontSize: 11, fontWeight: 'bold', color: '#FA4F24' }}>{String(i + 1)}</Text>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.n}</Text>
+        </Box>
+        <Text style={{ fontSize: 11, color: '#5A6072', marginTop: 3, lineHeight: 1.4 }}>{it.d}</Text>
+    </Box>
+      ))}
+      </Box>
+      </Box>
+
+      <Box style={{ height: 62, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 148 }}>退步也是选项</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+     指标连续下滑或出现越权事件时，允许主动降级回上一级，而不是硬扛。企业里最难的不是把 Agent 推到 L3，而是承认它只配得上 L2，然后重新设计岗位边界。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+ </Box>
+</Slide>

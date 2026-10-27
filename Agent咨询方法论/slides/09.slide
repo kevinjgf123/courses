@@ -1,0 +1,76 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之模板：<span style={{ color: '#FA4F24' }}>Agent 岗位说明书</span>，十格填不满就不许开工
+      </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     这张表就是给业务方签字的那份东西，也是后面所有评审的基准
+    </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+ {/* 左：十格 */}
+        <Box style={{ width: 640, flexDirection: 'column', gap: 7 }}>
+      <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '13px 16px', flexDirection: 'column', flex: 1 }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+    <Box style={{ width: 4, height: 20, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>交付异常处置助理</Text>
+            <Text style={{ fontSize: 12, color: '#8A8F99' }}>AG-01 · 责任岗位 交付运营专员 · 上线批次 一批</Text>
+        </Box>
+    {[
+        { k: '一句话职责', v: '识别交付异常订单，给出处置方案，人确认后落地' },
+            { k: '服务对象', v: '交付运营专员（主）、客户经理（只读）' },
+      { k: '触发时机', v: '每日 06:00 定时，或工单系统推送异常事件' },
+   { k: '输入上下文', v: '异常订单、在途库存、客户承诺记录、历史处置案例' },
+          { k: '可读对象', v: '订单、库存、客户、承运商、交付任务' },
+        { k: '可调动作', v: '变更交期（需人确认）、发起验收、关闭订单（需人确认）' },
+      { k: '停手条件', v: '涉及金额调整、客户投诉升级、首次违约 —— 一律转人' },
+    { k: '能力档位', v: 'L1 只给建议，试运行三个月后再评估升 L2' },
+   { k: '质量底线', v: '建议准确率 ≥ 90%；漏报率必须为 0，宁可多报' },
+            { k: '失败回退', v: '任一步失败即全流程转人工，工作流状态不改' },
+          ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 98 }}>{it.k}</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.v}</Text>
+         </Box>
+        ))}
+   </Box>
+            <Box style={{ height: 78, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>签字之前必须回答的一句话</Text>
+      <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 5 }}>
+            「如果它今天完全跑不起来，谁的哪部分工作会受影响、影响多大？」答不出来，说明这个岗位还没设计清楚，先别做。
+      </Text>
+     </Box>
+        </Box>
+
+        {/* 右：六条不合格判据 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>六条不合格判据</Text>
+          {[
+  { t: '职责写成了「回答问题」', d: '那不是岗位，是搜索框' },
+    { t: '可读对象写「全部数据」', d: '上下文必然爆炸，权限也无从评审' },
+        { t: '停手条件写「视情况而定」', d: '等于没有，事故时一定来不及' },
+    { t: '质量底线没数字', d: '「尽量准确」无法验收，也无法触发降级' },
+            { t: '失败回退写「人工介入」', d: '要写清转给谁、转什么状态、多久到人' },
+     { t: '没写服务对象', d: '权限和验收标准都无从确定' },
+    ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+       <Text style={{ fontSize: 12, color: '#3A2000', lineHeight: 1.35, marginTop: 2 }}>{it.d}</Text>
+      </Box>
+    ))}
+   <Box style={{ height: 58, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 12, color: '#8A8F99', lineHeight: 1.45 }}>
+       第六条最常被漏。没写服务对象，就无法回答「Agent 看到的是谁的权限」，权限泄漏风险直接上升一个等级。
+     </Text>
+        </Box>
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+  <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>09 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,48 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>没有本体的 Agent 会怎样</span>，五个具体撞墙场景
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    这五个场景我基本都能在客户现场对上号，都是「先做 Agent 后补本体」的真实代价
+        </Text>
+ </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 8 }}>
+ {[
+ { n: '①', t: '口径分叉', s: '同一个「客户」，提示词里写一遍、代码里判一次、另一个 Agent 又理解一遍', r: '结果：三个 Agent 给客户的定义都不一样，投诉无法归因', fix: '口径必须落在对象属性上，不落在提示词里' },
+        { n: '②', t: '动作对不上', s: '模型想调「调整交付日期」，系统里实际的动作叫「changeDeliveryDate」', r: '结果：反复重试、要么失败要么调错动作', fix: '动作名与参数契约从本体出，工具层做映射' },
+     { n: '③', t: '权限失控', s: '为了省事用统一服务号调接口，没按最终用户鉴权', r: '结果：一次提示词注入就能拖出全量敏感数据', fix: '继承最终用户权限，从架构上禁止服务号提权' },
+        { n: '④', t: '写回断链', s: 'Agent 直接调源系统接口，绕过了本体与动作层', r: '结果：状态不同步，出事查不到谁改的', fix: '所有改变必须回流为 Action，并留痕' },
+   { n: '⑤', t: '规程漂移', s: 'SOP 改了，提示词没改；或者改了三份不同版本', r: '结果：Agent 按旧规程办事，人已经按新规程执行', fix: '规程进本体，改一处生效一处，可版本追溯' },
+      ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '10px 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+    <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#FA4F24', width: 34 }}>{it.n}</Text>
+          <Box style={{ width: 118 }}>
+     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+         </Box>
+      <Box style={{ flex: 1.2 }}>
+    <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.35 }}>{it.s}</Text>
+              <Text style={{ fontSize: 13, color: '#C43A17', lineHeight: 1.35, marginTop: 3 }}>{it.r}</Text>
+        </Box>
+   <Box style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 9, borderLeft: '1px solid #F0C9AE', paddingLeft: 14 }}>
+     <Text style={{ fontSize: 12, color: '#FA4F24', fontWeight: 'bold' }}>✓</Text>
+        <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.35 }}>{it.fix}</Text>
+   </Box>
+      </Box>
+    ))}
+        <Box style={{ height: 54, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 130 }}>顺序上的硬结论</Text>
+ <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', flex: 1, lineHeight: 1.4 }}>
+      先有可用的本体与动作，再谈自主 Agent。倒过来的项目不是做不成，是做出来的每一处都要返工 —— 而 Agent 的返工成本比传统系统高得多，因为它改的是决策链。
+     </Text>
+  </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>15 / 30</Text>
+ </Box>
+</Slide>

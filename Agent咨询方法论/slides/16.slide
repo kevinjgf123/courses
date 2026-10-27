@@ -1,0 +1,75 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之模板：<span style={{ color: '#FA4F24' }}>Agent × Action 装配清单</span>，16 格填不满就不许进入试运行
+      </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        左列八格问「本体与动作准备好了吗」，右列八格问「这个 Agent 装配到位了吗」，每格只能填 有 / 半 / 无
+      </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 14 }}>
+        <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 12px', flexDirection: 'column' }}>
+       <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>动作侧 · 本体与 Action 就绪度</Text>
+    <Text style={{ fontSize: 11, color: '#8A8F99', marginBottom: 6 }}>对应 Approach 第二阶段</Text>
+         {[
+        { k: 'A1', t: '对象有身份', d: '关键对象有稳定主键与业务唯一标识' },
+      { k: 'A2', t: '关系有方向', d: '关联带基数与命名，不靠字段名猜' },
+   { k: 'A3', t: '属性有口径', d: '关键指标写明定义、粒度、计算式' },
+   { k: 'A4', t: '写操作已建模', d: '变更类操作建模为 Action Type，不是散装脚本' },
+   { k: 'A5', t: '写操作有校验', d: '前置条件、幂等键、回滚路径齐备' },
+     { k: 'A6', t: '权限已绑定', d: '每个 Action 挂到角色与数据可见范围' },
+    { k: 'A7', t: '有逆操作', d: '至少能补偿，不是只能硬扛' },
+     { k: 'A8', t: '有模拟环境', d: '可在沙箱里跑通，不碰生产数据' },
+        ].map((it, i) => (
+      <Box key={it.k} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FA4F24', width: 26 }}>{it.k}</Text>
+     <Box style={{ flex: 1 }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+         <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 1 }}>{it.d}</Text>
+    </Box>
+      <Box style={{ flexDirection: 'row', gap: 3 }}>
+  <Box style={{ width: 20, height: 17, borderRadius: 2, background: '#FFFFFF', border: '1px solid #C9CDD4', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 10, color: '#5A6072' }}>有</Text></Box>
+        <Box style={{ width: 20, height: 17, borderRadius: 2, background: '#FFFFFF', border: '1px solid #C9CDD4', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 10, color: '#5A6072' }}>半</Text></Box>
+        <Box style={{ width: 20, height: 17, borderRadius: 2, background: '#FFFFFF', border: '1px solid #C9CDD4', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 10, color: '#5A6072' }}>无</Text></Box>
+     </Box>
+      </Box>
+      ))}
+     </Box>
+
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 12px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 2 }}>Agent 侧 · 装配完备度</Text>
+        <Text style={{ fontSize: 11, color: '#8A8F99', marginBottom: 6 }}>对应 Approach 第三至第六阶段</Text>
+        {[
+          { k: 'G1', t: '岗位已定义', d: '一句话说清替代谁、哪部分职责' },
+          { k: 'G2', t: '上下文有规格', d: '来源、预算、时效、压缩、不可信标记' },
+          { k: 'G3', t: '工具已封装', d: '每个工具对应一个 Action，不连裸接口' },
+          { k: 'G4', t: '技能可渐进披露', d: '技能按需加载，不一次性塞满窗口' },
+        { k: 'G5', t: '记忆有分层', d: '会话态、任务态、长期态分开管' },
+  { k: 'G6', t: '权限继承到人', d: '以最终用户身份执行，不用服务号提权' },
+        { k: 'G7', t: '停手条件明确', d: '什么情况必须停下来交给人' },
+          { k: 'G8', t: '评测集已就绪', d: '有 30 条以上真实样例与判定标准' },
+     ].map((it, i) => (
+        <Box key={it.k} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#0F1423', width: 26 }}>{it.k}</Text>
+     <Box style={{ flex: 1 }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+            <Text style={{ fontSize: 11, color: '#8A8F99', marginTop: 1 }}>{it.d}</Text>
+     </Box>
+            <Box style={{ flexDirection: 'row', gap: 3 }}>
+    <Box style={{ width: 20, height: 17, borderRadius: 2, background: '#FFFFFF', border: '1px solid #C9CDD4', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 10, color: '#5A6072' }}>有</Text></Box>
+         <Box style={{ width: 20, height: 17, borderRadius: 2, background: '#FFFFFF', border: '1px solid #C9CDD4', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 10, color: '#5A6072' }}>半</Text></Box>
+         <Box style={{ width: 20, height: 17, borderRadius: 2, background: '#FFFFFF', border: '1px solid #C9CDD4', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 10, color: '#5A6072' }}>无</Text></Box>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>16 / 30</Text>
+    </Box>
+</Slide>

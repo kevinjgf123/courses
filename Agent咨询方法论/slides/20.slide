@@ -1,0 +1,72 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之 DA：<span style={{ color: '#FA4F24' }}>数据边界与记忆分层</span>，Agent 的数据架构有三层
+    </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 传统 DA 管的是「库里存什么」，Agent 的 DA 还要管「这次对话它能看见什么」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 三层数据带 */}
+      {[
+        { n: 'L1', t: '本体事实层', c: '#0F1423', bg: '#F7F7F8', w: '权威、可追溯、口径唯一',
+       items: ['业务对象与属性', '对象间关系与基数', '指标定义与计算式', '权限与可见范围'],
+   guard: '这一层不归Agent 管，归本体管。Agent 只读，不建自己的影子表。' },
+        { n: 'L2', t: '运行上下文层', c: '#FA4F24', bg: '#FFF3EE', w: '按预算装载、可压缩、可失效',
+items: ['本次任务相关对象切片', '命中的文档与条款片段', '工具返回的实时结果', '检索来源与引用标记'],
+       guard: '预算超了就压缩，宁可少给也不要让上下文溢出后靠模型自己截断。' },
+    { n: 'L3', t: 'Agent 记忆层', c: '#F87D2F', bg: '#FFF8F2', w: '会积累、有时效、可人工清除',
+ items: ['会话态：本轮对话临时变量', '任务态：本次任务的推进进度', '长期态：偏好与历史经验', '反馈态：被纠正过的记录'],
+    guard: '长期记忆必须有 TTL 与人工清除入口，否则错误会被 Agent 一遍遍复现。' },
+    ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, background: it.bg, borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '9px 14px', flexDirection: 'column' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c, width: 30 }}>{it.n}</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+    <Text style={{ fontSize: 11, color: '#8A8F99', flex: 1 }}>{it.w}</Text>
+    </Box>
+       <Box style={{ flexDirection: 'row', gap: 8, marginTop: 6, flex: 1 }}>
+        {it.items.map((x, k) => (
+  <Box key={k} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, padding: '5px 8px', justifyContent: 'center' }}>
+         <Text style={{ fontSize: 11, color: '#3A4050', lineHeight: 1.35 }}>{x}</Text>
+            </Box>
+          ))}
+     </Box>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 5 }}>
+     <Text style={{ fontSize: 11, color: '#C43A17' }}>⚠</Text>
+   <Text style={{ fontSize: 11, color: '#5A6072', flex: 1, lineHeight: 1.35 }}>{it.guard}</Text>
+      </Box>
+   </Box>
+      ))}
+
+      {/* 预算条 */}
+      <Box style={{ height: 76, background: '#0F1423', borderRadius: 4, padding: '9px 16px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 168 }}>上下文预算怎么分</Text>
+   <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', flex: 1, lineHeight: 1.4 }}>建议 35% 给本体事实切片，25% 给检索文档，20% 给工具与历史结果，10% 给技能定义，10% 留给输出推理</Text>
+      </Box>
+        <Box style={{ flexDirection: 'row', gap: 4, marginTop: 7, flex: 1 }}>
+     {[
+            { w: 35, t: '本体切片 35%', c: '#FA4F24' },
+        { w: 25, t: '检索 25%', c: '#F87D2F' },
+     { w: 20, t: '工具与历史 20%', c: '#FBA15C' },
+    { w: 10, t: '技能 10%', c: '#8A8F99' },
+            { w: 10, t: '输出 10%', c: '#5A6072' },
+          ].map((s, k) => (
+   <Box key={k} style={{ flex: s.w, background: s.c, borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 11, color: '#FFFFFF', fontWeight: 'bold' }}>{s.t}</Text>
+    </Box>
+        ))}
+  </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+ <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>20 / 30</Text>
+    </Box>
+</Slide>

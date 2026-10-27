@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之评测：<span style={{ color: '#FA4F24' }}>六层评测与轨迹可观测</span>，怎么证明它真的能干这个活
+  </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+          Agent 的验收不能靠「演示一次很惊艳」，只能靠可重复的评测集
+    </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'row', gap: 12 }}>
+      {/* 左：六层评测 */}
+      <Box style={{ width: 616, flexDirection: 'column', gap: 6 }}>
+  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>六层评测体系：由内到外，逐层变贵也逐层接近真相</Text>
+    {[
+          { n: 'L1', t: '指令遵循', q: '有没有照做我要求的格式、约束和禁止项', k: '50 条固定指令', c: '#8A8F99' },
+          { n: 'L2', t: '事实准确', q: '引用的数字和本体里是否一致', k: '100 条带答案样例', c: '#FBA15C' },
+   { n: 'L3', t: '工具正确', q: '该调的工具有没有调、调对没有', k: '回放真实轨迹', c: '#F87D2F' },
+      { n: 'L4', t: '流程完成', q: '整个任务有没有跑到终点', k: '30 条端到端场景', c: '#E0651A' },
+     { n: 'L5', t: '越权防御', q: '该停的有没有停、该拒的有没有拒', k: '注入与边界样本', c: '#FA4F24' },
+          { n: 'L6', t: '业务价值', q: '省了多少人时、少错了多少单', k: '上线前后对比', c: '#0F1423' },
+        ].map((it, i) => (
+          <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 3, borderLeft: '4px solid ' + it.c, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c, width: 26 }}>{it.n}</Text>
+         <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', width: 82 }}>{it.t}</Text>
+            <Text style={{ fontSize: 12, color: '#5A6072', flex: 1 }}>{it.q}</Text>
+     <Text style={{ fontSize: 11, color: '#8A8F99', width: 116, textAlign: 'right' }}>{it.k}</Text>
+          </Box>
+        ))}
+    <Box style={{ height: 44, background: '#0F1423', borderRadius: 3, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+     <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FBA15C' }}>通过线怎么定</Text>
+      <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)', flex: 1, lineHeight: 1.4 }}>
+   L1–L3 必须 100% 才允许进试运行；L4 ≥ 85%；L5 = 100%（一条不过就不许上）；L6 用于持续收益跟踪。</Text>
+    </Box>
+      </Box>
+
+      {/* 右：轨迹可观测 */}
+   <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Box style={{ height: 250, background: '#F7F7F8', borderRadius: 4, padding: '11px 14px', flexDirection: 'column' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>一条轨迹必须能看到这九项</Text>
+          <Box style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+    {[
+            '触发人与渠道', '任务类型与优先级', '上下文装载明细', '模型与参数版本',
+   '每次工具调用参数', '每次返回摘要', '耗时与 token 消耗', '置信度与判定依据', '最终结果与后续动作',
+          ].map((t, i) => (
+          <Box key={t} style={{ width: 158, height: 36, background: '#FFFFFF', borderRadius: 3, borderLeft: '3px solid #FA4F24', padding: '0 8px', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 11, color: '#8A8F99' }}>{String(i + 1).padStart(2, '0')}</Text>
+       <Text style={{ fontSize: 12, color: '#0F1423', fontWeight: 'bold' }}>{t}</Text>
+         </Box>
+     ))}
+    </Box>
+      </Box>
+        <Box style={{ height: 100, background: '#FFF3EE', borderRadius: 4, borderLeft: '4px solid #FBA15C', padding: '10px 14px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>三条必须在线留痕的底线</Text>
+    {[
+  '涉及写操作的动作，参数与返回值全量留存',
+            '涉及人机交接的节点，交接双方身份留痕',
+            '模型与提示词版本要绑定到每条轨迹上',
+       ].map((t, i) => (
+   <Box key={t} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: i === 0 ? 6 : 3 }}>
+     <Text style={{ fontSize: 11, color: '#C43A17', fontWeight: 'bold' }}>{String(i + 1).padStart(2, '0')}</Text>
+      <Text style={{ fontSize: 12, color: '#5A6072' }}>{t}</Text>
+     </Box>
+      ))}
+        </Box>
+        <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '10px 14px', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', lineHeight: 1.5 }}>
+   没有轨迹就没有信任。评测集只能证明它过去能做对，轨迹才能证明它这次为什么这么做 —— 审计对象是轨迹，不是模型。
+     </Text>
+      </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+    </Box>
+</Slide>

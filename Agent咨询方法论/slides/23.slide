@@ -1,0 +1,61 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之选型：<span style={{ color: '#FA4F24' }}>多 Agent 拓扑</span>，五种摆法与各自的触发条件
+   </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+        拓扑不是设计出来的，是被阈值逼出来的 —— 没被逼出来就别拆
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 8 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+        <Box style={{ width: 116, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>拓扑</Text></Box>
+ <Box style={{ width: 168, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>结构</Text></Box>
+   <Box style={{ flex: 1, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>适用场景</Text></Box>
+        <Box style={{ width: 244, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>什么情况下才该上</Text></Box>
+        <Box style={{ width: 190, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 12, fontWeight: 'bold', color: '#FFFFFF' }}>主要代价</Text></Box>
+   </Box>
+
+ {[
+   { n: '单Agent', s: '1 → N工具', u: '绝大多数场景的起点', w: '默认选项，不需要额外理由', r: '上下文压力大、易被无关工具干扰', c: '#0F1423' },
+    { n: 'Supervisor', s: '1 → 多 Worker', u: '任务需分工且需统一收口', w: '上下文容量突破、职责明显可分', r: '调度层本身成为单点与延迟源', c: '#FA4F24' },
+        { n: 'Pipeline', s: '顺序交接', u: '阶段固定、前后强依赖', w: '流程可被清晰切成前后步骤', r: '任一环节出错会全链失败', c: '#F87D2F' },
+        { n: 'Parallel+Voter', s: '并发多解投票', u: '答案可判定对错', w: '单解质量不稳、验证成本低', r: '成本与延迟成倍增长', c: '#E0651A' },
+        { n: 'Loop', s: '生成→批评→修订', u: '文本类交付物', w: '有明确的质量标准与批评者', r: '容易停不下来，必须配终止条件', c: '#C43A17' },
+      ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+          <Box style={{ width: 116, background: '#F7F7F8', borderLeft: '4px solid ' + it.c, alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c, textAlign: 'center' }}>{it.n}</Text>
+       </Box>
+     <Box style={{ width: 168, background: '#F7F7F8', alignItems: 'center', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 12, color: '#3A4050', textAlign: 'center' }}>{it.s}</Text>
+          </Box>
+       <Box style={{ flex: 1, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 12, color: '#0F1423', lineHeight: 1.4 }}>{it.u}</Text>
+     </Box>
+   <Box style={{ width: 244, background: '#FFF3EE', padding: '0 12px', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 12, color: '#C43A17', lineHeight: 1.4 }}>{it.w}</Text>
+  </Box>
+      <Box style={{ width: 190, background: '#F7F7F8', padding: '0 12px', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 12, color: '#5A6072', lineHeight: 1.4 }}>{it.r}</Text>
+     </Box>
+     </Box>
+      ))}
+
+      <Box style={{ height: 74, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+  <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 180 }}>生产环境的常见真实组合</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.5 }}>
+    入口用 Router 做分诊 → 团队内用 Supervisor 分工 → 实际工作用 Pipeline 或 Parallel 执行 → 只有质量敏感的那一步用 Loop 兜底。生产上很少用单一拓扑，通常是四种叠在一起，但每一层的职责边界必须是清晰的。
+        </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>23 / 30</Text>
+    </Box>
+</Slide>

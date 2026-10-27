@@ -1,0 +1,46 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之闸门：<span style={{ color: '#FA4F24' }}>Agent 专属的五道门</span>，传统应用没有的四道在这里
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+          安全门测试的是漏洞，这五道门测的是「它越权了吗、它停得下来吗、它说得清依据吗」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+  <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 8 }}>
+    {[
+      { n: '第一道', t: '权限门', q: '它能看见的数据，是它本来那个人能看见的吗？', how: '用张三的账号跑一遍，再换李四跑同一请求，比对返回结果', c: '#FA4F24' },
+      { n: '第二道', t: '职权门', q: '它做的每个动作，是不是这个岗位本来就有权做的？', how: '列出 Action 调用清单，逐条比对岗位授权矩阵', c: '#F87D2F' },
+      { n: '第三道', t: '提示注入门', q: '把恶意指令塞进它要读的文档里，它会不会照做？', how: '构造注入样本集，检查它是否越过本体与 Action 直接动手', c: '#E0651A' },
+      { n: '第四道', t: '停手门', q: '触发终止条件时，它真的会停吗？', how: '注入超限、超时、低置信度样本，观察是否正确中止并转人工', c: '#C43A17' },
+      { n: '第五道', t: '留痕门', q: '事后能不能完整复盘这次决策？', how: '随机抽 20 条轨迹，检查是否含输入、依据、动作、结果、耗时', c: '#0F1423' },
+    ].map((it, i) => (
+        <Box key={it.n} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '5px solid ' + it.c, padding: '9px 14px', flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c, width: 56 }}>{it.n}</Text>
+ <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#0F1423', width: 92 }}>{it.t}</Text>
+          <Box style={{ flex: 1, height: 34, background: '#FFFFFF', borderRadius: 3, padding: '0 12px', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 13, color: '#0F1423' }}>{it.q}</Text>
+   </Box>
+     <Box style={{ width: 356, height: 34, background: '#FFF3EE', borderRadius: 3, padding: '0 12px', justifyContent: 'center', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+     <Text style={{ fontSize: 11, color: '#C43A17', fontWeight: 'bold' }}>怎么测</Text>
+ <Text style={{ fontSize: 11, color: '#5A6072', flex: 1, lineHeight: 1.35 }}>{it.how}</Text>
+       </Box>
+    </Box>
+      ))}
+
+      <Box style={{ height: 68, background: '#0F1423', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C', width: 148 }}>和传统应用的区别</Text>
+        <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.45 }}>
+     传统应用的功能是代码写死的，测试就是验证功能对不对。Agent 的功能是模型每次现场生成的，测试要验证的是它的行为边界 —— 所以这里测的不是「它能不能做」，而是「它该不该做、有没有做、依据是什么」。
+ </Text>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>25 / 30</Text>
+    </Box>
+</Slide>

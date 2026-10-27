@@ -1,0 +1,80 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>三档能力</span>，权限不是一次给到位，是逐档放开的
+        </Text>
+    <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      大多数项目一上来就想做第三档。正确顺序是从第一档跑出数据，再谈升档
+    </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 三档阶梯 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+   {[
+        { lv: 'L1', t: '只给建议', d: '读完给结论，动手的是人', who: '人 100% 执行', obs: '看它的判断准不准', dur: '建议至少跑三个月', c: '#0F1423' },
+          { lv: 'L2', t: '审批执行', d: '它调动作，人点确认后落地', who: '人确认，Agent 执行', obs: '看动作准确率与被驳回率', dur: '看驳回理由是否集中在某类', c: '#2A2F3D' },
+          { lv: 'L3', t: '受限自主', d: '低风险动作自动执行，高风险仍需人', who: '按动作风险自动分流', obs: '看自主执行占比与异常率', dur: '必须有月度回审机制', c: '#FA4F24' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '16px 18px', flexDirection: 'column', justifyContent: 'center', gap: 6 }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 12 }}>
+   <Text style={{ fontSize: 26, fontWeight: 'bold', color: i === 2 ? '#FFFFFF' : 'rgba(255,255,255,0.5)' }}>{it.lv}</Text>
+  <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+      </Box>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.4 }}>{it.d}</Text>
+    <Box style={{ height: 1, background: 'rgba(255,255,255,0.18)', marginTop: 4 }} />
+        {[
+          { k: '谁动手', v: it.who }, { k: '看什么', v: it.obs }, { k: '放行条件', v: it.dur },
+        ].map((x, j) => (
+          <Box key={j} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+    <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', width: 52 }}>{x.k}</Text>
+      <Text style={{ fontSize: 12, color: '#FFFFFF', flex: 1, lineHeight: 1.35 }}>{x.v}</Text>
+     </Box>
+          ))}
+      </Box>
+        ))}
+      </Box>
+
+ <Box style={{ flex: 1.1, flexDirection: 'row', gap: 10 }}>
+        {/* 划界标准 */}
+     <Box style={{ flex: 1.2, background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423', marginBottom: 8 }}>哪些动作可以放进 L3 自动执行</Text>
+          {[
+   { t: '可逆', d: '错了能在十分钟内改回来' },
+      { t: '低损', d: '错了的代价小于人工复核的代价' },
+        { t: '有界', d: '影响范围可预先圈定，不扩散' },
+     { t: '可察', d: '事后能被监控发现，不需要预判' },
+          ].map((it, i) => (
+       <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <Box style={{ width: 5, height: 5, background: '#FA4F24', borderRadius: 3 }} />
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', width: 44 }}>{it.t}</Text>
+     <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+       </Box>
+   ))}
+       </Box>
+        {/* 反例 */}
+    <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#C43A17', marginBottom: 8 }}>这四类永远不进 L3</Text>
+   {[
+       { t: '不可逆动作', d: '删除、对外发送、付款' },
+        { t: '跨组织动作', d: '涉及客户承诺与法律责任' },
+            { t: '低频但高损动作', d: '一年遇一次，撞上就是事故' },
+    { t: '无法解释的动作', d: '说不出依据为什么这么做' },
+          ].map((it, i) => (
+   <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+    <Box style={{ width: 5, height: 5, background: '#FBA15C', borderRadius: 3 }} />
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#3A2000', width: 118 }}>{it.t}</Text>
+            <Text style={{ fontSize: 12, color: '#8A5A20', flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+            </Box>
+     ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+    <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>08 / 30</Text>
+    </Box>
+</Slide>

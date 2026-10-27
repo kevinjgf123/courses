@@ -1,0 +1,51 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+    <Box style={{ position: 'absolute', right: 0, top: 0, width: 620, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.26) 0%, rgba(250,79,36,0) 70%)' }} />
+
+    <Box style={{ position: 'absolute', left: 88, top: 56, width: 1104 }}>
+      <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>结语</Text>
+        <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.25 }}>
+   架构的终点，不是把系统建完，而是<span style={{ color: '#FA4F24' }}>把权责划清</span>
+        </Text>
+   <Box style={{ width: 72, height: 5, background: '#FA4F24', marginTop: 22 }} />
+    </Box>
+
+  {/* 六册主线 */}
+    <Box style={{ position: 'absolute', left: 88, top: 236, width: 1104, flexDirection: 'column', gap: 8 }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'rgba(255,255,255,0.72)' }}>六册主线：一条完整的链路</Text>
+      {[
+      { b: 'DA', t: '先有治，才有存', s: '数据架构是枢纽', c: '#8A8F99' },
+  { b: 'BA', t: '能力与组织解耦', s: '业务架构是基础', c: '#8A8F99' },
+        { b: 'AA', t: '数量增长带来技术债', s: '应用架构是载体', c: '#8A8F99' },
+        { b: 'TA', t: '不押注单点技术', s: '技术架构是底座', c: '#8A8F99' },
+        { b: 'ONT', t: '语义与动力学合一', s: '本体是 4A 的汇流点', c: '#F87D2F' },
+        { b: 'AGT', t: '明确谁来判断、权限多大、何时停手', s: 'Agent 是 4A 的新实践点', c: '#FA4F24' },
+   ].map((it, i) => (
+ <Box key={it.b} style={{ height: 44, background: 'rgba(255,255,255,0.06)', borderRadius: 3, borderLeft: '3px solid ' + it.c, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c, width: 44 }}>{it.b}</Text>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', width: 350 }}>{it.t}</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{it.s}</Text>
+   </Box>
+      ))}
+    </Box>
+
+    {/* 三个收束句 */}
+    <Box style={{ position: 'absolute', left: 88, bottom: 92, width: 1104, flexDirection: 'row', gap: 10 }}>
+      {[
+        { t: 'Agent 改变的不是能力，是职权', d: '过去架构只管系统能做什么，现在还要管它被允许做什么。' },
+     { t: 'Ontology 决定 Agent 能知道多少', d: '没有本体，Agent 的一切认知都变成不可审计的推测。' },
+        { t: '方法论的价值是划出红线', d: '说清谁来判断、权限多大、什么情况必须停手。' },
+    ].map((it, i) => (
+  <Box key={it.t} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderTop: '3px solid #FA4F24', padding: '10px 14px' }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+      <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', marginTop: 5, lineHeight: 1.45 }}>{it.d}</Text>
+      </Box>
+      ))}
+    </Box>
+
+  <Box style={{ position: 'absolute', right: 88, bottom: 40, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · Agent智能体咨询方法论</Text>
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>30 / 30</Text>
+    </Box>
+</Slide>

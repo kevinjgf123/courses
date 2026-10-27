@@ -1,0 +1,83 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之 TA：<span style={{ color: '#FA4F24' }}>运行时与非功能</span>，Agent 要额外扛的四件事
+        </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+传统应用靠加机器扛并发，Agent 应用多一个维度：不推理的时候也在花钱
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 16, paddingBottom: 8, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 运行时组件链 */}
+      <Box style={{ height: 92, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column' }}>
+  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', marginBottom: 7 }}>运行时组件链：比传统应用多出中间三块</Text>
+      <Box style={{ flexDirection: 'row', alignItems: 'stretch', gap: 4, flex: 1 }}>
+        {[
+     { t: '接入层', d: '会话 / 渠道', c: '#8A8F99' },
+          { t: '编排引擎', d: '调度 · 状态机', c: '#0F1423', n: true },
+          { t: '模型网关', d: '多模型路由', c: '#FA4F24', n: true },
+   { t: '上下文装配器', d: '预算 · 压缩 · 注入', c: '#FA4F24', n: true },
+   { t: '工具网关', d: 'Action 注册与调用', c: '#FA4F24', n: true },
+      { t: '终止控制', d: '步数 · 成本 · 超时', c: '#0F1423', n: true },
+    { t: '轨迹存储', d: '全链路审计', c: '#8A8F99' },
+    ].map((x, i) => (
+   <Box key={x.t} style={{ flex: 1, background: '#FFFFFF', borderRadius: 3, borderTop: '3px solid ' + x.c, padding: '5px 6px' }}>
+   <Text style={{ fontSize: 12, fontWeight: 'bold', color: x.c, textAlign: 'center' }}>{x.t}</Text>
+    <Text style={{ fontSize: 10, color: '#8A8F99', textAlign: 'center', marginTop: 2 }}>{x.d}</Text>
+ </Box>
+       ))}
+        <Box style={{ width: 8, background: '#FFF3EE', borderRadius: 2, alignItems: 'center', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 10, color: '#C43A17', fontWeight: 'bold' }}>新</Text>
+    </Box>
+      </Box>
+      </Box>
+
+      {/* 四项非功能 */}
+ <Box style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+     {[
+      { t: '成本可预测', d: '按任务设预算上限，超限即降级或转人工', k: '指标：单任务平均成本 P95', c: '#FA4F24' },
+         { t: '延迟可接受', d: '并行取数、流式输出，长任务给进度', k: '指标：首字延迟与端到端 P95', c: '#F87D2F' },
+            { t: '失败可恢复', d: '幂等 Action + 检查点 + 断点续跑', k: '指标：任务可恢复率', c: '#E0651A' },
+     { t: '质量可度量', d: '离线评测集 + 在线抽检 + 回归', k: '指标：任务级通过率', c: '#C43A17' },
+          ].map((it, i) => (
+   <Box key={it.t} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, borderLeft: '4px solid ' + it.c, padding: '9px 12px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.c }}>{it.t}</Text>
+     <Text style={{ fontSize: 12, color: '#5A6072', marginTop: 5, lineHeight: 1.45, flex: 1 }}>{it.d}</Text>
+          <Box style={{ height: 24, background: '#FFFFFF', borderRadius: 2, justifyContent: 'center', padding: '0 8px' }}>
+ <Text style={{ fontSize: 11, color: '#3A4050' }}>{it.k}</Text>
+     </Box>
+      </Box>
+      ))}
+        </Box>
+
+      {/* 终止条件 */}
+      <Box style={{ height: 130, background: '#0F1423', borderRadius: 4, padding: '11px 16px', flexDirection: 'column' }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C' }}>五条终止条件：这是 Agent 独有的非功能，缺一条就能烧掉预算</Text>
+        <Box style={{ flexDirection: 'row', gap: 8, marginTop: 9, flex: 1 }}>
+   {[
+      { k: '步数', v: '单任务不超过 N 步，超了转人工', c: '#FA4F24' },
+   { k: '成本', v: '单任务 token 与金额上限', c: '#F87D2F' },
+       { k: '超时', v: '墙钟超时即中止，不允许无限等', c: '#FBA15C' },
+    { k: '重复', v: '连续相同调用即熔断', c: '#8A8F99' },
+    { k: '置信', v: '关键判断置信不足即停手', c: '#5A6072' },
+          ].map((x, i) => (
+       <Box key={x.k} style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 3, borderLeft: '3px solid ' + x.c, padding: '6px 9px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF' }}>{x.k}</Text>
+      <Text style={{ fontSize: 10, color: 'rgba(255,255,255,0.62)', marginTop: 3, lineHeight: 1.35 }}>{x.v}</Text>
+     </Box>
+    ))}
+        </Box>
+        <Text style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 8 }}>
+    终止条件必须在设计时就写进 Agent 配置，不能等上线后靠监控兜底 —— 失控的任务往往在几秒内就把预算烧完了。
+        </Text>
+    </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Agent智能体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>22 / 30</Text>
+    </Box>
+</Slide>
