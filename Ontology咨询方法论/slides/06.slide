@@ -1,0 +1,65 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之方法：<span style={{ color: '#FA4F24' }}>把 Ontology 定位为组织的运行层</span>，而不是又一层图
+        </Text>
+     <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    坐在数据集之上，把现实世界的对象与行动接进来 —— 在很多场景里它就是组织的数字孪生
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+      {/* 左：分层位置 */}
+        <Box style={{ width: 520, flexDirection: 'column', gap: 8 }}>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>它坐在哪一层</Text>
+      {[
+ { n: '应用层', t: '决策界面：工作台、看板、自定义应用、AI Agent', c: '#0F1423' },
+ { n: 'Ontology', t: '运行层：对象 · 链接 · 行动 · 权限', c: '#FA4F24', hl: true },
+    { n: '数据层', t: '数据集、虚拟表、模型', c: '#5A6072' },
+ { n: '源系统', t: 'ERP / CRM / 工单 / 财务 / 供应链', c: '#C9CCD4', tc: '#3A4050' },
+            ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 16px', gap: 12 }}>
+         <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.tc || '#FFFFFF', width: 82 }}>{it.n}</Text>
+       <Text style={{ fontSize: 13, color: it.tc || 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.4 }}>{it.t}</Text>
+      {it.hl && <Text style={{ fontSize: 13, color: '#FFFFFF', background: 'rgba(255,255,255,0.25)', padding: '3px 8px', borderRadius: 2 }}>本册主题</Text>}
+         </Box>
+       ))}
+    <Box style={{ height: 62, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>★ 关键区别</Text>
+    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.45, marginTop: 4 }}>
+   数仓回答「发生了什么」，本体回答「现在是什么、能做什么」——它的对象是实体，不是指标。
+       </Text>
+  </Box>
+      </Box>
+
+      {/* 右：四重整合 + 数字孪生 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>四重整合：企业复杂决策的表达方式</Text>
+ {[
+      { l: 'Data', t: '数据', d: '对象从数据集取属性，不另存一份' },
+    { l: 'Logic', t: '逻辑', d: '函数承载校验与派生，像存储过程' },
+   { l: 'Action', t: '行动', d: '写入必须经过受控的 Action Type' },
+   { l: 'Security', t: '权限', d: '可到对象与属性粒度，且被 AI 继承' },
+       ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 64 }}>{it.l}</Text>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', width: 40 }}>{it.t}</Text>
+        <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+       </Box>
+       ))}
+   <Box style={{ height: 92, background: '#FFF3EE', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17' }}>为什么非要一个「运行层」</Text>
+   <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.5, marginTop: 6 }}>
+ 决策不是查询。查询可以只读，决策会改变真实世界。要让改变可控、可审计、可撤销，就必须有一层把「谁能对什么做什么」写死在模型里 —— 这层就是本体。
+          </Text>
+      </Box>
+    </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>06 / 30</Text>
+    </Box>
+</Slide>

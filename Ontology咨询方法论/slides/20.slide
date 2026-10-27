@@ -1,0 +1,81 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>Link Type 与 Interface</span>，关系能带属性，接口能多态
+        </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     对象决定「有哪些东西」，链接决定「它们怎么连」，接口决定「怎么统一地连」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+   {/* 左：三种基数 + 关系属性 */}
+ <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>链接类型的三种基数</Text>
+      {[
+   { c: '1 : 1', t: '一对一', d: '如「员工的直接上级」', ex: '用得少，因为大多数关系最终是多对多' },
+  { c: '1 : N', t: '一对多', d: '如「订单 → 订单行」', ex: '最常见的从属关系' },
+     { c: 'M : N', t: '多对多', d: '如「客户 ↔ 合同」', ex: '必须用中间对象承载，不能只建外键' },
+        ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+   <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FA4F24', width: 62 }}>{it.c}</Text>
+      <Box style={{ width: 92 }}>
+         <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+        </Box>
+ <Box style={{ flex: 1 }}>
+   <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.35 }}>{it.d}</Text>
+          <Text style={{ fontSize: 12, color: '#8A8F99', lineHeight: 1.35, marginTop: 2 }}>{it.ex}</Text>
+       </Box>
+  </Box>
+   ))}
+       <Box style={{ height: 96, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>关系本身也能带属性</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 6 }}>
+        这是本体比外键强的地方。「客户—合同」这条关系上可以挂签约日期、份额、变更记录。换成传统建模，只能再开一张关联表，而这张表十有八九没人愿意维护。
+  </Text>
+   </Box>
+        </Box>
+
+        {/* 右：Interface + 建模动作 */}
+ <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>接口：让不同类型的对象用同一种方式被操作</Text>
+            <Box style={{ flex: 1.15, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+    {[
+   { t: '接口描述对象类型的形状与能力', d: '只承诺「有属性、有链接、能被某动作处理」，不关心具体实现' },
+        { t: '多态：一个动作可作用于多种对象', d: '「审批」能同时作用于合同、报价、请假单' },
+    ].map((it, i) => (
+        <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+   <Box style={{ width: 5, height: 5, background: '#FA4F24', borderRadius: 3, marginTop: 6 }} />
+     <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.45 }}>
+    <Text style={{ fontWeight: 'bold' }}>{it.t}</Text>　{it.d}
+     </Text>
+       </Box>
+     ))}
+    <Box style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+    <Box style={{ width: 5, height: 5, background: '#FA4F24', borderRadius: 3, marginTop: 6 }} />
+        <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.45 }}>
+     <Text style={{ fontWeight: 'bold' }}>价值：新增对象时不用改已有动作</Text>　这是本体能长大的关键
+     </Text>
+      </Box>
+      </Box>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>建模时真正要动手的三件事</Text>
+      {[
+  { t: '命名', d: '对象名用业务方嘴里说的词，不翻译、不缩写' },
+            { t: '主键', d: '优先用业务编码而不是自增 ID，自增 ID 在跨系统合并时会崩' },
+            { t: '状态', d: '状态值从业务规则里抠出来，别自己编一套' },
+        ].map((it, i) => (
+ <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.4, marginTop: 3 }}>{it.d}</Text>
+      </Box>
+      ))}
+   </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>20 / 30</Text>
+    </Box>
+</Slide>

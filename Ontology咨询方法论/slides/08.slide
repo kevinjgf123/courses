@@ -1,0 +1,59 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之内容：<span style={{ color: '#FA4F24' }}>Language / Engine / Toolchain</span>，三段构成决定了交付边界
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    咨询要分清哪段是客户要建模的、哪段是平台提供的、哪段是我们要交付接口的
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 三段横条 */}
+      {[
+        { n: '01', t: 'Language 语言', d: '建语义对象与可执行的行动 —— 这是本体建模的主要工作，也是咨询投入最大的地方', mine: true },
+   { n: '02', t: 'Engine 引擎', d: '可扩展的读写架构 —— 负责查询、检索、聚合，以及所有写入的编排', mine: false },
+        { n: '03', t: 'Toolchain 工具链', d: '通过 OSDK 让开发者直接在本体之上建应用，不重复造数据接入的轮子', mine: false },
+      ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, background: it.mine ? 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)' : '#F7F7F8', borderRadius: 4, padding: '0 20px', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <Text style={{ fontSize: 26, fontWeight: 'bold', color: it.mine ? 'rgba(255,255,255,0.55)' : '#C9CCD4' }}>{it.n}</Text>
+    <Box style={{ width: 172 }}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: it.mine ? '#FFFFFF' : '#0F1423' }}>{it.t}</Text>
+          </Box>
+          <Text style={{ fontSize: 14, color: it.mine ? 'rgba(255,255,255,0.95)' : '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+     {it.mine && <Text style={{ fontSize: 13, color: '#FFFFFF', background: 'rgba(255,255,255,0.25)', padding: '4px 10px', borderRadius: 2 }}>建模交付主体</Text>}
+ </Box>
+    ))}
+
+ {/* 后端服务带 */}
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>引擎背后的服务构成（架构评审要看清这层）</Text>
+    <Box style={{ height: 96, flexDirection: 'row', gap: 8 }}>
+      {[
+        { n: 'OMS', d: '元数据服务：管所有对象类型的定义' },
+   { n: 'Object Store', d: '对象存储 V1 遗留 / V2 下一代权威存储' },
+        { n: 'OSS', d: '对象集合服务：处理各种对象集合查询' },
+      { n: 'Actions', d: '动作服务：所有写入的编排与校验' },
+        { n: 'Data Funnel', d: '数据漏斗：编排数据源与用户编辑并保持索引最新' },
+      ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 12px', flexDirection: 'column', justifyContent: 'center' }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.n}</Text>
+   <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.4, marginTop: 4 }}>{it.d}</Text>
+     </Box>
+      ))}
+     </Box>
+
+        <Box style={{ height: 50, background: '#FFF3EE', borderRadius: 4, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FBA15C' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>★ 交付边界</Text>
+          <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>
+   我们交付 Language 与 Toolchain 上的应用；引擎是平台方责任，但客户必须能在评审时说清「写入到底经过了什么」
+          </Text>
+        </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>08 / 30</Text>
+    </Box>
+</Slide>

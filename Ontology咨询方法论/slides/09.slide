@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之内容：<span style={{ color: '#FA4F24' }}>为什么它不是语义层</span>，五维对比看清边界
+     </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      很多项目失败在把本体当成「更漂亮的语义层」，只做了上半截
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+      {/* 表头 */}
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+        <Box style={{ flex: 1.15, background: '#0F1423', padding: '10px 14px' }}>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>对比维度</Text>
+      </Box>
+        <Box style={{ flex: 2.2, background: '#5A6072', padding: '10px 14px' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>传统语义层</Text>
+ </Box>
+        <Box style={{ flex: 2.4, background: '#FA4F24', padding: '10px 14px' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>Ontology</Text>
+    </Box>
+   </Box>
+      {/* 五行 */}
+      {[
+ { d: '核心对象', a: '表、字段、指标、口径', b: '业务对象、关系、状态机' },
+ { d: '写能力', a: '只读，天然如此', b: '写入必须经 Action Type，受控可审计' },
+        { d: '权限粒度', a: '到库表与行列级', b: '到对象与属性，且随身份动态判定' },
+     { d: '逻辑位置', a: '逻辑定义在语义层内部', b: 'Function 是独立元素，可被应用与 AI 直接调用' },
+      { d: '交付对象', a: '分析师与报表', b: '决策者、执行系统、以及 AI Agent' },
+      ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
+    <Box style={{ flex: 1.15, background: '#F7F7F8', padding: '10px 14px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.d}</Text>
+    </Box>
+   <Box style={{ flex: 2.2, background: '#F7F7F8', padding: '10px 14px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 13, color: '#5A6072', lineHeight: 1.4 }}>{it.a}</Text>
+  </Box>
+    <Box style={{ flex: 2.4, background: '#FFF3EE', padding: '10px 14px', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.4 }}>{it.b}</Text>
+   </Box>
+        </Box>
+      ))}
+
+  {/* 三条判据 */}
+ <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>一条判据，当场就能分清</Text>
+    <Box style={{ flex: 1.35, flexDirection: 'row', gap: 8 }}>
+     {[
+   { t: '问一句', d: '「用户在这个界面上按下按钮之后，系统会发生什么？」' },
+      { t: '答不出', d: '你做的是语义层。补 Action 与 Function，再谈本体。' },
+      { t: '答得出', d: '但写回不受控、没留痕 —— 也还不是本体，只差治理。' },
+      ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, background: i === 0 ? '#0F1423' : '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: i === 0 ? '#FBA15C' : '#C43A17' }}>{it.t}</Text>
+     <Text style={{ fontSize: 13, color: i === 0 ? '#FFFFFF' : '#3A4050', lineHeight: 1.45, marginTop: 5 }}>{it.d}</Text>
+     </Box>
+       ))}
+    </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+    <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>09 / 30</Text>
+    </Box>
+</Slide>

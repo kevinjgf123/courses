@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+  <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之内容：<span style={{ color: '#FA4F24' }}>AI 怎么接进本体</span>，为什么这不是给大模型套个壳
+        </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   本体给 AI 的不是知识，是「可以调用的动作 + 已经锁死的边界」
+   </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+   {/* 上：AI 四条通路 */}
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+   {[
+        { n: '1', t: '语义取数', d: '模型只通过本体接口取结构化事实，而不是从文档里猜', c: '#0F1423' },
+      { n: '2', t: '实体关系检索', d: '查的是实体、关系、时间线与因果链，不是文本向量碎片', c: '#2A2F3D' },
+   { n: '3', t: '调用受控动作', d: 'AI 只能调用已定义并经审核的动作，影响力被圈在模型里', c: '#5A6072' },
+     { n: '4', t: '反向补全本体', d: 'AI 从使用痕迹里发现新对象与缺失的属性，帮助模型长大', c: '#FA4F24' },
+      ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '14px 15px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: 'rgba(255,255,255,0.5)' }}>{it.n}</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', marginTop: 6 }}>{it.t}</Text>
+            <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.45, marginTop: 8 }}>{it.d}</Text>
+          </Box>
+     ))}
+      </Box>
+
+      <Box style={{ flex: 1.3, flexDirection: 'row', gap: 18 }}>
+    {/* 左：与传统 RAG 区别 */}
+        <Box style={{ flex: 1.1, background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column' }}>
+     <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>和「给大模型接个知识库」的差别</Text>
+            <Box style={{ flex: 1, height: 1, background: '#E8E8E8' }} />
+          </Box>
+   {[
+ { a: '向量检索', b: '按语义相似度召回文本片段，答错了无法定位', hot: false },
+   { a: '本体检索', b: '按实体与关系取事实，能回答「谁在什么时候把什么改成了什么」', hot: true },
+     { a: '答案来源', b: '文本片段指向文档，本体对象指向源系统记录，可追到原始单据', hot: true },
+ { a: '权限', b: '检索不区分人，本体里的权限判断对模型同样生效', hot: true },
+      ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, background: it.hot ? '#FFF3EE' : '#FFFFFF', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: i === 0 ? 0 : 6 }}>
+       <Text style={{ fontSize: 12, fontWeight: 'bold', color: it.hot ? '#C43A17' : '#8A8F99', width: 74 }}>{it.a}</Text>
+     <Text style={{ fontSize: 13, color: it.hot ? '#3A2000' : '#5A6072', flex: 1, lineHeight: 1.35 }}>{it.b}</Text>
+   </Box>
+    ))}
+   <Box style={{ height: 40, background: '#0F1423', borderRadius: 3, padding: '0 12px', flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.35 }}>
+     一句话区别：知识库回答「文档说了什么」，本体回答「现在实际是什么、能做什么」
+     </Text>
+        </Box>
+        </Box>
+
+        {/* 右：接入四步 */}
+    <Box style={{ flex: 1, background: '#0F1423', borderRadius: 4, padding: '14px 16px', flexDirection: 'column' }}>
+      <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#FBA15C', marginBottom: 8 }}>接入的四步顺序不能颠倒</Text>
+   {[
+       { n: '①', t: '只读接入', d: '模型先只能看，不能动，跑三到六个月' },
+        { n: '②', t: '给建议', d: '输出方案给人类，由人决定是否执行' },
+   { n: '③', t: '审批执行', d: '模型调用动作，人做审批' },
+      { n: '④', t: '受限自主', d: '低风险动作自动执行，高风险仍需人' },
+  ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.14)' }}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FA4F24', width: 26 }}>{it.n}</Text>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', width: 88 }}>{it.t}</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+       </Box>
+     ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>29 / 30</Text>
+    </Box>
+</Slide>

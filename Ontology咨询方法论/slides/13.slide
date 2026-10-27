@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之内容：BA 视角 —— <span style={{ color: '#FA4F24' }}>对象即业务能力</span>，动作即组织里的真实动作
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    在本体里做 BA，跟在组织架构图上做 BA 的差别是：必须落到「谁对哪一个对象做什么」
+      </Text>
+  </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+    {/* 左 三条映射 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>三组映射关系</Text>
+            {[
+        { k: '对象', v: '业务能力或实体', d: '客户不是一列字段，而是能承接一整套动作与责任的主体', c: '#0F1423' },
+   { k: '链接', v: '价值流与责任关系', d: '订单 → 交付 → 回款，这条链本身就是本体的链接串起来的结果', c: '#2A2F3D' },
+       { k: '动作', v: '组织里真实的动作', d: '「交付异常处置」是动作类型，它带着审批、时限与责任人', c: '#5A6072' },
+ ].map((it, i) => (
+            <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FBA15C', width: 44 }}>{it.k}</Text>
+      <Box style={{ width: 118 }}>
+           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>{it.v}</Text>
+   </Box>
+       <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+   </Box>
+       ))}
+   <Box style={{ height: 78, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>BA 交付物差别</Text>
+         <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.5, marginTop: 5 }}>
+ 传统 BA 交能力地图与流程图；本体里的 BA 还要多交两样 —— 对象清单带责任人，动作清单带审批与时限。这两样才是能落地的部分。
+        </Text>
+      </Box>
+        </Box>
+
+        {/* 右 决策链 + 缺口 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>一条决策链在本体里长什么样</Text>
+          <Box style={{ height: 152, background: '#F7F7F8', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center', gap: 7 }}>
+            {[
+              { n: '发现', t: '系统发现交付异常，生成待处置对象', c: '#0F1423' },
+   { n: '判断', t: 'Function 校验影响面与责任归属', c: '#2A2F3D' },
+         { n: '授权', t: '动态权限判定谁能处置这一条', c: '#5A6072' },
+   { n: '行动', t: 'Action Type 写回处置结果并留痕', c: '#FA4F24' },
+       ].map((it, i) => (
+     <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+  <Box style={{ width: 8, height: 8, background: it.c, borderRadius: 4 }} />
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: it.c, width: 44 }}>{it.n}</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.t}</Text>
+        {i < 3 && <Text style={{ fontSize: 12, color: '#C9CCD4' }}>↓</Text>}
+      </Box>
+          ))}
+       </Box>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>三种常见的 BA 空转</Text>
+            {[
+    { t: '把对象建成数据表', d: '字段有了，但没有动作，模型只能看不能动' },
+         { t: '链接只连主外键', d: '连了关系，却没连责任与时效，价值流出不来' },
+            { t: '动作挂在应用里', d: '同一个审批在五个应用里做了五遍，口径必然分叉' },
+       ].map((it, i) => (
+       <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+      <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.4, marginTop: 3 }}>{it.d}</Text>
+       </Box>
+      ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>13 / 30</Text>
+    </Box>
+</Slide>

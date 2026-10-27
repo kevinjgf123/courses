@@ -1,0 +1,97 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+  之模板：<span style={{ color: '#FA4F24' }}>对象模型画布与命名规范</span>，一份能评审的交付物长什么样
+        </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     每个对象一格，七格填满；命名不合规的对象不许进模型
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左：对象卡七格 */}
+        <Box style={{ width: 620, flexDirection: 'column', gap: 8 }}>
+  <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>对象卡：七格填满才算建模完成</Text>
+    <Box style={{ background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', flex: 1 }}>
+       <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+      <Box style={{ width: 4, height: 20, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0F1423' }}>订单</Text>
+     <Text style={{ fontSize: 12, color: '#8A8F99' }}>Order · 对象编号 ORD-01 · 责任人 订单中心</Text>
+       </Box>
+ {[
+   { k: '一句话定义', v: '客户下达、承诺交付日期、可被追责的履约单元' },
+   { k: '主键与身份', v: '业务编码 ORD-2024-001234（不用自增 ID）' },
+        { k: '关键属性', v: '客户 / 交付日期 / 状态 / 金额 / 责任销售 —— 均标数据来源' },
+ { k: '链接', v: '属于客户 · 包含订单行 · 触发交付任务 · 关联合同' },
+        { k: '生命周期', v: '草稿 → 已确认 → 生产中 → 已交付 → 已回款 → 关闭' },
+   { k: '可承受的动作', v: '确认订单 · 变更交期 · 关闭订单 · 发起验收' },
+  { k: '敏感与权限', v: '金额字段限财务与销售经理；客户联系方式限客服' },
+       ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderTop: i === 0 ? 'none' : '1px solid #E8E8E8' }}>
+         <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 104 }}>{it.k}</Text>
+        <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{it.v}</Text>
+         </Box>
+     ))}
+            </Box>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>命名规范四条</Text>
+      {[
+     { t: '用业务原词', d: '不翻译、不缩写，「交付异常」不要写成 DelivExcept' },
+        { t: '单数命名对象', d: 'Order 不是 Orders' },
+     { t: '链接用动宾结构', d: 'belongsTo / contains / triggers，不用 hasA' },
+     { t: '动作用动宾结构', d: '动作名必须说明「对什么做了什么」' },
+     ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, background: '#F7F7F8', borderRadius: 4, padding: '0 16px' }}>
+        <Box style={{ width: 5, height: 5, background: '#FA4F24', borderRadius: 3 }} />
+ <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 132 }}>{it.t}</Text>
+   <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+   </Box>
+  ))}
+  </Box>
+
+        {/* 右：反例 + 交付要求 */}
+     <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>一份不合格的对象卡</Text>
+     <Box style={{ height: 150, background: '#FFF3EE', borderRadius: 4, padding: '10px 16px', flexDirection: 'column', borderLeft: '4px solid #FBA15C' }}>
+     {[
+   { k: '一句话定义', v: '订单表', bad: true },
+    { k: '主键与身份', v: 'id（自增）', bad: true },
+    { k: '关键属性', v: '见数据库', bad: true },
+        { k: '链接', v: '暂无', bad: true },
+        { k: '生命周期', v: '—', bad: true },
+        { k: '可承受的动作', v: '增删改查', bad: true },
+       { k: '敏感与权限', v: '—', bad: true },
+   ].map((it, i) => (
+        <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderTop: i === 0 ? 'none' : '1px solid #F5D9C6' }}>
+       <Text style={{ fontSize: 12, color: '#8A5A20', width: 104 }}>{it.k}</Text>
+      <Text style={{ fontSize: 12, color: '#C43A17', flex: 1, fontStyle: 'italic' }}>{it.v}</Text>
+  <Text style={{ fontSize: 11, color: '#FA4F24' }}>✕</Text>
+     </Box>
+      ))}
+  </Box>
+      <Box style={{ height: 88, background: '#0F1423', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>它其实是数据字典，不是对象模型</Text>
+      <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 6 }}>
+        判据很简单：这张卡上如果找不到任何一个「谁在什么时候可以对它做什么」，它就还不是对象。
+    </Text>
+   </Box>
+     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>画布交付要求</Text>
+      {[
+      { t: '一格一对象', d: '不允许一张卡片写三个对象' },
+        { t: '关系画箭头并标注基数', d: '双向关系要标明各自角色' },
+      { t: '标注数据成熟度', d: '每个属性旁标已确认 / 待确认' },
+      ].map((it, i) => (
+     <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+    <Text style={{ fontSize: 12, color: '#3A4050', lineHeight: 1.35, marginTop: 2 }}>{it.d}</Text>
+       </Box>
+   ))}
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>22 / 30</Text>
+    </Box>
+</Slide>

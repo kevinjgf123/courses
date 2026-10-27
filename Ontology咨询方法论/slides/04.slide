@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之方法：<span style={{ color: '#FA4F24' }}>Ontology Approach 七阶段</span>，先做什么后做什么，每步产出什么
+        </Text>
+   <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+     每一阶段都有明确的交付物与退出条件，不允许「边建边想」
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 20, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 10 }}>
+        {/* 七阶段表格头 */}
+        <Box style={{ flexDirection: 'row', gap: 6 }}>
+            {['阶段', '做什么', '产出物', '退出条件'].map((h, i) => (
+    <Box key={i} style={{ flex: i === 1 ? 2.1 : i === 2 ? 2.3 : 1.5, background: '#0F1423', padding: '9px 12px' }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', letterSpacing: 1 }}>{h}</Text>
+                </Box>
+          ))}
+     </Box>
+        {/* 七行 */}
+        {[
+  { n: 'S1', a: '场景与决策定义', b: '找出真正需要人做决定的场景', c: '场景清单 + 决策卡', d: '每个场景能说出决策人与时限' },
+    { n: 'S2', a: '数据探查与可用性', b: '对每个决策逐字段验证可得性', c: '数据可用性报告 + 缺口清单', d: '关键字段 80% 以上有明确来源' },
+            { n: 'S3', a: 'Object / Link 建模', b: '把业务语言翻译成对象与链接', c: '对象模型画布 + 链接矩阵', d: '业务方能无歧义复述每个对象' },
+         { n: 'S4', a: 'Action / Function', b: '定义可写入的动作与校验规则', c: '动作清单 + 权限矩阵', d: '每个动作都有责任人与回滚方案' },
+        { n: 'S5', a: '应用与 AI 消费', b: '做界面并把 AI 接到本体上', c: '应用原型 + 场景验证记录', d: 'AI 只能调本体暴露的动作' },
+            { n: 'S6', a: '运营闭环与写回', b: '打通回写与决策留痕', c: '写回链路 + 审计日志抽样', d: '写回成功率与回滚可验证' },
+      { n: 'S7', a: '演进与治理', b: '定版本规则与变更评审', c: '本体版本规范 + 评审机制', d: '改一个属性影响哪些应用可查' },
+        ].map((it, i) => (
+       <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
+      <Box style={{ flex: 1.5, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '8px 12px', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+  <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 26 }}>{it.n}</Text>
+    <Text style={{ fontSize: 14, color: '#0F1423', fontWeight: 'bold' }}>{it.a}</Text>
+   </Box>
+      <Box style={{ flex: 2.1, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '8px 12px', justifyContent: 'center' }}>
+  <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.35 }}>{it.b}</Text>
+        </Box>
+         <Box style={{ flex: 2.3, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '8px 12px', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 13, color: '#C43A17', lineHeight: 1.35 }}>{it.c}</Text>
+        </Box>
+         <Box style={{ flex: 1.5, background: i % 2 === 0 ? '#F7F7F8' : '#FFF3EE', padding: '8px 12px', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.35 }}>{it.d}</Text>
+     </Box>
+        </Box>
+      ))}
+   {/* 三条硬规则 */}
+    <Box style={{ height: 52, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 18px', gap: 18 }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', letterSpacing: 1 }}>三条硬规则</Text>
+      {['先决策后对象 —— 没有决策场景就不建对象', '先单域后跨域 —— 跨域链接等单域跑通再连', '先读后写 —— 读路径验证三个月再开放写入'].map((t, i) => (
+     <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+            <Box style={{ width: 5, height: 5, background: '#FFFFFF', borderRadius: 3 }} />
+    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)' }}>{t}</Text>
+ </Box>
+    ))}
+      </Box>
+    </Box>
+
+    {/* C 区 */}
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>04 / 30</Text>
+    </Box>
+</Slide>

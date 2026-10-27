@@ -1,0 +1,75 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之方法：<span style={{ color: '#FA4F24' }}>Action Type 设计七问</span>，写入的唯一合法入口
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      任何改变真实世界的行为，都必须是一个被命名、被授权、被留痕的动作类型
+        </Text>
+  </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+  {/* 左 七问 */}
+        <Box style={{ width: 600, flexDirection: 'column', gap: 6 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>设计一个动作要回答的七件事</Text>
+      {[
+        { n: 'A1', q: '它改变的是哪个对象的什么状态？', why: '说不清就不是一个合格的动作' },
+        { n: 'A2', q: '谁可以发起？谁必须审批？', why: '权限与审批是模型的一部分，不是流程外的事' },
+     { n: 'A3', q: '前置条件是什么？', why: '校验写在函数里，不靠调用方自觉' },
+   { n: 'A4', q: '执行后要写回哪些外部系统？', why: '写回路径必须显式声明，不能靠约定' },
+        { n: 'A5', q: '失败了怎么办？', why: '必须有明确的失败态与补偿动作' },
+        { n: 'A6', q: '重复提交会怎样？', why: '没有幂等设计就不允许上线' },
+        { n: 'A7', q: '事后怎么查到是谁改的？', why: '留痕不是可选项，是动作的一部分' },
+    ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: i < 4 ? '#F7F7F8' : '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+  <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 28 }}>{it.n}</Text>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', flex: 1, lineHeight: 1.35 }}>{it.q}</Text>
+   <Text style={{ fontSize: 12, color: '#8A8F99', width: 178, lineHeight: 1.3 }}>{it.why}</Text>
+   </Box>
+    ))}
+    <Box style={{ height: 46, background: '#0F1423', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FBA15C', width: 84 }}>★ 判据</Text>
+          <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', flex: 1, lineHeight: 1.4 }}>
+            七问里有两问答不上来，这个动作就不要建 —— 先把它变成一个流程说明，留到治理成熟后再收进本体
+    </Text>
+      </Box>
+  </Box>
+
+      {/* 右：为什么必须经 Action */}
+   <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>为什么不能让 AI 或应用直连</Text>
+            <Box style={{ height: 148, background: '#0F1423', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center', gap: 9 }}>
+      {[
+        { t: '大模型不能直接操作外部系统', d: '只能调用预先定义并经权限审核的动作类型' },
+     { t: '权限与校验在建模阶段固化', d: '不依赖模型自己判断该不该做、有没有权限' },
+   { t: '每一次调用天然留痕', d: '谁、何时、对哪个对象、做了什么、结果如何' },
+  ].map((it, i) => (
+      <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
+    <Box style={{ width: 6, height: 6, background: '#FA4F24', borderRadius: 3, marginTop: 7 }} />
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.92)', flex: 1, lineHeight: 1.5 }}>
+     <Text style={{ fontWeight: 'bold' }}>{it.t}</Text>　{it.d}
+     </Text>
+    </Box>
+          ))}
+       </Box>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>三个必须落到动作里的校验</Text>
+   {[
+ { t: '状态校验', d: '只有「生产中」的订单才允许改交期' },
+        { t: '权限校验', d: '这条改的是 A 区订单，售前的改不了' },
+        { t: '完整性校验', d: '改交期必须同时给出理由，否则不落库' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+        <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.4, marginTop: 3 }}>{it.d}</Text>
+      </Box>
+   ))}
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+  <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+  <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>24 / 30</Text>
+    </Box>
+</Slide>

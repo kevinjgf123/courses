@@ -1,0 +1,81 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之内容：<span style={{ color: '#FA4F24' }}>三种写回机制与决策留痕</span>，动作落下去之后还剩什么
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    写回不是终点。把写回方式选对，闭环才成立 —— 这是本体最容易被忽略的价值点
+        </Text>
+    </Box>
+  <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+      {/* 三种写回 */}
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>三种写回机制，怎么选</Text>
+      <Box style={{ height: 158, flexDirection: 'row', gap: 10 }}>
+        {[
+          { n: '①', t: '回调推送', d: '动作触发后由本体直接调用外部系统的接口', p: '实时性好', r: '外部系统不稳定时会失败重试，对接方要有幂等', c: '#0F1423' },
+        { n: '②', t: '出站数据集', d: '动作结果落成一张出站数据集，由外部系统来取', p: '解耦最彻底', r: '有延迟，不适合要求秒级的动作', c: '#2A2F3D' },
+          { n: '③', t: '事件流', d: '动作结果以事件形式广播，订阅方自行消费', p: '最适合多方监听', r: '需要约定事件契约，改契约就是破坏性变更', c: '#5A6072' },
+     ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, padding: '13px 15px', flexDirection: 'column', justifyContent: 'center', gap: 5 }}>
+     <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FBA15C' }}>{it.n}</Text>
+     <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>{it.t}</Text>
+     <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.4 }}>{it.d}</Text>
+         <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', lineHeight: 1.35, marginTop: 2 }}>优势：{it.p}</Text>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', lineHeight: 1.35 }}>代价：{it.r}</Text>
+          </Box>
+   ))}
+      </Box>
+
+  <Box style={{ flex: 1, flexDirection: 'row', gap: 10 }}>
+        {/* 决策留痕 */}
+        <Box style={{ flex: 1.25, background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column' }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>决策可捕获：一次动作留下什么</Text>
+  <Box style={{ flex: 1, height: 1, background: '#E8E8E8' }} />
+    </Box>
+        {[
+          { k: '谁', v: '发起人与审批人，各自的时间戳' },
+       { k: '对什么', v: '对象实例的标识与变更前的状态' },
+            { k: '做了什么', v: '动作名称、参数、理由说明' },
+     { k: '结果', v: '成功失败、失败原因、重试次数' },
+    { k: '链路', v: '这一条影响了下游哪些对象的哪些字段' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+         <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 68 }}>{it.k}</Text>
+            <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.v}</Text>
+       </Box>
+     ))}
+   <Box style={{ height: 46, background: '#0F1423', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
+    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.95)', flex: 1, lineHeight: 1.4 }}>
+  这些留痕合起来，就是组织的决策日志 —— 它能回答「当时谁基于什么信息做了什么决定」
+     </Text>
+     </Box>
+      </Box>
+
+    {/* 价值 */}
+        <Box style={{ flex: 1, background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '16px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>这件事为什么值钱</Text>
+          {[
+  { t: '复盘有依据', d: '不再靠回忆对齐口径' },
+    { t: '异常可追责', d: '出了错能定位到具体动作' },
+  { t: '模型可训练', d: '历史决策是 AI 最稀缺的语料' },
+       ].map((it, i) => (
+        <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, marginTop: i === 0 ? 10 : 12 }}>
+   <Box style={{ width: 6, height: 6, background: '#FFFFFF', borderRadius: 3, marginTop: 7 }} />
+    <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', flex: 1, lineHeight: 1.45 }}>
+     <Text style={{ fontWeight: 'bold' }}>{it.t}</Text>　{it.d}
+     </Text>
+          </Box>
+       ))}
+   </Box>
+  </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>26 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,75 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    {/* A 区 */}
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     序论：四层架构都齐了，为什么还是<span style={{ color: '#FA4F24' }}>动不了</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    AI 让「决策」第一次成了瓶颈 —— 从看得见，到动得了
+        </Text>
+    </Box>
+ <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    {/* B 区 */}
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+        {/* 左：AI 撞墙三处 */}
+        <Box style={{ width: 560, flexDirection: 'column', gap: 9 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>AI 落地时反复撞到的三处墙</Text>
+            {[
+    { n: '墙一', t: '语义墙', d: '模型能写 SQL，却不知道「客户」「订单」「在途」在贵司口径里指什么', c: '#0F1423' },
+            { n: '墙二', t: '行动墙', d: 'AI 能给建议，但没有任何被授权、可审计的方式去改变真实系统', c: '#2A2F3D' },
+    { n: '墙三', t: '权限墙', d: '同一个模型，换个人问就得到不同答案，安全评审不敢放行', c: '#5A6072' },
+      ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 18px', gap: 14 }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FBA15C', width: 44 }}>{it.n}</Text>
+  <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF', width: 76 }}>{it.t}</Text>
+            <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', flex: 1, lineHeight: 1.45 }}>{it.d}</Text>
+    </Box>
+          ))}
+            <Box style={{ height: 74, background: '#F7F7F8', borderRadius: 4, padding: '0 18px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>★ 本体要解的题</Text>
+                <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45, marginTop: 4 }}>
+   把「是什么」「能做什么」「谁可以做什么」定义在同一层，让 AI 只能在被授权的语义范围内行动。
+       </Text>
+            </Box>
+      </Box>
+
+{/* 右：定位 + 沿革 */}
+<Box style={{ flex: 1, flexDirection: 'column', gap: 9 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>定位：它在 4A 里的位置</Text>
+      <Box style={{ height: 168, background: '#FFF3EE', borderRadius: 4, padding: '14px 18px', flexDirection: 'column', justifyContent: 'center' }}>
+    {[
+   { l: 'BA', t: '决策与价值流 —— 本体回答「组织要做什么决定」' },
+     { l: 'DA', t: '对象与链接 —— 本体把数据资产变成业务对象' },
+          { l: 'AA', t: '本体平台本身就是一个应用，承载决策界面' },
+        { l: 'TA', t: '对象存储 / 索引 / 运行时 —— 本体必须跑得动' },
+   ].map((it, i) => (
+     <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', marginTop: i === 0 ? 0 : 9 }}>
+       <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 30 }}>{it.l}</Text>
+   <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>{it.t}</Text>
+        </Box>
+ ))}
+            </Box>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 6 }}>三段式方法在这一册的样子</Text>
+  {[
+   { t: '方法', d: 'Approach 七阶段作业路径（第 04 页）' },
+      { t: '内容', d: '对象 · 链接 · 行动 · 权限四条主线' },
+    { t: '模板', d: '成熟度诊断、评审清单、权限矩阵' },
+      ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', background: '#F7F7F8', borderRadius: 4, padding: '0 16px', borderLeft: '4px solid #F87D2F' }}>
+          <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 12 }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', width: 40 }}>{it.t}</Text>
+    <Text style={{ fontSize: 14, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+    </Box>
+       </Box>
+      ))}
+      </Box>
+ </Box>
+
+    {/* C 区 */}
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+      <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>03 / 30</Text>
+    </Box>
+</Slide>

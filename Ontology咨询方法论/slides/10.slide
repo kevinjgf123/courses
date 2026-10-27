@@ -1,0 +1,79 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+    之模板：<span style={{ color: '#FA4F24' }}>本体成熟度五级诊断</span>，先给现状定级再谈建设
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    六项打分（每项 0–3 分）→ 总分落级 → 给出该级下的处置动作，不做「一步到位」的规划
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 20 }}>
+ {/* 左：五级阶梯 */}
+      <Box style={{ width: 500, flexDirection: 'column', gap: 6 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>五级阶梯（按总分落级）</Text>
+      {[
+   { lv: 'L0', r: '0–4', t: '无本体', d: '只有表与报表，没有对象概念', c: '#C9CCD4', tc: '#3A4050', act: '选 1 个决策场景做试点' },
+        { lv: 'L1', r: '5–8', t: '只读语义', d: '建了对象模型，但没人敢让它写', c: '#8A8F99', act: '补 Action 与权限矩阵' },
+   { lv: 'L2', r: '9–12', t: '可写但不治理', d: '能写回，但动作散在应用里', c: '#5A6072', act: '把动作收敛成 Action Type' },
+    { lv: 'L3', r: '13–16', t: '受控闭环', d: '写入受控、留痕、可审计可回滚', c: '#2A2F3D', act: '接 AI，先只读后写' },
+     { lv: 'L4', r: '17–18', t: 'AI 原生', d: 'AI 只调本体动作，决策可被捕获', c: '#FA4F24', act: '按域复制，扩到多业务域' },
+        ].map((it, i) => (
+  <Box key={i} style={{ flex: 1, background: it.c, borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 16px', gap: 12 }}>
+   <Text style={{ fontSize: 22, fontWeight: 'bold', color: it.tc, width: 44 }}>{it.lv}</Text>
+            <Box style={{ width: 128 }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: it.tc }}>{it.t}</Text>
+       <Text style={{ fontSize: 12, color: it.tc, opacity: 0.8 }}>{it.r} 分</Text>
+     </Box>
+            <Text style={{ fontSize: 12, color: it.tc, opacity: 0.92, flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+    <Text style={{ fontSize: 12, color: it.tc, opacity: 0.95, width: 148, lineHeight: 1.3 }}>{it.act}</Text>
+     </Box>
+    ))}
+        <Box style={{ height: 48, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FA4F24' }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>★ 用法</Text>
+    <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>
+  多数客户落在 L1。直接从 L1 谈「建全量本体」会被数据缺口拖死，先把一个场景推到 L2 再扩面。
+      </Text>
+        </Box>
+      </Box>
+
+      {/* 右：六项打分表 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>六项打分卡（每项 0–3）</Text>
+          {[
+            { n: 'M1', t: '对象覆盖', d: '核心决策涉及的对象是否都已定义', s: 2 },
+   { n: 'M2', t: '语义一致', d: '同一实体在不同应用里是否是同一个对象', s: 1 },
+  { n: 'M3', t: '行动定义', d: '是否每个改变世界的动作都有 Action Type', s: 1 },
+   { n: 'M4', t: '权限内嵌', d: '权限是否落在对象与属性上，而非页面隐藏', s: 0 },
+   { n: 'M5', t: '写回闭环', d: '写入能否到源系统，失败能否回滚', s: 1 },
+    { n: 'M6', t: 'AI 可用', d: 'AI 是否只能通过本体动作影响世界', s: 0 },
+          ].map((it, i) => (
+       <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 28 }}>{it.n}</Text>
+      <Box style={{ width: 84 }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+     </Box>
+   <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+              <Box style={{ flexDirection: 'row', gap: 3, width: 52 }}>
+  {[0, 1, 2].map(k => (
+     <Box key={k} style={{ width: 15, height: 15, borderRadius: 2, background: k < it.s ? '#FA4F24' : '#E8E8E8' }} />
+       ))}
+          </Box>
+         </Box>
+    ))}
+     <Box style={{ height: 76, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>输出物格式</Text>
+            <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 6 }}>
+      现状得分 5 / 18，落级 L1「只读语义」。建议：本季度只推「订单交付异常处置」一个场景，把 M3 提到 2 分后再评审。
+          </Text>
+      </Box>
+   </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>10 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+ 之内容：TA 视角 —— <span style={{ color: '#FA4F24' }}>对象存储、写入漏斗与索引</span>，本体的运行底座
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   语义层的问题从来不是画不出来，而是写得进去、查得回来、扛得住并发
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+    {/* 运行链路 */}
+      <Box style={{ height: 108, flexDirection: 'row', gap: 8 }}>
+ {[
+   { n: '元数据服务', d: '所有对象类型的定义、版本与依赖都在这里', k: 'OMS' },
+          { n: '对象存储', d: '当前权威存储是下一代版本，老版本仅作遗留兼容', k: 'Store V2' },
+   { n: '对象集合服务', d: '把各种筛选条件解析成高效查询并做聚合', k: 'OSS' },
+    { n: '动作服务', d: '所有写入的校验、编排与落库都从这里走', k: 'Actions' },
+   { n: '数据漏斗', d: '编排数据源与用户编辑，保证索引始终是最新的', k: 'Funnel' },
+      ].map((it, i) => (
+  <Box key={i} style={{ flex: 1, background: i === 4 ? '#FA4F24' : '#0F1423', borderRadius: 4, padding: '12px 13px', flexDirection: 'column', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 12, color: i === 4 ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.55)', letterSpacing: 1 }}>{it.k}</Text>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', marginTop: 4 }}>{it.n}</Text>
+    <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.82)', lineHeight: 1.4, marginTop: 6 }}>{it.d}</Text>
+    </Box>
+       ))}
+  </Box>
+
+      <Box style={{ flex: 1, flexDirection: 'row', gap: 18 }}>
+      {/* 左：技术选型三问 */}
+      <Box style={{ width: 480, flexDirection: 'column', gap: 8 }}>
+  <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>技术选型三问</Text>
+          {[
+     { q: '读写比是多少？', d: '读多写少与写多读少，选的存储与索引策略完全不同' },
+     { q: '一致性要求多高？', d: '库存、在途这类数字不容许脏读；审批状态可以最终一致' },
+            { q: '索引能撑多大对象集？', d: '对象集合的规模上限，决定哪些场景必须预聚合' },
+     ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>{it.q}</Text>
+    <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.4, marginTop: 3 }}>{it.d}</Text>
+   </Box>
+          ))}
+   <Box style={{ height: 56, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FA4F24' }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 96 }}>★ 遗留成本</Text>
+   <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.4 }}>
+  两代对象存储并存是历史包袱：迁移期所有应用都得双读，验收必须看到双写与回退方案
+ </Text>
+          </Box>
+        </Box>
+
+        {/* 右：非功能四维 */}
+   <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>本体的非功能要求与常规应用不同在哪</Text>
+          {[
+  { d: '性能', r: '普通应用看响应时间', x: '本体还看链接展开深度 —— 一跳慢 200ms，三跳就不可用了' },
+   { d: '可用性', r: '单个服务挂掉就挂了', x: '本体挂了所有决策界面全停，等于整个组织失去运营能力' },
+      { d: '容量', r: '按请求量估算', x: '按对象实例与链接条数估算，增长来自业务扩张不是访问量' },
+            { d: '恢复', r: '恢复数据库即可', x: '要恢复的是「哪条决策在什么时候被谁改了」的完整链条' },
+          ].map((it, i) => (
+  <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+       <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#C43A17', width: 48 }}>{it.d}</Text>
+ <Box style={{ width: 150 }}>
+      <Text style={{ fontSize: 12, color: '#8A5A20', lineHeight: 1.35 }}>{it.r}</Text>
+         </Box>
+        <Text style={{ fontSize: 12, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>{it.x}</Text>
+      </Box>
+  ))}
+        </Box>
+      </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>16 / 30</Text>
+    </Box>
+</Slide>

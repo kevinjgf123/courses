@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之内容：<span style={{ color: '#FA4F24' }}>Function 与动态权限</span>，逻辑与边界在建模期就定死
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   把这两件事交给应用层做，本体就退化成一张只能看的图
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+      {/* 左 Function */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>Function：服务端的业务逻辑</Text>
+      <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '14px 16px', flexDirection: 'column', justifyContent: 'center', gap: 9 }}>
+       {[
+      { t: '像存储过程一样放在服务端', d: '复杂度不限，可以算、可以调外部、可以写库' },
+   { t: '可被应用与 AI 直接调用', d: '不需要先造一个界面才能用上这段逻辑' },
+    { t: '一处定义，多处复用', d: '同一个「交期是否可承诺」的判断，不允许在五个应用里各写一遍' },
+        ].map((it, i) => (
+       <Box key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
+       <Box style={{ width: 6, height: 6, background: '#FA4F24', borderRadius: 3, marginTop: 7 }} />
+      <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.5 }}>
+      <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>　{it.d}
+      </Text>
+       </Box>
+    ))}
+     <Box style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 9, marginTop: 4 }}>
+     <Box style={{ width: 6, height: 6, background: '#FA4F24', borderRadius: 3, marginTop: 7 }} />
+    <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.5 }}>
+    <Text style={{ fontWeight: 'bold', color: '#0F1423' }}>典型用途</Text>　算可用库存、判断交期可行性、生成审批路径、算出责任销售
+     </Text>
+     </Box>
+      </Box>
+          <Box style={{ height: 62, background: '#FFF3EE', borderRadius: 4, padding: '10px 16px', flexDirection: 'row', alignItems: 'center', gap: 12, borderLeft: '4px solid #FBA15C' }}>
+   <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17', width: 118 }}>★ 边界在哪</Text>
+     <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>
+   纯展示的格式化不要写进函数。函数只放「业务上必须一致」的那部分逻辑，否则它会变成没人敢动的垃圾场
+        </Text>
+      </Box>
+    </Box>
+
+    {/* 右 动态权限 */}
+ <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>动态权限：不是角色表，是实时判定</Text>
+            {[
+              { a: '静态权限', b: '页面隐藏按钮、菜单不可见。换个入口就绕过去了' },
+       { a: '动态权限', b: '按用户属性与对象状态实时判定，同一个人对不同对象结论不同' },
+    ].map((it, i) => (
+       <Box key={i} style={{ flex: 1, background: i === 0 ? '#F7F7F8' : '#FA4F24', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+    <Text style={{ fontSize: 15, fontWeight: 'bold', color: i === 0 ? '#5A6072' : '#FFFFFF' }}>{it.a}</Text>
+            <Text style={{ fontSize: 13, color: i === 0 ? '#3A4050' : 'rgba(255,255,255,0.95)', lineHeight: 1.4, marginTop: 4 }}>{it.b}</Text>
+     </Box>
+  ))}
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423', marginTop: 4 }}>三条必须内嵌到模型的规则</Text>
+       {[
+        { n: 'R1', t: '到属性粒度', d: '不是「能看订单」，而是「能看订单但看不到折扣金额」' },
+   { n: 'R2', t: '随身份继承给 AI', d: '模型看不到的东西，AI 也看不到；AI 能做的，人也一定能做' },
+        { n: 'R3', t: '随对象状态变化', d: '已关闭的订单谁都别想再改，包括管理员' },
+    ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+ <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17', width: 30 }}>{it.n}</Text>
+     <Box style={{ width: 148 }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.t}</Text>
+    </Box>
+   <Text style={{ fontSize: 13, color: '#3A2000', flex: 1, lineHeight: 1.4 }}>{it.d}</Text>
+    </Box>
+   ))}
+        </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>25 / 30</Text>
+    </Box>
+</Slide>

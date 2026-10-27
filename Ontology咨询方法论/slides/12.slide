@@ -1,0 +1,58 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+    <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之方法：<span style={{ color: '#FA4F24' }}>本体 4A 映射总览</span>，四个架构各自回答什么
+     </Text>
+      <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+   同一个本体，在四层架构里看到的是四个不同的切面 —— 评审时别把它们混在一起谈
+        </Text>
+  </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'column', gap: 9 }}>
+    {/* 数据流主干 */}
+      <Box style={{ height: 62, flexDirection: 'row', alignItems: 'center', gap: 10, background: '#F7F7F8', borderRadius: 4, padding: '0 18px' }}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#0F1423', width: 92 }}>数据流向主干</Text>
+        {['源系统', '连接器', '数据集', '清洗转换', '本体对象', '应用', '决策', 'Action', '写回'].map((t, i, arr) => (
+       <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: i >= 4 && i <= 5 ? 1.5 : 1 }}>
+     <Text style={{ fontSize: 13, color: i >= 4 && i <= 5 ? '#C43A17' : '#3A4050', fontWeight: i >= 4 && i <= 5 ? 'bold' : 'normal' }}>{t}</Text>
+        {i < arr.length - 1 && <Text style={{ fontSize: 13, color: '#C9CCD4' }}>→</Text>}
+     </Box>
+    ))}
+    </Box>
+
+      {/* 四行 4A */}
+      {[
+        { k: 'BA', q: '本体回答什么决策', v: '对象 = 业务能力与实体；链接 = 价值流与责任关系；Action = 组织里真实的动作与审批', hl: '#FA4F24' },
+        { k: 'DA', q: '本体怎么用数据', v: '对象 ≈ 数据集模式，对象 ≈ 行，链接 ≈ 关联；对象层不另存一份完整数据，只存定义与映射', hl: '#F87D2F' },
+        { k: 'AA', q: '谁在消费本体', v: '本体平台本身就是一个应用，承载工作台、自定义页面、分析与面向外部的 SDK', hl: '#E8600F' },
+        { k: 'TA', q: '本体怎么跑得动', v: '对象存储、元数据服务、索引与查询编排、写入漏斗，以及权限计算的性能边界', hl: '#C43A17' },
+      ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 14, background: '#F7F7F8', borderRadius: 4, padding: '0 18px', borderLeft: '4px solid ' + it.hl }}>
+     <Text style={{ fontSize: 24, fontWeight: 'bold', color: it.hl, width: 46 }}>{it.k}</Text>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423', width: 168 }}>{it.q}</Text>
+      <Text style={{ fontSize: 13, color: '#3A4050', flex: 1, lineHeight: 1.45 }}>{it.v}</Text>
+     </Box>
+    ))}
+
+      {/* 特殊之处 */}
+      <Box style={{ flex: 1.25, background: 'linear-gradient(90deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 18px', gap: 16 }}>
+     <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF', width: 108 }}>它特殊在哪</Text>
+        <Box style={{ flexDirection: 'row', flex: 1, gap: 12 }}>
+          {['语义与动力学同层', '读写同层', '权限内嵌且被 AI 继承', '模型即资产被直接消费', '决策可捕获'].map((t, i) => (
+    <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+    <Box style={{ width: 5, height: 5, background: '#FFFFFF', borderRadius: 3 }} />
+       <Text style={{ fontSize: 13, color: '#FFFFFF' }}>{t}</Text>
+            </Box>
+    ))}
+        </Box>
+  <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', width: 172, textAlign: 'right', lineHeight: 1.35 }}>传统 4A 是分层的，本体是合层的</Text>
+      </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+      <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>12 / 30</Text>
+    </Box>
+</Slide>

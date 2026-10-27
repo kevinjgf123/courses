@@ -1,0 +1,97 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+      之模板：<span style={{ color: '#FA4F24' }}>本体 4A 评审清单</span>，16 项逐条过，缺项不许进入下一阶段
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+      每项填「有 / 半有 / 无」，半有必须写清缺口与补齐日期，无项直接进缺口台账
+     </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 18, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+        {/* 左：BA + DA */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+            {[
+    { g: 'BA', sub: '业务架构', bg: '#F7F7F8', hb: '#FA4F24', tc: '#0F1423', bc: '#C9CCD4', qc: '#3A4050', items: [
+    { n: 'B1', q: '每个对象都能说清它承接什么决策' },
+      { n: 'B2', q: '动作清单带责任人、审批与时限' },
+ { n: 'B3', q: '链接连出了价值流而不只是主外键' },
+        { n: 'B4', q: '组织调整后对象归属有明确规则' },
+        ] },
+     { g: 'DA', sub: '数据架构', bg: '#F7F7F8', hb: '#F87D2F', tc: '#0F1423', bc: '#C9CCD4', qc: '#3A4050', items: [
+   { n: 'D1', q: '每个对象都有唯一权威数据来源' },
+        { n: 'D2', q: '建模与取数同步推进，无大量待补字段' },
+     { n: 'D3', q: '主数据归属明确，没有互相打架的主档' },
+        { n: 'D4', q: '历史口径用有效期管理，未覆盖历史' },
+        ] },
+].map((grp, gi) => (
+          <Box key={gi} style={{ flex: 1, background: grp.bg, borderRadius: 4, padding: '12px 14px', flexDirection: 'column' }}>
+     <Box style={{ height: 26, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Text style={{ fontSize: 17, fontWeight: 'bold', color: grp.hb }}>{grp.g}</Text>
+          <Text style={{ fontSize: 12, color: '#8A8F99' }}>{grp.sub}</Text>
+    <Box style={{ flex: 1, height: 1, background: '#E8E8E8' }} />
+  </Box>
+              {grp.items.map((it, i) => (
+  <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+    <Text style={{ fontSize: 13, fontWeight: 'bold', color: grp.hb, width: 26 }}>{it.n}</Text>
+          <Text style={{ fontSize: 13, color: grp.qc, flex: 1, lineHeight: 1.35 }}>{it.q}</Text>
+     <Box style={{ flexDirection: 'row', gap: 4 }}>
+     {['有', '半', '无'].map((s, k) => (
+          <Box key={k} style={{ width: 22, height: 18, borderRadius: 2, border: '1px solid ' + grp.bc, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 11, color: '#8A8F99' }}>{s}</Text>
+    </Box>
+       ))}
+         </Box>
+      </Box>
+     ))}
+     </Box>
+    ))}
+     </Box>
+
+  {/* 右：AA + TA */}
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+            {[
+    { g: 'AA', sub: '应用架构', bg: '#FFF3EE', hb: '#C43A17', bc: '#E0B088', qc: '#3A2000', items: [
+     { n: 'A1', q: '五类入口分工清楚，不存在两界面做同一决策' },
+   { n: 'A2', q: '所有写操作统一回到 Action Type' },
+            { n: 'A3', q: '每个应用有明确责任人与生命周期约定' },
+       { n: 'A4', q: '对外集成走 OSDK，不直连底层数据集' },
+        ] },
+        { g: 'TA', sub: '技术架构', bg: '#FFF3EE', hb: '#8A5A20', bc: '#E0B088', qc: '#3A2000', items: [
+    { n: 'T1', q: '读写比与一致性要求已量化' },
+    { n: 'T2', q: '链接展开深度与对象集规模有上限约束' },
+       { n: 'T3', q: '两代存储并存期有双写与回退方案' },
+       { n: 'T4', q: '决策留痕数据的保留期与恢复流程已定' },
+        ] },
+      ].map((grp, gi) => (
+        <Box key={gi} style={{ flex: 1, background: grp.bg, borderRadius: 4, padding: '12px 14px', flexDirection: 'column' }}>
+      <Box style={{ height: 26, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+       <Text style={{ fontSize: 17, fontWeight: 'bold', color: grp.hb }}>{grp.g}</Text>
+       <Text style={{ fontSize: 12, color: '#B08050' }}>{grp.sub}</Text>
+      <Box style={{ flex: 1, height: 1, background: '#E8C9B0' }} />
+         </Box>
+      {grp.items.map((it, i) => (
+            <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+     <Text style={{ fontSize: 13, fontWeight: 'bold', color: grp.hb, width: 26 }}>{it.n}</Text>
+      <Text style={{ fontSize: 13, color: grp.qc, flex: 1, lineHeight: 1.35 }}>{it.q}</Text>
+       <Box style={{ flexDirection: 'row', gap: 4 }}>
+  {['有', '半', '无'].map((s, k) => (
+  <Box key={k} style={{ width: 22, height: 18, borderRadius: 2, border: '1px solid ' + grp.bc, alignItems: 'center', justifyContent: 'center' }}>
+         <Text style={{ fontSize: 11, color: '#B08050' }}>{s}</Text>
+     </Box>
+        ))}
+       </Box>
+         </Box>
+   ))}
+    </Box>
+    ))}
+  </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>17 / 30</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,74 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+   之内容：<span style={{ color: '#FA4F24' }}>语义元素与动力学元素</span>，本体就是这两类东西的合体
+     </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 只建语义，就是个漂亮的只读模型；只建行动，就是个散乱的接口集合 —— 两类必须同时定义
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+      {/* 左：语义 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+   <Box style={{ height: 40, background: '#0F1423', borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 14px', gap: 10 }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>语义元素 · 是什么</Text>
+      <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>SEMANTIC</Text>
+  </Box>
+        {[
+          { n: 'Object Type', t: '对象类型', d: '现实实体或事件的模式定义，如 Employee、Order、Device' },
+  { n: 'Property', t: '属性', d: '对象的字段，可以是简单值，也可以是复杂结构' },
+          { n: 'Link Type', t: '链接类型', d: '对象之间的关系，支持 1:1 / 1:N / M:N，关系本身也能带属性' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '10px 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #0F1423' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423' }}>{it.n}</Text>
+         <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24' }}>{it.t}</Text>
+       </Box>
+     <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.45, marginTop: 5 }}>{it.d}</Text>
+     </Box>
+     ))}
+    <Box style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={{ fontSize: 13, color: '#8A8F99', flex: 1, lineHeight: 1.45 }}>
+     漏掉语义层的代价：每个应用各写一套字段名与口径，同一个问题在十张图里有十个答案
+   </Text>
+   </Box>
+      </Box>
+
+      {/* 右：动力学 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+    <Box style={{ height: 40, background: '#FA4F24', borderRadius: 4, flexDirection: 'row', alignItems: 'center', padding: '0 14px', gap: 10 }}>
+   <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>动力学元素 · 能做什么</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)' }}>KINETIC</Text>
+        </Box>
+ {[
+          { n: 'Action Type', t: '动作类型', d: '用户可对对象做的结构化受控变更集合，写入的唯一合法入口' },
+     { n: 'Function', t: '函数', d: '服务端业务逻辑，复杂度不限，类似数据库里的存储过程' },
+          { n: 'Dynamic Security', t: '动态权限', d: '可按用户属性与对象状态动态判定，不只是静态角色' },
+        ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '10px 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+       <Box style={{ flexDirection: 'row', alignItems: 'baseline', gap: 10 }}>
+ <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#3A2000' }}>{it.n}</Text>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+    </Box>
+    <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.45, marginTop: 5 }}>{it.d}</Text>
+   </Box>
+    ))}
+     <Box style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center' }}>
+ <Text style={{ fontSize: 13, color: '#8A5A20', flex: 1, lineHeight: 1.45 }}>
+   漏掉动力学层的代价：建议做得再准，也只能靠人手工去改系统 —— 不落库、不留痕、不敢接 AI
+        </Text>
+     </Box>
+      </Box>
+    </Box>
+
+    {/* 中间结论条 */}
+    <Box style={{ position: 'absolute', left: 470, top: 636, width: 340, height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+     <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+ <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>07 / 30</Text>
+    </Box>
+</Slide>

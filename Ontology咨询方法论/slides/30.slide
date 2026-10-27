@@ -1,0 +1,93 @@
+<Slide style={{ width: 1280, height: 720, background: '#0F1423' }}>
+    <Box style={{ position: 'absolute', left: 0, top: 0, width: 1280, height: 720, background: 'linear-gradient(135deg, #0F1423 0%, #2A1810 100%)' }} />
+    <Box style={{ position: 'absolute', right: 0, top: 0, width: 560, height: 720, background: 'linear-gradient(200deg, rgba(250,79,36,0.28) 0%, rgba(250,79,36,0) 70%)' }} />
+
+    <Box style={{ position: 'absolute', left: 64, top: 46, right: 64, height: 118, flexDirection: 'column' }}>
+    <Text style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', letterSpacing: 3 }}>结语</Text>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF', marginTop: 14, lineHeight: 1.35 }}>
+     接三种集成模式、走四步演进、避五个坑 —— <span style={{ color: '#FA4F24' }}>本体是长出来的，不是建出来的</span>
+    </Text>
+ </Box>
+
+  <Box style={{ position: 'absolute', left: 64, top: 176, width: 640, height: 470, flexDirection: 'column', gap: 10 }}>
+      <Box style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 4, padding: '12px 14px', flexDirection: 'column', flex: 1 }}>
+   <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+       <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24' }}>与已有数据中层的三种接法</Text>
+  <Box style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.16)' }} />
+   </Box>
+   {[
+  { t: '作为消费方', d: '接进现有数仓的加工结果', m: '推荐：矛盾最小，见效最快' },
+        { t: '并行双轨', d: '两边同时跑，先对齐数据目录口径', m: '过渡方案：必须设退出日期' },
+     { t: '承担中台职能', d: '本体平台自己就是中台', m: '只有数据治理已成熟才可考虑' },
+        ].map((it, i) => (
+   <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', width: 116 }}>{it.t}</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+      <Text style={{ fontSize: 12, color: '#FBA15C', width: 178, lineHeight: 1.3 }}>{it.m}</Text>
+    </Box>
+   ))}
+      </Box>
+
+        <Box style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 4, padding: '12px 14px', flexDirection: 'column', flex: 1.25 }}>
+      <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24' }}>演进四步与每步的退出条件</Text>
+   <Box style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.16)' }} />
+     </Box>
+        {[
+        { n: '一', t: '单场景只读', x: '业务方能无歧义复述每个对象' },
+      { n: '二', t: '单场景可写', x: '写回成功率可验证，回滚演练过' },
+   { n: '三', t: '单域成体系', x: '本域动作收齐，权限矩阵无空白' },
+      { n: '四', t: '跨域 + AI', x: 'AI 全程只经动作，不越权' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', width: 24 }}>{it.n}</Text>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', width: 146 }}>{it.t}</Text>
+     <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', flex: 1, lineHeight: 1.35 }}>{it.x}</Text>
+    {i < 3 && <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>→</Text>}
+   </Box>
+   ))}
+   </Box>
+    </Box>
+
+    {/* 右：五个坑 + 主线收束 */}
+    <Box style={{ position: 'absolute', left: 736, top: 176, width: 480, height: 470, flexDirection: 'column', gap: 10 }}>
+        <Box style={{ background: 'rgba(250,79,36,0.16)', borderRadius: 4, padding: '12px 14px', flexDirection: 'column', flex: 1.6 }}>
+      <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FA4F24', marginBottom: 6 }}>最常踩的五个坑</Text>
+     {[
+  { t: '先建全量模型再找场景', d: '结果是一个没人用的大图' },
+    { t: '只建语义不建行动', d: '结果是一张漂亮但推不动的图' },
+  { t: '动作定义在应用里', d: '结果每接一个系统改一次' },
+     { t: '权限只做到页面', d: '结果一次穿透，AI 接入直接停摆' },
+      { t: '双轨没有退出日期', d: '结果永远并行，系统数量翻倍' },
+        ].map((it, i) => (
+  <Box key={i} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+   <Box style={{ width: 5, height: 5, background: '#FA4F24', borderRadius: 3 }} />
+       <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#FFFFFF', width: 186 }}>{it.t}</Text>
+      <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', flex: 1, lineHeight: 1.3 }}>{it.d}</Text>
+     </Box>
+   ))}
+   </Box>
+
+    <Box style={{ background: 'linear-gradient(160deg, #FA4F24 0%, #F87D2F 100%)', borderRadius: 4, padding: '16px 18px', flexDirection: 'column', flex: 1.4, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FFFFFF' }}>全册收束</Text>
+   {[
+     'BA 说清要做什么决策',
+     'DA 说清数据从哪来',
+    'AA 说清谁在用',
+        'TA 说清跑不跑得动',
+      ].map((t, i) => (
+     <Text key={i} style={{ fontSize: 13, color: 'rgba(255,255,255,0.94)', lineHeight: 1.5, marginTop: i === 0 ? 8 : 3 }}>· {t}</Text>
+   ))}
+      <Box style={{ height: 1, background: 'rgba(255,255,255,0.35)', marginTop: 10 }} />
+    <Text style={{ fontSize: 14, color: '#FFFFFF', lineHeight: 1.5, marginTop: 8, fontWeight: 'bold' }}>
+        本体让这四件事落在同一层上 —— 语义与动力学合一，组织的决策才真正跑得起来。
+      </Text>
+        </Box>
+    </Box>
+
+    <Box style={{ position: 'absolute', right: 88, bottom: 56, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <Box style={{ width: 14, height: 14, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', marginLeft: 12 }}>30 / 30</Text>
+    </Box>
+</Slide>

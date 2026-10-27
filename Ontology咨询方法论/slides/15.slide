@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+ <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+     之内容：AA 视角 —— <span style={{ color: '#FA4F24' }}>本体平台本身就是一个应用</span>
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+    按应用架构的规矩来管它：谁在用、用哪几个入口、组合是否重复、迭代怎么排
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+<Box style={{ paddingTop: 22, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+      {/* 左 五类应用 */}
+  <Box style={{ flex: 1.15, flexDirection: 'column', gap: 7 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>五类消费入口，各管一段</Text>
+        {[
+        { n: 'Workshop', t: '低代码工作台', d: '业务人员直接搭界面，不等 IT 排期', tag: '自助' },
+          { n: 'Slate', t: '自定义页面', d: '用 HTML / CSS / JS 做高度定制的决策页', tag: '前端工程' },
+     { n: 'Quiver', t: '分析视图', d: '面向分析师的切片与对比分析', tag: '分析' },
+      { n: 'Object Explorer', t: '对象检索', d: '按对象与属性搜到实例，替代翻表', tag: '通用入口' },
+          { n: 'OSDK', t: '本体 SDK', d: '把对象、链接、动作暴露成接口，供外部系统调用', tag: '对外集成' },
+        ].map((it, i) => (
+          <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#0F1423', width: 128 }}>{it.n}</Text>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FA4F24', width: 104 }}>{it.t}</Text>
+   <Text style={{ fontSize: 12, color: '#3A4050', flex: 1, lineHeight: 1.35 }}>{it.d}</Text>
+  <Text style={{ fontSize: 12, color: '#8A8F99' }}>{it.tag}</Text>
+      </Box>
+        ))}
+        <Box style={{ height: 62, background: '#FFF3EE', borderRadius: 4, padding: '10px 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+          <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>★ AA 的核心判断</Text>
+      <Text style={{ fontSize: 13, color: '#3A2000', lineHeight: 1.45, marginTop: 4 }}>
+    五类入口不是五套逻辑。所有写操作都必须回到 Action Type，谁的界面都一样 —— 这条守住了，才叫平台，破了就是五个应用。
+          </Text>
+        </Box>
+      </Box>
+
+        {/* 右 应用组合治理 */}
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>应用组合四问（照搬 AA 打法）</Text>
+    {[
+            { q: '两个界面在解决同一个决策吗？', d: '是 → 合并成入口，不是各自演进' },
+       { q: '这个功能该不该做在本体层？', d: '不该 → 它只是展示，不该新增对象或动作' },
+     { q: '谁负责这个应用的生命周期？', d: '无人认领的自助应用，是半年后没人敢动的孤儿' },
+    { q: '它的迭代排在谁后面？', d: '本体变更是它变更的前置条件，排序不能反' },
+ ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, background: '#F7F7F8', borderRadius: 4, padding: '0 16px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FA4F24' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0F1423' }}>{it.q}</Text>
+     <Text style={{ fontSize: 13, color: '#3A4050', lineHeight: 1.4, marginTop: 3 }}>{it.d}</Text>
+          </Box>
+    ))}
+          <Box style={{ height: 92, background: '#0F1423', borderRadius: 4, padding: '12px 16px', flexDirection: 'column', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FBA15C' }}>交付边界提醒</Text>
+    <Text style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginTop: 5 }}>
+   咨询阶段只做两件事：定入口分工（谁做什么、哪两个必须合并），定应用接入本体的接口规范。界面实现方式与排期不在架构交付范围内。
+        </Text>
+    </Box>
+        </Box>
+    </Box>
+
+  <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+        <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+     <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>15 / 30</Text>
+    </Box>
+</Slide>

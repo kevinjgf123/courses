@@ -1,0 +1,81 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', padding: '24px 64px 0' }}>
+    <Box style={{ height: 96, flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#0F1423' }}>
+之模板：<span style={{ color: '#FA4F24' }}>动作与权限矩阵</span>，加上六个必须避开的反模式
+        </Text>
+        <Text style={{ fontSize: 20, color: '#8A8F99', marginTop: 8 }}>
+ 矩阵填不满，说明权限还在某个人的脑子里，模型就还不该开放写入
+        </Text>
+    </Box>
+    <Box style={{ height: 1, background: '#E8E8E8' }} />
+
+    <Box style={{ paddingTop: 20, paddingBottom: 12, height: 479, flexDirection: 'row', gap: 18 }}>
+      {/* 左 矩阵 */}
+        <Box style={{ flex: 1.35, flexDirection: 'column', gap: 8 }}>
+ <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>动作 × 角色 权限矩阵</Text>
+     <Box style={{ flexDirection: 'row', gap: 4, height: 28 }}>
+    <Box style={{ flex: 1.5, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 12, color: '#FFFFFF' }}>动作类型</Text>
+            </Box>
+            {['销售', '销售经理', '生产', '财务', '客服'].map((r, i) => (
+        <Box key={i} style={{ flex: 1, background: '#0F1423', alignItems: 'center', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 12, color: '#FFFFFF' }}>{r}</Text>
+       </Box>
+     ))}
+ </Box>
+   {[
+   { a: '确认订单', v: ['●', '●', '○', '○', '○'] },
+      { a: '变更交期', v: ['○', '●', '●', '○', '○'] },
+        { a: '审批折扣', v: ['○', '●', '○', '●', '○'] },
+      { a: '关闭订单', v: ['○', '●', '○', '○', '○'] },
+        { a: '发起验收', v: ['○', '○', '●', '○', '●'] },
+        { a: '查看金额', v: ['●', '●', '○', '●', '○'] },
+        ].map((it, i) => (
+      <Box key={i} style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
+  <Box style={{ flex: 1.5, background: '#F7F7F8', padding: '0 10px', justifyContent: 'center' }}>
+   <Text style={{ fontSize: 13, color: '#0F1423' }}>{it.a}</Text>
+          </Box>
+            {it.v.map((s, k) => (
+   <Box key={k} style={{ flex: 1, background: '#F7F7F8', alignItems: 'center', justifyContent: 'center' }}>
+     <Text style={{ fontSize: 14, fontWeight: 'bold', color: s === '●' ? '#FA4F24' : '#C9CCD4' }}>{s}</Text>
+       </Box>
+        ))}
+ </Box>
+   ))}
+       <Box style={{ height: 44, background: '#0F1423', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)' }}>● 可执行并留痕</Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)' }}>○ 可查看不可执行</Text>
+            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)' }}>空白 = 不可见，直接在模型层拒绝</Text>
+  </Box>
+        </Box>
+
+     {/* 右 六坑 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 7 }}>
+       <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0F1423' }}>六个必须避开的反模式</Text>
+    {[
+   { t: '矩阵里没有空白格', d: '说明所有人都能改，那矩阵等于没做' },
+     { t: '权限只在界面上', d: '换个入口或走 SDK 就绕过去了' },
+     { t: '动作里塞了业务规则', d: '规则写在代码里，改一次要发一次版' },
+     { t: '写回失败无补偿', d: '外部系统没更新，本体状态却已变' },
+    { t: 'AI 直接写外部系统', d: '绕过动作，就绕过了全部校验与留痕' },
+        { t: '留痕不留上下文', d: '只记「改了」，不记「当时看到什么才这么改」' },
+      ].map((it, i) => (
+    <Box key={i} style={{ flex: 1, background: '#FFF3EE', borderRadius: 4, padding: '0 14px', flexDirection: 'column', justifyContent: 'center', borderLeft: '4px solid #FBA15C' }}>
+       <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#C43A17' }}>{it.t}</Text>
+      <Text style={{ fontSize: 12, color: '#3A2000', lineHeight: 1.35, marginTop: 2 }}>{it.d}</Text>
+   </Box>
+  ))}
+    <Box style={{ height: 40, background: '#F7F7F8', borderRadius: 4, padding: '0 14px', flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={{ fontSize: 12, color: '#8A8F99', flex: 1, lineHeight: 1.35 }}>
+     这六条里有任意一条成立，本体就还只是「一个语义层 + 一个系统集成」
+          </Text>
+     </Box>
+   </Box>
+    </Box>
+
+    <Box style={{ height: 58, flexDirection: 'row', alignItems: 'center', borderTop: '1px solid #E8E8E8' }}>
+   <Box style={{ width: 10, height: 10, background: '#FA4F24' }} />
+        <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 12 }}>硕磐机密 · Ontology本体咨询方法论</Text>
+   <Text style={{ fontSize: 13, color: '#8A8F99', marginLeft: 'auto' }}>27 / 30</Text>
+    </Box>
+</Slide>
